@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Piotr Dyszewski" />
+  <title>Stochastyczne modele systemów oddziałujących</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Stochastyczne modele systemów oddziałujących</h1>
+<p class="author">Piotr Dyszewski</p>
+</header>
+<h1 class="unnumbered" id="sylabus">Sylabus</h1>
+<h3 class="unnumbered" id="dane-dotyczące-przedmiotu">Dane dotyczące
+przedmiotu</h3>
+<p>Nazwa przedmiotu: Stochastyczne modele systemów oddziałujących<br />
+Jednostka oferująca przedmiot: Instytut Matematyczny<br />
+Założenia: Teoria prawdopodobieństwa 2 (28-MT-S-tTPrawd2)<br />
+Strona www: <a
+href="https://sites.google.com/site/piotrdyszewski/teaching/SMSO"
+class="uri">https://sites.google.com/site/piotrdyszewski/teaching/SMSO</a><br />
+Forma zajęć: wykład + ćwiczenia<br />
+Punkty ECTS: 6</p>
+<h3 class="unnumbered" id="skrócony-plan-wykładu">Skrócony plan
+wykładu</h3>
+<p>W trakcie wykładu poruszymy następujące zagadnienia:</p>
+<dl>
+<dt>A) Procesy Markowa:</dt>
+<dd>
+<p>łańcuchy Markowa w czasie ciągłym, procesy Fellera, półgrupy
+operatorów, generatory infinitezymalne, martyngały, rozkłady
+stacjonarne, ruch Browna i procesy pokrewne</p>
+</dd>
+<dt>B) Układy cząstek:</dt>
+<dd>
+<p>konstrukcja, ergodyczność, model głosowania, model epidemii,
+exclusion process</p>
+</dd>
+</dl>
+<p>Podstawowa literatura do wykładu:</p>
+<ul>
+<li><p>Liggett, Thomas Milton. <em>Continuous time Markov processes: an
+introduction</em>. Vol. 113. American Mathematical Soc., 2010.</p></li>
+<li><p>Liggett, Thomas Milton, and Thomas M. Liggett. <em>Interacting
+particle systems</em>. Vol. 2. New York: Springer, 1985.</p></li>
+<li><p>Liggett, Thomas M. <em>Stochastic interacting systems: contact,
+voter and exclusion processes</em>. Vol. 324. springer science &amp;
+Business Media, 2013.</p></li>
+</ul>
+<h3 class="unnumbered" id="szczegółowy-plan-wykładu">Szczegółowy plan
+wykładu</h3>
+<p>Wstępny plan tematów poruszanych na poszczególnych wykładach</p>
+<ol>
+<li><p>Łańcuchy Markowa w czasie ciągłym</p></li>
+<li><p>Procesy Fellera, półgrupy i generatory</p></li>
+<li><p>Od procesu do półgrupy i generatora</p></li>
+<li><p>Od generatora do procesu</p></li>
+<li><p>Konstrukcje generatorów, zagadnienie martyngałowe, rozkłady
+stacjonarne</p></li>
+<li><p>procesy dualne</p></li>
+<li><p>zaburzenia ruchu Browna</p></li>
+<li><p>Konstrukcja systemów oddziałujących</p></li>
+<li><p>Ergodyczność systemów oddziałujących</p></li>
+<li><p>Kilka narzędzi</p></li>
+<li><p>Model głosowania: przypadek rekurencyjny</p></li>
+<li><p>Model głosowania: przypadek tranzytywny</p></li>
+<li><p>Model epidemii: reprezentacja graficzna i addytywność</p></li>
+<li><p>Model epidemii na drzewie jednorodnym</p></li>
+<li><p>Exclusion process</p></li>
+</ol>
+<h3 class="unnumbered" id="efekty-kształcenia">Efekty kształcenia</h3>
+<p>Po wykładzie student:</p>
+<ol>
+<li><p>formułuje podstawowe obiekty z zakresu teorii procesów Markowa
+(<strong>A</strong>);</p></li>
+<li><p>podaje przykłady stochastycznych systemów oddziałujących wraz z
+ich podstawowymi własnościami (<strong>B</strong>)</p></li>
+<li><p>formułuje związki między generatorami, półgrupami oraz procesami
+Markowa (<strong>A</strong>);</p></li>
+<li><p>analizuje dowody prostych twierdzeń z wykładu z uzasadnieniem
+poszczególnych ich założeń (<strong>A</strong>);</p></li>
+<li><p>formułuje główne twierdzenia teorii procesów Markowa
+(<strong>A</strong>);</p></li>
+<li><p>analizuje dowody najważniejszych twierdzeń z wykładu z
+uzasadnieniem poszczególnych ich założeń (<strong>A</strong>,
+<strong>B</strong>);</p></li>
+<li><p>formułuje główne twierdzenia z zakresu teorii systemów
+oddziałujących (<strong>B</strong>)</p></li>
+<li><p>Stosuje teorię procesów Markowa w przykładach
+(<strong>A</strong>);</p></li>
+</ol>
+<h3 class="unnumbered"
+id="sposób-weryfikacji-efektów-kształcenia">Sposób weryfikacji efektów
+kształcenia</h3>
+<p>Na zaliczenie składać się będą:</p>
+<ul>
+<li><p>aktywność na ćwiczeniach;</p></li>
+<li><p>zadania domowe</p></li>
+</ul>
+<h3 class="unnumbered" id="metody-i-kryteria-oceniania">Metody i
+kryteria oceniania</h3>
+<p>Zaliczenie ćwiczeń na podstawie zadań domowych i aktywności w czasie
+zajęć. Ocena z egzaminu wystawiona jest na podstawie egzaminu ustnego.
+Warunkiem zaliczenia przedmiotu jest:</p>
+<ul>
+<li><p>uzyskanie 30% punktów za zadania stanowiące bieżącą weryfikację
+efektów kształcenia;</p></li>
+<li><p>uzyskanie pozytywnej oceny z egzaminu stanowiącego końcową
+weryfikację efektów kształcenia.</p></li>
+</ul>
+<p>Kryteria ocen:</p>
+<dl>
+<dt>(dst)</dt>
+<dd>
+<p>student realizuje punkty 1-2 efektów kształcenia</p>
+</dd>
+<dt>(db)</dt>
+<dd>
+<p>student realizuje punkty 1-5 efektów kształcenia</p>
+</dd>
+<dt>(bdb)</dt>
+<dd>
+<p>student realizuje punkty 1-8 efektów kształcenia</p>
+</dd>
+</dl>
+<div class="flushright">
+<p>Wrocław, wrzesień 2024 <span><em>Piotr Dyszewski</em></span><br />
+</p>
+</div>
+</body>
+</html>
