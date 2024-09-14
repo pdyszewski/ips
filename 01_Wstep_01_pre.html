@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Piotr Dyszewski" />
+  <title>Stochastyczne modele systemów oddziałujących</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+  type="text/javascript"></script>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Stochastyczne modele systemów oddziałujących</h1>
+<p class="author">Piotr Dyszewski</p>
+<div class="abstract">
+<div class="abstract-title">Abstract</div>
+<p>Dokonamy przeglądu zagadnień poruszanych w trakcie wykładu i
+zarysujemy jego wstępny plan. Celem rozdziału jest dokonanie przeglądu o
+nieformalnym charakterze. Wszystkie wprowadzone procesy stochastyczne
+będą formalnie zdefiniowane w dalszej części wykładu.</p>
+</div>
+</header>
+<h1 id="ch:wstep">Wstęp</h1>
+<p>Celem wykładu jest dokonanie przeglądu kilku modeli układów cząstek
+lub osobników, które wzajemnie na siebie oddziałują. Każda cząsteczka
+lub osobnik <span class="math inline">\(x\)</span> posiada w czasie
+<span class="math inline">\(t\geq 0\)</span> pewną cechę oznaczaną <span
+class="math inline">\(\eta_t(x)\)</span>. W poruszanych przykładach
+<span class="math inline">\(\eta_t(x)\)</span> będzie opinią w chwili
+<span class="math inline">\(t\)</span> agenta <span
+class="math inline">\(x\)</span> na z góry zadany temat. Może być to
+odpowiedź na pytanie <em>Jaką procentowo podwyżkę powinni otrzymać
+nauczyciele akademiccy?</em> Wówczas <span
+class="math inline">\(\eta_t(x)\)</span> jest liczbą w przedziale <span
+class="math inline">\([0,1]\)</span>. Nieco prostsza jest odpowiedź na
+<em>Jak zagłosujesz w najbliższym referendum?</em> Wtedy <span
+class="math inline">\(\eta_t(x)\)</span> może być interpretowane jako
+liczba <span class="math inline">\(\{0,1\}\)</span>. Te i kilka innych
+przykładów omówimy w niniejszym rozdziale. Ich cechą wspólną jest to, że
+w naturalny sposób cecha jednego osobnika, poprzez interakcje, wpływa na
+cechy pozostałych. W skutek czego będziemy patrzyli na takie systemy
+globalnie.</p>
+<p>Kolekcją osobników będzie każdorazowo zbiór wierzchołków
+przeliczalnego grafu nieskierowanego o ograniczonym stopniu <span
+class="math inline">\(G=(V, E)\)</span>. Wówczas występowanie krawędzi
+możemy zinterpretować jako znajomość. Niech <span
+class="math inline">\(W \subseteq \mathbb{R}\)</span> będzie ograniczony
+i domknięty (w ogólności <span class="math inline">\(W\)</span> może być
+dowolną zwartą przestrzenią metryczną). Dla <span
+class="math inline">\(t \geq 0\)</span> i <span class="math inline">\(x
+\in V\)</span> rozważać będziemy losowy wybór cech <span
+class="math inline">\(\eta_t(x) \in W\)</span>. W trakcie wykładu
+interesować nas będzie asymptotyczne zachowanie <span
+class="math inline">\(\eta_t = \{ \eta_t(x) \}_{x \in V}\)</span> dla
+dużych wartości <span class="math inline">\(t\)</span>.</p>
+<p>Przejdziemy teraz do przeglądu konkretnych modeli badanych w trakcie
+wykładu.</p>
+
+<a href="point-circle.php"><p class="nextPage">DALEJ: Opinie z ograniczonym zaufaniem</p></a>
+</body>
+</html>
