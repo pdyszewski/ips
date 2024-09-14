@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Piotr Dyszewski" />
+  <title>Stochastyczne modele systemów oddziałujących</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+  type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+  <script src="JAVA/deffuant.js" defer></script>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Stochastyczne modele systemów oddziałujących</h1>
+<p class="author">Piotr Dyszewski</p>
+</header>
+<h1 id="opinie-z-ograniczonym-zaufaniem">Opinie z ograniczonym
+zaufaniem</h1>
+<figure>
+<p><img src="OBRAZY/Deffuant.png" alt="image" /> <img
+src="OBRAZY/Deffuant2.png" alt="image" /></p>
+<figcaption>Model Deffuanta na dwuwymiarowym torusie <span
+class="math inline">\(100 \times 100\)</span> po <span
+class="math inline">\(10000000\)</span> interakcjach</figcaption>
+</figure>
+<p>Niech <span class="math inline">\(G = (V, E)\)</span> będzie grafem,
+który może być skończony lub nieskończony o ograniczonym stopniu. Model
+Deffuanta na <span class="math inline">\(G\)</span> z parametrami <span
+class="math inline">\(\mu \in \left(0, 1/2\right]\)</span> i <span
+class="math inline">\(\theta \in (0, 1)\)</span> jest zdefiniowany w
+następujący sposób. W momencie <span class="math inline">\(t =
+0\)</span> wartości <span class="math inline">\(\eta_0=\{ \eta_0(x)\}_{x
+\in V}\)</span> są niezależnie o rozkładzie jednostajnym na <span
+class="math inline">\([0, 1]\)</span>. Każda krawędź <span
+class="math inline">\(e \in E\)</span> jest wyposażona w niezależny
+proces Poissona o jednostkowej intensywności. Następnie proces <span
+class="math inline">\(\eta_t=\{\eta_t(x)\}_{x \in V}\)</span> zmienia
+się według następującej reguły. Dla każdego <span
+class="math inline">\(v \in V\)</span> Wartość <span
+class="math inline">\(\eta_t(v)\)</span> pozostaje niezmieniona dopóki
+nie nastąpi zdarzenie Poissona dla którejkolwiek z krawędzi o końcu w
+<span class="math inline">\(v\)</span>. Gdy w pewnym losowym momencie
+<span class="math inline">\(\tau\)</span> zegar Poissona zadzwoni na
+krawędzi <span class="math inline">\(e = \{u, v\}\)</span> to dla <span
+class="math inline">\(\eta_{\tau-}(u) = a\)</span> (co oznacza <span
+class="math inline">\(\lim_{s \uparrow \tau} \eta_s(u) = a\)</span>) i
+<span class="math inline">\(\eta_{\tau-}(v) = b\)</span>, kładziemy
+<span class="math display">\[\eta_\tau(u) =
+		\begin{cases}
+			a + \mu(b - a) &amp; \text{jeśli } |a - b| \leq \theta, \\
+			a &amp; \text{w przeciwnym razie},
+		\end{cases}\]</span> oraz <span class="math display">\[\eta_\tau(v) =
+		\begin{cases}
+		b + \mu(a - b) &amp; \text{jeśli } |a - b| \leq \theta, \\
+		b &amp; \text{w przeciwnym razie}.
+		\end{cases}\]</span> Można to uznać za model formowania konsensusu w
+społeczności. Każdy wierzchołek <span class="math inline">\(v \in
+V\)</span> reprezentuje jednostkę, a <span
+class="math inline">\(\eta_t(v)\)</span> jej przekonanie lub opinię na
+jakiś temat. Dynamika zdefiniowana powyżej jest uproszczonym modelem
+następującego zjawiska. Załóżmy, że wierzę, iż wszechświat ma <span
+class="math inline">\(13,5 \times 10^9\)</span> lat, i spotykam Alicję,
+która uważa, że wszechświat ma <span class="math inline">\(13,0 \times
+10^9\)</span> lat. Jej oszacowanie wydaje się być rozsądne, a ona myśli
+to samo o moim. Powoduje to, że dostosowuję moje szacowanie do <span
+class="math inline">\(13,4 \times 10^9\)</span> lat, podczas gdy ona
+podnosi swoje do <span class="math inline">\(13,1 \times 10^9\)</span>
+lat. Jeśli natomiast spotykam Sarę, która uważa, że wszechświat ma
+zaledwie <span class="math inline">\(6000\)</span> lat, to wnioskuję, że
+jest szalona, co ona również uważa o mnie, więc żadne z nas nie znajduje
+powodu, aby dostosować swoje oszacowania. Ogólnie rzecz biorąc, jesteśmy
+skłonni brać opinie innych osób na poważnie tylko wtedy, gdy mieszczą
+się one w pewnym określonym zakresie <span
+class="math inline">\(\theta\)</span> naszych własnych.</p>
+<figure>
+  <div id="myCanvasContainer"></div>
+<figcaption>implementacja modelu Deffuanta w p5.js</figcaption>
+</figure>
+<p>Naturalnym zagadnieniem w tym kontekście jest konsensus. Czy istnieją
+krawędzie <span class="math inline">\(\{x, y\} \in E\)</span> takie, że
+<span class="math display">\[\liminf_{t \to \infty} | \eta_t(x) -
+\eta_t(y)| \geq \theta.\]</span> W przypadku nieskończonych grafów pełna
+odpowiedź jest znana tylko dla <span class="math inline">\(G =
+\mathbb{Z}\)</span>. Dla grafów skończonych znane oszacowania są dalekie
+od optymalnych. Symulacje wskazują, że konsensus ma miejsce, gdy <span
+class="math inline">\(\theta&gt;1/2\)</span>.</p>
+
+<a href="point-circle.php"><p class="nextPage">DALEJ: Model głosowania</p></a>
+</body>
+</html>
