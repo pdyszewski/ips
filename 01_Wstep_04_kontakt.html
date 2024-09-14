@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Piotr Dyszewski" />
+  <title>Stochastyczne modele systemów oddziałujących</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+  type="text/javascript"></script>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Stochastyczne modele systemów oddziałujących</h1>
+<p class="author">Piotr Dyszewski</p>
+</header>
+<h1 id="kontakt">Kontakt</h1>
+<p>Proces ten został wprowadzony po raz pierwszy przez Harrisa (1974).
+Dynamika jest określona przez następujące częstości przejść: w
+wierzchołku <span class="math inline">\(x\)</span>, <span
+class="math display">\[1 \rightarrow 0 \text{ z intensywnością }
+1,\]</span> oraz <span class="math display">\[0 \rightarrow 1 \text{ z
+intensywnością } \lambda \sum_{y : |y - x| = 1} \eta(y),\]</span> gdzie
+<span class="math inline">\(\lambda\)</span> jest dodatnim parametrem,
+który interpretowany jest jako częstość intensywność. Miejsca, w których
+<span class="math inline">\(\eta(x) = 1\)</span>, są uznawane za
+zainfekowane, podczas gdy miejsca, w których <span
+class="math inline">\(\eta(x) = 0\)</span>, są uznawane za zdrowe.
+Zainfekowani osobnicy stają się zdrowi po czasie wykładniczym z
+parametrem jeden, niezależnie od konfiguracji. Zdrowi osobnicy zostają
+zainfekowani z częstością proporcjonalną do liczby zainfekowanych
+sąsiadów.</p>
+<figure>
+<img src="OBRAZY/Contact.png" />
+<figcaption>Model kontaktu na dwuwymiarowym torusie <span
+class="math inline">\(100 \times 100\)</span>. Żółte wierzchołki są
+zarażone</figcaption>
+</figure>
+<figure>
+<div id="myContainer"></div>
+
+  <!-- Biblioteka p5.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+  <!-- Twój plik z kodem p5.js -->
+  <script src="JAVA/kontakt.js"></script>
+<figcaption>implementacja modelu kontaktu w p5.js</figcaption>
+</figure>
+<a href="01_Wstep_05_ising.html"><p class="nextPage">DALEJ: Model Isinga</p></a>
+</body>
+</html>
