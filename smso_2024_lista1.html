@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>smso_2024_lista1</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="style.css" />
+  <script
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+  type="text/javascript"></script>
+</head>
+<body>
+<div class="center">
+<hr />
+<p><strong><span class="smallcaps">Stoch. modele systemów
+oddziuałujących 2024</span></strong></p>
+<p><span class="smallcaps">lista 1: łańcuchy Markowa w czasie
+dyskretnym</span></p>
+<hr />
+</div>
+<ol>
+<li><p>Niech <span class="math inline">\(\{X_n\}_{n \in
+\mathbb{N}}\)</span> będzie łańcuchem Markowa w czasie dyskretnym o
+macierzy przejścia <span class="math inline">\((p(x,y))_{x,y \in
+S}\)</span> na skończonej przestrzeni stanów <span
+class="math inline">\(S\)</span>.</p>
+<ul>
+<li><p>Udowodnij, że dla <span class="math inline">\(\mathcal{F}_n =
+\sigma(X_k \: : \: k \leq n)\)</span> oraz dla <span
+class="math inline">\(y \in S\)</span> zachodzi: <span
+class="math display">\[\mathbb{P}[X_{n+1} = y \: | \mathcal{F}_n] =
+p(X_n, y).\]</span></p></li>
+<li><p>Wykaż, że dla dowolnej ograniczonej funkcji mierzalnej <span
+class="math inline">\(g \colon S \to \mathbb{R}\)</span> spełniona jest
+równość: <span class="math display">\[\mathbb{E}[g(X_{n+1}) \: |
+\mathcal{F}_n] =  \sum_{z \in S} g(z) p(X_n, z).\]</span></p></li>
+</ul></li>
+<li><p>Rozważ przestrzeń probabilistyczną <span
+class="math inline">\((\Sigma, \mathcal{G}, \mathbb{P})\)</span>. Niech
+<span class="math inline">\(\{Y_n\}_{n \in \mathbb{N}}\)</span> będzie
+łańcuchem Markowa w czasie dyskretnym z macierzą przejścia <span
+class="math inline">\((p(x,y))_{x,y \in S}\)</span> na skończonej
+przestrzeni stanów <span class="math inline">\(S\)</span>.</p>
+<ul>
+<li><p>Rozważ <span class="math inline">\(\Omega = S^\mathbb{N}\)</span>
+oraz funkcje <span class="math inline">\(X_n \colon \Omega \to
+S\)</span>, dane przez <span class="math inline">\(X_n(\omega) =
+\omega(n)\)</span>. Niech <span class="math inline">\(\mathcal{F}=
+\sigma(X_n \: : \: n \in \mathbb{N})\)</span>. Udowodnij, że dla każdego
+<span class="math inline">\(x \in S\)</span> istnieje miara
+probabilistyczna <span class="math inline">\(\mathbf{P}_x\)</span> na
+<span class="math inline">\((\Omega, \mathcal{F})\)</span>, taka że dla
+każdego <span class="math inline">\(n\)</span>, <span
+class="math display">\[(X_0, \ldots, X_n) \text{ względem }
+\mathbf{P}_x\]</span> ma ten sam rozkład co <span
+class="math display">\[(Y_0, \ldots, Y_n) \text{ pod warunkiem } Y_0 =
+x.\]</span></p></li>
+<li><p>Dla <span class="math inline">\(n \in \mathbb{N}\)</span>
+rozważmy funkcję <span class="math inline">\(\theta_n \colon \Omega \to
+\Omega\)</span>, daną przez <span
+class="math inline">\(\theta_n(\omega)(k) = \omega(n+k)\)</span>. Niech
+<span class="math inline">\(\mathcal{F}_n = \sigma(X_k \: : \: k \leq
+n)\)</span>. Udowodnij, że dla dowolnej ograniczonej zmiennej losowej
+<span class="math inline">\(Y \colon \Omega \to \mathbb{R}\)</span> oraz
+dla dowolnego <span class="math inline">\(n \in \mathbb{N}\)</span>,
+<span class="math display">\[\mathbf{E}_x[Y \circ \theta_n \: | \:
+\mathcal{F}_n] = \mathbf{E}_{X_n}[Y],\]</span> gdzie <span
+class="math inline">\(\mathbf{E}_x\)</span> oznacza wartość oczekiwaną
+względem miary <span class="math inline">\(\mathbf{P}_x\)</span> dla
+<span class="math inline">\(x \in S\)</span>.</p></li>
+</ul></li>
+<li><p>Przy oznaczeniach z poprzedniego zadania, niech <span
+class="math inline">\(\tau \colon \Omega \to \mathbb{N}\)</span> będzie
+czasem zatrzymania względem filtracji <span
+class="math inline">\((\mathcal{F}_k)_{k \in \mathbb{N}}\)</span>.</p>
+<ul>
+<li><p>Udowodnij, że dla każdego <span class="math inline">\(n \in
+\mathbb{N}\)</span>, zmienna losowa <span class="math inline">\(n + \tau
+\circ \theta_n\)</span> również jest czasem zatrzymania.</p></li>
+<li><p>Udowodnij, że dla każdego czasu zatrzymania <span
+class="math inline">\(\sigma \colon \Omega \to \mathbb{N}\)</span>,
+zmienna losowa <span class="math inline">\(\sigma + \tau \circ
+\theta_\sigma\)</span> również jest czasem zatrzymania. Pokaż ponadto,
+że <span class="math display">\[X_\tau \circ \theta_\sigma = X_{\tau
+\circ \theta_\sigma + \sigma}.\]</span></p></li>
+</ul></li>
+<li><p>Niech <span class="math inline">\(\tau \colon \Omega \to
+\mathbb{N}\)</span> będzie czasem zatrzymania. Rozważmy <span
+class="math display">\[\mathcal{F}_\tau = \{ A \in \mathcal{F}\: : \:
+\forall n \in \mathbb{N}\: \{\tau \leq n\} \cap A \in \mathcal{F}_n
+\}.\]</span></p>
+<ul>
+<li><p>Udowodnij, że <span
+class="math inline">\(\mathcal{F}_\tau\)</span> jest <span
+class="math inline">\(\sigma\)</span>-ciałem.</p></li>
+<li><p>Udowodnij, że dla każdego <span class="math inline">\(x \in
+S\)</span> oraz każdej ograniczonej zmiennej losowej <span
+class="math inline">\(Y\)</span> zachodzi <span
+class="math display">\[\mathbf{E}_x \left[\left. Y \right|
+\mathcal{F}_\tau\right] =
+            \mathbf{E}_x \left[\left. Y \right|
+\mathcal{F}_k\right]\]</span> na zdarzeniu <span
+class="math inline">\(\{\tau = k\}\)</span>.</p></li>
+<li><p>Wywnioskuj mocną własność Markowa, czyli <span
+class="math display">\[\mathbf{E}_x[Y \circ \theta_\tau \: | \:
+\mathcal{F}_\tau] = \mathbf{E}_{X_\tau}[Y].\]</span></p></li>
+</ul></li>
+</ol>
+</body>
+</html>
