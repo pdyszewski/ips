@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>smso_2024_lista2</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="style.css" />
+  <script
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+  type="text/javascript"></script>
+</head>
+<body>
+<h2 class="unnumbered"
+id="stoch.-modele-układów-oddziuałujących-2024">Stoch. modele układów
+oddziuałujących 2024</h2>
+<h2 class="unnumbered"
+id="lista-2-łańcuchy-markowa-w-czasie-ciągłym">lista 2: łańcuchy Markowa
+w czasie ciągłym</h2>
+<ol>
+<li><p>Załóżmy, że <span class="math inline">\(r = (r(x, y)){x, y \in
+S}\)</span> jest macierzą przejścia dyskretnego łańcucha Markowa.
+Naturalnym sposobem przekształcenia go w łańcuch Markowa w czasie
+ciągłym jest wykonywanie kroków w momentach zdarzeń procesu Poissona o
+intensywności <span class="math inline">\(1\)</span>. Innymi słowy,
+czasy między przejściami są niezależnymi zmiennymi losowymi o
+standardowym rozkładzie wykładniczym.</p>
+<ul>
+<li><p>Definiując odpowiednie miary <span
+class="math inline">\(\mathbf{P}_x\)</span>, <span
+class="math inline">\(x \in S\)</span>, wykaż, że powyższy opis
+faktycznie definiuje łańcuch Markowa w czasie ciągłym.</p></li>
+<li><p>Pokaż, że funkcja przejścia łańcucha w czasie ciągłym opisanego
+powyżej jest dana wzorem <span class="math display">\[p_t(x, y) = e^{-t}
+\sum_{k=0}^{\infty} \frac{t^k}{k!} r^{(k)}(x, y),\]</span> gdzie <span
+class="math inline">\(r^{(k)}(x, y)\)</span> jest <span
+class="math inline">\(k\)</span>-krokowym prawdopodobieństwem przejścia
+dla dyskretnego łańcucha.</p></li>
+<li><p>Udowodnij, że macierz <span class="math inline">\(Q\)</span> jest
+dana wzorem <span class="math display">\[Q = r - I.\]</span></p></li>
+</ul></li>
+<li><p>Załóżmy, że <span class="math inline">\(S = \{0, 1\}\)</span>.
+Najbardziej ogólna macierz <span class="math inline">\(Q\)</span> jest
+wtedy dana wzorem <span class="math display">\[\begin{pmatrix}
+        -\beta &amp; \beta \\
+        \delta &amp; -\delta
+    \end{pmatrix},\]</span> gdzie <span class="math inline">\(\beta,
+\delta \ge 0\)</span>. Pokaż, że odpowiadające prawdopodobieństwa
+przejścia wyrażają się jako <span class="math display">\[p_t(0, 0) =
+\frac{\delta}{\beta + \delta} + \frac{\beta}{\beta + \delta} e^{-t(\beta
++ \delta)},
+    \quad p_t(0, 1) = \frac{\beta}{\beta + \delta} [1 - e^{-t(\beta +
+\delta)}],\]</span> oraz <span class="math display">\[p_t(1, 1) =
+\frac{\beta}{\beta + \delta} + \frac{\delta}{\beta + \delta} e^{-t(\beta
++ \delta)},
+    \quad p_t(1, 0) = \frac{\delta}{\beta + \delta} [1 - e^{-t(\beta +
+\delta)}].\]</span></p></li>
+<li><p>Rozważ proces <span class="math inline">\(X\)</span> z
+przestrzenią stanów <span class="math inline">\(\{0, 1\}\)</span>, który
+ewoluuje w następujący sposób. Jeśli rozpoczyna się w stanie <span
+class="math inline">\(0\)</span>, łańcuch pozostaje w <span
+class="math inline">\(0\)</span> przez czas wykładniczy z parametrem
+<span class="math inline">\(\beta\)</span>, a następnie przechodzi do
+stanu <span class="math inline">\(1\)</span>. Następnie pozostaje w
+stanie <span class="math inline">\(1\)</span> przez czas wykładniczy z
+parametrem <span class="math inline">\(\delta\)</span>, a następnie
+wraca do stanu <span class="math inline">\(0\)</span>, powtarzając się
+zgodnie z analogicznymi regułami, gdy rozpoczyna się w stanie <span
+class="math inline">\(1\)</span>. Niech <span
+class="math inline">\(p_t(i, j)\)</span> będzie prawdopodobieństwem, że
+<span class="math inline">\(X_t = j\)</span> przy założeniu, że <span
+class="math inline">\(X_0 = i\)</span>.</p>
+<ul>
+<li><p>Pokaż, że <span class="math display">\[p_t(0, 1) = \int_0^t \beta
+e^{-\beta s} p_{t-s}(1, 1) \mathrm{d}s.\]</span></p></li>
+<li><p>Użyj transformaty Laplace’a, aby wykazać, że <span
+class="math inline">\(p_t(0, 1)\)</span> oraz <span
+class="math inline">\(p_t(1, 1)\)</span> są funkcjami z poprzedniego
+zadania.</p></li>
+</ul></li>
+<li><p>Załóżmy, że <span class="math inline">\(S\)</span> jest zbiorem
+skończonym. Pokaż, że jeśli <span class="math inline">\(q=(q(x,y))_{x,y
+\in S}\)</span> jest <span class="math inline">\(Q\)</span>-macierzą, to
+<span class="math inline">\(p_t=(p_t(x, y))_{x, y \in S}\)</span>
+zdefiniowane przez <span class="math display">\[p_t = e^{tq} =
+\sum_{n=0}^{\infty} \frac{t^n q^n}{n!}\]</span> jest funkcją
+przejścia.</p></li>
+</ol>
+</body>
+</html>
