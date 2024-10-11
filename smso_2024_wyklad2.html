@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>smso_2024_wyklad2</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="style.css" />
+  <script
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+  type="text/javascript"></script>
+</head>
+<body>
+<div class="center">
+<hr />
+<p><strong><span class="smallcaps">Stoch. modele systemów
+oddziuałujących 2024</span></strong></p>
+<p><span class="smallcaps">wykład 2: mocna własność Markowa</span></p>
+<hr />
+</div>
+<p>Pojęcie czasu zatrzymania odgrywa kluczową rolę w teorii procesów
+stochastycznych. Są to losowe momenty adaptowalne do z góry zadanej
+filtracji. Jest to kluczowa koncepcja zarówno w silnej własności
+Markowa. Będziemy korzystać z ciągłej filtracji <span
+class="math inline">\(\mathbb{F}=( \mathcal{F}_t )_{t\in
+\mathbb{R}_+}\)</span>.</p>
+<h2 id="czasy-zatrzymania">Czasy zatrzymania</h2>
+<p>Przypomnijmy, że w czasie dyskretnym definicja czasu stopu <span
+class="math inline">\(\tau\)</span> jest taka, że <span
+class="math inline">\(\{ \tau = n \} \in \mathcal{F}_n\)</span> dla
+każdego naturalnego <span class="math inline">\(n\)</span>. Jest to
+równoważne z warunkiem, że <span class="math inline">\(\{ \tau \leq n \}
+\in \mathcal{F}_n\)</span> dla każdego naturalnego <span
+class="math inline">\(n\)</span>. W czasie ciągłym ta równoważność nie
+zachodzi, ponieważ <span class="math inline">\([0, \infty)\)</span> nie
+jest przeliczalne. Warunek analogiczny do tego drugiego jest naturalny
+do użycia w czasie ciągłym, ponieważ zazwyczaj zdarzenie <span
+class="math inline">\(\{ \tau = t \}\)</span> ma zerowe
+prawdopodobieństwo dla każdego <span
+class="math inline">\(t\)</span>.</p>
+<div id="defn:3:1.54" class="defn">
+<p><strong>Definicja 1</strong>. Zmienna losowa <span
+class="math inline">\(\tau : \Omega \to [0, \infty]\)</span> nazywana
+jest <span class="math inline">\(\mathbb{F}\)</span>-czasem zatrzymania,
+jeśli <span class="math inline">\(\{ \tau \leq t \} \in
+\mathcal{F}_t\)</span> dla każdego <span class="math inline">\(t \geq
+0\)</span>.</p>
+</div>
+<p>W niektórych kontekstach filtracja <span
+class="math inline">\(\mathbb{F}\)</span> z którą pracujemy jest na tyle
+regularna, że ułatwia to weryfikację, czy zmienna jest czasem
+zatrzymania.</p>
+<div class="defn">
+<p><strong>Definicja 2</strong>. Powiemy, że filtracja <span
+class="math inline">\(\mathbb{F}=(\mathcal{F}_t)_{t \in
+\mathbb{R}_+}\)</span> jest prawostronnie ciągła, jeżeli <span
+class="math display">\[\mathcal{F}_t=\mathcal{F}_{t_+}, \qquad
+\mbox{gdzie} \qquad \mathcal{F}_{t+} := \bigcap_{s &gt;t}
+\mathcal{F}_s\]</span> dla każdego <span class="math inline">\(t \in
+\mathbb{R}_+\)</span>.</p>
+</div>
+<div class="zad">
+<p><strong>Zadanie 1</strong>. Załóżmy, że filtracja <span
+class="math inline">\(\mathbb{F}\)</span> jest prawostronnie ciągła.
+Wówczas <span class="math inline">\(\tau\)</span> jest czasem
+zatrzymania wtedy i tylko wtedy, gdy <span class="math inline">\(\{ \tau
+&lt; t \} \in \mathcal{F}_t\)</span> dla każdego <span
+class="math inline">\(t \in \mathbb{R}_+\)</span>.</p>
+</div>
+<div id="zad:2:1.57" class="zad">
+<p><strong>Zadanie 2</strong>. Pokaż, że jeśli <span
+class="math inline">\(\tau_1\)</span> i <span
+class="math inline">\(\tau_2\)</span> są czasami zatrzymania, to również
+<span class="math inline">\(\tau_1 \wedge \tau_2\)</span>, <span
+class="math inline">\(\tau_1 \vee \tau_2\)</span> i <span
+class="math inline">\(\tau_1+\tau_2\)</span> są czasami zatrzymania.</p>
+</div>
+<div id="zad:2:1.58" class="zad">
+<p><strong>Zadanie 3</strong>. Udowodnij, że jeśli <span
+class="math inline">\(\{\tau_n\}_{n \in \mathbb{N}}\)</span> jest
+ciągiem czasów stopu, które maleją do <span
+class="math inline">\(\tau\)</span>, to <span
+class="math inline">\(\tau\)</span> jest czasem stopu.</p>
+</div>
+<p>Własność Markowa dotyczy warunkowej wartości oczekiwanej względem
+<span class="math inline">\(\mathcal{F}_s\)</span> dla ustalonego <span
+class="math inline">\(s\)</span>. Mocna własność Markowa jest
+analogiczna, ale warunkowanie odbywa się względem <span
+class="math inline">\(\sigma\)</span>-algebry <span
+class="math inline">\(\mathcal{F}_\tau\)</span>, gdzie <span
+class="math inline">\(\tau\)</span> jest czasem stopu. Składa się ona ze
+zdarzeń, które są określone przez przeszłość aż do czasu <span
+class="math inline">\(\tau\)</span>.</p>
+<div id="defn:2:1.62" class="defn">
+<p><strong>Definicja 3</strong>. Dla czasu zatrzymania <span
+class="math inline">\(\tau\)</span> definiujemy <span
+class="math display">\[\mathcal{F}_\tau = \left\{ A \in \mathcal{F}: A
+\cap \{ \tau \leq t \} \in \mathcal{F}_t \text{ dla każdego } t \in
+\mathbb{R}_+ \right\}.\]</span></p>
+</div>
+<div id="zad:2:1.63" class="zad">
+<p><strong>Zadanie 4</strong>. Pokaż, że:</p>
+<ul>
+<li><p><span class="math inline">\(\mathcal{F}_\tau\)</span> jest <span
+class="math inline">\(\sigma\)</span>-algebrą,</p></li>
+<li><p>Załóżmy, że <span class="math inline">\(\mathbb{F}\)</span> jest
+prawostronnie ciągła. Pokaż, że <span
+class="math display">\[\mathcal{F}_\tau = \{ A : A \cap \{ \tau &lt; t
+\} \in \mathcal{F}_t \text{ dla każdego } t \geq 0 \}.\]</span></p></li>
+</ul>
+</div>
+<p>Oto niektóre podstawowe własności <span
+class="math inline">\(\mathcal{F}_\tau\)</span>.</p>
+<div id="thm:2:1.65" class="thm">
+<p><strong>Twierdzenie 4</strong>. Jeśli wszystkie <span
+class="math inline">\(\tau\)</span> występujące poniżej są czasami
+zatrzymania, to:</p>
+<ul>
+<li><p><span class="math inline">\(\tau\)</span> jest mierzalny względem
+<span class="math inline">\(\mathcal{F}_\tau\)</span>.</p></li>
+<li><p>Jeśli <span class="math inline">\(\tau_n \downarrow
+\tau\)</span>, to <span class="math inline">\(\mathcal{F}_\tau =
+\bigcap_n \mathcal{F}_{\tau_n}\)</span>.</p></li>
+<li><p><span class="math inline">\(\tau_1 \leq \tau_2\)</span> implikuje
+<span class="math inline">\(\mathcal{F}_{\tau_1} \subseteq
+\mathcal{F}_{\tau_2}\)</span>.</p></li>
+</ul>
+</div>
+<div class="proof">
+<p><em>Proof.</em> Zadanie. ◻</p>
+</div>
+<h2 id="mocna-własność-markowa">Mocna własność Markowa</h2>
+<div id="thm:2:1.68" class="thm">
+<p><strong>Twierdzenie 5</strong>. [Silna własność Markowa] Niech <span
+class="math inline">\((\mathbf{P}, \mathbb{F})\)</span> będzie łańcuchem
+Markowa na przeliczalnej przestrzeni stanów <span
+class="math inline">\(S\)</span>. Załóżmy, że <span
+class="math inline">\(Y\)</span> jest ograniczoną zmienną losową oraz że
+<span class="math inline">\(\tau\)</span> jest czasem zatrzymania.
+Wówczas dla każdego <span class="math inline">\(x \in S\)</span>, <span
+class="math display">\[\label{eq:2:1.22}
+        \mathbf{E}_x [ Y \circ \theta_\tau | \mathcal{F}_\tau] =
+\mathbf{E}_{X(\tau)} [Y] \quad \mathbf{P}_x-\text{prawie na pewno} \quad
+\text{na} \quad \{\tau &lt; \infty\}.\]</span></p>
+</div>
+<p>Silna własność Markowa jest zazwyczaj używana w następujący sposób:
+Przemnóż równość <a href="#eq:2:1.22" data-reference-type="eqref"
+data-reference="eq:2:1.22">[eq:2:1.22]</a> przez <span
+class="math inline">\(\mathbf{1}_{\{\tau &lt; \infty\}}\)</span>, a
+następnie zastosuj <span class="math inline">\(\mathbf{E}_x\)</span>.
+Wynik, z uwzględnieniem, że <span class="math inline">\(\{\tau &lt;
+\infty\} \in \mathcal{F}_\tau\)</span>, to: <span
+class="math display">\[\mathbf{E}_x \left[ Y \circ \theta_\tau
+\mathbf{1}_{\{\tau &lt; \infty\}} \right] =
+    \mathbf{E}_x \left[ \mathbf{E}_{X(\tau)} \left[ Y \right]
+\mathbf{1}_{\{ \tau &lt; \infty\}} \right].\]</span></p>
+<div class="proof">
+<p><em>Dowód Twierdzenia <a href="#thm:2:1.68" data-reference-type="ref"
+data-reference="thm:2:1.68">5</a>.</em> Najpierw załóżmy, że <span
+class="math inline">\(\tau\)</span> przyjmuje wartości z przeliczalnego
+zbioru <span class="math inline">\(0 \leq t_1 \leq t_2 \leq
+\dots\)</span> oraz <span class="math inline">\(\infty\)</span>. W tym
+przypadku silna własność Markowa sprowadza się do własności Markowa, jak
+teraz pokażemy.</p>
+<p>Zauważmy, że prawa strona <a href="#eq:2:1.22"
+data-reference-type="eqref" data-reference="eq:2:1.22">[eq:2:1.22]</a>
+jest mierzalna względem <span
+class="math inline">\(\mathcal{F}_\tau\)</span>. Musimy więc sprawdzić,
+że jeśli <span class="math inline">\(A \in \mathcal{F}_\tau\)</span>
+oraz <span class="math inline">\(A \subseteq \{\tau &lt;
+\infty\}\)</span>, to <span class="math display">\[\mathbf{E}_x \left[ Y
+\circ \theta_\tau \mathbf{1}_A \right] = \mathbf{E}_x \left[
+\mathbf{E}_{X(\tau)} \left[ Y \right] \mathbf{1}_A \right].\]</span> Aby
+to wykazać, napiszmy: <span class="math display">\[\begin{gathered}
+        \mathbf{E}_x \left[ Y \circ \theta_\tau \mathbf{1}_A \right] =
+            \sum_{n \in \mathbb{N}} \mathbf{E}_x \left[ Y \circ
+\theta_{t_n} \mathbf{1}_{A \cap \{\tau = t_n\}} \right]
+            = \sum_{n\in \mathbb{N}} \mathbf{E}_x \left[
+\mathbf{E}_{X(t_n)} \left[ Y \right] \mathbf{1}_{ A \cap \{\tau = t_n\}}
+\right]\\
+            = \sum_{n\in \mathbb{N}} \mathbf{E}_x \left[
+\mathbf{E}_{X(\tau)} [Y] \mathbf{1}_{A \cap \{\tau = t_n\}} \right]
+            = \mathbf{E}_x \left[ \mathbf{E}_{X(\tau)} [Y] \mathbf{1}_A
+\right].
+    
+\end{gathered}\]</span> W drugim kroku skorzystaliśmy z własności
+Markowa, ponieważ <span class="math display">\[A \cap \{\tau = t_n\} \in
+\mathcal{F}_{t_n}\]</span> zgodnie z definicją <span
+class="math inline">\(\mathcal{F}_\tau\)</span>.</p>
+<p>W drugim kroku uzasadnimy tezę dla dowolnych <span
+class="math inline">\(\tau\)</span> i <span
+class="math inline">\(Y\)</span> postaci <span
+class="math display">\[\label{eq:2:spec}
+        Y(\omega) = \prod_{j=1}^m f_j(\omega(t_j))\]</span> dla pewnego
+<span class="math inline">\(m \in \mathbb{N}\)</span>, <span
+class="math inline">\(t_1, \ldots, t_m \in \mathbb{R}_+\)</span> oraz
+ograniczonych funkcji <span class="math inline">\(f_1, \ldots, f_m
+\colon S \to \mathbb{R}\)</span>. Jeśli <span
+class="math inline">\(\tau\)</span> nie jest dyskretny, przybliżamy go
+od góry czasami stopu <span class="math inline">\(\{\tau_n\}\)</span>
+zdefiniowanymi przez <span class="math display">\[\tau_n = \frac{k +
+1}{2^n} \quad \text{jeśli} \quad \frac{k}{2^n} \leq \tau &lt; \frac{k +
+1}{2^n}.\]</span> gdzie <span class="math inline">\(\tau_k =
+\infty\)</span> gdy <span class="math inline">\(\tau = \infty\)</span>.
+Weźmy teraz <span class="math inline">\(A \in \mathcal{F}_\tau \subseteq
+\mathcal{F}_{\tau_k}\)</span> takie, że <span class="math inline">\(A
+\subseteq \{\tau &lt; \infty\}\)</span>. Z pierwszej części dowodu,
+<span class="math display">\[\mathbf{E}_x \left[ Y \circ \theta_{\tau_k}
+\mathbf{1}_A \right]
+        = \mathbf{E}_x\left[ \mathbf{E}_{X(\tau_k)}[Y] \mathbf{1}_A
+\right].\]</span> Musimy przejść do granicy, gdy <span
+class="math inline">\(k \to \infty\)</span>. Po prawej stronie, <span
+class="math inline">\(\tau_k \downarrow \tau\)</span> i z prawostronnej
+ciągłości <span class="math inline">\(X(\tau_k) \to X(\tau)\)</span> w
+<span class="math inline">\(S\)</span>, czyli <span
+class="math inline">\(X(\tau_k) = X(\tau)\)</span> dla dostatecznie
+dużych <span class="math inline">\(k\)</span>. Po lewej stronie,
+napiszmy <span class="math display">\[\left( Y \circ \theta_{\tau_k}
+\right)(\omega) = \prod_{m=1}^n f_m(\omega(t_m + \tau_k)) \\
+        \to \prod_{m=1}^n f_m(\omega(t_m + \tau)) = \left( Y \circ
+\theta_\tau \right)(\omega).\]</span> kiedy <span
+class="math inline">\(k \to \infty\)</span>, dzięki prawostronnej
+ciągłości ścieżek. To pokazuje tezę: <span
+class="math display">\[\mathbf{E}_x \left[ Y \circ \theta_\tau
+\mathbf{1}_A \right] = \mathbf{E}_x \left[ \mathbf{E}_{X(\tau)}[Y]
+\mathbf{1}_A \right].\]</span></p>
+<p>W ostatnim kroku dowodu pokażemy tezę dla dowolnego <span
+class="math inline">\(Y\)</span>. Dla dowolnego <span
+class="math inline">\(m \in \mathbb{N}\)</span> oraz <span
+class="math inline">\(t_1, \ldots, t_m \in \mathbb{R}_+\)</span>
+rozważmy <span class="math inline">\(\pi_{t_1, \ldots, t_m} \colon
+\Omega \to \mathbb{R}^m\)</span> dane wzorem <span
+class="math display">\[\pi_{t_1, \ldots, t_m}(\omega) = (\omega(t_1),
+\omega(t_2), \ldots, \omega(t_m)).\]</span> Wówczas dla dowolnych
+borelowskich <span class="math inline">\(A_1, A_2, \ldots, A_m \subseteq
+S\)</span>, <span class="math display">\[\pi_{t_1, \ldots,
+t_m}^{-1}[A_1\times A_2 \times \ldots \times A_m ] = \{ \omega \in
+\Omega \: : \:
+        \omega(t_1) \in A_1, \ldots, \omega(t_m) \in A_m \}.\]</span>
+Rozważmy teraz <span class="math inline">\(\pi\)</span>-układ <span
+class="math display">\[\mathcal{B} = \left\{ \pi_{t_1, \ldots,
+t_m}^{-1}[A_1 \times A_2 \times \ldots \times A_m ] \: : \:  
+            m \in \mathbb{N}, t_1, \ldots , t_m \in \mathbb{R}_+, \:
+A_1, \ldots , A_m \subseteq S \right\}.\]</span> oraz <span
+class="math inline">\(\lambda\)</span>-układ <span
+class="math display">\[\mathcal{L} = \left\{ G \in \mathcal{F}\: : \:
+\mathbf{P}_x \left[ \theta_\tau \in G, A \right] =
+        \mathbf{E}_x \left[ \mathbf{P}_{X(\tau)} \left[ G \right]
+\mathbf{1}_{ A } \right] \text{ dla } A \in \mathcal{F}_\tau, \: A
+\subseteq \{\tau &lt; \infty\} \right\}.\]</span> Aproksymując <span
+class="math inline">\(\mathbf{1}_{\pi_{t_1, \ldots, t_m}^{-1}[A_1 \times
+\ldots \times A_m]}\)</span> zmiennymi <span
+class="math inline">\(Y\)</span> postaci <a href="#eq:2:spec"
+data-reference-type="eqref" data-reference="eq:2:spec">[eq:2:spec]</a>,
+dostajemy <span class="math inline">\(\mathcal{B} \subseteq
+\mathcal{L}\)</span>. Z lematu o <span
+class="math inline">\(\pi\)</span>-<span
+class="math inline">\(\lambda\)</span> układach mamy <span
+class="math inline">\(\mathcal{F}= \sigma(\mathcal{B}) \subseteq
+\mathcal{L}\)</span>. Czyli dla każdego <span class="math inline">\(G
+\in \mathcal{F}\)</span>, <span class="math display">\[\mathbf{P}_x
+\left[ \theta_\tau \in G, A \right] =  \mathbf{E}_x \left[
+\mathbf{P}_{X(\tau)} \left[ G \right] \mathbf{1}_{A} \right]\]</span>
+dla każdego <span class="math inline">\(A \in \mathcal{F}_\tau\)</span>
+takiego, że <span class="math inline">\(A \subseteq \{\tau &lt;
+\infty\}\)</span>. Jest to równoważne naszej tezie dla <span
+class="math inline">\(Y = \mathbf{1}_G\)</span>. Z liniowości teza jest
+zatem prawdziwa dla każdego <span class="math inline">\(Y\)</span>
+przyjmującego skończenie wiele wartości. Zastosowanie standardowego
+twierdzenia granicznego dowodzi tezy dla dowolnego ograniczonego <span
+class="math inline">\(Y\)</span>. ◻</p>
+</div>
+<h2 id="charakteryzacja">Charakteryzacja</h2>
+<p>Zauważmy, że każda funkcja <span class="math inline">\(\omega \in
+\Omega\)</span> musi być następującego typu: Istnieje <span
+class="math inline">\(t_1 \in (0, \infty]\)</span>, taki że <span
+class="math inline">\(\omega(t) = \omega(0)\)</span> dla każdego <span
+class="math inline">\(t \in [0, t_1)\)</span>, następnie, jeśli <span
+class="math inline">\(t_1 &lt; \infty\)</span>, istnieje <span
+class="math inline">\(t_2 \in (t_1, \infty]\)</span> taki, że <span
+class="math inline">\(\omega(t) = \omega(t_1) \neq \omega(0)\)</span>
+dla każdego <span class="math inline">\(t \in [t_1, t_2)\)</span>, i tak
+dalej. Powyższe czasy <span class="math inline">\(t_1, t_2,
+\ldots\)</span> zależą oczywiście od wyboru <span
+class="math inline">\(\omega\)</span>. Dla każdego <span
+class="math inline">\(\omega \in \Omega\)</span>, istnieje zatem ciąg
+<span class="math display">\[T_0(\omega) = 0 &lt; T_1(\omega) \leq
+T_2(\omega) \leq T_3(\omega) \leq \dots \leq \infty,\]</span> taki, że
+<span class="math inline">\(X_t(\omega) = X_0(\omega)\)</span> dla
+każdego <span class="math inline">\(t \in [0, T_1(\omega))\)</span> oraz
+dla każdej liczby całkowitej <span class="math inline">\(i \geq
+1\)</span>, warunek <span class="math inline">\(T_i(\omega) &lt;
+\infty\)</span> implikuje <span class="math inline">\(T_i(\omega) &lt;
+T_{i+1}(\omega)\)</span>, <span
+class="math inline">\(X_{T_i(\omega)}(\omega) \neq
+X_{T_{i-1}(\omega)}(\omega)\)</span> i <span
+class="math inline">\(X_t(\omega) = X_{T_i(\omega)}(\omega)\)</span> dla
+każdego <span class="math inline">\(t \in [T_i(\omega),
+T_{i+1}(\omega))\)</span>. Co więcej, <span
+class="math inline">\(T_n(\omega) \uparrow \infty\)</span>, gdy <span
+class="math inline">\(n \to \infty\)</span>. Nietrudno jest sprawdzić,
+że <span class="math inline">\(T_0, T_1, T_2, \dots\)</span> są czasami
+stopu. Na przykład, <span class="math display">\[\{ T_1 \leq t \} =
+\{X(t) \neq X(0)\} \cup \bigcup_{q \in (0, 1) \cap \mathbb{Q}} \{ X_q
+\neq X_0 \} \in \mathcal{F}_t.\]</span> Przypomnijmy, że dla <span
+class="math inline">\(\lambda &gt; 0\)</span>, dodatnia zmienna losowa
+<span class="math inline">\(U\)</span> ma rozkład wykładniczy z
+parametrem <span class="math inline">\(\lambda\)</span>, jeśli <span
+class="math inline">\(\mathbb{P}(U &gt; r) = e^{-\lambda r}\)</span> dla
+każdego <span class="math inline">\(r \geq 0\)</span>. W poniższym
+lemacie przyjmujemy konwencję, że zmienna losowa wykładnicza o
+parametrze <span class="math inline">\(0\)</span> jest równa <span
+class="math inline">\(\infty\)</span> prawie na pewno.</p>
+<div id="lem:2:6.18" class="lem">
+<p><strong>Lemat 6</strong>. Niech <span class="math inline">\(x \in
+S\)</span>. Istnieje rzeczywista liczba <span class="math inline">\(c(x)
+\geq 0\)</span>, taka że zmienna losowa <span
+class="math inline">\(T_1\)</span> ma rozkład wykładniczy z parametrem
+<span class="math inline">\(q(x)\)</span> pod <span
+class="math inline">\(\mathbf{P}_x\)</span>. Co więcej, jeśli <span
+class="math inline">\(q(x) &gt; 0\)</span>, to <span
+class="math inline">\(T_1\)</span> i <span
+class="math inline">\(X_{T_1}\)</span> są niezależne pod <span
+class="math inline">\(\mathbf{P}_x\)</span>.</p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> Niech <span class="math inline">\(s, t \geq
+0\)</span>. Mamy <span class="math display">\[\mathbf{P}_x[T_1 &gt; s +
+t] = \mathbf{E}_x[\mathbf{1}_{\{T_1 &gt; s\}} \Phi \circ
+\theta_s],\]</span> gdzie <span class="math inline">\(\Phi(\omega) =
+\mathbf{1}_{\{\omega(r)=\omega(0), \, \forall r \in [0,t]\}}\)</span>.
+Używając własności Markowa (Twierdzenie 6.16), dostajemy <span
+class="math display">\[\mathbf{P}_x[T_1 &gt; s + t] =
+\mathbf{E}_x[\mathbf{1}_{\{T_1 &gt; s\}} \mathbf{E}_x[\Phi]]
+        = \mathbf{E}_x[\mathbf{1}_{\{T_1 &gt; s\}} \mathbf{P}_x[T_1 &gt;
+t]] = \mathbf{P}_x[T_1 &gt; s] \mathbf{P}_x[T_1 &gt; t],\]</span> co
+implikuje, że <span class="math inline">\(T_1\)</span> ma rozkład
+wykładniczy pod <span class="math inline">\(\mathbf{P}_x\)</span>.</p>
+<p>Załóżmy teraz, że <span class="math inline">\(c(x) &gt; 0\)</span>.
+Wówczas <span class="math inline">\(T_1 &lt; \infty\)</span>, <span
+class="math inline">\(\mathbf{P}_x\)</span> prawie na pewno. Dla każdego
+<span class="math inline">\(t \geq 0\)</span> i <span
+class="math inline">\(y \in S\)</span>, <span
+class="math display">\[\mathbf{P}_x[T_1 &gt; t, X_{T_1} = y] =
+\mathbf{E}_x[\mathbf{1}_{\{T_1 &gt; t\}} \Psi \circ \theta_t ],\]</span>
+gdzie dla <span class="math inline">\(\omega \in \Omega\)</span>, <span
+class="math inline">\(\Psi(\omega) = 0\)</span> jeśli <span
+class="math inline">\(\omega\)</span> jest stałe, a w przeciwnym razie
+<span class="math inline">\(\Psi(\omega) = \mathbf{1}_{\{
+\gamma_1(\omega) = y\}}\)</span>, gdzie <span
+class="math inline">\(\gamma_1(\omega)\)</span> jest wartością <span
+class="math inline">\(\omega\)</span> po jego pierwszym skoku. Zatem
+mamy <span class="math display">\[\begin{gathered}
+        \mathbf{P}_x[T_1 &gt; t, X_{T_1} = y] =
+        \mathbf{E}_x [\mathbf{1}_{\{T_1 &gt; t\}} \mathbf{E}_x[\Psi ]]
+=\\ \mathbf{E}_x[\mathbf{1}_{\{T_1 &gt; t\}} \mathbf{P}_x[X_{T_1} = y]]
+        = \mathbf{P}_x[T_1 &gt; t] \mathbf{P}_x[X_{T_1} = y],
+    
+\end{gathered}\]</span> co daje pożądaną niezależność. ◻</p>
+</div>
+<p>Punkty, dla których <span class="math inline">\(c(x) = 0\)</span>, są
+stanami pochłaniającymi dla procesu Markowa, w tym sensie, że <span
+class="math inline">\(\mathbf{P}_x[X_t = x, \, \forall t \geq 0] =
+1\)</span>. Dla każdych <span class="math inline">\(x, y \in S\)</span>
+definiujemy <span class="math display">\[\Pi(x, y) = \left\{
+\begin{array}{cc} \mathbf{P}_x[X_{T_1} = y] &amp; c(x)&gt;0 \\
+\delta_x(y) &amp; c(x)=0 \end{array}\right.\]</span> Zauważmy, że <span
+class="math inline">\(\Pi(x, \cdot)\)</span> jest miarą
+prawdopodobieństwa na <span class="math inline">\(S\)</span>.</p>
+<div id="thm:2:6.19" class="thm">
+<p><strong>Twierdzenie 7</strong>. Niech <span
+class="math inline">\((\mathbf{P}, \mathbb{F})\)</span> będzie łańcuchem
+Markowa w czasie ciągłym takim, że <span class="math inline">\(\sup_{x
+\in S} c(x) &lt; \infty\)</span>. Wówczas <span
+class="math display">\[\frac{\mathrm{d}}{\mathrm{d}t} \left.
+\mathbf{P}_x[X_t=y]\right|_{t=0} = c(x) \Pi(x,y).\]</span></p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> Jeśli <span class="math inline">\(c(x) = 0\)</span>,
+to <span class="math inline">\(\mathbf{P}_x[X_t=x] = \mathbf{P}_x[X_0
+=x]=1\)</span>, i stąd <span class="math display">\[\lim_{t \to 0}
+\frac{\mathbf{P}_x[X_t=x] - 1}{t} = 0.\]</span> Załóżmy teraz, że <span
+class="math inline">\(c(x) &gt; 0\)</span>. Najpierw zauważmy, że <span
+class="math display">\[\label{eq:2:6.1}
+        \mathbf{P}_x[T_2 \leq t] = O(t^2)\]</span> gdy <span
+class="math inline">\(t \to 0\)</span>. Rzeczywiście, używając silnej
+własności Markowa w <span class="math inline">\(T_1\)</span>, <span
+class="math display">\[\mathbf{P}_x[T_2 \leq t] \leq \mathbf{P}_x[T_1
+\leq t, T_2 \leq T_1 + t]
+        = \mathbf{E}_x[\mathbf{1}_{\{T_1 \leq t\}}
+\mathbf{P}_{X_{T_1}}[T_1 \leq t]],\]</span> i możemy oszacować <span
+class="math display">\[\mathbf{P}_{X_{T_1}}[T_1 \leq t] \leq \sup_{y \in
+S} \mathbf{P}_y[T_1 \leq t] \leq \sup_{y \in S} c(y),\]</span> co daje
+oczekiwany wynik, ponieważ mamy również <span
+class="math inline">\(\mathbf{P}_x[T_1 \leq t] \leq c(x)t\)</span>. Z <a
+href="#eq:2:6.1" data-reference-type="eqref"
+data-reference="eq:2:6.1">[eq:2:6.1]</a> wynika, że <span
+class="math display">\[\begin{gathered}
+        \mathbf{P}_x[X_t=y] = \mathbf{P}_x[X_t=y, \: T_1 &gt; t] +
+\mathbf{P}_x[X_{T_1}=y, \: T_1 \leq t] + O(t^2)
+        \\ = \delta_{x}(y) e^{-c(x)t} + \left(1 -
+e^{-c(x)t}\right)\Pi(x,y) + O(t^2),
+    
+\end{gathered}\]</span> używając niezależności <span
+class="math inline">\(T_1\)</span> i <span
+class="math inline">\(X_{T_1}\)</span> oraz definicji <span
+class="math inline">\(\Pi(x, y)\)</span>. Dochodzimy do wniosku, że
+skoro <span class="math inline">\(\mathbf{P}_x[X_0=y] =
+\delta_x(y)\)</span>, to <span
+class="math display">\[\frac{\mathbf{P}_x[X_t=y]  -  \mathbf{P}_x[X_0=y]}{t}
+\to -c(x)\delta_{x}(y) + c(x)\Pi(x,y).\]</span> co kończy dowód. ◻</p>
+</div>
+<p>Kolejne twierdzenie dostarcza pełnego opisu próbek procesu <span
+class="math inline">\(X\)</span> pod <span
+class="math inline">\(\mathbf{P}_x\)</span>. Dla uproszczenia zakładamy,
+że nie ma stanów pochłaniających, ale czytelnik łatwo rozszerzy
+stwierdzenie na przypadek ogólny.</p>
+<div id="thm:2:6.20" class="thm">
+<p><strong>Twierdzenie 8</strong>. Zakładamy, że <span
+class="math inline">\(c(y) &gt; 0\)</span> dla każdego <span
+class="math inline">\(y \in S\)</span> i że <span
+class="math inline">\(\sup_{y \in S} c(y) &lt; \infty\)</span>. Niech
+<span class="math inline">\(x \in S\)</span>. Wówczas, <span
+class="math inline">\(\mathbf{P}_x\)</span> p.n., czasy skoku <span
+class="math inline">\(T_1 &lt; T_2 &lt; T_3 &lt; \dots\)</span> są
+skończone, a ciąg <span class="math inline">\(X_0, X_{T_1}, X_{T_2},
+\dots\)</span> pod <span class="math inline">\(\mathbf{P}_x\)</span>
+jest dyskretnym łańcuchem Markowa z macierzą przejścia <span
+class="math inline">\(\Pi\)</span> rozpoczętym w <span
+class="math inline">\(x\)</span>. Ponadto, pod warunkiem <span
+class="math inline">\((X_0, X_{T_1}, X_{T_2}, \dots)\)</span>, zmienne
+losowe <span class="math inline">\(T_1 - T_0, T_2 - T_1, \dots\)</span>
+są niezależne, a dla każdej liczby całkowitej <span
+class="math inline">\(i \geq 0\)</span>, rozkład warunkowy <span
+class="math inline">\(T_{i+1} - T_i\)</span> jest wykładniczy z
+parametrem <span class="math inline">\(c(X_{T_i})\)</span>.</p>
+</div>
+<div class="proof">
+<p><em>Proof.</em> Zastosowanie silnej własności Markowa pokazuje, że
+wszystkie czasy stopu <span class="math inline">\(T_1, T_2,
+\dots\)</span> są skończone p.n. pod <span
+class="math inline">\(\mathbf{P}_x\)</span>. Następnie, niech <span
+class="math inline">\(y, z \in S\)</span>, a <span
+class="math inline">\(f_1, f_2 \colon S \to \mathbb{R}\)</span>.
+Używając silnej własności Markowa w <span
+class="math inline">\(T_1\)</span>: <span
+class="math display">\[\begin{gathered}
+        \mathbf{E}_x[\mathbf{1}_{\{X_{T_1} = y\}} f_1(T_1) 1_{\{X_{T_2}
+= z\}} f_2(T_2 - T_1)]
+        = \mathbf{E}_x[\mathbf{1}_{\{X_{T_1} = y\}} f_1(T_1)
+\mathbf{E}_x[\mathbf{1}_{\{X_{T_2} = z\}} f_2(T_2 - T_1)]] \\
+        = \Pi(x, y) \Pi(y, z) \int_0^\infty e^{-c(x)s_1}
+f_1(s_1)\mathrm{d}s_1 \int_0^\infty  e^{-c(y)s_2} f_2(s_2)
+\mathrm{d}s_2.
+    
+\end{gathered}\]</span> Postępując indukcyjnie, otrzymujemy dla każdych
+<span class="math inline">\(y_1, \dots, y_p \in S\)</span> oraz <span
+class="math inline">\(f_1, \dots, f_p \colon S \to \mathbb{R}\)</span>:
+<span class="math display">\[\begin{gathered}
+        \mathbf{E}_x[\mathbf{1}_{\{X_{T_1} = y_1\}}
+\mathbf{1}_{\{X_{T_2} = y_2\}} \dots \mathbf{1}_{\{X_{T_p} = y_p\}}
+f_1(T_1) f_2(T_2 - T_1) \dots f_p(T_p - T_{p-1})] \\
+        = \Pi(x, y_1) \Pi(y_1, y_2) \dots \Pi(y_{p-1}, y_p)
+\prod_{i=1}^p \left( \int_0^\infty e^{-c(y_{i-1})s} f_i(s)
+\mathrm{d}s\right),
+    
+\end{gathered}\]</span> gdzie <span class="math inline">\(y_0 =
+x\)</span>. ◻</p>
+</div>
+<p>Z powyższego twierdzenia wynika charakteryzacja łańcucha Markowa w
+terminach <span class="math inline">\(Q\)</span>-macierzy. Przez <span
+class="math inline">\(\mathbb{F}^X = (\mathcal{F}_t^X)_t\)</span>
+oznaczać będziemy najmniejszą możliwą filtrację, tj. <span
+class="math display">\[\mathcal{F}_t = \sigma(X_s \: : \: s \leq
+t).\]</span></p>
+<div class="wn">
+<p><strong>Wniosek 9</strong>. Niech <span class="math inline">\(q =
+(q(x,y))_{x,y\in S}\)</span> będzie <span
+class="math inline">\(Q\)</span>-macierzą taką, że <span
+class="math inline">\(\sup_{x \in S}|q(x,x)| &lt; \infty\)</span>.
+Wówczas istnieje jedyna rodzina miar <span
+class="math inline">\(\mathbf{P}\)</span> taka, że <span
+class="math inline">\((\mathbf{P}, \mathbb{F}^X)\)</span> jest łańcuchem
+Markowa stowarzyszonym z <span class="math inline">\(Q\)</span>-macierzą
+<span class="math inline">\(q\)</span>.</p>
+</div>
+</body>
+</html>
