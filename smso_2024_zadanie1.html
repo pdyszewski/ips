@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>smso_2024_zadanie1</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="style.css" />
+  <script
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+  type="text/javascript"></script>
+</head>
+<body>
+<div class="center">
+<hr />
+<p><span> <strong><span class="smallcaps">Stoch. modele systemów
+oddziuałujących 2024</span><br />
+<span class="smallcaps">zadanie domowe 1</span><br />
+<span class="smallcaps">termin: 31.10.2024</span></strong> </span></p>
+<hr />
+</div>
+<p>Niech <span class="math inline">\(S=\mathbb{N}\)</span>. Łańcuch
+Markowa w czasie ciągłym <span class="math inline">\((\mathbf{P},
+\mathbb{F})\)</span> nazwiemy procesem gałązkowym, jeżeli <span
+class="math display">\[\mathbf{P}_n * \mathbf{P}_m =
+\mathbf{P}_{n+m}\]</span> dla dowolnych <span class="math inline">\(n,m
+\in \mathbb{N}\)</span>. Równoważnie, <span class="math inline">\(p_t(n,
+\cdot) * p_t(m,\cdot) = p_t(n+m, \cdot)\)</span>, czyli <span
+class="math display">\[p_t(n+m,z) = \sum_{k=0}^z p_t(n,k)p_t(m,z-k),
+\qquad n,m,z \in \mathbb{N},\]</span> gdzie <span
+class="math inline">\(p\)</span> jest związaną funkcją przejścia.</p>
+<ol>
+<li><p>Niech <span class="math inline">\((\mathbf{P},
+\mathbb{F})\)</span> będzie procesem gałązkowym. Pokaż, że istnieje
+rodzina funkcji <span class="math inline">\(\psi_t \colon \mathbb{R}_+
+\to \mathbb{R}_+\)</span>, <span class="math inline">\(t \in
+\mathbb{R}_+\)</span>, taka, że <span
+class="math display">\[\mathbf{E}_n \left[ e^{-\alpha X_t} \right] =
+e^{-n \psi_t(\alpha)}, \qquad n \in \mathbb{N}, \: \alpha \in
+\mathbb{R}_+.\]</span> Pokaż, że te funkcje spełniają relację <span
+class="math inline">\(\psi_t \circ \psi_s =
+\psi_{t+s}\)</span>.</p></li>
+<li><p>Dla <span class="math inline">\(t \geq 0\)</span>, niech <span
+class="math inline">\(\{G_i(t)\}_{i\in \mathbb{N}}\)</span> będą
+niezależnymi zmiennymi losowymi o rozkładzie geometrycznym z parametrem
+<span class="math inline">\(e^{-t}\)</span>, tj. <span
+class="math display">\[\mathbb{P}\left[ G_j(t) = k \right] =
+e^{-t}(1-e^{-t})^{k-1}, \qquad k,j \in \mathbb{N}, \: k\geq 1.\]</span>
+Dla <span class="math inline">\(n,m \in \mathbb{N}\)</span> zdefiniujmy
+<span class="math display">\[p_t(n,m) = \mathbb{P}\left[ \sum_{j=1}^n
+G_j(t)=m\right].\]</span> Pokaż, że <span
+class="math inline">\(p\)</span> jest funkcją przejścia. <span
+class="smallcaps">Wskazówka:</span> skorzystaj z transformaty
+Laplace’a.</p></li>
+</ol>
+</body>
+</html>
