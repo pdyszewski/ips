@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>smso_2024_wyklad3</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+  type="text/javascript"></script>
+</head>
+<body>
+<div class="center">
+<hr />
+<p><strong><span class="smallcaps">Stoch. modele systemów
+oddziuałujących 2024</span></strong></p>
+<p><span class="smallcaps">wykład 3: procesy i półgrupy
+Fellera</span></p>
+<hr />
+</div>
+<p>W tym rozdziale <span class="math inline">\(S\)</span> jest
+ośrodkową, lokalnie zwartą przestrzenią metryczną, a <span
+class="math inline">\(C(S)\)</span> jest przestrzenią ciągłych funkcji
+rzeczywistych na <span class="math inline">\(S\)</span>. Przez <span
+class="math inline">\(C_0(S)\)</span> oznaczać będziemy klasę funkcji z
+<span class="math inline">\(C(S)\)</span> znikających w nieskończoności.
+Dokładniej <span class="math inline">\(C_0(S)\)</span> to zbiór tych
+funkcji <span class="math inline">\(f\)</span> z <span
+class="math inline">\(C(S)\)</span> takich, że dla każdego dodatniego
+<span class="math inline">\(\epsilon\)</span> istnieje zwarty <span
+class="math inline">\(K \subseteq S\)</span> taki, że <span
+class="math inline">\(|f(x)| \leq \epsilon\)</span> dla <span
+class="math inline">\(x \in S \setminus K\)</span>. Zauważmy, że jeżeli
+<span class="math inline">\(S\)</span> jest zwarta, to <span
+class="math inline">\(C_0(S) = C(S)\)</span>. Dodatkowo każda <span
+class="math inline">\(f\)</span> z <span
+class="math inline">\(C_0(S)\)</span> jest jednostajnie ciągła, tj. dla
+każdego dodatniego <span class="math inline">\(\epsilon\)</span>
+istnieje dodatnia <span class="math inline">\(\delta\)</span>, taka, że
+dla każdych <span class="math inline">\(x , y\in S\)</span>, <span
+class="math display">\[\mathrm{d}(x,y) &lt; \delta \quad \Rightarrow
+\quad |f(x)-f(y)| &lt;\epsilon.\]</span> W obu przestrzeniach <span
+class="math inline">\(C(S)\)</span> i <span
+class="math inline">\(C_0(S)\)</span> używamy normy jednostajnej <span
+class="math display">\[\|f\| = \sup_{x \in S} |f(x)|,\]</span> co czyni
+<span class="math inline">\(C_0(S)\)</span> przestrzenią Banacha.
+Głównym powodem stosowania ciągłych funkcji zanikających na
+nieskończoności zamiast ograniczonych ciągłych funkcji w przypadku
+lokalnie zwartym jest to, że jednostajna ciągłość jest wymagana w wielu
+argumentach. Ograniczone funkcje ciągłe nie są zwykle jednostajnie
+ciągłe, podczas gdy ciągłe funkcje zanikające na nieskończoności są.
+Innym powodem jest to, że <span class="math inline">\(C_0(S)\)</span>
+jest ośrodkowa, co nie jest ogólnie prawdziwe dla przestrzeni wszystkich
+ograniczonych ciągłych funkcji na <span
+class="math inline">\(S\)</span>.</p>
+<h2 id="proces">Proces</h2>
+<p>Zaczynamy od opisu składników potrzebnych do definicji głównego
+obiektu zainteresowania w tym rozdziale. Konstrukcja będzie analogiczna
+do łańcuchów Markowa w czasie ciągłym. Niech <span
+class="math display">\[\Omega = D[0, \infty) =
+        \text{zbiór funkcji prawostronnie ciągłych } \omega : [0,
+\infty) \to S \text{ z lewymi granicami}.\]</span> Tak jak poprzednio
+dla <span class="math inline">\(s, t \in \mathbb{R}_+\)</span> połóżmy
+też <span class="math display">\[X_t(\omega) = \omega(t) \text{ oraz }
+(\theta_s \omega)(t) = \omega(t + s).\]</span> Niech <span
+class="math inline">\(\mathcal{F}\)</span> będzie najmniejszym <span
+class="math inline">\(\sigma\)</span>-ciałem podzbiorów <span
+class="math inline">\(\Omega\)</span> względem którego wszystkie <span
+class="math inline">\(X_t\)</span> dla <span class="math inline">\(t \in
+\mathbb{R}_+\)</span> są mierzalne.</p>
+<div id="defn:3:1" class="defn">
+<p><strong>Definicja 1</strong>. Procesem Fellera na <span
+class="math inline">\(S\)</span> nazywamy parę uporządkowaną <span
+class="math inline">\((\mathbf{P}, \mathbb{F})\)</span> taką, że</p>
+<ul>
+<li><p><span class="math inline">\(\mathbf{P}=\{\mathbf{P}_x\}_{x \in
+S}\)</span>, gdzie dla każdego <span class="math inline">\(x \in
+S\)</span>, <span class="math inline">\(\mathbf{P}_x\)</span> jest miarą
+probabilistyczną na <span class="math inline">\((\Omega,
+\mathcal{F})\)</span> taką, że <span
+class="math display">\[\label{eq:3:1}
+                    \mathbf{P}_x[X_0 = x] = \mathbf{P}_x [\omega \: : \:
+\omega(0)=x] = 1.\]</span></p></li>
+<li><p><span class="math inline">\(\mathbb{F}=\{\mathcal{F}_t\}_{t \in
+\mathbb{R}_+}\)</span> jest filtracją na <span
+class="math inline">\(\Omega\)</span>, względem której zmienne losowe
+<span class="math inline">\(X(t)\)</span> są adaptowane.</p></li>
+<li><p>Odwzorowanie <span class="math display">\[\label{eq:3:2}
+                    x \mapsto \mathbf{E}^x \left[f(X_t) \right] \text{
+jest w } C_0(S)
+                    \text{ dla wszystkich } f \in C_0(S) \text{ i } t
+\geq 0.\]</span></p></li>
+<li><p>Spełniona jest własność Markowa <span
+class="math display">\[\label{eq:3:3}
+                    \mathbf{E}_x\left[Y \circ \theta_s \mid
+\mathcal{F}_s\right] = \mathbf{E}_{X(s)}\left[Y\right] \quad
+                    \mathbf{P}_x\text{-prawie wszędzie }\]</span> dla
+wszystkich <span class="math inline">\(x \in S\)</span> oraz wszystkich
+ograniczonych mierzalnych <span class="math inline">\(Y\)</span> na
+<span class="math inline">\(\Omega\)</span>.</p></li>
+</ul>
+</div>
+<p>Własność <a href="#eq:3:2" data-reference-type="eqref"
+data-reference="eq:3:2">[eq:3:2]</a> znana jest jako własność Fellera.
+Innym sposobem przedstawienia części ciągłości, który wydaje się całkiem
+naturalny, jest to, że <span class="math inline">\(x_n \to x\)</span> w
+<span class="math inline">\(S\)</span> implikuje, że rozkład <span
+class="math inline">\(X\)</span> dla procesu rozpoczynającego się w
+<span class="math inline">\(x_n\)</span> zbiega się słabo do tego dla
+procesu rozpoczynającego się w <span class="math inline">\(x\)</span>.
+Własność Fellera (razem z prawostronną ciągłością trajektorii) implikuje
+silną własność Markowa.</p>
+<div id="thm:3:3" class="thm">
+<p><strong>Twierdzenie 2</strong>. Każdy proces Fellera ma silną
+własność Markowa. Jeżeli <span class="math inline">\((\mathbf{P},
+\mathbb{F})\)</span> jest procesem Fellera, to dla każdej ograniczonej
+zmiennej <span class="math inline">\(Y \colon \Omega \to
+\mathbb{R}\)</span> oraz <span
+class="math inline">\(\mathbb{F}\)</span>-czasu zatrzymania <span
+class="math inline">\(\tau\)</span> to dla każdego <span
+class="math inline">\(x\)</span>, <span
+class="math display">\[\mathbf{E}_x [Y \circ \theta_\tau \mid
+\mathcal{F}_\tau] =
+            \mathbf{E}_{X(\tau)} \left[ Y \right]\quad \text{prawie na
+pewno } \mathbf{P}_x\]</span> na zdarzeniu <span
+class="math inline">\(\{\tau &lt; \infty\}\)</span>.</p>
+</div>
+<div id="zad:3:2" class="zad">
+<p><strong>Zadanie 1</strong>. Niech <span
+class="math inline">\((\mathbf{P}, \mathbb{F})\)</span> będzie procesem
+Fellera. Pokaż, że odwzorowanie <span
+class="math display">\[\label{eq:3:4}
+            x \mapsto \mathbf{E}_x \left[ \prod_{j=1}^n f_j(X_{t_j})
+\right]\]</span> jest ciągłe dla dowolnego <span
+class="math inline">\(n\)</span>, dowolnych <span
+class="math inline">\(t_1, \ldots, t_n \in \mathbb{R}\)</span> oraz
+dowolnych <span class="math inline">\(f_1, \ldots, f_n \in
+C_0(S)\)</span>.</p>
+</div>
+<div class="proof">
+<p><em>Dowód Twierdzenia <a href="#thm:3:3" data-reference-type="ref"
+data-reference="thm:3:3">2</a>.</em> Rozumowanie przebiega identycznie
+jak w przypadku łańcuchów Markowa w czasie ciągłym. W miejscu, w którym
+wymagana jest ciągłość odwzorowań <span class="math inline">\(x \mapsto
+\mathbf{E}_x[Y]\)</span> należy powołać się na tezę Zadania <a
+href="#zad:3:2" data-reference-type="ref"
+data-reference="zad:3:2">1</a>. ◻</p>
+</div>
+<div class="pd">
+<p><strong>Przyklad 3</strong>. Niech <span class="math inline">\(B =
+(B_t)_{t \in \mathbb{R}_+}\)</span> będzie standardowym ruchem Browna
+określonym na przestrzeni probabilistycznej <span
+class="math inline">\((\Sigma, \mathcal{G}, \mathbb{P})\)</span>.
+Przypomnijmy, że oznacza to, że</p>
+<ul>
+<li><p><span class="math inline">\(B_0=0\)</span> <span
+class="math inline">\(\mathbb{P}\)</span>-p.w.</p></li>
+<li><p>Dla dowolnych <span class="math inline">\(t,s \in
+\mathbb{R}_+\)</span>, <span class="math inline">\(t\geq s\)</span>
+zmienna <span class="math inline">\(B_t-B_s\)</span> ma rozkład normalny
+<span class="math inline">\(\mathcal{N}(0,t-s)\)</span> o średniej zero
+i wariancji <span class="math inline">\(t-s\)</span>.</p></li>
+<li><p>Dla dowolnych <span class="math inline">\(t,s \in
+\mathbb{R}_+\)</span>, <span class="math inline">\(t\geq s\)</span>
+zmienna <span class="math inline">\(B_t-B_s\)</span> jest niezależna od
+sigma ciała <span class="math inline">\(\mathcal{G}_s^B = \sigma(B_r \:
+: \: r \leq s)\)</span>.</p></li>
+<li><p>Odwzorowanie <span class="math inline">\(t \mapsto B_t\)</span>
+jest ciągłe.</p></li>
+</ul>
+<p>Pokażemy, że ruch Browna jest procesem Fellera w myśl przyjętej przez
+nas definicji. Połóżmy <span class="math inline">\(\mathcal{F}_t =
+\sigma(X_s \: : \: s \leq t)\)</span>. Niech <span
+class="math inline">\(S = \mathbb{R}\)</span>. Dla <span
+class="math inline">\(x \in S\)</span> zdefiniujmy <span
+class="math inline">\(\mathbf{P}_x\)</span> jako rozkład ruchu Browna
+(rozumianego jako funkcji <span class="math inline">\(\mathbb{R}_+ \to
+\mathbb{R}\)</span>) zapoczątkowanego w punkcie <span
+class="math inline">\(x\)</span>, dokładniej dla <span
+class="math inline">\(A \in \mathcal{F}\)</span> niech <span
+class="math inline">\(\mathbf{P}_x[A] = \mathbb{P}[B+x \in A]\)</span>.
+Tutaj przez <span class="math inline">\(B+x\)</span> rozumiemy funkcję
+<span class="math inline">\(t \mapsto B_t+x\)</span>. Spełniona jest
+własność (PF1), ponieważ <span
+class="math display">\[\mathbf{P}_x[X_0=x] =
+\mathbb{P}[B_0+x=x]=1.\]</span> Własność (PF2) jest spełniona wprost z
+definicji filtracji <span class="math inline">\(\mathbb{F}\)</span>. Aby
+uzasadnić własność Fellera (PF3) ustalmy <span class="math inline">\(f
+\in C_0(S)\)</span>. Ciągłość <span class="math display">\[x \mapsto
+\mathbf{E}_x\left[ f(X_t) \right] = \mathbb{E}[f(B_t+x)]\]</span> wynika
+z ciągłości <span class="math inline">\(f\)</span> oraz twierdzenia o
+zbieżności ograniczonej. Aby uzasadnić, że powyższe odwzorowanie jest
+klasy <span class="math inline">\(C_0(S)\)</span> należy pokazać, że
+<span class="math display">\[\lim_{|x| \to \infty} \mathbf{E}_x[f(X_t)]
+=0.\]</span> Wystarczy w tym celu rozważyć oszacowanie <span
+class="math display">\[\left|\mathbb{E}[f(B_t+x)]\right| \leq \|f \|
+\mathbb{P}[|B_t| &gt;|x|/2] + \sup_{|y| &gt;|x|/2}|f(y)|.\]</span> Oba
+składniki po prawej stronie zbiegają do zera, przy czy zbieżność tego
+drugiego wynika z <span class="math inline">\(f \in
+C_0(\mathbb{R})\)</span>. Własność Markowa uzasadniamy dokładnie w taki
+sam sposób, w jaki zrobiliśmy to dla procesu Poissona.</p>
+</div>
+<div class="zad">
+<p><strong>Zadanie 2</strong>. Niech <span
+class="math inline">\(S=\mathbb{Z}\)</span>. Pokaż, że łańcuch Markowa w
+czasie ciągłym <span class="math inline">\((\mathbf{P},
+\mathbb{F})\)</span> jest procesem Fellera wtedy i tylko wtedy, gdy dla
+każdego <span class="math inline">\(y \in S\)</span> i każdego <span
+class="math inline">\(t \in \mathbb{R}_+\)</span>, <span
+class="math display">\[\lim_{|x| \to \infty}
+\mathbf{P}_x[X_t=y]=0.\]</span></p>
+</div>
+<h2 id="półgrupa">Półgrupa</h2>
+<p>Chcemy teraz przedstawić odpowiednik funkcji przejścia na
+nieprzeliczalnej przestrzeni stanów. W naturalny sposób nasuwa się
+rozważenie rozkładów <span class="math inline">\(\mathbf{P}_x[X_t \in
+\mathrm{d}y]\)</span>. Jednak na dłuższą metę język rozkładów jest
+nieporęczny. O wiele bardziej praktyczny jest język półgrup. Aby
+umotywować następną definicję, rozważmy przeliczalną przestrzeń stanów
+<span class="math inline">\(S_0\)</span> oraz funkcją przejścia <span
+class="math inline">\(p\)</span> na <span
+class="math inline">\(S_0\)</span>. Funkcję przejścia można zakodować w
+kategoriach rodziny operatorów <span
+class="math display">\[\label{eq:3:5}
+        T_tf(x) = \sum_{y\in S_0} p_t(x, y)f(y),\]</span> dla <span
+class="math inline">\(f \in C_0(S_0)\)</span>. Jasne jest, że znając
+<span class="math inline">\(T_t\)</span>, a więc znając wartości <span
+class="math inline">\(T_tf\)</span> dla wszystkich <span
+class="math inline">\(f \in C_0(S_0)\)</span>, znamy też funkcję
+przejścia <span class="math inline">\(p_t(x,y)\)</span>. Wykorzystując
+równiania Chapmana-Kołmogorowa dostajemy dla <span
+class="math inline">\(s,t\geq 0\)</span>, <span
+class="math display">\[\begin{gathered}
+        T_{s+t} f(x) = \sum_{y \in S_0} p_{t+s}(x,y) f(y) = \sum_{y \in
+S_0} \sum_{z \in S_0} p_t(x,z)p_s(z,y)f(y) \\
+        \sum_{z \in S_0} p_t(x,z)\sum_{y\in S_0}p_s(z,y)f(y) =\sum_{z
+\in S_0} p_t(x,z) (T_sf)(z) = T_t(T_s(f))(x).
+    
+\end{gathered}\]</span> Wszystkie powyższe manipulacje są ponieważ <span
+class="math inline">\(f \in C_0(S_0)\)</span> jest ograniczona. Powyższa
+tożsamość zapisuje się jako <span class="math inline">\(T_t T_s =
+T_t\circ T_s = T_{t+s}\)</span>. Oznacza to, że <span
+class="math inline">\((T_{t})_{t \geq 0}\)</span> tworzą półgrupę.</p>
+<div id="defn:3:4" class="defn">
+<p><strong>Definicja 4</strong>. Półgrupa Fellera to rodzina ciągłych
+operatorów liniowych <span class="math inline">\(T=\{T_t\}_{t \in
+\mathbb{R}_+}\)</span> na <span class="math inline">\(C_0(S)\)</span>
+spełniających następujące własności:</p>
+<ul>
+<li><p><span class="math inline">\(T_0f = f\)</span> dla wszystkich
+<span class="math inline">\(f \in C_0(S)\)</span>.</p></li>
+<li><p>Dla każdego <span class="math inline">\(f \in C_0(S)\)</span>,
+<span class="math inline">\(\lim_{t \to 0} T_tf = f\)</span> w <span
+class="math inline">\(C_0(S)\)</span>.</p></li>
+<li><p><span class="math inline">\(T_{t+s}f = T_sT_tf\)</span> dla
+każdego <span class="math inline">\(f \in C_0(S)\)</span>.</p></li>
+<li><p><span class="math inline">\(T_tf \geq 0\)</span> dla każdego
+nieujemnego <span class="math inline">\(f \in C_0(S)\)</span>.</p></li>
+<li><p>Istnieje rodzina <span class="math inline">\(f_n \in
+C_0(S)\)</span>, <span class="math inline">\(n\in \mathbb{N}\)</span>
+taka, że <span class="math inline">\(\sup_n \|f_n\| &lt;
+\infty\)</span>, oraz <span class="math inline">\(T_tf_n\)</span> zbiega
+punktowo do <span class="math inline">\(1\)</span> dla każdego <span
+class="math inline">\(t \geq 0\)</span>.</p></li>
+</ul>
+</div>
+<p>Część (c) to analogia równań Chapmana-Kolmogorowa i nazywana jest
+własnością półgrupy. Jedną z jej konsekwencji jest to, że <span
+class="math inline">\(T(t)\)</span> i <span
+class="math inline">\(T(s)\)</span> komutują, tj. <span
+class="math inline">\(T_tT_s=T_{t+s}=T_{s+t}=T_sT_t\)</span>. Z części
+(d) i (e) wynika, że <span class="math inline">\(\|T(t)f\| \leq
+\|f\|\)</span> dla wszystkich <span class="math inline">\(f \in
+C_0(S)\)</span>, tak więc każdy <span class="math inline">\(\|T\|\leq
+1\)</span>. Własność (b) jest znana jako mocna ciągłość. Wraz z (c) i
+własnością kontrakcji, implikuje to, że funkcja <span
+class="math inline">\(t \mapsto T(t)f\)</span> z <span
+class="math inline">\([0, \infty)\)</span> do <span
+class="math inline">\(C_0(S)\)</span> jest ciągła.</p>
+<p>Oto ważny przykład - półgrupa Gaussa–Weierstrassa. Część (b) tego
+ćwiczenia ilustruje powody przyjmowania funkcji w <span
+class="math inline">\(C_0(S)\)</span> zanikających na
+nieskończoności.</p>
+<div id="zad:3:5" class="zad">
+<p><strong>Zadanie 3</strong>. Niech <span class="math inline">\(S =
+\mathbb{R}\)</span> i <span class="math inline">\(B=(B_t)_{t \in
+\mathbb{R}_+}\)</span> będzie ruchem Browna.</p>
+<ul>
+<li><p>Pokaż, że <span class="math inline">\(T_t\)</span> zdefiniowane
+przez <span class="math display">\[T_tf(x) =
+\mathbb{E}[f(B_t+x)]\]</span> jest półgrupą Fellera.</p></li>
+<li><p>Wyjaśnij, dlaczego <span class="math inline">\(T\)</span> nie
+jest mocno ciągła jako półgrupa operatorów na <span
+class="math inline">\(C(S)\)</span>.</p></li>
+</ul>
+</div>
+<p>W tym rozdziale konieczne będzie całkowanie funkcji ciągłych
+przyjmujących wartości w <span class="math inline">\(C(S)\)</span>
+względem <span class="math inline">\(t\)</span>. Rachunek takich funkcji
+jest analogiczny do rachunku funkcji rzeczywistych. W tym duchu wiążemy
+z półgrupą jej transformata Laplace’a <span
+class="math display">\[\label{eq:3:6}
+        U(\alpha)f = \int_0^\infty e^{-\alpha t} T_tf \, \mathrm{d}t,
+\quad \alpha &gt; 0,\]</span> która nazywana jest rezolwentą półgrupy.
+Funkcję <span class="math inline">\(U(\alpha)f\)</span> można
+interpretować jako całkę Bochnera pojawiającą się po prawej stronie <a
+href="#eq:3:6" data-reference-type="eqref"
+data-reference="eq:3:6">[eq:3:6]</a>. Można też równoważnie myśleć, że
+jest to funkcja <span class="math inline">\(S \to \mathbb{R}\)</span>
+zadana przez <span class="math display">\[U(\alpha)f(x) = \int_0^\infty
+e^{-\alpha t} T_tf(x) \, \mathrm{d}t, \quad x \in S.\]</span> W każdym
+razie całka w <a href="#eq:3:6" data-reference-type="eqref"
+data-reference="eq:3:6">[eq:3:6]</a> jest dobrze określona, ponieważ
+funkcja <span class="math inline">\(t \mapsto e^{-\alpha t}
+T_tf\)</span> jest ciągła oraz <span class="math display">\[\|e^{-\alpha
+t} T_tf\| \leq e^{-\alpha t} \|f\|.\]</span> Zauważmy też, że <span
+class="math inline">\(U(\alpha)\)</span> jest operatorem liniowym na
+<span class="math inline">\(C_0(S)\)</span> i spełnia <span
+class="math display">\[\|U(\alpha)f\| \leq  \|f\|/\alpha.\]</span></p>
+<div class="zad">
+<p><strong>Zadanie 4</strong>. Dla każdego <span class="math inline">\(f
+\in C_0(S)\)</span>, <span class="math display">\[\lim_{\alpha \to
+\infty} \alpha U(\alpha) f = f.\]</span></p>
+</div>
+<p>Własność półgrupy przekłada się na następującą użyteczną relację,
+znaną jako równanie rezolwenty: <span
+class="math display">\[\label{eq:3:7}
+        U(\alpha) - U(\beta) = (\beta - \alpha) U(\alpha)
+U(\beta).\]</span> Aby to sprawdzić, weźmy <span
+class="math inline">\(\alpha \neq \beta\)</span> i zapiszmy <span
+class="math display">\[\begin{gathered}
+\label{eq:3:8}
+        U(\alpha) U(\beta) f = \int_0^\infty e^{-\alpha t} T_t U(\beta)
+f \, \mathrm{d}t
+            = \int_0^\infty e^{-\alpha t} \left( \int_0^\infty e^{-\beta
+s} T_t T_s f \, \mathrm{d}s \right) \mathrm{d}t\\
+            = \int_0^\infty   \int_0^r e^{-\alpha t} e^{-\beta (r-t)} \,
+\mathrm{d}t  T_r f\mathrm{d}r
+            = \int_0^\infty  \frac{e^{-\alpha r} - e^{-\beta r}}{\beta -
+\alpha} T_r f \mathrm{d}r.
+    
+\end{gathered}\]</span> Jedną z konsekwencji <a href="#eq:3:7"
+data-reference-type="eqref" data-reference="eq:3:7">[eq:3:7]</a> jest
+to, że <span class="math inline">\(U(\alpha)\)</span> i <span
+class="math inline">\(U(\beta)\)</span> komutują.</p>
+</body>
+</html>
