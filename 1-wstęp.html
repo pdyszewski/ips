@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="SMUO 2024" />
+<meta property="og:type" content="book" />
+
+
+
+
+<meta name="author" content="Piotr Dyszewski" />
+
+<meta name="date" content="2024-10-28" />
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<meta name="description" content="SMUO 2024">
+
+<title>SMUO 2024</title>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="libs/navigation-1.1/tabsets.js"></script>
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+/* show arrow before summary tag as in bootstrap
+TODO: remove if bootstrap in updated in html_document (rmarkdown#1485) */
+details > summary {
+  display: list-item;
+  cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container-fluid main-container">
+
+
+<div class="row">
+<div class="col-sm-12">
+<div id="TOC">
+<ul>
+<li class="has-sub"><a href="#wst%C4%99p" id="toc-wstęp"><span class="toc-section-number">1</span> Wstęp</a>
+<ul>
+<li class="has-sub"><a href="1.1-podstawowe-definicje.html#podstawowe-definicje" id="toc-podstawowe-definicje"><span class="toc-section-number">1.1</span> Podstawowe definicje</a>
+<ul>
+<li><a href="1.1-podstawowe-definicje.html#defn:2:trans" id="toc-defn:2:trans"><span class="toc-section-number">1.1.1</span> Definicja: Funkcja przejścia</a></li>
+<li><a href="#przyk%C5%82ad" id="toc-przykład"><span class="toc-section-number">1.1.2</span> Przykład</a></li>
+<li><a href="1.1-podstawowe-definicje.html#twierdzenie" id="toc-twierdzenie"><span class="toc-section-number">1.1.3</span> Twierdzenie</a></li>
+<li><a href="1.1-podstawowe-definicje.html#defn:2:qm" id="toc-defn:2:qm"><span class="toc-section-number">1.1.4</span> Definicja: <span class="math inline">\(Q\)</span>-macierz</a></li>
+<li><a href="1.1-podstawowe-definicje.html#twierdzenie-1" id="toc-twierdzenie-1"><span class="toc-section-number">1.1.5</span> Twierdzenie</a></li>
+<li><a href="1.1-podstawowe-definicje.html#twierdzenie-2" id="toc-twierdzenie-2"><span class="toc-section-number">1.1.6</span> Twierdzenie</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-12">
+<div id="header">
+<h1 class="title">SMUO 2024</h1>
+<h3 class="subtitle"><em>Wykład 1: Łańcuchy Markowa w czasie ciągłym</em></h3>
+<h4 class="author"><em>Piotr Dyszewski</em></h4>
+<h4 class="date"><em>2024-10-28</em></h4>
+</div>
+<div id="wstęp" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Wstęp</h1>
+<p>Celem tego rozdziału jest skonstruowanie procesów Markowa w czasie ciągłym na przeliczalnym (lub skończonym)
+zbiorze <span class="math inline">\(S\)</span> w oparciu o jego opis infinitezymalny. W następnym rozdziale zbadamy problem konstrukcji dla
+procesów
+na
+bardziej
+ogólnej
+przestrzeni
+stanów.
+Na razie ograniczamy naszą uwagę do bardziej konkretnej sytuacji przeliczalnego <span class="math inline">\(S\)</span>.
+W tym przypadku często używa się słowa “łańcuch” zamiast “proces”.</p>
+<p>Przypomnijmy, że łańcuchem Markowa w czasie dyskretnym nazywamy proces stochastyczny <span class="math inline">\(\{X_n\}_{n \in \mathbb{N}}\)</span> takie, że dla dowolnego <span class="math inline">\(n \in \mathbb{N}\)</span> i dowolnych <span class="math inline">\(s_0, s_1, \ldots, s_n \in S\)</span> takich, że
+<span class="math display">\[
+\mathbb{P}\left[ X_{n-1}=s_{n-1}, \: X_{n-2}=s_{n-2}, \ldots , X_0=s_0 \right]&gt;0
+\]</span>
+zachodzi
+<span class="math display">\[
+\mathbb{P}\left[ X_n=s_n \: | \: X_{n-1}=s_{n-1}, \: X_{n-2}=s_{n-2}, \ldots , X_0=s_0 \right]=
+\mathbb{P}\left[ X_n=s_n \: | \: X_{n-1}=s_{n-1} \right].
+\]</span>
+Powyższa własność jest bardzo często przytaczana jako wyjściowa definicja łańcucha Markowa. Mimo swojej prostoty, która ułatwia czytelnikom pierwsze zetknięcie z własnością Markowa, własność ta ma jedną wadę, która ujawnia się przy bardziej zaawansowanych rozważaniach teoretycznych.</p>
+<p>Jeżeli chcemy badać tylko procesy na <strong>przeliczalnej</strong> przestrzeni stanów, to jedno naturalne uogólnienie ma następującą formę. Proces stochastyczny w czasie ciągłym <span class="math inline">\(\{X(t)\}_{t \in \mathbb{R}_+}\)</span> nazwiemy łańcuchem Markowa w czasie ciągłym na przeliczalnej przestrzeni stanów <span class="math inline">\(S\)</span>, jeżeli dla dowolnego <span class="math inline">\(n\)</span> i dowolnych <span class="math inline">\(0 \leq t_0 &lt; t_1 &lt; \ldots &lt; t_n\)</span> i dowolnych <span class="math inline">\(s_0, s_1, \ldots, s_n \in S\)</span> takich, że
+<span class="math display">\[
+\mathbb{P}\left[ X(t_{n-1})=s_{n-1}, \: X(t_{n-2})=s_{n-2}, \ldots , X(t_0)=s_0 \right]&gt;0
+\]</span>
+zachodzi
+<span class="math display">\[
+\mathbb{P}\left[ X(t_n)=s_n \: | \: X(t_{n-1})=s_{n-1}, \: X(t_{n-2})=s_{n-2}, \ldots , X(t_0)=s_0 \right]=
+\mathbb{P}\left[ X(t_n)=s_n \: | \: X(t_{n-1})=s_{n-1} \right].
+\]</span>
+Powyższa własność nie jest zbyt przydatna, jeżeli chcemy badać procesy na nieprzeliczalnej przestrzeni stanów. Dla bardzo wielu naturalnych obiektów zmienne losowe <span class="math inline">\(X(t)\)</span> w badanym przez nas procesie mogą mieć rozkład ciągły. Oznacza to, że warunek powyższy nie jest spełniony dla dowolnego wyboru parametrów.</p>
+<p>W celu znalezienia bardziej elastycznego warunku zauważmy, że własność Markowa dla jednorodnego łańcucha Markowa <span class="math inline">\(\{X_n\}_{n \in \mathbb{N}}\)</span> w czasie dyskretnym z macierzą przejścia
+<span class="math display">\[
+p(i,j) = \mathbb{P}[X_1=j \: | \: X_0=i]
+\]</span>
+zapisuje się jako
+<span class="math display">\[
+\mathbb{P}[X_n = j \: | \: \mathcal{F}_n] = p(X_n,j),
+\]</span>
+gdzie <span class="math inline">\(\mathcal{F}_n = \sigma(X_0, X_1, \ldots, X_n)\)</span>. Dokładne uzasadnienie powyższej własności pozostawiamy jako zadanie. Podobnie, dla dowolnego <span class="math inline">\(m \in \mathbb{N}\)</span>,
+<span class="math display">\[
+\mathbb{P}[X_{n+m} = j \: | \: \mathcal{F}_n] = p^{(m)}(X_n,j),
+\]</span>
+gdzie <span class="math inline">\((p^{(m)(i,j) })_{i, j \in S}\)</span> jest <span class="math inline">\(m\)</span>-tą potęgą macierzy przejścia
+<span class="math display">\[
+p^{(m)}(i,j) = \mathbb{P}[X_m=j \: | \: X_0=i].
+\]</span>
+Oznacza to, że dla dowolnej funkcji mierzalnej <span class="math inline">\(f \colon S \to \mathbb{R}\)</span>,
+<span class="math display">\[
+\mathbb{E}[ f(X_{n+m}) \: | \: \mathcal{F}_n] = \sum_{s \in S} f(s) p^{(m)}(X_n, s).
+\]</span>
+Powyższa definicja względnie łatwo zapisuje się w czasie ciągłym
+<span class="math display">\[
+\mathbb{E}[ f(X_{s+t}) \: | \: \mathcal{F}_s] = \sum_{x\in S} f(x) p^{(t)}(X_n, x),
+\]</span>
+gdzie
+<span class="math display">\[
+p^{(t)}(y,x) = \mathbb{P}[X_t=x | X_0=y].
+\]</span>
+Relacja powyższa daje się zapisać w przypadku nieprzeliczalnej przestrzeni stanów jako
+<span class="math display">\[
+\mathbb{E}[ f(X_{s+t}) \: | \: \mathcal{F}_s] = \int_S f(x) p^{(t)}(X_n, \mathrm{d} x),
+\]</span>
+gdzie
+<span class="math display">\[
+p^{(t)}(y, \mathrm{d} x) = \mathbb{P}[X_t \in \mathrm{d} x | X_0=y]
+\]</span>
+jest rozkładem <span class="math inline">\(X_t\)</span> pod warunkiem <span class="math inline">\(\{X_0=y\}\)</span>. To niesie ze sobą kolejne problemy, ponieważ jak wcześniej zauważyliśmy <span class="math inline">\(\{X_0=y\}\)</span> może być zdarzeniem o prawdopodobieństwie zero. Przedstawione podejście jest do uratowania pod kątem formalnym przez odniesienie się do regularnych rozkładów warunkowych.</p>
+<p>Zamiast tego podejdziemy do problemu od innej strony. Naszym punktem wyjścia będzie odpowiednia rodzina miar. Jak zobaczymy wkrótce, to podejście będzie również opierało się o odpowiednik powyższej relacji. Oznacza to, że w rezultacie będziemy opisywali tę samą klasę procesów stochastycznych bez konieczności obchodzenia się z warunkowaniem po zdarzeniach niemożliwych.</p>
+</div>
+<p style="text-align: center;">
+<a href="1.1-podstawowe-definicje.html"><button class="btn btn-default">Next</button></a>
+</p>
+</div>
+</div>
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
+
+</script>
+
+</body>
+</html>
