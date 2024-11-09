@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Wykład 5: od generatora do półgrupy | SMUO_wyklad5.knit</title>
+  <meta name="description" content="" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Wykład 5: od generatora do półgrupy | SMUO_wyklad5.knit" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Wykład 5: od generatora do półgrupy | SMUO_wyklad5.knit" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="test.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path=""><a href="#wyk%C5%82ad-5-od-generatora-do-p%C3%B3%C5%82grupy"><i class="fa fa-check"></i>Wykład 5: od generatora do półgrupy</a>
+<ul>
+<li class="chapter" data-level="" data-path=""><a href="#o-notacji-s%C5%82%C3%B3w-kilka"><i class="fa fa-check"></i>O notacji słów kilka</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#od-generatora-do-procesu"><i class="fa fa-check"></i>Od generatora do procesu</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<!--bookdown:title:end-->
+<!--bookdown:title:start-->
+<div id="wykład-5-od-generatora-do-półgrupy" class="section level1 unnumbered hasAnchor">
+<h1>Wykład 5: od generatora do półgrupy<a href="#wyk%C5%82ad-5-od-generatora-do-p%C3%B3%C5%82grupy" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>2024-10-31</p>
+<p><em>Piotr Dyszewski</em></p>
+<div id="o-notacji-słów-kilka" class="section level2 unnumbered hasAnchor">
+<h2>O notacji słów kilka<a href="#o-notacji-s%C5%82%C3%B3w-kilka" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="theorem">
+<p><span id="thm:unlabeled-div-1" class="theorem"><strong>Twierdzenie 1  </strong></span>Przy oznaczeniach Twierdzenia @<span class="math inline">\(\ref{thm:3-16}\)</span>, dla <span class="math inline">\(f \in C_0(S)\)</span> oraz <span class="math inline">\(t &gt; 0\)</span>,
+<span class="math display">\[
+\lim_{n \to \infty} \left(I - \frac{t}{n} L\right)^{-n} f = T_tf.
+\]</span></p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-2" class="proof"><em>Proof</em>. </span>Sprawdzamy indukcyjnie, że
+<span class="math display">\[
+\left(I - \alpha^{-1} L\right)^{-n} f
+= \alpha^n U^n(\alpha)f
+= \int_0^{\infty} \alpha^n s^{n-1} e^{-\alpha s} T(s)f \, \mathrm{d}s.
+\]</span>
+Stąd
+<span class="math display" id="eq:3-18">\[\begin{equation}
+\left( I - \frac{t}{n} L \right)^{-n} f
+= \mathbb{E} T \left( (\xi_1 + \cdots + \xi_n) t/n \right) f,
+\tag{1}
+\end{equation}\]</span>
+gdzie <span class="math inline">\(\xi_1, \xi_2, \ldots\)</span> są niezależnymi zmiennymi
+o standardowym rozkładzie wykładniczym.
+Zauważmy, że funkcja <span class="math inline">\((s, x) \to T(s)f(x)\)</span> jest ciągła,
+więc wartość oczekiwana w <a href="#eq:3-18">(1)</a> jest dobrze określona.</p>
+<p>Jeśli <span class="math inline">\(f \in \mathcal{D}(L)\)</span>, to
+<span class="math display">\[\begin{equation*}
+    \frac{\mathrm{d}}{\mathrm{d}t} T_t f = T_t Lf
+\end{equation*}\]</span>
+co w notacji całkowej zapisuje się jako
+<span class="math display">\[\begin{equation*}
+    T_tf-T_sf = \int_s^t T_r Lf \mathrm{d}r.
+\end{equation*}\]</span>
+Skoro <span class="math inline">\(\|T_r \| \leq 1\)</span>, to ostatnia nierówność implikuje, że
+<span class="math display">\[
+\| T(t)f - T(s)f \| \leq \| Lf \| |t - s|.
+\]</span>
+Wracając teraz do <a href="#eq:3-18">(1)</a> otrzymujemy
+<span class="math display">\[
+\left\| \left( I - \frac{t}{n} L \right)^{-n} f - T(t)f \right\|
+\leq t \| Lf \| \mathbb{E} \left| \frac{\xi_1 + \cdots + \xi_n}{n} - 1 \right|.
+\]</span>
+Rezultat dla <span class="math inline">\(f \in \mathcal{D}(L)\)</span> wynika teraz z prawa wielkich liczb.
+Jest on prawdziwy dla wszystkich <span class="math inline">\(f \in C_0(S)\)</span>,
+ponieważ wszystkie rozważane operatory są kontrakcjami.</p>
+</div>
+<div class="remark">
+<p><span id="uw-3-17" class="remark"><em>Remark</em>. </span>Formalnie, <span class="math inline">\(T_t = \exp(tL)\)</span>.
+Kiedy <span class="math inline">\(L\)</span> jest ograniczone, istnieją przynajmniej trzy sposoby definiowania tego wykładnika:
+<span class="math display">\[
+\sum_{k=0}^\infty \frac{(tL)^k}{k!}, \quad
+\lim_{n \to \infty} \left(I + \frac{t}{n} L\right)^n,
+\quad \text{ i } \quad \lim_{n \to \infty} \left(I - \frac{t}{n} L\right)^{-n}.
+\]</span>
+Ostatni z nich jest jedynym, który ma sens w przypadku nieograniczonym.</p>
+</div>
+<p>Teraz rozważmy kilka przykładów.</p>
+<div class="exercise">
+<p><span id="exr:ex-3-18" class="exercise"><strong>Zadanie 1  </strong></span>Rozważmy proces Fellera polegający na jednostajnym ruchu w prawo.
+Niech <span class="math inline">\(S=\mathbb{R}\)</span> i niech <span class="math inline">\(\mathbf{P}_x\)</span> jest punktową
+masą na ścieżce <span class="math inline">\(\omega_x\)</span> danej przez <span class="math inline">\(\omega_x(t) = x + t\)</span>,
+lub równoważnie, proces z półgrupą
+<span class="math inline">\(T(t)f(x) = f(x + t)\)</span>.
+Pokaż, że generatorem <span class="math inline">\(L\)</span> tego procesu jest
+ten opisany w Zadaniu~<span class="math inline">\(\ref{zad:3:13}\)</span>.
+Upewnij się, że dziedzina dana jest dokładnie przez dziedzinę <span class="math inline">\(L\)</span>.</p>
+</div>
+<div class="example">
+<p><span id="exm:3-brown" class="example"><strong>Przykład 1  </strong></span>W przypadku ruchu Browna, można zweryfikować, że
+<span class="math display">\[
+U(\lambda) f(x) = \int u_\lambda(y - x) f(y) \, dy
+\]</span>
+gdzie
+<span class="math display">\[
+u_\lambda(y - x) =
+\int_0^\infty (2 \pi t)^{-1/2} \exp\left(-\frac{|y - x|^2}{2t} - \lambda t\right) \, \mathrm{d}t
+= \frac{1}{\sqrt{2 \lambda}} \exp(-|y - x| \sqrt{2 \lambda}).
+\]</span>
+Elegancki sposób na uzyskanie tej ostatniej równości polega na użyciu wzoru
+<span class="math inline">\(\mathbb{E}[e^{-\lambda T_a}] = e^{-a \sqrt{2 \lambda}}\)</span> dla transformaty Laplace’a
+czasu trafienia <span class="math inline">\(a &gt; 0\)</span> przez rzeczywisty ruch Browna rozpoczęty z <span class="math inline">\(0\)</span>.
+Różniczkując względem <span class="math inline">\(\lambda\)</span>,
+otrzymujemy
+<span class="math display">\[
+\mathbb{E}\left[T_a e^{-\lambda T_a}\right] = \frac{a}{\sqrt{2 \lambda}} e^{-a \sqrt{2 \lambda}},
+\]</span>
+i używając gęstości <span class="math inline">\(T_a\)</span>, aby przekształcić <span class="math inline">\(\mathbb{E}[T_a e^{-\lambda T_a}]\)</span>,
+dokładnie znajdujemy całkę, która pojawia się w obliczeniach <span class="math inline">\(u_\lambda(y - x)\)</span>.</p>
+<p>Wiemy, że półgrupa operatorów związana z ruchem Browna jest półgrupą Fellera.
+Znajdziemy jej generator <span class="math inline">\(L\)</span>.
+Widzieliśmy, że dla każdego <span class="math inline">\(\lambda &gt; 0\)</span> i <span class="math inline">\(f \in C_0(\mathbb{R})\)</span>,
+<span class="math display">\[
+U(\lambda) f(x) =
+\int \frac{1}{\sqrt{2 \lambda}} \exp(-\sqrt{2 \lambda} |y - x|) f(y) \, \mathrm{d}y.
+\]</span>
+Jeśli <span class="math inline">\(h \in \mathcal{D}(L)\)</span>,
+wiemy, że istnieje <span class="math inline">\(f \in C_0(\mathbb{R})\)</span> takie,
+że <span class="math inline">\(h = U(\lambda) f\)</span>.
+Przyjmując <span class="math inline">\(\lambda = 1/2\)</span>, mamy
+<span class="math display">\[
+h(x) = \int \exp(-|y - x|) f(y) \, \mathrm{d}y.
+\]</span>
+Różniczkując pod znakiem całki (pozostawiamy uzasadnienie jako zadanie),
+otrzymujemy, że <span class="math inline">\(h\)</span> jest różniczkowalna na <span class="math inline">\(\mathbb{R}\)</span>, i
+<span class="math display">\[
+h&#39;(x) = \int \operatorname{sgn}(y - x) \exp(-|y - x|) f(y) \, \mathrm{d}y
+\]</span>
+gdzie <span class="math inline">\(\operatorname{sgn}(z) = 1_{\{z &gt; 0\}} - 1_{\{z &lt; 0\}}\)</span>
+(wartość <span class="math inline">\(\operatorname{sgn}(0)\)</span> jest nieistotna).
+Pokażmy również, że <span class="math inline">\(h&#39;\)</span> jest różniczkowalna na <span class="math inline">\(\mathbb{R}\)</span>.
+Niech <span class="math inline">\(x_0 \in \mathbb{R}\)</span>.
+Następnie, dla <span class="math inline">\(x &gt; x_0\)</span>,
+<span class="math display">\[\begin{align*}
+h&#39;(x) - h&#39;(x_0)  = &amp;
+\int_{\mathbb{R}} \left( \operatorname{sgn}(y - x) \exp(-|y - x|) -
+\operatorname{sgn}(y - x_0) \exp(-|y - x_0|) \right) f(y) \, \mathrm{d}y \\
+=&amp;  \int_{x_0}^x \left( -\exp(-|y - x|) - \exp(-|y - x_0|) \right) f(y) \, \mathrm{d}y \\
+&amp;+ \int_{\mathbb{R} \setminus [x_0, x]} \operatorname{sgn}(y - x_0)
+\left( \exp(-|y - x|) - \exp(-|y - x_0|) \right) f(y) \, \mathrm{d}y.
+\end{align*}\]</span>
+Wynika stąd, że
+<span class="math display">\[
+\frac{h&#39;(x) - h&#39;(x_0)}{x - x_0}
+\xrightarrow{x \downarrow x_0} -2f(x_0) + h(x_0).
+\]</span>
+Otrzymujemy tę samą granicę, gdy <span class="math inline">\(x \uparrow x_0\)</span>,
+i stąd uzyskujemy, że <span class="math inline">\(h\)</span> jest dwukrotnie różniczkowalna oraz <span class="math inline">\(h&#39;&#39; = -2f + h\)</span>.</p>
+<p>Z drugiej strony, ponieważ <span class="math inline">\(h = U(1/2)f\)</span>,
+<span class="math display">\[
+\left(\frac{1}{2} - L\right) h = f
+\]</span>
+stąd <span class="math inline">\(Lh = -f + h/2 = h&#39;&#39;/2\)</span>.
+Podsumowując, uzyskaliśmy, że
+<span class="math display">\[
+\mathcal{D}(L) \subset \{ h \in C^2(\mathbb{R}) : h \text{ i } h&#39;&#39; \in C_0(\mathbb{R}) \}
+\]</span>
+i że, jeśli <span class="math inline">\(h \in \mathcal{D}(L)\)</span>, mamy <span class="math inline">\(Lh = h&#39;&#39;/2\)</span>.</p>
+<p>Ostatnie zawieranie jest w rzeczywistości równością.
+Aby to zobaczyć, możemy postąpić następująco.
+Jeśli <span class="math inline">\(g\)</span> jest funkcją dwukrotnie różniczkowalną taką, że <span class="math inline">\(g\)</span> oraz <span class="math inline">\(g&#39;&#39;\)</span> należą do <span class="math inline">\(C_0(\mathbb{R})\)</span>,
+wtedy przyjmujemy <span class="math inline">\(f = \frac{1}{2}(g - g&#39;&#39;) \in C_0(\mathbb{R})\)</span>,
+a więc <span class="math inline">\(h = U(1/2)f \in \mathcal{D}(L)\)</span>.
+Z poprzedniego argumentu wynika,
+że <span class="math inline">\(h\)</span> jest dwukrotnie różniczkowalna oraz <span class="math inline">\(h&#39;&#39; = -2f + h\)</span>.
+Stąd <span class="math inline">\((h - g)&#39;&#39; = h - g\)</span>.
+Ponieważ funkcja <span class="math inline">\(h - g\)</span> należy do <span class="math inline">\(C_0(\mathbb{R})\)</span>,
+musi zanikać tożsamościowo, co daje <span class="math inline">\(g = h \in \mathcal{D}(L)\)</span>.</p>
+</div>
+<p>Patrząc na Zadanie <a href="#exr:3-13"><strong>??</strong></a> i Przykład <a href="#exm:3-brown">1</a>,
+można by się zastanawiać, czy pochodne wyższego rzędu mogą
+być generatorami infinitezymalnymi. Odpowiedź brzmi, że nie mogą.
+Główny problem polega na tym,
+że gdy gładka funkcja osiąga minimum w punkcie wewnętrznym swojej dziedziny,
+pierwsza pochodna jest zerowa,
+a druga pochodna jest tam nieujemna.
+Nic nie można powiedzieć o znakach innych pochodnych w tym miejscu.</p>
+<div class="exercise">
+<p><span id="exr:3-21" class="exercise"><strong>Zadanie 2  </strong></span>Pokaż, że nie istnieje generator prawdopodobieństwa,
+którego ograniczenie do gładkich funkcji jest dane przez <span class="math inline">\(Lf = f&#39;&#39;&#39;\)</span>.</p>
+</div>
+</div>
+<div id="od-generatora-do-procesu" class="section level2 unnumbered hasAnchor">
+<h2>Od generatora do procesu<a href="#od-generatora-do-procesu" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>W całym tym rozdziale <span class="math inline">\(L\)</span> będzie generatorem infinitezymalnym.
+Naszym pierwszym zadaniem jest skonstruowanie odpowiadającej półgrupy prawdopodobieństwa.
+Aby to zrobić, wprowadzamy aproksymację <span class="math inline">\(L_\epsilon\)</span> do <span class="math inline">\(L\)</span> dla małego dodatniego <span class="math inline">\(\epsilon\)</span> przez
+<span class="math display">\[
+L_\epsilon = L(I - \epsilon L)^{-1}.
+\]</span>
+Zauważmy, że jest to dobrze zdefiniowane z definicji generatora infinitezymalnego,
+ponieważ <span class="math inline">\(\mathcal{R}(I - \epsilon L) = \mathcal{D}(L)\)</span>. To łatwo zobaczyć z
+<span class="math display">\[
+f - \epsilon L f = g \quad
+\text{jest równoważne} \quad
+f = (I - \epsilon L)^{-1} g.
+\]</span>
+Ponadto
+<span class="math display">\[
+\|L_\epsilon g\|
+= \|L f\| \leq \frac{\|f\| + \|g\|}{\epsilon}
+\leq \frac{2}{\epsilon} \|g\|,
+\]</span>
+więc <span class="math inline">\(L_\epsilon\)</span> jest ograniczonym operatorem.
+To pozwala zdefiniować <span class="math inline">\(T_\epsilon(t)\)</span> przez
+<span class="math display">\[
+T_\epsilon(t)
+= e^{tL_\epsilon}
+= \sum_{n=0}^{\infty} \frac{t^n L_\epsilon^n}{n!}.
+\]</span></p>
+<div class="exercise">
+<p><span id="exr:zad-3-23" class="exercise"><strong>Zadanie 3  </strong></span></p>
+<ul>
+<li><strong>(a)</strong> Pokaż, że dla każdego <span class="math inline">\(f \in C_0(S)\)</span>,
+<span class="math display" id="eq:3-19">\[\begin{equation}
+(I - \epsilon L)^{-1} f - \epsilon L f = f.
+\tag{2}
+\end{equation}\]</span></li>
+<li><strong>(b)</strong> Użyj części (a), aby pokazać, że <span class="math inline">\(L_\epsilon\)</span> jest generatorem infinitezymalnym
+oraz że <span class="math inline">\(T_\epsilon(t)\)</span> jest półgrupą prawdopodobieństwa,
+której generatorem jest <span class="math inline">\(L_\epsilon\)</span> w sensie Twierdzenia <a href="#thm:3-16"><strong>??</strong></a>.</li>
+</ul>
+</div>
+<div class="theorem">
+<p><span id="thm:3-24" class="theorem"><strong>Twierdzenie 2  </strong></span>Dla <span class="math inline">\(f \in C_0(S)\)</span>,
+<span class="math display">\[
+T(t)f = \lim_{\epsilon \to 0} T_\epsilon(t) f
+\]</span>
+jednostajnie na ograniczonych przedziałach <span class="math inline">\(t\)</span>.
+Definiuje to półgrupę Fellera, której generatorem jest <span class="math inline">\(L\)</span> w sensie Twierdzenia <a href="#thm:3-16"><strong>??</strong></a>.</p>
+</div>
+<p>Najpierw sprawdzamy, że <span class="math inline">\(L_\epsilon\)</span> i <span class="math inline">\(L_\delta\)</span> komutują dla <span class="math inline">\(\epsilon, \delta &gt; 0\)</span>.
+Wynika to z @ref{eq:3-19} oraz
+<span class="math display">\[
+(I - \epsilon L)^{-1} (I - \delta L)^{-1}
+= (I - \delta L)^{-1} (I - \epsilon L)^{-1},
+\]</span>
+co jest prawdziwe, ponieważ
+<span class="math display">\[
+(I - \epsilon L)^{-1} (I - \delta L)^{-1} f
+= g
+\quad \text{jest równoważne}
+\quad f
+= g - (\epsilon + \delta)Lg + \epsilon \delta L^2 g,
+\]</span>
+co jest symetryczne w <span class="math inline">\(\epsilon\)</span> i <span class="math inline">\(\delta\)</span>.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["SMUO_wyklad5.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
