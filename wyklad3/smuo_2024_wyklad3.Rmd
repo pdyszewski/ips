@@ -1,0 +1,289 @@
+# Wykład 3: procesy i półgrupy Fellera {-}
+
+2024-10-17
+
+*Piotr Dyszewski*
+
+W tym rozdziale $S$ jest ośrodkową, lokalnie zwartą przestrzenią 
+metryczną, a $C(S)$ jest przestrzenią ciągłych funkcji rzeczywistych na $S$.
+Przez $C_0(S)$ oznaczać będziemy klasę funkcji z $C(S)$ znikających w nieskończoności. Dokładniej
+$C_0(S)$ to zbiór funkcji $f$ z $C(S)$ takich, że dla każdego dodatniego $\epsilon$ istnieje zwarty
+$K \subseteq S$ taki, że $|f(x)| \leq \epsilon$ dla $x \in S \setminus K$. 
+Zauważmy, że jeżeli $S$ jest zwarta, to $C_0(S) = C(S)$. Dodatkowo każda
+$f$ z $C_0(S)$ jest jednostajnie ciągła, tj. dla każdego dodatniego $\epsilon$ istnieje dodatnia $\delta$, 
+taka, że dla każdych $x , y\in S$,
+\begin{equation*}
+	\mathrm{d}(x,y) < \delta \quad \Rightarrow \quad |f(x)-f(y)| <\epsilon.
+\end{equation*}
+Tutaj $\mathrm{d}$ jest metryką na $S$.
+W obu przestrzeniach $C(S)$ i $C_0(S)$ używamy normy jednostajnej
+\[
+	\|f\| = \sup_{x \in S} |f(x)|,
+\]
+co czyni $C_0(S)$ przestrzenią Banacha. 
+Głównym powodem stosowania ciągłych funkcji zanikających w 
+nieskończoności zamiast ograniczonych ciągłych funkcji w przypadku lokalnie zwartym jest to, 
+że jednostajna ciągłość jest wymagana w wielu argumentach. 
+Ograniczone funkcje ciągłe nie są zwykle jednostajnie ciągłe, 
+podczas gdy ciągłe funkcje zanikające na nieskończoności są. 
+Innym powodem jest to, że $C_0(S)$ jest ośrodkowa, 
+co nie jest ogólnie prawdziwe dla przestrzeni wszystkich ograniczonych ciągłych funkcji na $S$. 
+
+## Proces {-}
+
+Zaczynamy od opisu składników potrzebnych do definicji głównego obiektu zainteresowania w tym rozdziale. 
+Konstrukcja będzie analogiczna do łańcuchów Markowa w czasie ciągłym.
+Niech $\Omega = D[0, \infty)$ będzie zbiorem
+funkcji prawostronnie ciągłych$ $\omega : [0, \infty) \to S$ z lewymi granicami w każdym punkcie.
+Tak jak poprzednio dla $s, t \in \mathbb{R}_+$ połóżmy też
+\[
+	X_t(\omega) = \omega(t) \text{ oraz } (\theta_s \omega)(t) = \omega(t + s).
+\]
+Niech $\mathcal{F}$ będzie najmniejszym $\sigma$-ciałem podzbiorów $\Omega$ względem którego wszystkie $X_t$ dla $t \in \mathbb{R}_+$ są mierzalne.
+
+:::{.definition #3-1}
+Procesem Fellera na $S$ nazywamy parę uporządkowaną $(\mathbf{P}, \mathbb{F})$ taką, że
+
+- **(PF1)** $\mathbf{P}=\{\mathbf{P}_x\}_{x \in S}$, gdzie dla każdego $x \in S$, $\mathbf{P}_x$ jest miarą probabilistyczną 
+na $(\Omega, \mathcal{F})$ taką, że
+\begin{equation}
+\mathbf{P}_x[X_0 = x] = \mathbf{P}_x [\omega \: : \: \omega(0)=x] = 1.
+(\#eq:3-1)
+\end{equation}
+
+- **(PF2)** $\mathbb{F}=\{\mathcal{F}_t\}_{t \in \mathbb{R}_+}$ jest filtracją na $\Omega$, 
+względem której zmienne losowe $X(t)$ są adaptowane.
+
+- **(PF3)** Odwzorowanie
+\begin{equation}
+x \mapsto \mathbf{E}_x \left[f(X_t) \right] \text{ jest w } C_0(S) 
+\text{ dla wszystkich } f \in C_0(S) \text{ i } t \geq 0.
+(\#eq:3-2)
+\end{equation}
+
+- **(PF4)** Spełniona jest własność Markowa
+\begin{equation}
+\mathbf{E}_x\left[Y \circ \theta_s \mid \mathcal{F}_s\right] = \mathbf{E}_{X(s)}\left[Y\right] \quad 
+\mathbf{P}_x\text{-prawie wszędzie }
+(\#eq:3-3)
+\end{equation}
+dla wszystkich $x \in S$ oraz wszystkich ograniczonych mierzalnych $Y$ na $\Omega$.
+:::
+
+Własność \@ref(eq:3-2) znana jest jako własność Fellera. 
+Innym sposobem przedstawienia części ciągłości, który wydaje się całkiem naturalny, 
+jest to, że $x_n \to x$ w $S$ implikuje, że rozkład $X$ dla procesu rozpoczynającego się w $x_n$ 
+zbiega się słabo do tego dla procesu rozpoczynającego się w $x$. 
+Własność Fellera (razem z prawostronną ciągłością trajektorii) implikuje silną własność Markowa.
+
+:::{.theorem #3-3}
+Każdy proces Fellera ma silną własność Markowa. Jeżeli $(\mathbf{P}, \mathbb{F})$ jest procesem Fellera,
+to dla każdej ograniczonej zmiennej $Y \colon \Omega \to \mathbb{R}$ oraz $\mathbb{F}$-czasu zatrzymania $\tau$ 
+i każdego $x$,
+\[
+    \mathbf{E}_x [Y \circ \theta_\tau \mid \mathcal{F}_\tau] = 
+    \mathbf{E}_{X(\tau)} \left[ Y \right]\quad \text{prawie na pewno } \mathbf{P}_x 
+\]
+na zdarzeniu $\{\tau < \infty\}$.
+:::
+
+
+:::{.exercise #3-2} 
+Niech $(\mathbf{P}, \mathbb{F})$ będzie procesem Fellera. 
+Pokaż, że odwzorowanie 
+\begin{equation}
+    x \mapsto \mathbf{E}_x \left[ \prod_{j=1}^n f_j(X_{t_j}) \right]
+    (\#eq:3-4)	
+\end{equation}
+jest ciągłe dla dowolnego $n$, dowolnych $t_1, \ldots, t_n \in \mathbb{R}$ 
+oraz dowolnych $f_1, \ldots, f_n \in C_0(S)$.
+:::
+
+:::{.proof name="Twierdzenia \@ref(thm:3-3)"}
+Rozumowanie przebiega identycznie jak w przypadku łańcuchów Markowa w czasie ciągłym. W miejscu, w którym
+wymagana jest ciągłość odwzorowań $x \mapsto \mathbf{E}_x[Y]$ należy powołać się na tezę Zadania \@ref(exr:3-2).
+:::
+
+:::{.example}
+Niech $B = (B_t)_{t \in \mathbb{R}_+}$ będzie standardowym ruchem Browna określonym na przestrzeni probabilistycznej
+$(\Sigma, \mathcal{G}, \mathbb{P})$. Przypomnijmy, że oznacza to, że
+
+1. $B_0=0$ $\mathbb{P}$-p.w.
+2. Dla dowolnych $t,s \in \mathbb{R}_+$, $t\geq s$ zmienna $B_t-B_s$ ma rozkład normalny $\mathcal{N}(0,t-s)$ o średniej zero i wariancji $t-s$.
+3. Dla dowolnych $t,s \in \mathbb{R}_+$, $t\geq s$ zmienna $B_t-B_s$ jest niezależna od sigma ciała
+		$\mathcal{G}_s^B = \sigma(B_r \: : \: r \leq s)$.
+4. Odwzorowanie $t \mapsto B_t$ jest ciągłe.
+
+
+Pokażemy, że ruch Browna jest procesem Fellera w myśl przyjętej przez nas definicji. 
+Połóżmy $\mathcal{F}_t = \sigma(X_s \: : \: s \leq t)$.
+Niech $S = \mathbb{R}$. Dla $x \in S$ zdefiniujmy $\mathbf{P}_x$ jako rozkład ruchu 
+Browna (rozumianego jako funkcji $\mathbb{R}_+ \to \mathbb{R}$)
+zapoczątkowanego w punkcie $x$, dokładniej
+dla $A \in \mathcal{F}$ niech $\mathbf{P}_x[A] = \mathbb{P}[B+x \in A]$. 
+Tutaj przez $B+x$ rozumiemy funkcję $t \mapsto B_t+x$.
+
+<script src="JAVA/brown.js"></script>
+<div id="p5-container-brown">
+Wylosowanie ścieżki $\omega$ z rozkładu $\mathbf{P}_x$ jest równoważne z wylosowaniem
+trajektorii ruchu Browna zapoczątkowanego w $x$.
+</div>
+
+Spełniona jest własność (PF1), ponieważ
+\begin{equation*}
+	\mathbf{P}_x[X_0=x] = \mathbb{P}[B_0+x=x]=1.
+\end{equation*}
+Własność (PF2) jest spełniona wprost z definicji filtracji $\mathbb{F}$. Aby uzasadnić własność Fellera (PF3) ustalmy $f \in C_0(S)$.
+Ciągłość
+\begin{equation*}
+	x \mapsto \mathbf{E}_x\left[ f(X_t) \right] = \mathbb{E}[f(B_t+x)]
+\end{equation*}
+wynika z ciągłości $f$ oraz twierdzenia o zbieżności ograniczonej. Aby uzasadnić, że powyższe odwzorowanie jest 
+klasy $C_0(S)$ należy pokazać, że
+\begin{equation*}
+	\lim_{|x| \to \infty} \mathbf{E}_x[f(X_t)] =0.
+\end{equation*}
+Wystarczy w tym celu rozważyć oszacowanie
+\begin{equation*}
+	\left|\mathbb{E}[f(B_t+x)]\right| \leq \|f \| \mathbb{P}[|B_t| >|x|/2] + \sup_{|y| >|x|/2}|f(y)|.
+\end{equation*}
+Oba składniki po prawej stronie zbiegają do zera, przy czy zbieżność tego drugiego wynika z $f \in C_0(\mathbb{R})$.
+Własność Markowa uzasadniamy dokładnie w taki sam sposób, w jaki zrobiliśmy to dla procesu 
+Poissona w Przykładzie \@ref{exm:2-poisson}. 
+:::
+
+:::{.exercise #3-8}
+Niech $S=\mathbb{Z}$. Pokaż, że łańcuch Markowa w czasie ciągłym 
+$(\mathbf{P}, \mathbb{F})$ jest procesem Fellera wtedy i tylko wtedy, gdy dla każdego 
+$y \in S$ i każdego $t \in \mathbb{R}_+$,
+\begin{equation*}
+	\lim_{|x| \to \infty} \mathbf{P}_x[X_t=y]=0.
+\end{equation*}
+:::
+
+
+## Półgrupa {-}
+	
+Chcemy teraz przedstawić odpowiednik funkcji przejścia na 
+nieprzeliczalnej przestrzeni stanów. W naturalny sposób nasuwa się
+rozważenie rozkładów $\mathbf{P}_x[X_t \in \mathrm{d} y]$. 
+Jednak na dłuższą metę język rozkładów jest nieporęczny. 
+O wiele bardziej praktyczny jest język półgrup. 
+Aby umotywować następną definicję, rozważmy przeliczalną przestrzeń stanów $S_0$ 
+oraz funkcję przejścia $p$
+na $S_0$. 
+Funkcję przejścia można zakodować w 
+kategoriach rodziny operatorów
+\begin{equation}
+T_tf(x) = \sum_{y\in S_0} p_t(x, y)f(y),
+(\#eq:3-5)
+\end{equation}
+dla $f \in C_0(S_0)$. 
+Jasne jest, że znając $T_t$, a więc znając 
+wartości $T_tf$ dla wszystkich $f \in C_0(S_0)$, 
+znamy też funkcję przejścia $p_t(x,y)$.
+Wykorzystując równiania Chapmana-Kołmogorowa dostajemy dla $s,t\geq 0$,
+\begin{multline*}
+T_{s+t} f(x) = \sum_{y \in S_0} p_{t+s}(x,y) f(y) 
+= \sum_{y \in S_0} \sum_{z \in S_0} p_t(x,z)p_s(z,y)f(y) \\
+\sum_{z \in S_0} p_t(x,z)\sum_{y\in S_0}p_s(z,y)f(y) 
+=\sum_{z \in S_0} p_t(x,z) (T_sf)(z) = T_t(T_s(f))(x).
+\end{multline*}
+Wszystkie powyższe manipulacje są dozwolone 
+ponieważ $f \in C_0(S_0)$ jest ograniczona. 
+Powyższa tożsamość zapisuje się jako
+$T_t T_s = T_t\circ T_s = T_{t+s}$. 
+Oznacza to, że $(T_{t})_{t \geq 0}$ tworzą półgrupę. 
+
+:::{.definition #3-1}
+Półgrupa Fellera to rodzina ciągłych operatorów liniowych 
+$T=\{T_t\}_{t \in \mathbb{R}_+}$ na $C_0(S)$ spełniających następujące własności:
+
+a. $T_0f = f$ dla wszystkich $f \in C_0(S)$.
+b. Dla każdego $f \in C_0(S)$, $\lim_{t \to 0} T_tf = f$ w $C_0(S)$.
+c. $T_{t+s}f = T_sT_tf$ dla każdego $f \in C_0(S)$.
+d. $T_tf \geq 0$ dla każdego nieujemnego $f \in C_0(S)$.
+e. Istnieje rodzina $f_n \in C_0(S)$, $n\in \mathbb{N}$ taka, że $\sup_n \|f_n\| < \infty$, 
+oraz $T_tf_n$ zbiega punktowo do $1$ dla każdego $t \geq 0$.
+:::
+
+Część c. to analogia równań Chapmana-Kolmogorowa i 
+nazywana jest własnością półgrupy. 
+Jedną z jej konsekwencji jest to, że $T(t)$ i $T(s)$ komutują, 
+tj. $T_tT_s=T_{t+s}=T_{s+t}=T_sT_t$. 
+Z części d. i e. wynika, że $\|T(t)f\| \leq \|f\|$ 
+dla wszystkich $f \in C_0(S)$, 
+tak więc każdy $\|T\|\leq 1$. 
+Własność b. jest znana jako mocna ciągłość. 
+Wraz z c. i własnością kontrakcji, implikuje to, 
+że funkcja 
+$t \mapsto T(t)f$ z $[0, \infty)$ do $C_0(S)$ 
+jest ciągła.
+
+Oto ważny przykład - półgrupa Gaussa–Weierstrassa. 
+Część b. tego ćwiczenia ilustruje powody przyjmowania 
+funkcji w $C_0(S)$ zanikających na nieskończoności.
+
+:::{.exercise #3-5} 
+Niech $S = \mathbb{R}$ i $B=(B_t)_{t \in \mathbb{R}_+}$ będzie ruchem Browna.
+
+a. Pokaż, że $T_t$ zdefiniowane przez
+\[
+T_tf(x) = \mathbb{E} [f(B_t+x)]
+\]
+jest półgrupą Fellera.
+b. Wyjaśnij, dlaczego $T$ nie jest mocno ciągła jako półgrupa operatorów na klasie $C_b(S)$ ograniczonych
+funkcji z $C(S)$.
+:::
+
+W tym rozdziale konieczne będzie całkowanie funkcji ciągłych 
+przyjmujących wartości w $C(S)$ względem $t$. 
+Rachunek takich funkcji jest analogiczny do rachunku funkcji rzeczywistych. 
+W tym duchu wiążemy z półgrupą 
+jej transformata Laplace'a
+\begin{equation}
+U(\alpha)f = \int_0^\infty e^{-\alpha t} T_tf \, \mathrm{d} t, \quad \alpha > 0,
+(\#eq:3-6)
+\end{equation}
+która nazywana jest rezolwentą półgrupy. 
+Funkcję $U(\alpha)f$ można interpretować jako całkę Bochnera pojawiającą się po prawej stronie 
+\@ref(eq:3-6). 
+Można też równoważnie myśleć, że jest to funkcja $S \to \mathbb{R}$ 
+zadana przez
+\begin{equation*}
+U(\alpha)f(x) = \int_0^\infty e^{-\alpha t} T_tf(x) \, \mathrm{d} t, \quad x \in S.
+\end{equation*}
+W każdym razie całka w \@ref(eq:3-6) jest dobrze określona, 
+ponieważ funkcja $t \mapsto e^{-\alpha t} T_tf$ jest ciągła oraz
+\[
+\|e^{-\alpha t} T_tf\| \leq e^{-\alpha t} \|f\|.
+\]
+Zauważmy też, że $U(\alpha)$ jest operatorem liniowym na $C_0(S)$ i spełnia
+\[
+\|U(\alpha)f\| \leq  \|f\|/\alpha.
+\]
+
+
+:::{.exercise #3-9} 
+Pokaż, że dla każdego $f \in C_0(S)$,
+\[
+\lim_{\alpha \to \infty} \alpha U(\alpha) f = f.
+\]
+:::
+
+Własność półgrupy przekłada się na następującą użyteczną relację, znaną jako równanie rezolwenty:
+\begin{equation}
+U(\alpha) - U(\beta) = (\beta - \alpha) U(\alpha) U(\beta).
+(\#eq:3-7)
+\end{equation}
+Aby to sprawdzić, weźmy $\alpha \neq \beta$ i zapiszmy
+\begin{multline}
+U(\alpha) U(\beta) f 
+= \int_0^\infty e^{-\alpha t} T_t U(\beta) f \, \mathrm{d} t
+= \int_0^\infty e^{-\alpha t} \left( \int_0^\infty e^{-\beta s} T_t T_s f \, \mathrm{d} s \right) \mathrm{d} t\\
+= \int_0^\infty   \int_0^r e^{-\alpha t} e^{-\beta (r-t)} \, \mathrm{d} t  T_r f\mathrm{d} r
+= \int_0^\infty  \frac{e^{-\alpha r} - e^{-\beta r}}{\beta - \alpha} T_r f \mathrm{d} r.
+(\#eq:3-8)
+\end{multline}
+
+Jedną z konsekwencji \@ref(eq:3-7) jest to, że $U(\alpha)$ i $U(\beta)$ komutują.
