@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Wykład 6: od generatora przez półgrupę do procesu | SMUO_wyklad6.knit</title>
+  <meta name="description" content="" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Wykład 6: od generatora przez półgrupę do procesu | SMUO_wyklad6.knit" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Wykład 6: od generatora przez półgrupę do procesu | SMUO_wyklad6.knit" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="test.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path=""><a href="#wyk%C5%82ad-6-od-generatora-przez-p%C3%B3%C5%82grup%C4%99-do-procesu"><i class="fa fa-check"></i>Wykład 6: od generatora przez półgrupę do procesu</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<!--bookdown:title:end-->
+<!--bookdown:title:start-->
+<div id="wykład-6-od-generatora-przez-półgrupę-do-procesu" class="section level1 unnumbered hasAnchor">
+<h1>Wykład 6: od generatora przez półgrupę do procesu<a href="#wyk%C5%82ad-6-od-generatora-przez-p%C3%B3%C5%82grup%C4%99-do-procesu" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>2024-11-07</p>
+<p><em>Piotr Dyszewski</em></p>
+<p>W całym tym rozdziale <span class="math inline">\((L, \mathcal{D}(L))\)</span> będzie generatorem
+infinitezymalnym. Naszym pierwszym zadaniem jest skonstruowanie
+odpowiadającej mu półgrupy Fellera. Aby to zrobić, wprowadzamy
+aproksymację <span class="math inline">\(L_\epsilon\)</span> zadaną przez
+<span class="math display">\[L_\epsilon = L(I - \epsilon L)^{-1}.\]</span> Zauważmy, że <span class="math inline">\(L_\epsilon\)</span> jest
+dobrze określone ponieważ
+<span class="math display">\[f \in \mathcal{D}(L), \: f - \epsilon L f = g \quad
+        \text{jest równoważne} \quad
+        f = (I - \epsilon L)^{-1} g.\]</span> Ponadto, przy oznaczeniach jak
+wyżej, <span class="math display">\[\|L_\epsilon g\|
+        = \|L f\| \leq \frac{\|f\| + \|g\|}{\epsilon}
+        \leq \frac{2}{\epsilon} \|g\|\]</span>,
+więc <span class="math inline">\(L_\epsilon\)</span> jest ograniczonym operatorem. To pozwala zdefiniować
+<span class="math inline">\(T_\epsilon(t)\)</span> przez <span class="math display">\[T_\epsilon(t)
+        = e^{tL_\epsilon}
+        = \sum_{n=0}^{\infty} \frac{t^n L_\epsilon^n}{n!}.\]</span></p>
+<div class="exercise">
+<p><span id="exr:3-23" class="exercise"><strong>Zadanie 1  </strong></span></p>
+<ul>
+<li><p>Pokaż, że dla każdego <span class="math inline">\(f \in C_0(S)\)</span>, <span class="math display">\[\begin{equation}
+                    (I - \epsilon L)^{-1} f - \epsilon L_\epsilon f
+                    = f.
+(\#eq:3-19)
+\end{equation}\]</span></p></li>
+<li><p>Użyj części (a), aby pokazać, że <span class="math inline">\(L_\epsilon\)</span> jest generatorem
+infinitezymalny,, oraz że <span class="math inline">\(T_\epsilon(t)\)</span> jest półgrupą Fellera,
+której generatorem jest <span class="math inline">\(L_\epsilon\)</span>.</p></li>
+</ul>
+</div>
+<div class="theorem">
+<p><span id="thm:3-24" class="theorem"><strong>Twierdzenie 1  </strong></span>Dla <span class="math inline">\(f \in C_0(S)\)</span>,
+<span class="math display" id="eq:3-20">\[
+            T(t)f
+            = \lim_{\epsilon \to 0} T_\epsilon(t) f
+\tag{1}
+\]</span> jednostajnie na
+ograniczonych przedziałach <span class="math inline">\(t\)</span>. Definiuje to półgrupę Fellera, której
+generatorem jest <span class="math inline">\(L\)</span>.</p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-1" class="proof"><em>Proof</em>. </span>Najpierw sprawdzamy, że <span class="math inline">\(L_\epsilon\)</span> i <span class="math inline">\(L_\delta\)</span> komutują dla
+<span class="math inline">\(\epsilon, \delta &gt; 0\)</span>. Aby to sprawdzić zauważmy najpierw, że
+<span class="math display">\[(I - \epsilon L)^{-1} (I - \delta L)^{-1}
+            = (I - \delta L)^{-1} (I - \epsilon L)^{-1},\]</span> co z kolei
+jest prawdziwe, ponieważ <span class="math display">\[(I - \epsilon L)^{-1} (I - \delta L)^{-1} f
+            = g
+            \quad \text{jest równoważne}
+            \quad f
+            = g - (\epsilon + \delta)Lg + \epsilon \delta L^2 g,\]</span> co
+jest symetryczne w <span class="math inline">\(\epsilon\)</span> i <span class="math inline">\(\delta\)</span>. Korzystając teraz
+z <a href="#eq:3-19">(<strong>??</strong>)</a>
+napiszmy <span class="math display">\[\begin{gathered}
+            \epsilon\delta L_\epsilon L_\delta =
+            \left( (I-\epsilon L)^{-1}-I \right) \left( (I-\delta L)^{-1} -I \right) = \\
+            \left( (I-\delta L)^{-1}-I \right) \left( (I-\epsilon L)^{-1} -I \right) =
+            \epsilon\delta L_\delta L_\epsilon.
+        \end{gathered}\]</span> Zauważmy, że dzięki temu operatory <span class="math inline">\(L_\delta\)</span>,
+<span class="math inline">\(L_\epsilon\)</span>, <span class="math inline">\(T_\epsilon(t)\)</span> i <span class="math inline">\(T_\delta(t)\)</span> również komutują.</p>
+<p>Chcąc pokazać, że <span class="math inline">\(T_\epsilon(t)\)</span> przy <span class="math inline">\(\epsilon \to 0\)</span> rzeczywiście
+zbiegają będziemy chcieli opierać się na zbieżności <span class="math inline">\(L_\epsilon\)</span> przy
+<span class="math inline">\(\epsilon \to 0\)</span>. Uzasadnimy teraz nierówność, która uzasadni, że takie
+wnioskowanie jest możliwe. Stosując zasadnicze twierdzenie rachunku
+różniczkowego i całkowego otrzymujemy, że dla każdej <span class="math inline">\(f \in C_0(S)\)</span>,
+<span class="math display">\[T_\epsilon(t)f - T_\delta(t)f
+            = \int_0^t \frac{\mathrm{d}}{\mathrm{d}s} [T_\epsilon(s)T_\delta(t - s)] f \, \mathrm{d}s
+            = \int_0^t T_\epsilon(s)T_\delta(t - s) (L_\epsilon - L_\delta) f \, \mathrm{d}s.\]</span>
+Skoro <span class="math inline">\(\| T_\epsilon(s) \| , \|T_\delta(t - s) \| \leq 1\)</span> udowodniona
+właśnie nierówność implikuje, że <span class="math display">\[
+            \|T_\epsilon(t)f - T_\delta(t)f\| \leq t \|L_\epsilon f - L_\delta f\| (\#eq:3-21).\]</span>
+Wystarczy pokazać zatem, że <span class="math inline">\(L_\epsilon\)</span> zbiegają. Spodziewamy się, że
+<span class="math inline">\((I-\epsilon L)^{-1} \to I\)</span>, co z kolei powinno implikować, że
+<span class="math inline">\(L_\epsilon \to L\)</span>. Sprawdzimy teraz formalnie to rozumowanie. Dla
+<span class="math inline">\(f \in \mathcal{D}(L)\)</span> mamy <span class="math display">\[(I - \epsilon L)^{-1} f - f
+            = \epsilon (I - \epsilon L)^{-1} L f\]</span> Skoro
+<span class="math inline">\(\|(I-\epsilon L)^{-1}\|\leq 1\)</span>, to
+<span class="math display">\[\|(I - \epsilon L)^{-1} f - f\| \leq \epsilon \|L f\|.\]</span> W
+szczególności, dla <span class="math inline">\(f \in \mathcal{D}(L)\)</span>,
+<span class="math display">\[\lim_{\epsilon \to 0} (I - \epsilon L)^{-1} f
+            = f.\]</span> Skoro <span class="math inline">\((I-\epsilon L)^{-1}\)</span> jest ciągłe a
+<span class="math inline">\(\mathcal{D}(L)\)</span> gęste w <span class="math inline">\(C_0(S)\)</span>, powyższa zbieżność ma miejsce dla
+wszystkich <span class="math inline">\(f \in C_0(S)\)</span>. Ponieważ
+<span class="math display">\[L_\epsilon f = (I - \epsilon L)^{-1} L f\]</span> dla <span class="math inline">\(f \in \mathcal{D}(L)\)</span>,
+to <span class="math display" id="eq:3-21">\[
+            \lim_{\epsilon \to 0} L_\epsilon f = L f (\#eq:3-22)\]</span> dla
+<span class="math inline">\(f \in \mathcal{D}(L)\)</span>. Tak więc przez @ref\tag{2},
+granica w <a href="#eq:3-20">(1)</a> istnieje jednostajnie na ograniczonych zbiorach <span class="math inline">\(t\)</span>
+dla <span class="math inline">\(f \in \mathcal{D}\)</span>. Ponieważ zbiór <span class="math inline">\(\mathcal{D}(L)\)</span> jest gęsty w
+<span class="math inline">\(C_0(S)\)</span> i <span class="math inline">\(T_\epsilon(t)\)</span> jest kontrakcją, ten sam wniosek jest
+prawdziwy dla wszystkich <span class="math inline">\(f \in C_0(S)\)</span>. Z udowodnionej właśnie
+zbieżności wynika, że a <span class="math inline">\(T(t)\)</span> spełnia własność półgrupy oraz wszystkie
+postulaty procesu Fellera z wyjątkiem ostatniego.</p>
+<p>Aby uzasadnić, że <span class="math inline">\((T_t)_{t \in \mathbb{R}_+}\)</span> spełnia ostatnią własność
+pokażemy najpierw, że
+<span class="math display">\[(I - \alpha L)^{-1} = \alpha \int_0^\infty e^{-\alpha t} T_t \mathrm{d} t.\]</span>
+Ustalmy w tym celu <span class="math inline">\(\lambda &gt; 0\)</span> tak małe, że
+<span class="math inline">\(\mathcal{R}(I - \lambda L) = C_0(S)\)</span>, i wybierzmy <span class="math inline">\(\alpha\)</span> tak, że
+<span class="math inline">\(\alpha \lambda = 1\)</span>. Ustalmy <span class="math inline">\(g \in C_0(S)\)</span>. Chcąc uzasadnić
+<span class="math display" id="eq:3-cel">\[
+            (I - \alpha L)^{-1}g = \alpha \int_0^\infty e^{-\alpha t} T_tg \mathrm{d} t
+\tag{3}
+\]</span>
+odwołamy się do aproksymacji <span class="math inline">\(L\)</span> i <span class="math inline">\(T(t)\)</span> przez odpowiednio <span class="math inline">\(L_\epsilon\)</span>
+oraz <span class="math inline">\(T_\epsilon(t)\)</span>. Niech <span class="math display">\[f_\epsilon = (I-\alpha L_\epsilon)^{-1}g  
+            = \alpha U_\epsilon(\alpha)g
+            = \alpha \int_0^\infty e^{-\alpha t} T_\epsilon(t)g \, \mathrm{d}t.\]</span>
+Z <a href="#eq:3-20">(1)</a>,
+<span class="math display">\[\lim_{\epsilon \to 0^+} f_\epsilon
+            = f, \qquad
+            f= \alpha \int_0^\infty e^{-\alpha t} T(t)g \, \mathrm{d}t.\]</span>
+Połóżmy <span class="math inline">\(h_\epsilon = (I - \epsilon L)^{-1} f_\epsilon\)</span>. Wówczas z
+<a href="#eq:3-19">(<strong>??</strong>)</a>,
+<span class="math inline">\(\lim_{\epsilon \to 0} h_\epsilon = f\)</span>. Niech wreszcie
+<span class="math inline">\(h = (I-\lambda L)^{-1} g\)</span>. Naszym aktualnym
+celem <a href="#eq:3-cel">(3)</a> we wprowadzonej właśnie notacji jest pokazać, że
+<span class="math inline">\(f=h\)</span>. Z definicji <span class="math inline">\(L_\epsilon\)</span>, <span class="math display">\[\begin{gathered}
+            \lambda L h_\epsilon =
+            L_\epsilon f_\epsilon =
+            \alpha\int_0^\infty e^{-\alpha t} L_\epsilon T_\epsilon(t) f \mathrm{d}t=
+            \alpha\int_0^\infty e^{-\alpha t} \frac{\mathrm{d}}{\mathrm{d}t} T_\epsilon(t) f \mathrm{d}t \\
+            -\alpha g+\alpha^2\int_0^\infty e^{-\alpha t}T_\epsilon(t) f \mathrm{d}t = \alpha(f_\epsilon-g)
+            \rightarrow \alpha (f - g)
+        \end{gathered}\]</span> gdy <span class="math inline">\(\epsilon \to 0\)</span>. Dlatego,
+<span class="math display">\[\lim_{\epsilon \to 0} [(h_\epsilon - h) - \lambda L(h_\epsilon - h)] = 0,\]</span>
+z czego z kolei wynika, że <span class="math inline">\(h_\epsilon - h \to 0\)</span>. Stąd <span class="math inline">\(f = h\)</span>.
+Zastosowanie <a href="#eq:3-cel">(3)</a> do <span class="math inline">\(g_n\)</span> i <span class="math inline">\(f_n =(I-\lambda L)^{-1}g_n\)</span> z
+Definicji <a href="#def:3-12"><strong>??</strong></a> widzimy, że
+<span class="math display">\[\lim_{n \to \infty} \alpha \int_{0}^{\infty} e^{-\alpha t} (T(t)g_n)(x) \mathrm{d}t
+            =\lim_{n \to \infty }f_n(x)= 1\]</span> dla każdego <span class="math inline">\(x \in S\)</span>.
+Niech <span class="math inline">\(\mu_{t,x}\)</span> będzie miarą zdefiniowaną przez
+<span class="math display">\[T(t)f(x) = \int f(y) \mu_{t,x}(\mathrm{d} y).\]</span> Skoro <span class="math inline">\(T(t)\)</span> jest
+ograniczonym operatorem, to miara <span class="math inline">\(\mu_{t,x}\)</span> jest skończona. Jako, że
+<span class="math inline">\(g_n \to 1\)</span> punktowo, to twierdzenia o zbieżności ograniczonej mamy więc
+<span class="math display">\[T(t)g_n(x) \to \mu_{t,x}(S).\]</span> Stąd
+<span class="math display">\[1 =  \alpha \int_{0}^{\infty} e^{-\alpha t}  \mu_{t,x}(S) \mathrm{d} t.\]</span>
+Innymi słowy transformatą Laplace’a funkcji <span class="math inline">\(t \mapsto \mu_{t,x}(S)\)</span>
+jest <span class="math inline">\(\alpha \to 1/\alpha\)</span>. Widzimy więc, że <span class="math inline">\(\mu_{t,x}(S) \equiv 1\)</span>.
+Czyli <span class="math inline">\(T(t) g_n \to 1\)</span> punktowo. Oznacza to, że spełniona jest ostatnia
+własność w Definicji <a href="#def:3-4"><strong>??</strong></a>.</p>
+<p>Wreszcie, sprawdzamy, że ta półgrupa Fellera
+<span class="math inline">\((T_t)_{t \in \mathbb{R}_+}\)</span> ma generator <span class="math inline">\(L\)</span>. Mamy
+<span class="math display">\[T_\epsilon(t)f - f
+            = \int_{0}^{t} \frac{\mathrm{d}}{\mathrm{d}s} T_\epsilon(s) \mathrm{d}s
+            = \int_{0}^{t} T_\epsilon(s)L_\epsilon f \mathrm{d}s.\]</span>
+Jeśli <span class="math inline">\(f \in \mathcal{D}(L)\)</span>, to <a href="#eq:3-20">(1)</a>, @ref[eq:3-22) oraz
+własność kontrakcji <span class="math inline">\(T_\epsilon(t)\)</span> implikują, że można przejść do
+granicy w tym równaniu, aby uzyskać <span class="math display">\[T(t)f - f
+            = \int_{0}^{t} T(s)Lf \mathrm{d}s.\]</span> Zatem
+<span class="math display">\[\lim_{t \to 0} \frac{T(t)f - f}{t}
+            = Lf \text{ dla } f \in \mathcal{D}(L).\]</span> Pokazaliśmy
+właśnie, że <span class="math display">\[\mathcal{D}(L) \subseteq \mathcal{D}&#39;(L) =
+            \left\{ f \in C_0(S) \: :\: \lim_{t \to 0} (T(t)f - f)/t \text{ istnieje } \right\}.\]</span>
+Wiemy, że obie pary <span class="math inline">\((L, \mathcal{D}(L))\)</span> oraz <span class="math inline">\((L, \mathcal{D}&#39;(L))\)</span> są
+generatorami infinitezymalnymi. Niech <span class="math inline">\(f \in \mathcal{D}&#39;(L)\)</span>. Rozważmy
+<span class="math inline">\(g = (I-\lambda L)f\)</span>. Istnieje <span class="math inline">\(h \in \mathcal{D}(L)\)</span> takie, że
+<span class="math inline">\(g = (I-\lambda L)h\)</span>. Stąd <span class="math inline">\((I-\lambda L)(f-h) =0\)</span> a co za tym idzie
+<span class="math inline">\(f = h \in \mathcal{D}(L)\)</span>. Pokazaliśmy właśnie, że
+<span class="math inline">\(\mathcal{D}(L) = \mathcal{D}&#39;(L)\)</span>.</p>
+</div>
+<div class="theorem">
+<p><span id="thm:3-26" class="theorem"><strong>Twierdzenie 2  </strong></span>Jeśli <span class="math inline">\((T_t)_{t \geq 0}\)</span> jest
+półgrupą Fellera, to istnieje proces Fellera <span class="math inline">\((\mathbf{P}, \mathbb{F})\)</span>
+spełniający <span class="math display">\[\mathbf{E}_x f(X(t)) = T_tf(x)\]</span> dla <span class="math inline">\(x \in S, t \geq 0\)</span>,
+oraz <span class="math inline">\(f \in C_0(S)\)</span>.</p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-2" class="proof"><em>Proof</em>. </span>Ustalmy <span class="math inline">\(x \in S\)</span>. Pokażemy najpierw, że istnieje proces
+<span class="math inline">\(Y(t), t \in \mathbb{Q}^+\)</span> na pewnej przestrzeni probabilistycznej,
+który ma pożądane rozkłady skończenie wymiarowe oraz <span class="math inline">\(Y(0) = x\)</span>.</p>
+<p>Dla dowolnego <span class="math inline">\(n \in \mathbb{N}\)</span> i dowolnych
+<span class="math inline">\(0 \leq t_1&lt; t_2 &lt;\ldots &lt; t_n\)</span> definiujemy rozkład
+<span class="math inline">\(\mu_{t_1, \ldots, t_n}\)</span> na <span class="math inline">\(S^n\)</span> poprzez następujący wymóg: dla
+dowolnych <span class="math inline">\(f_1, \ldots, f_n\)</span> z <span class="math inline">\(C_0(S)\)</span> zachodzi <span class="math display">\[\begin{equation}
+            \int f_1(y_1) f_2(y_2) \cdots f_n(y_n) \mu_{t_1, \ldots, t_n}(\mathrm{d}(y_1, \ldots y_n))
+            = T_{t_1} \left( f_1 T_{t_2-t_1} \left( f_2 T_{t_3-t_2} ( \ldots)  \right) \right)(x).(\#eq:3-semiii)\end{equation}\]</span>
+Funkcje o rozdzielonych zmiennych <span class="math inline">\(f_1(y_1) f_2(y_2) \cdots f_n(y_n)\)</span> są
+liniowo gęste w <span class="math inline">\(C\left( S^n \right)\)</span>. Miara <span class="math inline">\(\mu_{t_1, \ldots, t_n}\)</span>
+jest więc dobrze określona (istnieje dokładnie jedna spełniająca zadany
+warunek). Aby powołać się na twierdzenie Kołmogorowa o istnieniu procesu
+należy uzasadnić, że skonstruowane w ten sposób miary są zgodne.
+Dokładniej, że dla dowolnego <span class="math inline">\(j\leq n\)</span>, i dowolnych borelowskich
+<span class="math inline">\(A_1, \ldots , A_n \in S\)</span>, <span class="math display">\[\begin{gathered}
+            \mu_{t_1, \ldots, t_n}(A_1 \times \cdots \times A_{j-1} \times
+            S \times A_{j+1} \times \cdots A_n) = \\
+            \mu_{t_1, \ldots, t_{j-1}, t_{j+1} \ldots t_n}(A_1 \times \cdots \times A_{j-1} \times
+            A_{j+1} \times \cdots A_n).
+        \end{gathered}\]</span> Wynika to
+z <a href="#eq:3-semiii">(<strong>??</strong>)</a> dla <span class="math inline">\(f_j\equiv 1\)</span> i zastosowaniu własności
+półgrupy <span class="math inline">\((T_t)_{t \in \mathbb{R}_+}\)</span>. Zastosowanie twierdzenia
+Kołmogorowa pozwala wywnioskować istnienie procesu o zadanych rozkładach
+skończenie wymiarowych. Jednakże nie daje ono żadnej kontroli nad
+regularnością trajektorii. Dlatego jesteśmy zmuszeni przeprowadzić
+dodatkową konstrukcję.</p>
+<p>Stosując konstrukcję w poprzedniego paragrafu dla wymiernych <span class="math inline">\(t\)</span>
+otrzymujemy proces <span class="math inline">\((Y_q^{(x)} \: : \: q \in \mathbb{Q}_+)\)</span> o rozkładach
+zadanych rozkładach skończenie wymiarowych:
+<span class="math display">\[\mathbb{P}[Y_{t_1}^{(x)}\in A_1, \ldots , Y_{t_n}^{(x)} \in A_n] =
+            \mu_{t_1, \ldots, t_n}(A_1 \times \cdots \times A_n)\]</span> oraz
+taki, że <span class="math inline">\(\mathbb{P}[Y^{(x)}_0=x]=1\)</span>. Proces ten ma własność Markowa. Z
+definicji miary <span class="math inline">\(\mu_{t_1, \ldots, t_n}\)</span>,
+<span class="math display">\[\mathbb{E} [f_1(Y_{t_1}^{(x)}) \cdots f_n(Y_{t_n}^{(x)})  ] =
+            \mathbb{E} [f_1(Y_{t_1}^{(x)}) \cdots f_{n-1}(Y_{t_{n-1}}^{(x)}) T_{t_{n} - t_{n-1}} f_n (Y_{n-1}^{(x)}) ]\]</span>
+Powyższe implikuje
+<span class="math display">\[\mathbb{E} [f_n(Y_{t_n}^{(x)})  | Y_q^{(x)}, q \leq t_{n-1}] = T_{t_n-t_{n-1}} f_n(Y_{t_{n-1}}^{(x)})\]</span>
+W analogiczny sposób uzasadniamy własność Markowa.</p>
+<p>Jeśli <span class="math inline">\(f \in C_0(S)\)</span> jest nieujemna, to
+<span class="math display">\[e^{-\alpha t} T(t) U(\alpha) f
+            = \int_{t}^{\infty} e^{-\alpha s} T(s) f \mathrm{d}s
+            \leq U(\alpha) f.\]</span> Stąd wynika, że
+<span class="math inline">\(e^{-\alpha t} U(\alpha) f(Y(t))\)</span> jest (ograniczonym) supermartingałem
+względem filtracji <span class="math inline">\(\{\mathcal{F}_t, t \in \mathbb{Q}^+\}\)</span>, gdzie
+<span class="math inline">\(\mathcal{F}_t\)</span> jest generowana przez
+<span class="math display">\[(Y(s), s \in \mathbb{Q} \cap [0,t]).\]</span> Rzeczywiście mamy
+<span class="math display">\[\mathbb{E}[ e^{-\alpha(t+s)} U(\alpha) f(Y_{t+s}) | \mathcal{F}_s]
+            =  e^{-\alpha (t+s)} T_t U(\alpha) f(Y_s) \leq e^{-\alpha s} U(\alpha) f(Y_s).\]</span>
+Wówczas prawdopodobieństwem jeden, prawostronne i lewostronne granice
+tego supermartingału wzdłuż liczb wymiernych istnieją w każdym
+<span class="math inline">\(t \in [0, \infty)\)</span>.</p>
+<p>Dowód twierdzenia o zbieżności nadmartynggałów sprowadza się pokazania,
+że w prawdopodobieństwem jeden liczba przejść w dół przez każdy
+przedział o końcach wymiernych jest skończona. Każda funkcja zmiennej
+rzeczywistej o tej własności musi mieć lewostronną i prawostronną
+granicę w każdym punkcie.</p>
+<p>Dla każdej <span class="math inline">\(\alpha\)</span> i każdej nieujemnej <span class="math inline">\(f\)</span> proces
+<span class="math inline">\(e^{-\alpha t} U(\alpha) f(Y_t)\)</span> ma lewostronne i prawostronne granice.
+Oczywiście, zbiór o prawdopodobieństwie zero, na którym to się nie
+udaje, może zależeć od <span class="math inline">\(f\)</span> i <span class="math inline">\(\alpha\)</span>. Musimy więc ograniczyć naszą
+uwagę do gęstego, przeliczalnego zbioru <span class="math inline">\(f\)</span> i <span class="math inline">\(\alpha\)</span>, aby stwierdzić
+istnienie prawostronnych i lewostronnych granic procesu <span class="math inline">\(Y(s)\)</span> samego w
+sobie. Ponieważ <span class="math inline">\(\alpha U(\alpha) f \to f\)</span> gdy <span class="math inline">\(\alpha \to \infty\)</span>, oraz
+<span class="math inline">\(C_0(S)\)</span> jest ośrodkową przestrzenią metryczną, możemy po prostu użyć
+funkcji <span class="math inline">\(U(\alpha) f\)</span>, gdzie <span class="math inline">\(\alpha\)</span> jest liczbą całkowitą, oraz <span class="math inline">\(f\)</span>
+jest wzięte z pewnego przeliczalnego gęstego zbioru w <span class="math inline">\(C_0(S)\)</span>.</p>
+<p>Istnieje nadal jeden problem, że te prawostronne i lewostronne granice
+mogą być jednopunktową kompaktyfikacją <span class="math inline">\(S\)</span>, i wykluczenie tego przypadku
+wymaga dodatkowego argumentu. Chodzi o to, żeby uzasadnić, że <span class="math inline">\(Y\)</span> nie
+ucieka do nieskończoności. Niech <span class="math inline">\(f \in C_0(S)\)</span> będzie ściśle dodatnie.
+Rozważmy supermartingał <span class="math inline">\(M(t) = e^{-tU(1)f(Y(t))}\)</span>. To jest ściśle
+dodatnie, więc <span class="math inline">\(\inf_{s \in \mathbb{Q} \cap [0,t]} M(s) &gt; 0\)</span> prawie na
+pewno dla każdego <span class="math inline">\(t &gt; 0\)</span> (zadanie). Oznacza to, że z
+prawdopodobieństwem jeden <span class="math inline">\(Y_s\)</span> dla <span class="math inline">\(s \leq t\)</span> są zawarte w zbiorze
+zwartym.</p>
+<p>Wiemy teraz, że z prawdopodobieństwem jeden, <span class="math inline">\(Y(s)\)</span> ma prawostronne i
+lewostronne granice w każdym <span class="math inline">\(t \in [0, \infty)\)</span>. Więc możemy
+zdefiniować
+<span class="math display">\[X(t) = \lim_{\substack{s \downarrow t \\ s \in \mathbb{Q}}} Y(s).\]</span> To
+jest automatycznie prawostronnie ciągłe i ma lewostronne granice.
+Ponieważ skończenie wymiarowe rozkłady odpowiadające <span class="math inline">\(T(t)\)</span> są słabo
+ciągłe, <span class="math inline">\(X(t)\)</span> ma poprawne skończenie wymiarowe rozkłady.</p>
+</div>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["SMUO_wyklad6.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
