@@ -1,0 +1,23 @@
+book_filename: "SMUO_wyklad4" # Nazwa wyjściowego pliku PDF
+rmd_files: ["wyklad4/smuo_2024_wyklad4.Rmd"] # Kolejność plików Rmd
+output_dir: "wyklad4" # Katalog wyjściowy (opcjonalny)
+delete_merged_file: true
+language:
+  label:
+    fig: 'Rysunek '      # Zmienia prefiks dla rysunków
+    tab: 'Tabela '       # Zmienia prefiks dla tabel
+    eq: 'Równanie '      # Zmienia prefiks dla równań matematycznych
+    thm: 'Twierdzenie '  # Zmienia prefiks dla twierdzeń (jeśli używane)
+    exr: 'Zadanie '
+    def: 'Definicja '
+    exm: 'Przykład '
+    cor: 'Wniosek '
+documentclass: scrbook
+output:
+  bookdown::pdf_document:
+    toc: false
+    includes:
+      in_header: preamble.tex
+bookdown::gitbook:
+  config:
+    toc: false

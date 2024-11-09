@@ -1,0 +1,257 @@
+# Wykład 4: Generatory {-}
+
+2024-10-24
+
+*Piotr Dyszewski*
+
+Do tej pory te definicje powinny być dość intuicyjne. 
+Kolejna definicja może wydawać się mniej oczywista, 
+jednak okazuje się być odpowiednim odpowiednikiem definicji macierzy $Q$.
+
+	
+Aby nakreślić analogię, biorąc macierz $Q$ na przeliczalnym zbiorze $S_0$, niech
+$p$ będzie funkcją przejścia zadaną jako
+\begin{equation*}
+    p_t = e^{tq} = \sum_{k=0}^\infty \frac{t^k}{k!} q^k.
+\end{equation*}
+Z tą funkcją wiążemy półgrupę
+\begin{equation*}
+    T_t f(x) = \sum_{y \in S_0} p_t(x,y) f(y),
+\end{equation*}
+a także rezolwentę
+\begin{equation*}
+    U(\alpha) f(x) = \int_0^\infty e^{-\alpha t} T_t f(x) \, \mathrm{d}t
+    = \int_0^\infty e^{-\alpha t} e^{tq} f(x) \, \mathrm{d}t
+    = \int_0^\infty e^{-\alpha t} e^{tq} \, \mathrm{d}t \, f(x).
+\end{equation*}
+Ostatnie przejście wynika z faktu, że mamy tutaj do czynienia z mnożeniem
+wektora przez macierz. Zauważmy, że
+\begin{equation*}
+    (q - \alpha I) \int_0^\infty e^{-\alpha t} e^{tq} \, \mathrm{d}t
+    = \int_0^\infty (q - \alpha I) e^{-\alpha t} e^{tq} \, \mathrm{d}t
+    = \int_0^\infty \frac{\mathrm{d}}{\mathrm{d}t} e^{-\alpha t} e^{tq} \, \mathrm{d}t = -I.
+\end{equation*}
+Oznacza to, że
+\begin{equation*}
+    U(\alpha) f(x) = (\alpha I - q)^{-1} f(x).
+\end{equation*}
+Z własności rezolwenty wiemy, że
+\begin{equation*}
+    \left\| (I - \frac{1}{\alpha} q)^{-1} \right\| = \|\alpha U(\alpha)\| \leq 1.
+\end{equation*}
+Ostatnia własność rezolwenty, z której tutaj skorzystaliśmy, wynika z kontraktywności
+operatorów w półgrupie $T$ ($\|T_t\| \leq 1$).
+
+
+:::{.definition #3-12}
+Generator infinitezymalny na $C_0(S)$ to para 
+uporządkowana $(L, \mathcal{D}(L))$ taka, że:
+
+- **(GI1)** $\mathcal{D}(L)$ jest gęstą podprzestrzenią liniową $C_0(S)$.
+- **(GI2)** $L \colon \mathcal{D}(L) \to C_0(S)$ jest operatorem liniowym.
+- **(GI3)** Jeśli $f \in \mathcal{D}(L)$, $\lambda \geq 0$, i $f - \lambda L f = g$, to
+\[
+\inf_{x \in S} f(x) \geq \inf_{x \in S} g(x).
+\]
+- **(GI4)** $\mathcal{R}(I - \lambda L) = C_0(S)$ dla wszystkich dostatecznie małych $\lambda > 0$.
+- **(GI5)** Dla dostatecznie małych dodatnich $\lambda$ istnieje 
+  ciąg $f_n \in \mathcal{D}(L)$ (który może zależeć od $\lambda$) taki, że $g_n = f_n - \lambda L f_n$ spełnia warunek 
+  $\sup_n \|g_n\| < \infty$, i zarówno $f_n$, jak i $g_n$ zbiega punktowo do $1$.
+:::
+
+Zauważmy, że własność **(GI3)** ma następującą konsekwencję:
+\begin{equation}
+    f \in \mathcal{D}(L), \lambda \geq 0, f - \lambda L f = g \implies \|f\| \leq \|g\|.
+    (\#eq:3-12)
+\end{equation}
+Aby to zobaczyć, napiszmy:
+\[
+    \inf_{x \in S} g(x) \leq \inf_{x \in S} f(x) \leq 
+    \sup_{x \in S} f(x) \leq \sup_{x \in S} g(x),
+\]
+gdzie ostatnia nierówność wynika z **(GI3)**, gdy zastąpimy $f$ i $g$ odpowiednio
+przez $-f$ i $-g$. Oznacza to, że operator $I - \lambda L$ jest różnowartościowy. 
+Rzeczywiście, dla $f - \lambda L f = g = h - \lambda L h$, mamy $\|f - h\| \leq \|g - g\| = 0$.
+Tak więc, dla dostatecznie małych dodatnich $\lambda$, $(I - \lambda L)^{-1}$ 
+jest dobrze określoną kontrakcją, która odwzorowuje funkcje nieujemne na funkcje nieujemne.
+
+Ponieważ Definicja \@ref{def:3-12} jest dość abstrakcyjna, pomocne może być rozważenie
+następującego przykładu, który okazuje się być generatorem procesu na prostej,
+poruszającego się w prawo z jednostkową prędkością. 
+Zauważmy, że najtrudniejszą własnością do sprawdzenia jest **(GI4)**. Zazwyczaj tak bywa.
+
+:::{.exercise #3-13}
+Przypuśćmy, że $S = \mathbb{R}$,
+\[
+    \mathcal{D}(L) = \{f \in C_0(\mathbb{R}) : f' \in C_0(\mathbb{R})\},
+\]
+oraz $L f = f'$. 
+Pokaż, że para $(L, \mathcal{D}(L))$ jest generatorem infinitezymalnym.
+:::
+
+## Od procesu do półgrupy i generatora {-}
+
+Oto pierwszy krok w przejściu od procesu Fellera do jego generatora.
+
+:::{.theorem #3-15} 
+Niech dany będzie proces Fellera $(\mathbf{P}, \mathbb{F})$. 
+Dla $t \geq 0$ zdefiniujmy
+\begin{equation}
+T_t f(x) = \mathbf{E}_x [f(X(t))]
+(\#eq:3-14)
+\end{equation}
+dla $f \in C_0(S)$. 
+Wtedy $T = (T_t)_{t \geq 0}$ jest półgrupą Fellera.
+:::
+
+:::{.proof}
+Własności a., d. i e. z Definicji \@ref(def:3-1) są natychmiastowe. 
+Własność półgrupy c. wynika z własności Markowa:
+\[
+    T_{s + t} f(x) = 
+    \mathbf{E}_x f(X(s + t)) = 
+    \mathbf{E}_x [ \mathbf{E}_{X(s)} f(X(t)) | \mathcal{F}_s] 
+    = \mathbf{E}_x [T_t f(X(s))] 
+    = T_s T_t f(x).
+\]
+Zbieżność punktowa w b. wynika z ciągłości ścieżek i ciągłości $f$. 
+Aby sprawdzić wymaganą jednostajność w tej zbieżności, użyjemy rezolwenty
+\begin{equation*}
+    U(\alpha) f(x) = \int_0^\infty e^{-\alpha t} T_t f(x) \, \mathrm{d}t 
+    = \mathbf{E}_x \left[ \int_0^\infty e^{-\alpha t} f(X_t) \, \mathrm{d}t \right].
+\end{equation*}
+W dowodzie równania rezolwenty \@ref(eq:3-7), użyliśmy wspomnianej jednostajności, 
+ponieważ całki były interpretowane jako całki funkcji o wartościach w $C_0(S)$. 
+Jednak te same obliczenia stosują się do równania rezolwenty bez tej jednostajności, 
+jeśli całki są interpretowane jako zwykłe całki dla ustalonego $x$. 
+Aby uzasadnić zamianę kolejności całkowania, zauważmy, 
+że $T_t f(x)$ jest jednostajnie ograniczone, prawostronnie ciągłe w $t$ dla każdego $x$, 
+a także ciągłe w $x$ dla każdego $t$, zatem jest wspólnie mierzalne względem $x$ i $t$.
+
+Zbiór 
+$\mathcal{L} = \mathcal{R}(U(\alpha))$ jest niezależny od $\alpha$. Z równania
+rezolwenty mamy bowiem
+\begin{equation*}
+    U(\alpha)f = U(\beta) \left(f + (\beta - \alpha) U(\beta) f \right).
+\end{equation*}
+Jeśli $f = U(\alpha)g \in \mathcal{L}$, to
+\[
+    T_t f = \int_0^\infty e^{-\alpha s} T_{s + t} g \, \mathrm{d}s 
+    = \int_t^\infty e^{-\alpha(r - t)} T_r g \, \mathrm{d}r,
+\]
+co zbiega jednostajnie do $f$ gdy $t \downarrow 0$. 
+Ponieważ każde $T_t$ jest kontrakcją, mamy $\|T_t f - f\| \to 0$
+dla wszystkich $f$ w mocnym domknięciu ${\rm cl}(\mathcal{L})$.
+Pokażemy teraz, że wspomniane mocne domknięcie jest równe słabemu domknięciu:
+\begin{equation*}
+    {\rm wcl}(\mathcal{L}) = \left\{ f \in C_0(S) \: : \: 
+    \exists \{f_n\}_n \subseteq \mathcal{L}, \: 
+    x(f_n) \to x(f), \: \forall x \in C_0(S)^* \right\}.
+\end{equation*}
+Skoro zbieżność w normie implikuje zbieżność słabą, to
+${\rm cl}(\mathcal{L}) \subseteq {\rm wcl}(\mathcal{L})$. Weźmy
+$f \notin {\rm cl}(\mathcal{L})$. Ponieważ $\mathcal{L}$ jest wypukły, z twierdzenia
+Hahna-Banacha istnieje funkcjonał liniowy $\mu$
+oddzielający $f$ od ${\rm cl}(\mathcal{L})$, taki że
+\begin{equation*}
+    \mu(f) < \inf_{g \in {\rm cl}(\mathcal{L})} \mu(g).
+\end{equation*}
+Funkcjonał ten dowodzi, że $f \notin {\rm wcl}(\mathcal{L})$.
+
+Pozostaje pokazać, że słabe domknięcie $\mathcal{L}$ jest równe całemu $C_0(S)$.
+Jest tak, ponieważ $\alpha U(\alpha) f$ zbiega punktowo do $f$ gdy $\alpha \to \infty$
+dla każdego $f \in C_0(S)$.
+:::
+
+Następnie zobaczymy, jak przejść od półgrupy do generatora.
+
+:::{ .theorem #3-16} 
+Przypuśćmy, że $(T_t)_{t \geq 0}$ jest półgrupą Fellera. Zdefiniujmy
+\begin{equation}
+    Lf = \lim_{t \downarrow 0} \frac{T(t)f - f}{t}
+    (\#eq:3-15)
+\end{equation}
+dla $f$ z
+\[
+\mathcal{D}(L) = \{f \in C(S) : \text{przy $t \to 0$ granica }  (T_tf-f)/t \text{ istnieje}\}.
+\]
+Wtedy para $(L, \mathcal(L))$ jest generatorem infinitezymalnym. 
+Ponadto:
+    
+a. Dla dowolnego $g \in C_0(S)$ oraz $\alpha > 0$,
+\begin{equation}
+f = \alpha U(\alpha)g \text{ wtedy i tylko wtedy, gdy } f \in \mathcal{D}(L) \text{ i spełnia } f - \alpha^{-1} Lf = g.
+(\#eq:3-16)
+\end{equation}
+
+b. Jeśli $f \in \mathcal{D}(L)$, to $T_t f \in \mathcal{D}(L)$
+dla wszystkich $t \geq 0$, jest funkcją ciągłą, różniczkowalną względem $t$, i spełnia
+\begin{equation}
+\frac{\mathrm{d}}{\mathrm{d}t} T_t f = T_t Lf = L T_t f.
+(\#eq:3-17)
+\end{equation}
+:::
+
+::: {.proof}
+Przypuśćmy, że $f = \alpha U(\alpha)g$ dla pewnego $\alpha > 0$ oraz $g \in C_0(S)$. 
+Korzystając z własności półgrupy i zmieniając zmienne 
+jak w dowodzie Twierdzenia \@ref{thm:3-15}, mamy:
+\begin{align*}
+    \frac{T_t f - f}{t} &= \alpha \frac{e^{\alpha t} - 1}{t} 
+    \int_t^{\infty} e^{-\alpha s} T_s g \, \mathrm{d}s 
+    - \alpha \frac{1}{t} \int_0^t e^{-\alpha s} T_s g \, \mathrm{d}s \\
+    &\to \alpha^2 U(\alpha) g - \alpha g 
+    = \alpha f - \alpha g,
+\end{align*}
+gdy $t \downarrow 0$. 
+Przy przejściu do granicy skorzystaliśmy z własności b. z Definicji \@ref{def:3-1}. 
+To dowodzi jednej implikacji w \@ref(eq:3-16), 
+jak również **(GI4)** w Definicji \@ref(def:3-12).
+
+Ponieważ $\alpha U(\alpha)g \in \mathcal{D}(L)$ i $\alpha U(\alpha)g \to g$ 
+gdy $\alpha \to \infty$, zbiór $\mathcal{D}(L)$ jest gęsty w $C_0(S)$. 
+To uzasadnia **(GI1)**.
+
+Dla $t > 0$ oraz $f \in \mathcal{D}(L)$ zdefiniujmy
+\begin{equation*}
+    g_t = \left(1 + \frac{\lambda}{t}\right) f - \frac{\lambda}{t} T(t)f = f - \frac{\lambda}{t}(T(t)f - f).
+\end{equation*}
+Wtedy $\lim_{t \downarrow 0} g_t = f - \lambda \mathcal{L}f$ i
+\[
+    (1 + \lambda/t)\inf_{x \in S} f(x) \geq \frac{\lambda}{t} \inf_{x \in S} T(t) f(x) + \inf_{x \in S} g_t(x) 
+    \geq \frac{\lambda}{t} \inf_{x \in S} f(x) + \inf_{x \in S} g_t(x),
+\]
+więc własność **(GI3)** z Definicji \@ref(def:3-12) jest spełniona. 
+Drugą nierówność pozostawiamy jako zadanie.
+
+Teraz przypuśćmy, że $f - \alpha^{-1} L f = g$ dla pewnego $f \in \mathcal{D}(L)$ oraz $\alpha > 0$. 
+Przez dowiedzioną już implikację w \@ref(eq:3-16), $h = \alpha U(\alpha) g$ spełnia
+$h - \alpha^{-1} L h = g$, więc $f = h$ z \@ref(eq:3-12). 
+Aby sprawdzić własność **(GI5)** z Definicji \@ref(def:3-12), 
+przypuśćmy, że $g_n \in C(S)$ spełniają
+$\sup_n \|g_n\| < \infty$, oraz że $g_n$ i $T(t) g_n$ są zbieżne punktowo do $1$ dla każdego $t$.
+Zdefiniujmy $f_n \in \mathcal{D}(L)$ przez 
+$g_n = f_n - \lambda L f_n$.
+Wtedy $f_n = \alpha U(\alpha) g_n$ z \@ref(eq:3-16). 
+Ponieważ $T(t) g_n \to 1$ punktowo, to
+$f_n \to 1$ punktowo przez definicję $U(\alpha)$ 
+oraz twierdzenie o zbieżności ograniczonej.
+
+
+Aby udowodnić punkt (b) twierdzenia, zauważmy, że
+\[
+    \frac{\mathrm{d}}{\mathrm{d}t} T(t) f = \lim_{s \to 0} \frac{T(t+s)f - T(t)f}{s} 
+    = \lim_{s \to 0} T(t) \left( \frac{T(s)f - f}{s} \right) 
+    = T(t) \mathcal{L} f = \mathcal{L} T(t) f,
+\]
+pod warunkiem, że którakolwiek z granic istnieje, 
+ponieważ wyrażenia w środku granic są identyczne. 
+Środkowa granica rzeczywiście istnieje, ponieważ \( f \in \mathcal{D}(L) \) 
+oraz \( T(t) \) jest kontrakcją. 
+W związku z tym pozostałe granice również istnieją.
+
+Skoro istnieje trzecia granica, to \( T(t)f \in \mathcal{D}(L) \) 
+oraz \@ref(eq:3-17) zachodzi. 
+Środkowe wyrażenie w \@ref(eq:3-17) jest ciągłe względem \( t \), 
+więc \( T(t)f \) jest ciągłe i różniczkowalne.
+:::
