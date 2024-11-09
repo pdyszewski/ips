@@ -1,0 +1,372 @@
+# Wykład 2: Mocna własność Markowa {-}
+
+2024-10-10
+
+*Piotr Dyszewski*
+
+Pojęcie czasu zatrzymania odgrywa kluczową rolę w teorii procesów stochastycznych. 
+Są to losowe momenty adaptowalne do z góry zadanej filtracji. 
+Jest to kluczowa koncepcj w silnej własności Markowa. 
+Będziemy korzystać z ciągłej filtracji $\mathbb{F}=( \mathcal{F}_t )_{t \in \mathbb{R}_+}$.
+
+## Czasy zatrzymania {-}
+
+Przypomnijmy, że w czasie dyskretnym definicja czasu zatrzymania $\tau$ jest taka, 
+że $\{ \tau = n \} \in \mathcal{F}_n$ dla każdego naturalnego $n$. 
+Jest to równoważne z warunkiem, że $\{ \tau \leq n \} \in \mathcal{F}_n$ 
+dla każdego naturalnego $n$. W czasie ciągłym ta równoważność nie zachodzi, 
+ponieważ $[0, \infty)$ nie jest przeliczalne. 
+Warunek analogiczny do tego drugiego jest naturalny do użycia w czasie ciągłym, 
+ponieważ zazwyczaj zdarzenie $\{ \tau = t \}$ ma zerowe prawdopodobieństwo dla każdego $t$.
+
+::: {.definition #1-54}
+Zmienna losowa $\tau : \Omega \to [0, \infty]$ nazywana jest $\mathbb{F}$-czasem zatrzymania, 
+jeśli $\{ \tau \leq t \} \in \mathcal{F}_t$ dla każdego $t \geq 0$.
+:::
+
+W niektórych kontekstach filtracja $\mathbb{F}$, z którą pracujemy, 
+jest na tyle regularna, że ułatwia to weryfikację, czy zmienna jest czasem zatrzymania.
+
+::: {.definition #1-0}
+Powiemy, że filtracja $\mathbb{F} = (\mathcal{F}_t)_{t \in \mathbb{R}_+}$ jest prawostronnie ciągła, jeżeli
+\[
+\mathcal{F}_t = \mathcal{F}_{t_+}, \qquad \text{gdzie} \qquad \mathcal{F}_{t+} := \bigcap_{s > t} \mathcal{F}_s
+\]
+dla każdego $t \in \mathbb{R}_+$.
+:::
+
+::: {.exercise #1-55}
+Załóżmy, że filtracja $\mathbb{F}$ jest prawostronnie ciągła. 
+Wówczas $\tau$ jest czasem zatrzymania wtedy i tylko wtedy, 
+gdy $\{ \tau < t \} \in \mathcal{F}_t$ dla każdego $t \in \mathbb{R}_+$.
+:::
+
+::: {.exercise #2-1-57}
+Pokaż, że jeśli $\tau_1$ i $\tau_2$ są czasami zatrzymania, 
+to również $\tau_1 \wedge \tau_2$, $\tau_1 \vee \tau_2$ i 
+$\tau_1 + \tau_2$ są czasami zatrzymania.
+:::
+
+::: {.exercise #2-1-58}
+Udowodnij, że jeśli $\{\tau_n\}_{n \in \mathbb{N}}$ jest ciągiem czasów zatrzymania, 
+które maleją do $\tau$, to $\tau$ jest czasem zatrzymania.
+:::
+
+Własność Markowa dotyczy warunkowej wartości oczekiwanej względem $\mathcal{F}_s$ dla ustalonego $s$.  
+Mocna własność Markowa jest analogiczna, ale warunkowanie odbywa się względem $\sigma$-algebry $\mathcal{F}_\tau$, 
+gdzie $\tau$ jest czasem stopu. 
+Składa się ona ze zdarzeń, które są określone przez przeszłość aż do czasu $\tau$.
+
+::: {.definition #2-1-62}
+Dla czasu zatrzymania $\tau$ kładziemy
+\[
+\mathcal{F}_\tau = \left\{ A \in \mathcal{F} : A \cap \{ \tau \leq t \} \in \mathcal{F}_t \text{ dla każdego } t \in \mathbb{R}_+ \right\}.
+\]
+:::
+
+::: {.exercise #2-1-63}
+Pokaż, że:
+
+a. $\mathcal{F}_\tau$ jest $\sigma$-algebrą,
+b. Załóżmy, że $\mathbb{F}$ jest prawostronnie ciągła. Pokaż, że
+\[
+\mathcal{F}_\tau = \{ A : A \cap \{ \tau < t \} \in \mathcal{F}_t \text{ dla każdego } t \geq 0 \}.
+\]
+:::
+
+Oto niektóre podstawowe własności $\mathcal{F}_\tau$.
+
+::: {.theorem #1-65}
+Jeśli $\tau$, $\tau_n$, $n \in \mathbb{N}$ są czasasmi zatrzymania, to:
+
+a. $\tau$ jest mierzalny względem $\mathcal{F}_\tau$.
+b. Jeśli $\tau_n \downarrow \tau$, to $\mathcal{F}_\tau = \bigcap_n \mathcal{F}_{\tau_n}$.
+c. $\tau_1 \leq \tau_2$ implikuje $\mathcal{F}_{\tau_1} \subseteq \mathcal{F}_{\tau_2}$.
+:::
+
+::: {.proof}
+Zadanie.
+:::
+
+
+### Mocna własność Markowa {-}
+
+::: {.theorem #2-1-68}  
+Niech $(\mathbb{P}, \mathbb{F})$ będzie łańcuchem Markowa na przeliczalnej przestrzeni stanów $S$. 
+Załóżmy, że $Y$ jest ograniczoną zmienną losową oraz że $\tau$ jest czasem zatrzymania. 
+Wówczas dla każdego $x \in S$,
+\begin{equation}
+\mathbf{E}_x [ Y \circ \theta_\tau | \mathcal{F}_\tau] 
+= \mathbf{E}_{X(\tau)} [Y] \quad \mathbf{P}_x-\text{prawie na pewno} \quad \text{na} \quad \{\tau < \infty\}.
+(\#eq:2-1-68)
+\end{equation}
+:::
+
+Silna własność Markowa jest zazwyczaj używana w następujący sposób: 
+Przemnóż równość \@ref(eq:2-1-68) przez $\mathbf{1}_{\{\tau < \infty\}}$, 
+a następnie zastosuj $\mathbf{E}_x$. 
+Wynik, z uwzględnieniem, że $\{\tau < \infty\} \in \mathcal{F}_\tau$, to:
+\[
+\mathbf{E}_x \left[ Y \circ \theta_\tau \mathbf{1}_{\{\tau < \infty\}} \right] 
+= \mathbf{E}_x \left[ \mathbf{E}_{X(\tau)} \left[ Y \right] \mathbf{1}_{\{ \tau < \infty\}} \right].
+\]
+
+::: {.proof name="Twierdzenia \@ref(thm:2-1-68)"}  
+Najpierw załóżmy, że $\tau$ przyjmuje wartości z przeliczalnego zbioru $0 \leq t_1 \leq t_2 \leq \dots$ oraz $\infty$. 
+W tym przypadku silna własność Markowa sprowadza się do własności Markowa, jak teraz pokażemy.
+
+Zauważmy, że prawa strona \@ref(eq:2-1-68) jest mierzalna względem $\mathcal{F}_\tau$. 
+Musimy więc sprawdzić, że jeśli $A \in \mathcal{F}_\tau$ oraz $A \subseteq \{\tau < \infty\}$, to
+\[
+\mathbf{E}_x \left[ Y \circ \theta_\tau \mathbf{1}_A \right] 
+= \mathbf{E}_x \left[ \mathbf{E}_{X(\tau)} \left[ Y \right] \mathbf{1}_A \right].
+\]
+Aby to wykazać, napiszmy:
+\[
+\mathbf{E}_x \left[ Y \circ \theta_\tau \mathbf{1}_A \right] 
+= \sum_{n \in \mathbb{N}} \mathbf{E}_x \left[ Y \circ \theta_{t_n} \mathbf{1}_{A \cap \{\tau = t_n\}} \right] 
+= \sum_{n \in \mathbb{N}} \mathbf{E}_x \left[ \mathbf{E}_{X(t_n)} \left[ Y \right] \mathbf{1}_{ A \cap \{\tau = t_n\}} \right]
+=\mathbf{E}_x\left[ \mathbf{E}_{X(\tau)}[Y] \mathbf{1}_A\right].
+\]
+W drugim kroku skorzystaliśmy z własności Markowa, ponieważ
+\[
+ A \cap \{\tau = t_n\} \in \mathcal{F}_{t_n}
+\]
+zgodnie z definicją $\mathcal{F}_\tau$.
+
+W drugim kroku uzasadnimy tezę dla dowolnych $\tau$ i $Y$ postaci
+\begin{equation}
+Y(\omega) = \prod_{j=1}^m f_j(\omega(t_j)),
+(\#eq:2-spec)
+\end{equation}
+dla pewnego $m \in \mathbb{N}$, 
+$t_1, \ldots, t_m \in \mathbb{R}_+$ oraz ograniczonych funkcji 
+$f_1, \ldots, f_m \colon S \to \mathbb{R}$.
+
+Czas $\tau$ przybliżamy go od góry czasami stopu $\{\tau_n\}_{n \in \mathbb{N}}$ zdefiniowanymi przez
+\[
+\tau_n = \frac{k + 1}{2^n} \quad \text{jeśli} \quad \frac{k}{2^n} \leq \tau < \frac{k + 1}{2^n}.
+\]
+dla dostatecznie dużych $k$. 
+Weźmy teraz $A \in \mathcal{F}_\tau \subseteq \mathcal{F}_{\tau_k}$ takie, że $A \subseteq \{\tau < \infty\}$. 
+Z pierwszej części dowodu,
+\[
+    \mathbf{E}_x \left[ Y \circ \theta_{\tau_k} \mathbf{1}_A \right] 
+    = \mathbf{E}_x\left[ \mathbf{E}_{X(\tau_k)}[Y] \mathbf{1}_A \right].
+\]
+Musimy przejść do granicy, gdy $k \to \infty$. Po prawej stronie, 
+$\tau_k \downarrow \tau$ i z prawostronnej ciągłości $X(\tau_k) \to X(\tau)$ w $S$, czyli $X(\tau_k) = X(\tau)$ dla dostatecznie dużych $k$. 
+Po lewej stronie, napiszmy
+\begin{equation*}
+\left( Y \circ \theta_{\tau_k} \right)(\omega) = \prod_{m=1}^n f_m(\omega(t_m + \tau_k))
+\to \prod_{m=1}^n f_m(\omega(t_m + \tau)) = \left( Y \circ \theta_\tau \right)(\omega).
+\end{equation*}
+kiedy $k \to \infty$, dzięki prawostronnej ciągłości ścieżek. To pokazuje tezę:
+\[
+\mathbf{E}_x \left[ Y \circ \theta_\tau \mathbf{1}_A \right] = \mathbf{E}_x \left[ \mathbf{E}_{X(\tau)}[Y] \mathbf{1}_A \right].
+\]
+W ostatnim kroku dowodu pokażemy tezę dla dowolnego $Y$. 
+Dla dowolnego $m \in \mathbb{N}$ oraz $t_1, \ldots, t_m \in \mathbb{R}_+$ rozważmy $\pi_{t_1, \ldots, t_m} \colon \Omega \to \mathbb{R}^m$
+dane wzorem 
+\begin{equation*}
+  \pi_{t_1, \ldots, t_m}(\omega) = (\omega(t_1), \omega(t_2), \ldots, \omega(t_m)).
+\end{equation*}
+Wówczas dla dowolnych $A_1, A_2, \ldots, A_m \subseteq S$,
+\begin{equation*}
+\pi_{t_1, \ldots, t_m}^{-1}[A_1\times A_2 \times \ldots \times A_m ] 
+= \{ \omega \in \Omega \: : \: 
+\omega(t_1) \in A_1, \ldots, \omega(t_m) \in A_m \}.
+\end{equation*}
+Rozważmy teraz $\pi$-układ
+\begin{equation*}
+    \mathcal{B} = \left\{ \pi_{t_1, \ldots, t_m}^{-1}[A_1 \times A_2 \times \ldots \times A_m ] \: : \:  
+    m \in \mathbb{N}, t_1, \ldots , t_m \in \mathbb{R}_+, \: A_1, \ldots , A_m \subseteq S \right\}.
+\end{equation*}
+oraz $\lambda$-układ
+\begin{equation*}
+   \mathcal{L} = \left\{ G \in \mathcal{F} \: : \: \mathbf{P}_x \left[ \theta_\tau \in G, A \right] = 
+   \mathbf{E}_x \left[ \mathbf{P}_{X(\tau)} \left[ G \right] \mathbf{1}_{ A } \right] \text{ dla } A \in \mathcal{F}_\tau, 
+   \: A \subseteq \{\tau < \infty\} \right\}.
+\end{equation*}
+Aproksymując $\mathbf{1}_{\pi_{t_1, \ldots, t_m}^{-1}[A_1 \times \ldots \times A_m]}$ 
+zmiennymi $Y$ postaci \@ref(eq:2-spec), 
+dostajemy $\mathcal{B} \subseteq \mathcal{L}$.
+Z lematu o $\pi$-$\lambda$ układach mamy $\mathcal{F} = \sigma(\mathcal{B}) \subseteq \mathcal{L}$. 
+Czyli dla każdego $G \in \mathcal{F}$,
+\begin{equation*}
+  \mathbf{P}_x \left[ \theta_\tau \in G, A \right] =  \mathbf{E}_x \left[ \mathbf{P}_{X(\tau)} \left[ G \right] \mathbf{1}_{A} \right]
+\end{equation*}
+dla każdego $A \in \mathcal{F}_\tau$ takiego, że $A \subseteq \{\tau < \infty\}$.
+Jest to równoważne naszej tezie dla $Y = \mathbf{1}_G$. 
+Z liniowości teza jest zatem prawdziwa dla każdego $Y$ przyjmującego skończenie wiele wartości. 
+Zastosowanie standardowego twierdzenia granicznego dowodzi tezy dla dowolnego ograniczonego $Y$. 
+:::
+
+
+## Charakteryzacja {-}
+
+Zauważmy, że każda funkcja $\omega \in \Omega$ musi być następującego typu: 
+Istnieje $t_1 \in (0, \infty]$, taki że $\omega(t) = \omega(0)$ 
+dla każdego $t \in [0, t_1)$, 
+następnie, jeśli $t_1 < \infty$, istnieje $t_2 \in (t_1, \infty]$ taki, 
+że $\omega(t) = \omega(t_1) \neq \omega(0)$ 
+dla każdego $t \in [t_1, t_2)$, i tak dalej. 
+Powyższe czasy $t_1, t_2, \ldots$ zależą oczywiście od wyboru $\omega$. 
+Dla każdego $\omega \in \Omega$, istnieje zatem ciąg
+\[
+T_0(\omega) = 0 < T_1(\omega) \leq T_2(\omega) \leq T_3(\omega) \leq \dots \leq \infty,
+\]
+taki, że $X_t(\omega) = X_0(\omega)$ dla każdego $t \in [0, T_1(\omega))$ 
+oraz dla każdej liczby całkowitej $i \geq 1$, 
+warunek $T_i(\omega) < \infty$ implikuje $T_i(\omega) < T_{i+1}(\omega)$, 
+$X_{T_i(\omega)}(\omega) \neq X_{T_{i-1}(\omega)}(\omega)$ i 
+$X_t(\omega) = X_{T_i(\omega)}(\omega)$ dla każdego $t \in [T_i(\omega), T_{i+1}(\omega))$. 
+Co więcej, $T_n(\omega) \uparrow \infty$, gdy $n \to \infty$. 
+Nietrudno jest sprawdzić, że $T_0, T_1, T_2, \dots$ są czasami stopu. Na przykład,
+\[
+    \{ T_1 \leq t \} = \{X(t) \neq X(0)\} \cup \bigcup_{q \in (0, 1) \cap \mathbb{Q}} \{ X_q \neq X_0 \} \in \mathcal{F}_t.
+\]
+Przypomnijmy, że dla $\lambda > 0$, 
+dodatnia zmienna losowa $U$ ma rozkład wykładniczy z parametrem $\lambda$, 
+jeśli $\mathbb{P}[U > r] = e^{-\lambda r}$ 
+dla każdego $r \geq 0$. 
+W poniższym lemacie przyjmujemy konwencję, że zmienna losowa wykładnicza o parametrze $0$ jest równa $\infty$ prawie na pewno.
+
+::: {.lemma #2-6-18} 
+Niech $x \in S$. 
+Istnieje rzeczywista liczba $c(x) \geq 0$, 
+taka że zmienna losowa $T_1$ ma rozkład wykładniczy z parametrem $c(x)$ 
+pod $\mathbf{P}_x$. C
+o więcej, jeśli $c(x) > 0$, 
+to $T_1$ i $X_{T_1}$ są niezależne pod $\mathbf{P}_x$.
+:::
+
+::: {.proof}
+Niech $s, t \geq 0$. Mamy
+\[
+\mathbf{P}_x[T_1 > s + t] = \mathbf{E}_x[\mathbf{1}_{\{T_1 > s\}} \Phi \circ \theta_s],
+\]
+gdzie $\Phi(\omega) = \mathbf{1}_{\{\omega(r)=\omega(0), \, \forall r \in [0,t]\}}$. 
+Używając własności Markowa, dostajemy
+\begin{equation*}
+\mathbf{P}_x[T_1 > s + t] = \mathbf{E}_x[\mathbf{1}_{\{T_1 > s\}} \mathbf{E}_x[\Phi]] 
+= \mathbf{E}_x[\mathbf{1}_{\{T_1 > s\}} \mathbf{P}_x[T_1 > t]] = \mathbf{P}_x[T_1 > s] \mathbf{P}_x[T_1 > t],
+\end{equation*}
+co implikuje, że $T_1$ ma rozkład wykładniczy pod $\mathbf{P}_x$. 
+
+Załóżmy teraz, że $c(x) > 0$. Wówczas $T_1 < \infty$, $\mathbf{P}_x$ prawie na pewno. 
+Dla każdego $t \geq 0$ i $y \in S$,
+\begin{equation*}
+\mathbf{P}_x[T_1 > t, X_{T_1} = y] = \mathbf{E}_x[\mathbf{1}_{\{T_1 > t\}} \Psi \circ \theta_t ],
+\end{equation*}
+gdzie dla $\omega \in \Omega$, $\Psi(\omega) = 0$ jeśli $\omega$ jest stałe, 
+a w przeciwnym razie $\Psi(\omega) = \mathbf{1}_{\{ \gamma_1(\omega) = y\}}$, 
+gdzie $\gamma_1(\omega)$ jest wartością $\omega$ 
+po jego pierwszym skoku. Zatem mamy
+\begin{multline*}
+\mathbf{P}_x[T_1 > t, X_{T_1} = y] = 
+\mathbf{E}_x [\mathbf{1}_{\{T_1 > t\}} \mathbf{E}_x[\Psi ]] = \\ \mathbf{E}_x[\mathbf{1}_{\{T_1 > t\}} \mathbf{P}_x[X_{T_1} = y]] 
+= \mathbf{P}_x[T_1 > t] \mathbf{P}_x[X_{T_1} = y],
+\end{multline*}
+co daje pożądaną niezależność.
+:::
+
+Punkty, dla których $c(x) = 0$, 
+są stanami pochłaniającymi dla procesu Markowa, 
+w tym sensie, że 
+$\mathbf{P}_x[X_t = x, \, \forall t \geq 0] = 1$. 
+Dla każdych $x, y \in S$ definiujemy
+\begin{equation*}
+\Pi(x, y) = \left\{ \begin{array}{cc} \mathbf{P}_x[X_{T_1} = y] & c(x)>0 \\ \delta_x(y) & c(x)=0 \end{array}\right.
+\end{equation*}
+Zauważmy, że $\Pi(x, \cdot)$ jest miarą prawdopodobieństwa na $S$.
+
+:::{ .theorem #2-6-19} 
+Niech $(\mathbf{P}, \mathbb{F})$ będzie łańcuchem Markowa 
+w czasie ciągłym takim, że $\sup_{x \in S} c(x) < \infty$. 
+Wówczas
+\begin{equation*}
+\frac{\mathrm{d}}{\mathrm{d} t} \left. \mathbb{P}_x[X_t=y]\right|_{t=0} = c(x) \Pi(x,y).
+\end{equation*}
+:::
+
+:::{ .proof}
+Jeśli $c(x) = 0$, to $\mathbf{P}_x[X_t=x] = \mathbf{P}_x[X_0 =x]=1$, i stąd
+\begin{equation*}
+\lim_{t \to 0} \frac{\mathbf{P}_x[X_t=x] - 1}{t} = 0.
+\end{equation*}
+Załóżmy teraz, że $c(x) > 0$. Najpierw zauważmy, że
+\begin{equation}
+\mathbf{P}_x[T_2 \leq t] = O(t^2)
+(\#eq:2-6-1)
+\end{equation}
+gdy $t \to 0$. Rzeczywiście, używając silnej własności Markowa w $T_1$,
+\begin{equation*}
+\mathbf{P}_x[T_2 \leq t] \leq \mathbf{P}x[T_1 \leq t, T_2 \leq T_1 + t] 
+= \mathbf{E}x[\mathbf{1}_{\{T_1 \leq t\}} \mathbf{E}_{X_{T_1}}[T_1 \leq t]],
+\end{equation*}
+i możemy oszacować
+\begin{equation*}
+\mathbf{P}_{X_{T_1}}[T_1 \leq t] \leq \sup_{y \in S} \mathbf{P}_y[T_1 \leq t] \leq \sup_{y \in S} c(y),
+\end{equation*}
+co daje oczekiwany wynik, ponieważ mamy również $\mathbf{P}_x[T_1 \leq t] \leq c(x)t$. 
+Z \@ref(eq:2-6-1) wynika, że
+\begin{multline*}
+\mathbf{P}_x[X_t=y] = \mathbf{P}_x[X_t=y, \: T_1 > t] + \mathbf{P}_x[X_{T_1}=y, \: T_1 \leq t] + O(t^2)
+\\ = \delta_{x}(y) e^{-c(x)t} + \left(1 - e^{-c(x)t}\right)\Pi(x,y) + O(t^2),
+\end{multline*}
+używając niezależności $T_1$ i $X_{T_1}$ oraz definicji 
+$\Pi(x, y)$. Dochodzimy do wniosku, że
+skoro $\mathbf{P}_x[X_0=y] = \delta_x(y)$, to
+\begin{equation*}
+\frac{\mathbf{P}_x[X_t=y]  -  \mathbf{P}_x[X_0=y]}{t} \to -c(x)\delta_{x}(y) + c(x)\Pi(x,y).
+\end{equation*}
+co kończy dowód.
+:::
+
+Kolejne twierdzenie dostarcza pełnego opisu ścieżek procesu $X$ pod $\mathbf{P}_x$. 
+Dla uproszczenia zakładamy, że nie ma stanów pochłaniających, 
+ale czytelnik łatwo rozszerzy stwierdzenie na przypadek ogólny.
+
+:::{.theorem #2-6-20} 
+Zakładamy, że $c(y) > 0$ dla każdego $y \in S$ i że $\sup_{y \in S} c(y) < \infty$. 
+Niech $x \in S$. 
+Wówczas, $\mathbf{P}_x$ p.n., 
+czasy skoku $T_1 < T_2 < T_3 < \dots$ są skończone, a
+ciąg $X_0, X_{T_1}, X_{T_2}, \dots$ pod $\mathbf{P}_x$ jest dyskretnym łańcuchem Markowa 
+z macierzą przejścia $\Pi$ rozpoczętym w $x$. 
+Ponadto, pod warunkiem $(X_0, X_{T_1}, X_{T_2}, \dots)$, 
+zmienne losowe $T_1 - T_0, T_2 - T_1, \dots$ są niezależne, 
+a dla każdej liczby całkowitej $i \geq 0$, 
+rozkład warunkowy $T_{i+1} - T_i$ jest wykładniczy z parametrem $c(X_{T_i})$.
+:::
+
+:::{.proof}
+Zastosowanie silnej własności Markowa pokazuje, 
+że wszystkie czasy stopu $T_1, T_2, \dots$ są skończone $\mathbf{P}_x$-p.n. 
+Następnie, niech $y, z \in S$, a $f_1, f_2 \colon S \to \mathbb{R}$. 
+Używając silnej własności Markowa w $T_1$:
+\begin{multline*}
+\mathbf{E}_x[\mathbf{1}_{\{X_{T_1} = y\}} f_1(T_1) 1_{\{X_{T_2} = z\}} f_2(T_2 - T_1)]
+= \mathbf{E}_x[\mathbf{1}_{\{X_{T_1} = y\}} f_1(T_1) \mathbf{E}_x[\mathbf{1}_{\{X_{T_2} = z\}} f_2(T_2 - T_1)]] \\ 
+= \Pi(x, y) \Pi(y, z) \int_0^\infty e^{-c(x)s_1} f_1(s_1)\mathrm{d} s_1 \int_0^\infty  e^{-c(y)s_2} f_2(s_2) \mathrm{d} s_2.
+\end{multline*}
+Postępując indukcyjnie, otrzymujemy dla każdych $y_1, \dots, y_p \in S$ oraz $f_1, \dots, f_p \colon S \to \mathbb{R}$:
+\begin{multline*}
+\mathbf{E}_x[\mathbf{1}_{\{X_{T_1} = y_1\}} \mathbf{1}_{\{X_{T_2} = y_2\}} \dots \mathbf{1}_{\{X_{T_p} = y_p\}} f_1(T_1) f_2(T_2 - T_1) \dots f_p(T_p - T_{p-1})] \\ 
+= \Pi(x, y_1) \Pi(y_1, y_2) \dots \Pi(y_{p-1}, y_p) \prod_{i=1}^p \left( \int_0^\infty e^{-c(y_{i-1})s} f_i(s) \mathrm{d} s\right),
+\end{multline*}
+gdzie $y_0 = x$.
+:::
+
+Z powyższego twierdzenia wynika charakteryzacja łańcucha Markowa w terminach $Q$-macierzy. 
+Przez $\mathbb{F}^X = (\mathcal{F}_t^X)_t$ oznaczać będziemy najmniejszą możliwą filtrację, tj.
+\begin{equation*}
+\mathcal{F}_t = \sigma(X_s \: : \: s \leq t).
+\end{equation*}
+
+::: {.corollary #6-21}
+Niech $q = (q(x,y))_{x,y\in S}$ będzie $Q$-macierzą taką, że $\sup_{x \in S}|q(x,x)| < \infty$. 
+Wówczas istnieje jedyna rodzina miar
+$\mathbf{P}$ taka, że $(\mathbf{P}, \mathbb{F}^X)$ jest łańcuchem Markowa stowarzyszonym z $Q$-macierzą $q$.
+:::
