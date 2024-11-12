@@ -1,0 +1,15 @@
+# Stochastyczne modele systemów oddziuałujących 2024
+## zadanie domowe 2
+## termin: 12.12.2024
+
+
+Niech $(N_t)_{t \in \mathbb{R}_+}$ będzie jednorodnym procesem Poissona
+z parametrem $\lambda>0$. Dla $x \in \mathbb{R}$ definiujemy proces
+$U^{(x)}=(U^{(x)}_t)_{t \in \mathbb{R}_+}$ jako rozwiązanie
+$$U_t^{(x)} = x + \int_0^t \left( U_s^{(x)} \right)^2 \: \mathrm{d} N_s.$$
+Całkę interpretujemy w sensie Lebesgue'a-Stieltjesa. Możemy zapisać ją
+jawnie jako $$\int_0^t \left( U_s^{(x)} \right)^2 \: \mathrm{d} N_s 
+    = \sum_{j=1}^{N_t} \left( U_{S_j}^{(x)}\right)^2,$$ gdzie
+$S_j = \inf \left\{ t\geq 0 \: : \: N_t=j  \right\}$. Pokaż, że
+$\mathbf{P}_x[ \: \cdot \: ] = \mathbb{P} [U^{(x)} \in \cdot \: ]$ jest
+procesem Fellera.

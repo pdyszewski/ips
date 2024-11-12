@@ -1,0 +1,35 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage[english, polish]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+
+\usepackage{bbm}
+\usepackage{graphicx}
+\usepackage{amsfonts}
+\usepackage{amsmath, amsthm}
+
+\begin{document}
+\begin{center}
+\par\noindent\rule{\textwidth}{0.4pt}
+	{\large \bf
+\textsc{ Stoch. modele systemów oddziuałujących 2024}\\
+\textsc{zadanie domowe 2} \\
+\textsc{termin: 12.12.2024} }
+\par\noindent\rule{\textwidth}{0.4pt}
+\end{center}
+%\vspace{1 em}
+Niech $(N_t)_{t \in \mathbb{R}_+}$ będzie jednorodnym procesem Poissona z parametrem $\lambda>0$. Dla
+$x \in \mathbb{R}$ definiujemy proces $U^{(x)}=(U^{(x)}_t)_{t \in \mathbb{R}_+}$ jako rozwiązanie
+\begin{equation*}
+	U_t^{(x)} = x + \int_0^t \left( U_s^{(x)} \right)^2 \: \mathrm{d} N_s.
+\end{equation*}
+Całkę interpretujemy w sensie Lebesgue’a-Stieltjesa. 
+Możemy zapisać ją jawnie jako
+\begin{equation*}
+	\int_0^t \left( U_s^{(x)} \right)^2 \: \mathrm{d} N_s 
+	= \sum_{j=1}^{N_t} \left( U_{S_j}^{(x)}\right)^2,
+\end{equation*}
+gdzie $S_j = \inf \left\{ t\geq 0 \: : \: N_t=j  \right\}$.
+Pokaż, że $ \mathbf{P}_x[ \: \cdot \: ] = \mathbb{P} [U^{(x)} \in \cdot \: ]$ jest procesem Fellera.
+\end{document}
