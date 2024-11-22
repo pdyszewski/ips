@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2 Konstrukcja systemów spinowych | SMUO_wyklad8.knit</title>
+  <meta name="description" content="" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2 Konstrukcja systemów spinowych | SMUO_wyklad8.knit" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2 Konstrukcja systemów spinowych | SMUO_wyklad8.knit" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="wykład-7-rozkłady-stacjonarne-zaburzenia-ruchu-browna.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="test.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="wyklad8/smso_2024_wyklad8.html"><a href="#wyk%C5%82ad-7-rozk%C5%82ady-stacjonarne-zaburzenia-ruchu-browna"><i class="fa fa-check"></i><b>1</b> wykład 7: Rozkłady stacjonarne, zaburzenia ruchu Browna</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="wykład-7-rozkłady-stacjonarne-zaburzenia-ruchu-browna.html"><a href="wykład-7-rozkłady-stacjonarne-zaburzenia-ruchu-browna.html"><i class="fa fa-check"></i><b>1.1</b> Motywacje</a></li>
+<li class="chapter" data-level="1.2" data-path="wykład-7-rozkłady-stacjonarne-zaburzenia-ruchu-browna.html"><a href="wykład-7-rozkłady-stacjonarne-zaburzenia-ruchu-browna.html#systemy-spinowe"><i class="fa fa-check"></i><b>1.2</b> Systemy spinowe</a></li>
+<li class="chapter" data-level="1.3" data-path="wykład-7-rozkłady-stacjonarne-zaburzenia-ruchu-browna.html"><a href="wykład-7-rozkłady-stacjonarne-zaburzenia-ruchu-browna.html#dygresja-analityczna"><i class="fa fa-check"></i><b>1.3</b> Dygresja analityczna</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="wyklad8/smso_2024_wyklad8.html"><a href="#konstrukcja-system%C3%B3w-spinowych"><i class="fa fa-check"></i><b>2</b> Konstrukcja systemów spinowych</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="konstrukcja-systemów-spinowych" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">2</span> Konstrukcja systemów spinowych<a href="#konstrukcja-system%C3%B3w-spinowych" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Naszym pierwszym celem jest znalezienie naturalnych warunków na
+<span class="math inline">\(c(x, \eta)\)</span>, które gwarantują, że domknięcie <span class="math inline">\((L,D)\)</span>, gdzie <span class="math inline">\(L\)</span> i <span class="math inline">\(D\)</span>
+są dane odpowiednio
+przez <a href="wykład-7-rozkłady-stacjonarne-zaburzenia-ruchu-browna.html#eq:4-defL">(1.1)</a>
+oraz <a href="wykład-7-rozkłady-stacjonarne-zaburzenia-ruchu-browna.html#eq:4-defD">(1.2)</a> jest operatorem infinitezymalnym. Warunki (GI1),
+(GI2), (GI3) i (GI5) są łatwe do sprawdzenia i nie wymagają dodatkowych
+założeń. Prawdziwym wyzwaniem jest (GI4).</p>
+<p>Dla warunku (GI2), używamy twierdzenia Stone’a-Weierstrassa: <span class="math inline">\(D\)</span> jest
+algebrą funkcji ciągłych na zbiorze zwartym, która rozdziela punkty.
+Istotnie, dla <span class="math inline">\(\eta \neq \zeta\)</span> istnieje <span class="math inline">\(x \in S\)</span> takie, że
+<span class="math inline">\(\eta(x) \neq \zeta(x)\)</span>. Funkcja <span class="math inline">\(f(\xi) = \xi(x)\)</span> rozdziela <span class="math inline">\(\eta\)</span> i
+<span class="math inline">\(\zeta\)</span>. Algebra <span class="math inline">\(D\)</span> zawiera funkcje stałe, więc
+<span class="math inline">\(\overline{D} = C(\{0,1\}^V)\)</span>.</p>
+<p>Dla (GI3), załóżmy <span class="math inline">\(f \in D\)</span>, <span class="math inline">\(\lambda \geq 0\)</span>, oraz
+<span class="math inline">\(f - \lambda Lf = g\)</span>. Ponieważ <span class="math inline">\(\{0,1\}^V\)</span> jest zbiorem zwartym i <span class="math inline">\(f\)</span>
+jest ciągła, istnieje takie <span class="math inline">\(\eta\)</span>, dla którego <span class="math inline">\(f\)</span> osiąga swoje
+minimum. Wtedy <span class="math inline">\(Lf(\eta) \geq 0\)</span>, więc <span class="math display">\[\min_\zeta f(\zeta)
+        = f(\eta) \geq g(\eta)
+        \geq \min_\zeta g(\zeta).\]</span></p>
+<p>Warunek (GI5) wynika z faktu, że <span class="math inline">\(1 \in D\)</span> oraz <span class="math inline">\(L1 = 0\)</span>.</p>
+<p>Aby sprawdzić (GI4) musimy wyprowadzić ograniczenie dla rozwiązań
+równania <span class="math inline">\(f - \lambda Lf = g\)</span>. Niech
+<span class="math display">\[\epsilon = \inf_{u, \eta} [c(u, \eta) + c(u, \eta_u)] \quad \text{oraz}
+        \quad \gamma(x, u) = \sup_\eta |c(x, \eta_u) - c(x, \eta)|.\]</span>
+Zauważmy, że <span class="math inline">\(\gamma(x,u)\)</span> mierzy stopień, w jakim intensywność zmiany w
+miejscu <span class="math inline">\(x\)</span> zależy od konfiguracji w miejscu <span class="math inline">\(u\)</span>. Niech <span class="math inline">\(\ell_1(V)\)</span>
+będzie przestrzenią Banacha funkcji <span class="math inline">\(\alpha : V \to \mathbb{R}\)</span>, które
+spełniają <span class="math display">\[||\alpha|| := \sum_x |\alpha(x)| &lt; \infty.\]</span> Macierz
+<span class="math inline">\(\gamma\)</span> definiuje operator <span class="math inline">\(\Gamma\)</span> na <span class="math inline">\(\ell_1(S)\)</span> przez
+<span class="math display">\[\Gamma \alpha(u) = \sum_{x: x \neq u} \alpha(x) \gamma(x, u).\]</span>
+Operator ten jest dobrze zdefiniowany i ograniczony, pod warunkiem że
+<span class="math display">\[M := \sup_x \sum_{u: u \neq x} \gamma(x, u) &lt; \infty,\]</span> a wtedy
+<span class="math inline">\(||\Gamma|| = M\)</span>.</p>
+<p>Dla <span class="math inline">\(f \in C(\{0,1\}^V)\)</span> i <span class="math inline">\(x \in S\)</span>, niech
+<span class="math display">\[\Delta f(x) = \sup_{\eta} \left|f\left(\eta^{(x)}\right) - f(\eta)\right|.\]</span>
+Wtedy <span class="math inline">\(\|f\|_o = ||\Delta f||_{l_1(V)}\)</span>. Oto oszacowanie, którego
+potrzebujemy.</p>
+<p>::: {# .proposition #4.2}
+Załóżmy, że spełniony jest jeden z warunków</p>
+<ul>
+<li><p><span class="math inline">\(f \in D\)</span>,</p></li>
+<li><p><span class="math inline">\(f\)</span> jest ciągła i \begin{equation}
+c(x, )
+x V.(#eq:4.3)end{equation}</p></li>
+</ul>
+<p>Wówczas jeśli <span class="math inline">\(f - \lambda Lf = g \in D\)</span>, <span class="math inline">\(\lambda &gt; 0\)</span>, oraz
+<span class="math inline">\(\lambda M &lt; 1 + \lambda \epsilon\)</span>, to <span class="math display">\[
+        \Delta f \leq \left[ (1 + \lambda \epsilon)I - \lambda \Gamma \right]^{-1} \Delta g,(\#eq:4.4)\]</span>
+gdzie nierówność zachodzi współrzędna po współrzędnej, a odwrotność jest
+zdefiniowana przez nieskończony szereg <span class="math display">\[\begin{equation}
+        \left[ (1 + \lambda \epsilon)I - \lambda \Gamma \right]^{-1} \alpha
+        = \frac{1}{1 + \lambda \epsilon} \sum_{k=0}^{\infty}
+        \left( \frac{\lambda}{1 + \lambda \epsilon} \right)^k \Gamma^k \alpha.(\#eq:4.5)\end{equation}\]</span>
+:::</p>
+<div class="proof">
+<p><span id="unlabeled-div-7" class="proof"><em>Proof</em>. </span></p>
+<em>Proof.</em> Zauważmy, że szereg w @ref(eq:4.5) jest
+zbieżny dla <span class="math inline">\(\alpha \in \ell_1(V)\)</span> na mocy założenia
+<span class="math inline">\(\lambda M &lt; 1 + \lambda \epsilon\)</span>. Pisząc <span class="math inline">\(f - \lambda Lf = g\)</span> w
+punktach <span class="math inline">\(\eta\)</span> oraz <span class="math inline">\(\eta^{(u)}\)</span>, odejmując i zauważając że
+<span class="math inline">\((\eta^{(u)})^{(u)} = \eta\)</span>, otrzymujemy <span class="math display">\[\begin{multline}
+        [f(\eta^{(u)}) - f(\eta)][1 + \lambda c(u, \eta) + \lambda c(u, \eta^{(u)})]
+        = [g(\eta^{(u)}) - g(\eta)]\\
+        + \lambda \sum_{x:x \neq u} \left\{ c(x, \eta^{(u)}) [f((\eta^{(u)})^{(x)})
+        - f(\eta^{(u)})] - c(x, \eta)[f(\eta^{(x)}) - f(\eta)] \right\}.
+(\#eq:4.6)
+\end{multline}\]</span> Ponieważ wartości <span class="math inline">\(f(\eta^{(u)}) - f(\eta)\)</span>, gdy <span class="math inline">\(\eta\)</span>
+zmienia się a <span class="math inline">\(u\)</span> jest ustalone, tworzą zbiór symetryczny, a ta różnica
+jest funkcją ciągłą <span class="math inline">\(\eta\)</span>, dla każdego <span class="math inline">\(u\)</span> istnieje takie <span class="math inline">\(\eta\)</span>, że
+<span class="math display">\[f(\eta^{(u)}) - f(\eta) = \sup_{\zeta} |f(\zeta^{(u)}) - f(\zeta)| = \Delta f(u).\]</span>
+Stąd, <span class="math display">\[f(\zeta^{(u)}) - f(\zeta) \leq f(\eta^{(u)}) - f(\eta)\]</span> dla
+każdej <span class="math inline">\(\zeta\)</span>. Stosując to dla <span class="math inline">\(\zeta = \eta^{(x)}\)</span> i przekształcając,
+otrzymujemy <span class="math display">\[f((\eta^{(u)})^{(x)}) - f(\eta^{(u)})
+        = f((\eta^{(x)})^{(u)}) - f(\eta^{(u)}) \leq f(\eta^{(x)}) - f(\eta),\]</span>
+Używając tej nierówności w <a href="#eq:4.6" reference-type="eqref" reference="eq:4.6"><span class="math display">\[eq:4.6\]</span></a>, $$
+<span class="math display">\[\begin{gathered}
+\label{eq:4.7}
+        \Delta f(u)(1 + \lambda \epsilon) \leq
+        \Delta f(u)[1 + \lambda c(u, \eta) + \lambda c(u, \eta^{(u)})] \\
+        \leq \Delta g(u) + \lambda \sum_{x:x \neq u}
+        \left[ c(x, \eta^{(u)}) - c(x, \eta) \right] [f(\eta^{(x)}) - f(\eta)]
+        \\ \leq \Delta g(u) + \lambda \sum_{x:x \neq u} \gamma(x,u) \Delta f(x).
+    
+\end{gathered}\]</span>
+<p><span class="math display">\[ Jeśli [\[eq:4.3\]](#eq:4.3){reference-type=&quot;eqref&quot;
+reference=&quot;eq:4.3&quot;} zachodzi, to tylko skończona liczba wyrazów po
+prawej stronie jest niezerowa, więc $\|\Delta_f\|_1 = \|f\|_o &lt;\infty$.
+Zastem przy któregokolwiek z założeń faktu, $f \in D$. Dlatego
+[\[eq:4.7\]](#eq:4.7){reference-type=&quot;eqref&quot; reference=&quot;eq:4.7&quot;} można
+zapisać jako
+\]</span>(1 + ) f g + f.<span class="math display">\[
+Iteracja tej nierówności prowadzi to do
+\]</span>f
+_{k=0}^{n} ( )^k
+^k g + ( )^{n+1}
+^{n+1} f.$$ Jeżeli rozważymy teraz <span class="math inline">\(n \to \infty\)</span>,
+dostaniemy <a href="#eq:4.4" reference-type="eqref" reference="eq:4.4"><span class="math display">\[eq:4.4\]</span></a>.</p>
+</div>
+<div id="thm:4.3" class="thm">
+<p><strong>Twierdzenie 8</strong>. Załóżmy, że <span class="math inline">\(M &lt; \infty\)</span>. Wtedy <span class="math inline">\(\overline{L}\)</span> jest
+generatorem infinitezymalnym półgrupy Fellera
+<span class="math inline">\(T=(T(t))_{t \in \mathbb{R}_+}\)</span>. Ponadto, <span class="math display">\[\label{eq:4.8}
+        \Delta T(t)f \leq e^{-t \epsilon} e^{t \Gamma} \Delta f.\]</span> W
+szczególności, jeśli <span class="math inline">\(f \in D\)</span>, to <span class="math inline">\(T_tf \in D\)</span> oraz <span class="math display">\[\label{eq:4.9}
+        \|T(t)f\|_o \leq e^{(M - \epsilon)t} \|f\|.\]</span></p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-8" class="proof"><em>Proof</em>. </span></p>
+<em>Proof.</em> Własności (GI1), (GI2), (GI3) i (GI5) z
+Definicji <a href="#defn:3:12" reference-type="ref" reference="defn:3:12"><span class="math display">\[defn:3:12\]</span></a> zachodzą dla <span class="math inline">\((L, D)\)</span> są i są dziedziczone przez
+<span class="math inline">\(\overline{L}\)</span> z Faktu <a href="#fak:3:30" reference-type="ref" reference="fak:3:30">6</a>. Aby sprawdzić warunek (GI4) weźmy wstępujący ciąg
+<span class="math inline">\(V_n\subseteq V\)</span> taki, że <span class="math inline">\(\bigcup_nV_n=V\)</span>. Niech <span class="math display">\[\label{eq:4.10}
+        L_n f(\eta) =
+        \sum_{x \in V_n} c(x, \eta) [f(\eta_x) - f(\eta)],
+        \quad f \in C(\{0,1\}^V).\]</span> To jest generator dla systemu
+spinowego, w którym współrzędne <span class="math display">\[(\eta_t(x) : x \notin V_n)\]</span> są stałe
+w czasie. Ponieważ <span class="math inline">\(L_n\)</span> jest ograniczonym generatorem, spełnia
+<span class="math display">\[\mathcal{R}(I - \lambda L_n) = C(\{0,1\}^V)\]</span> dla wszystkich
+<span class="math inline">\(\lambda &gt; 0\)</span>. Dla <span class="math inline">\(g \in D\)</span>, możemy zdefiniować <span class="math inline">\(f_n \in C(\{0,1\}^V)\)</span>
+przez <span class="math inline">\(f_n - \lambda L_n f_n = g\)</span>. Ponieważ <span class="math inline">\(L_n\)</span> spełnia
+<a href="#eq:4.3" reference-type="eqref" reference="eq:4.3"><span class="math display">\[eq:4.3\]</span></a>, jeśli
+<span class="math inline">\(\lambda\)</span> jest wystarczająco małe, tak że
+<span class="math inline">\(\lambda M &lt; 1 + \lambda \epsilon\)</span>, wtedy <span class="math inline">\(f_n \in D\)</span> zgodnie z
+Faktem <a href="#fak:4.2" reference-type="ref" reference="fak:4.2">7</a>. W
+związku z tym możemy położyć
+<span class="math display">\[g_n = f_n - \lambda L f_n \in \mathcal{R}(I - \lambda L).\]</span> Niech
+<span class="math inline">\(K = \sup_{x, \eta} c(x, \eta) &lt;\infty\)</span>, wtedy z
+Faktu <a href="#fak:4.2" reference-type="ref" reference="fak:4.2">7</a>
+$$
+<span class="math display">\[\begin{gathered}
+\label{eq:4.11}
+        \|g_n - g\|
+        = \lambda ||(L - L_n) f_n||
+        \leq \lambda K \sum_{x \notin V_n} \Delta f_n(x)\\
+        \leq \lambda K \sum_{x \notin V_n}
+        \left[ (1 + \lambda \epsilon)I - \lambda \Gamma \right]^{-1} \Delta g(x).
+    
+\end{gathered}\]</span>
+<p><span class="math display">\[ Ponieważ $\Delta g \in \ell_1(V)$, prawa strona
+[\[eq:4.11\]](#eq:4.11){reference-type=&quot;eqref&quot; reference=&quot;eq:4.11&quot;} dąży
+do zera, gdy $n \to \infty$, więc $g_n \to g$. Stąd
+$g \in \mathcal{R}(I - \lambda L)$, więc wnioskujemy, że
+$D \subseteq \mathcal{R}(I - \lambda L)$. Ponieważ $D$ jest gęste w
+$C(\{0,1\}^V)$, widzimy, że $\mathcal{R}(I - \lambda L)$ jest również
+gęste. Zatem \]</span>(I - ) = C({0,1}^V)$$
+zgodnie z Faktem <a href="#fak:3:30" reference-type="ref" reference="fak:3:30">6</a>. To kończy weryfikację, że <span class="math inline">\(\overline{L}\)</span> jest
+generatorem infinitezymalnym.</p>
+<p>Przechodząc do drugiego stwierdzenia, zapiszmy
+<a href="#eq:4.4" reference-type="eqref" reference="eq:4.4"><span class="math display">\[eq:4.4\]</span></a> jako
+<span class="math display">\[\Delta_{(I - \lambda L)^{-1}} g
+        \leq \left[ (1 + \lambda \epsilon)I - \lambda \Gamma \right]^{-1} \Delta g,\]</span>
+a następnie iterujmy, aby uzyskać
+<span class="math display">\[\Delta_{(I - \frac{t}{n} L)^{-1}} g \leq
+        \left[ \left( 1 + \frac{t}{n} \epsilon \right) I - \frac{t}{n} \Gamma \right]^{-n}
+        \Delta g.\]</span> Przechodząc do granicy otrzymujemy
+<a href="#eq:4.8" reference-type="eqref" reference="eq:4.8"><span class="math display">\[eq:4.8\]</span></a>.</p>
+</div>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="wykład-7-rozkłady-stacjonarne-zaburzenia-ruchu-browna.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

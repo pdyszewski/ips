@@ -1,0 +1,310 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%	PAKIETY
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\usepackage{bbm}
+%\usepackage{amssymb}
+%\usepackage[all]{xy}
+%\usepackage{amscd}
+%\usepackage{stmaryrd}
+\usepackage{graphicx}
+\usepackage{amsfonts}
+\usepackage{amsmath, amsthm}
+%%\usepackage{verbatim}
+%%\usepackage{multicol}
+\usepackage[english, polish]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+%\usepackage{lmodern}
+\usepackage{url}
+%\usepackage[usenames]{color}
+%\usepackage[dvipsnames]{xcolor}
+%\usepackage{graphicx}
+%\usepackage{hyperref}
+%\usepackage{marginnote}
+%\usepackage[obeyFinal]{todonotes}
+\usepackage{tikz}
+\usetikzlibrary{ shapes.geometric }
+%\usetikzlibrary{calc}
+\usetikzlibrary{arrows,automata}
+
+\numberwithin{equation}{section}
+
+
+\newcounter{theorem}
+\newcounter{chapter}
+\newcounter{prob}
+\newcounter{merk}
+\newcounter{Item}
+\newcounter{Hfootnote}
+\newcounter{bookmark@seq@number}
+\newcounter{mn@abspage}
+\newcounter{@todonotes@numberoftodonotes}
+\newcounter{mdf@globalstyle@cnt}
+\newcounter{mdfcountframes}
+\newcounter{mdf@env@i}
+\newcounter{mdf@env@ii}
+\newcounter{mdf@zref@counter}
+\newcounter{theo}
+\newcounter{twr0}
+\newcounter{count}
+\newcounter{zadanie}
+\newcounter{section@level}
+
+%\newcounter{Chapcounter}
+%\newcommand\showmycounter{\addtocounter{Chapcounter}{1}\themycounter}
+%\newcommand{\chapter}[1] 
+%{ {\centering          
+%  \addtocounter{Chapcounter}{1} \begin{center}\Large \textsc{\textbf{ #1}} \end{center} }   
+%    \addcontentsline{toc}{section}{ Rozdział:~\theChapcounter~~ #1}    
+%    }
+
+
+\theoremstyle{definition}
+
+\newtheorem{thm}{Twierdzenie}[chapter]
+
+%\newenvironment{thm}
+%  {\begin{mdframed}[backgroundcolor=NavyBlue!50, linewidth=0, innerbottommargin=10pt, innertopmargin=10pt]\begin{twr0}}
+%  {\end{twr0}\end{mdframed}}
+
+
+\newtheorem{defn}[thm]{Definicja}
+%\newenvironment{defn}
+%  {\begin{mdframed}[backgroundcolor=NavyBlue!50, linewidth=0, innerbottommargin=10pt, innertopmargin=10pt,  skipbelow=15pt, skipabove=15pt]\begin{df0}}
+%  {\end{df0}\end{mdframed}}
+
+
+%\newtheoremstyle{otherstyle}% name of the style to be used
+%  {10pt}% measure of space to leave above the theorem. E.g.: 3pt
+%  {10pt}% measure of space to leave below the theorem. E.g.: 3pt
+%  {\normalfont}% name of font to use in the body of the theorem
+%  {0mm}% measure of space to indent
+%  {\bfseries}% name of head font
+%  {\newline}% punctuation between head and body
+%  {5mm}% space after theorem head
+%  {}% Manually specify head
+
+%\theoremstyle{otherstyle}
+
+
+\newtheorem{lem}[thm]{Lemat}
+%\newenvironment{lem}
+%  {\begin{mdframed}[backgroundcolor=light-gray, linewidth=0]\begin{lem0}}
+%  {\end{lem0}\end{mdframed}}
+%
+
+
+\newtheorem{uw}[thm]{Uwaga}
+\newtheorem{rem}[thm]{Uwaga}
+\newtheorem{fak}[thm]{Fakt}
+%
+%\newenvironment{fak}
+%  {\begin{mdframed}[backgroundcolor=light-gray, linewidth=0]\begin{fak0}}
+%  {\end{fak0}\end{mdframed}}
+
+
+\newtheorem{pd}[thm]{Przyklad}
+\newtheorem{ex}[thm]{Przyklad}
+
+
+\newtheorem{wn}[thm]{Wniosek}
+\newtheorem{cor}[thm]{Wniosek}
+%\newenvironment{wn}
+%  {\begin{mdframed}[backgroundcolor=light-gray, linewidth=0]\begin{wn0}}
+%  {\end{wn0}\end{mdframed}}
+%
+
+\newtheorem{pyt}[thm]{Pytanie}
+
+
+\newtheorem*{zad*}{Zadanie}
+\newtheorem{zad}{Zadanie}[chapter]
+
+
+
+
+%\newtheorem{rozw}{Rozwiązanie}
+
+%\definecolor{light-gray}{gray}{0.85}
+
+
+
+%\spnewtheorem{pd1}{Przyk\l{}ad}{\bf}{\rmfamily}[chapter]
+
+
+%
+%\addtolength{\oddsidemargin}{-.5in}
+%\addtolength{\evensidemargin}{-.5in}
+% \addtolength{\textwidth}{1in}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%	MATEMATYKA
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%% \mathbb
+\newcommand{\Rbb}{\mathbb{R}} 
+\newcommand{\Pbb}{\mathbb{P}} 
+\newcommand{\Ebb}{\mathbb{E}} 
+\newcommand{\Qbb}{\mathbb{Q}} 
+\newcommand{\Nbb}{\mathbb{N}} 
+\newcommand{\Fbb}{\mathbb{F}} 
+\newcommand{\Zbb}{\mathbb{Z}} 
+
+%% \mathcal
+
+\newcommand{\Fcal}{\mathcal{F}} 
+\newcommand{\Gcal}{\mathcal{G}} 
+\newcommand{\Dcal}{\mathcal{D}} 
+\newcommand{\Rcal}{\mathcal{R}} 
+
+
+%% \mathbf
+
+
+\newcommand{\Pbf}{\mathbf{P}} 
+\newcommand{\Ebf}{\mathbf{E}} 
+
+%%----------------------------------------------------------------------
+\def\R{{\mathbb{R}}}
+%\def\C{{\mathbb{C }}}
+\def\N{{\mathbb{N}}}
+\def\Q{{\mathbb{Q}}}
+\def\Z{{\mathbb{Z}}}
+%\def\J{{\mathcal{J}}}
+%\def\A{{\mathcal{A}}}
+%\def\L{{\mathcal{L}}}
+\def\F{{\mathcal{F}}}
+\newcommand{\G}{\mathcal{G}} 
+%\def\S{{\mathcal{S}}}
+%%\def\NN{{\mathcal{N}}}
+%\def\W{{\mathcal{W}}}
+%\def\K{{\mathcal{K}}}
+%\def\zz{\delta }
+%\def\s{\sigma}
+%\newcommand{\supp}{\mbox{supp}}
+%\def\bm{\bar \mu}
+%\def\B_e{B_{\eta}(e)}
+%
+%\newcommand{\dd}{\mathcal{D}}
+%%\newcommand{\D}{\Delta}
+%\renewcommand{\B}{{\mathcal B}}
+%\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+%\renewcommand{\c}{c_0}
+%\renewcommand{\d}{\delta}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\E}{{\mathbb E}}
+%\newcommand{\fd}{{\mathcal E}}
+\renewcommand{\P}{{\mathbb P}}
+%\newcommand{\g}{\gamma}
+%\newcommand{\te}{\theta}
+%\newcommand{\Te}{\Theta}
+%\newcommand{\eb}{{\mathbb E}}
+%\newcommand{\ed}{=_d}
+%\newcommand{\pb}{{\mathbb P}}
+%\renewcommand{\r}{{\mathbb R}}
+%%\newcommand{\z}{{\mathbb Z}}
+%\newcommand{\h}{{\mathbb H}}
+%\newcommand{\n}{{\mathbb N}}
+%\newcommand{\adi}{\frac{\a}{d_i}}
+%\newcommand{\ua}{\underline{\bf a}}
+%\newcommand{\ub}{\underline{\bf b}}
+%\newcommand{\uc}{\underline{\bf c}}
+%\newcommand{\ue}{\underline{\bf e}}
+%\newcommand{\uf}{\underline{\bf f}}
+%\newcommand{\pr}{\bf pr}
+\newcommand{\1}{{\bf 1}}
+%\newcommand{\cab}{c_{\ua,\ub}}
+%\newcommand{\cef}{c_{\ue,\uf}}
+\newcommand{\8}{\infty}
+%\renewcommand{\iff}{, if and only, if  }
+%\renewcommand{\sp}[2]{\langle #1, #2\rangle}
+%%\renewcommand{\spe}[1]{\langle #1\rangle}
+%\newcommand{\ov}{\overline}
+\newcommand{\wt}{\widetilde}
+%\renewcommand{\ss}{{\mathcal S}}
+%\newcommand{\is}[2]{\langle #1,#2\rangle}
+%\newcommand{\bis}[2]{\big\langle #1,#2\big\rangle}
+%\newcommand{\bbis}[2]{\bigg\langle #1,#2\bigg\rangle}
+\renewcommand{\O}{\Omega}
+\renewcommand{\o}{\omega}
+%\newcommand{\tv}[1]{ \| #1\|_{\rm TV}}
+%\newcommand{\tmix}{t_{{\rm miks}}}
+%\newcommand{\trel}{t_{{\rm rel}}}
+\newcommand{\pstw}{prawdopodobieństw}
+\newcommand{\Pstw}{Prawdopodobieństw}
+\newcommand{\Pstwo}{Prawdopodobieństwo}
+\newcommand{\pstwo}{prawdopodobieństwo}
+\newcommand{\pstwem}{prawdopodobieństwem}
+%\newcommand{\ncw}{norma całkowitego wahania}
+%\newcommand{\ncwy}{normy całkowitego wahania}
+%\newcommand{\Ncw}{Norma całkowitego wahania}
+%\renewcommand{\sl}{spacer losowy}
+%\newcommand{\Sl}{Spacer losowy}
+\newcommand{\lm}{łańcuch Markowa}
+%\newcommand{\Lm}{"Lańuch Markowa}
+%\newcommand{\tcouple}{\tau_{\rm par}}
+%\newcommand{\ttop}{\tau_{\rm top}}
+%\newcommand{\trs}{\tau_{\rm RS}}
+%\newcommand{\ttr}{{\sc Top-To-Random}}
+%\newcommand{\rs}{{\sc Riffle Shuffle}}
+%\newcommand{\wh}{\widehat}
+%\newcommand{\zadd}{\noindent{\sc Zadanie. }}
+%%\newcommand{\rozw}{\noindent{\it Rozwi�zanie. }}
+\newcommand{\pb}{(\O,\F,\P)}
+%\newcommand{\Bin}{{\rm Bin}}
+%\newcommand{\U}{{\rm U}}
+%\newcommand{\Exp}{{\rm Exp}}
+%\newcommand{\Poisson}{{\rm Pois}}
+%\newcommand{\var}{{\rm Var}}
+%
+%\makeatletter
+%\renewcommand*{\eqref}[1]{%
+%  \hyperref[{#1}]{\textup{\tagform@{\ref*{#1}}}}%
+%}
+%\makeatother
+
+
+\DeclareMathOperator{\re}{Re}
+
+
+\newcommand{\mk}{\mathbb{K}}
+\newcommand{\ml}{\mathbb{L}}
+\newcommand{\mm}{\mathbbm{1}}
+\newcommand{\EXY}{\mathbb{E}[X|Y]}
+\newcommand{\EXG}{\mathbb{E}[X | \mathcal{G}]}
+\newcommand{\ind}{\mathbf{1}}
+\newcommand{\EE}{\mathbb{E}}
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\KK}{\mathbb{K}}
+\newcommand{\HH}{\mathbb{H}}
+\newcommand{\XX}{\mathbb{X}}
+
+
+\newcommand{\Ecal}{\mathcal{E}}
+\newcommand{\Bcal}{\mathcal{B}}
+\newcommand{\Hcal}{\mathcal{H}}
+\newcommand{\Acal}{\mathcal{A}}
+\newcommand{\Lcal}{\mathcal{L}}
+\newcommand{\Scal}{\mathcal{S}}
+
+\newcommand{\gfr}{\mathfrak{g}}
+
+\newcommand{\ud}{\mathrm{d}}
+
+
+\newcommand{\si}{\boldsymbol{\cdot} }
