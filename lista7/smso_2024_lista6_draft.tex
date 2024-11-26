@@ -1,0 +1,107 @@
+\documentclass{article}
+
+\usepackage{MyPackage}
+
+\begin{document}
+SMUO 2024
+
+lista 7: 
+
+\begin{enumerate}
+	\item \textbf{(Quasi-lewostronna ciągłość)} 
+		Ustalmy \( x \in S \). Niech \( (T_n)_{n \geq 1} \) 
+		będzie ściśle rosnącym ciągiem czasów zatrzymania, a \( T = \lim_{n} T_n \). 
+		Zakładamy, że istnieje stała \( C < \infty \) taka, że \( T \leq C \). 
+		Celem ćwiczenia jest pokazanie, że \( X_{T-} = X_T \), 
+		\( \mathbf{P}_x \)-prawie wszędzie.
+
+		\begin{enumerate}
+    			\item Niech \( f \in \mathcal{D}(L) \) oraz \( h = Lf \). 
+				Pokaż, że dla każdego \( n \geq 1 \),
+    				\[
+    					\mathbf{E}_x \left[ f(X_T) \mid \mathcal{F}_{T_n} \right] 
+					= f(X_{T_n}) + 
+					\mathbf{E}_x \left[ \int_{T_n}^T h(X_s) \, \mathrm{d}s \Big| 
+					\mathcal{F}_{T_n} \right].
+    				\]
+    			\item Przypominamy z RP2R, że
+    				\[
+    					\mathbf{E}_x \left[ f(X_T) \mid \mathcal{F}_{T_n} \right] 
+					\to \mathbf{E}_x \left[ f(X_T) \left|
+					\widetilde{\mathcal{F}}_T \right]\right.
+    				\]
+    				prawie pszędzie i w $L_1$, gdzie
+    				\[
+    					\widetilde{\mathcal{F}}_T = 
+					\bigvee_{n=1}^{\infty} \mathcal{F}_{T_n}.
+    				\]
+    				Wnioskuj z punktu (a), że
+    				\[
+    					\mathbf{E}_x \left[ f(X_T) \left| 
+					\widetilde{\mathcal{F}}_T \right]\right. = f(X_{T-}).
+    				\]  
+    			\item Pokaż, że teza punktu (b) pozostaje prawdziwa, 
+				jeśli przyjmiemy jedynie, że \( f \in C_0(S) \), 
+				oraz wywnioskuj, że dla każdych \( f, g \in C_0(S) \),
+				\[
+    					\mathbf{E}_x \left[ f(X_T) g(X_{T-}) \right] 
+					= \mathbf{E}_x \left[ f(X_{T-}) g(X_{T-}) \right].
+				\]
+    				Wnioskuj, że \( X_{T-} = X_T \), \( \mathbf{P}_x \)-prawie wszędzie.
+		\end{enumerate}
+
+
+	\item \textbf{(Operacja zabijania)} 
+		W tym ćwiczeniu zakładamy, że \( X \) ma ciągłe trajektorie. 
+		Niech \( A \) będzie zwartym podzbiorem \( S \) oraz
+		\[
+			T_A = \inf \{ t \geq 0 : X_t \in A \}.
+		\]
+	\begin{enumerate}
+		\item Dla każdego \( t \geq 0 \) i każdej 
+			funkcji \( \varphi \in C_0(S) \), definiujemy
+    			\[
+    				Q_t^* \varphi(x) = 
+				\mathbf{E}_x [\varphi(X_t) \, \mathbf{1}_{\{t < T_A\}}] , \quad x \in S.
+    			\] 
+    			Sprawdź, że \( Q_{t+s}^* \varphi = Q_t^*(Q_s^* \varphi) \), 
+			dla każdych \( s, t \geq 0 \).
+    		\item Definiujemy \( \overline{S} = (S \setminus A) \cup \{\Delta\} \), 
+			gdzie \( \Delta \) jest punktem dodanym do \( S \setminus A \) 
+			jako punkt izolowany.
+    			Dla każdej \( \varphi \in C_0(\overline{S}) \) i 
+			każdego \( t \geq 0 \), definiujemy
+    			\[
+    				\overline{Q}_t \varphi(x) 
+				= \mathbf{E}_x [\varphi(X_t) \, \mathbf{1}_{\{t < T_A\}}] + 
+				\mathbf{P}_x[T_A \leq t] \varphi(\Delta) , 
+				\quad \text{jeśli } x \in S\setminus A
+    			\]
+    			oraz \( \overline{Q}_t \varphi(\Delta) = \varphi(\Delta) \). 
+			Pokaż, że \( (\overline{Q}_t)_{t \geq 0} \) jest półgrupą.
+    		\item Pokaż, że pod miarą prawdopodobieństwa \( \mathbf{P}_x \) 
+			proces \( \overline{X} \) zdefiniowany jako
+    \[
+    \overline{X}_t = 
+    \begin{cases} 
+      X_t & \text{jeśli } t < T_A \\ 
+      \Delta & \text{jeśli } t \geq T_A 
+    \end{cases}
+    \]
+    jest procesem Markowa z półgrupą \( (\overline{Q}_t)_{t \geq 0} \), 
+    (spełnia postulaty (PF1, 2, 4) definicjia procesu Fellera.
+    
+    \item Zakładamy, że \( (\overline{Q}_t)_{t \geq 0} \) jest półgrupą Fellera i 
+	    oznaczamy jej generator przez \( \overline{L} \). 
+	    Niech \( f \in \mathcal{D}(L) \) będzie taka, że $f$ oraz 
+	    \( Lf \) zanikają na zbiorze otwartym zawierającym \( A \). 
+	    Oznaczmy przez \( \overline{f} \) dla obcięcia \( f \) do \( E \setminus A \), 
+	    i rozważamy \( \overline{f} \) jako funkcję na \( \overline{E} \) przez 
+	    położenie \( \overline{f}(\Delta) = 0 \). 
+	    Pokaż, że \( \overline{f} \in \mathcal{D}(\overline{L}) \) 
+	    oraz \( \overline{L} \overline{f} = Lf \) na \( E \setminus A \).
+\end{enumerate}
+
+
+\end{enumerate}
+\end{document}
