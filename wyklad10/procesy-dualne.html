@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Procesy dualne | SMUO_wyklad10.knit</title>
+  <meta name="description" content="" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Procesy dualne | SMUO_wyklad10.knit" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Procesy dualne | SMUO_wyklad10.knit" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+<link rel="next" href="the-voter-model.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="test.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="procesy-dualne.html"><a href="procesy-dualne.html"><i class="fa fa-check"></i>Procesy dualne</a></li>
+<li class="chapter" data-level="1" data-path="the-voter-model.html"><a href="the-voter-model.html"><i class="fa fa-check"></i><b>1</b> The Voter model</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<!--bookdown:title:end-->
+<!--bookdown:title:start-->
+<div id="procesy-dualne" class="section level1 unnumbered hasAnchor">
+<h1>Procesy dualne<a href="procesy-dualne.html#procesy-dualne" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Często zdarza się, że wartość oczekiwaną związaną z jednym skomplikowany
+procesem jesteśmy w stanie wyrazić jako wartość oczekiwaną związaną z
+innym procesem, który jest o wiele poostrzy. Tego typu relacje pozwalają
+na przydatne reprezentacje wielkości występujących w procesach Fellera.</p>
+<div id="defn:3-41" class="defn">
+<p><strong>Definicja 1</strong>. Niech <span class="math inline">\(X_1=(X_1(t))_{t \in \mathbb{R}}\)</span> i
+<span class="math inline">\(X_2=(X_2(t))_{t \in \mathbb{R}}\)</span> będą procesami Fellera odpowiednio na
+przestrzeniach <span class="math inline">\(S_1\)</span> i <span class="math inline">\(S_2\)</span>. Dla mierzalnej i ograniczonej funkcji <span class="math inline">\(H\)</span>
+na <span class="math inline">\(S_1 \times S_2\)</span>, procesy te są nazywane dualnymi względem <span class="math inline">\(H\)</span>, jeśli
+<span class="math display" id="eq:3-30">\[
+            \mathbf{E}_{x_1} [H(X_1(t), x_2)] = \mathbf{E}_{x_2} [H(x_1, X_2(t))]
+\tag{0.1}
+\]</span>
+dla każdego <span class="math inline">\(t \geq 0\)</span> oraz <span class="math inline">\(x_i \in S_i\)</span>.</p>
+</div>
+<p>Powyższe pojęcie w zupełnej ogólności jest problematyczne. Naturalnym
+jest oczekiwać, że <a href="procesy-dualne.html#eq:3-30">(0.1)</a> mówi coś o relacji między <span class="math inline">\(X_1\)</span> oraz <span class="math inline">\(X_2\)</span>.
+Zauważmy, że każde dwa procesy są dualne względem funkcji stałej.
+Jednakże charakter relacji między <span class="math inline">\(X_1\)</span> a <span class="math inline">\(X_2\)</span> zależy bardzo mocno od
+konteksty i podyktowany jest prze funkcję <span class="math inline">\(H\)</span>.</p>
+<div class="pd">
+<p><strong>Przyklad 2</strong>. Niech <span class="math inline">\(X_a\)</span> oraz <span class="math inline">\(X_r\)</span> będą ruchami Browna na
+<span class="math inline">\(S_1=S_2=[0, +\infty)\)</span> odpowiednio zabitymi i odbitymi w zerze. Procesy
+te są dualne względem funkcji <span class="math display">\[H(x,y) = \mathbf{1}_{\{ x \leq y \}}.\]</span>
+Wówczas relacja <a href="procesy-dualne.html#eq:3-30">(0.1)</a> zapisuje się jako
+<span class="math display">\[\mathbf{P}_{x_1}[X_1(t) \leq x_2] = \mathbf{P}_{x_2}[x_1 \leq X_2(t)].\]</span>
+W przypadku wspomnianych wersji ruchu Browna
+<span class="math display">\[\mathbf{P}_{x}[X_a(t) \leq y] = \mathbf{P}_{y}[x \leq X_r(t)].\]</span> Oba
+prawdopodobieństwa są równe
+<span class="math display">\[\mathbb{P}[B_t\geq x-y]+ \mathbb{P}[B_t\geq x+y],\]</span> gdzie
+<span class="math inline">\(B=(B_t)_{t \in \mathbb{R}_+}\)</span> jest standardowym ruchem Browna na
+<span class="math inline">\(\mathbb{R}\)</span>. Dokładne sprawdzenie wspomnianej równości pozostawiamy
+jako zadanie.</p>
+</div>
+<p>Załóżmy teraz, że <span class="math inline">\(H\)</span> jest ciągła. W świetle definicji procesy Fellera
+<span class="math inline">\(X_1\)</span> oraz <span class="math inline">\(X_2\)</span> z półgrupami Fellera odpowiednio
+<span class="math inline">\(T_1=(T_1(t))_{t \in \mathbb{R}_+}\)</span> oraz
+<span class="math inline">\(T_2=(T_2(t))_{t \in \mathbb{R}_+}\)</span> są <span class="math inline">\(H\)</span>-dualne wtedy i tylko wtedy,
+gdy <span class="math display">\[T_1(t)H(\cdot, s_2)(s_1) = T_2(t)H(s_1, \cdot) (s_2)\]</span> dla
+wszystkich <span class="math inline">\(t \geq 0\)</span>, <span class="math inline">\(s_1\in S_1\)</span> oraz <span class="math inline">\(s_2 \in S_2\)</span>. W przypadku, gdy
+definiujemy procesy Fellera przez ich opis infinitezymalny wygodniejsze
+jest kryterium wyrażone w terminach generatorów.</p>
+<div id="thm:3.42" class="thm">
+<p><strong>Twierdzenie 3</strong>. Niech <span class="math inline">\(X_1\)</span> i <span class="math inline">\(X_2\)</span> będą generowane odpowiednio przez
+<span class="math inline">\((L_1, \mathcal{D}(L_1))\)</span> oraz <span class="math inline">\((L_2, \mathcal{D}(L_2)\)</span>, Załóżmy, że dla
+każdych <span class="math inline">\(s_1\in S_1\)</span> oraz <span class="math inline">\(s_2 \in S_2\)</span>
+<span class="math display">\[H(\cdot, s_2) \in \mathcal{D}(L_1) \quad \mbox{oraz}
+            \quad H(s_1, \cdot) \in \mathcal{D}(L_2).\]</span> Jeżeli dodatkowo
+<span class="math display">\[L_1 H(\cdot, s_2)(s_1) = L_2 H(s_1, \cdot)(s_2)\]</span> dla wszystkich
+<span class="math inline">\(x_1 \in S_1\)</span> oraz <span class="math inline">\(x_2 \in S_2\)</span>. Wówczas <span class="math inline">\(X_1\)</span> i <span class="math inline">\(X_2\)</span> są dualne
+względem <span class="math inline">\(H\)</span>.</p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-1" class="proof"><em>Proof</em>. </span>Rozumowanie przeprowadzimy jedynie w przypadku przeliczalnej
+<span class="math inline">\(S_2\)</span> i ograniczonego <span class="math inline">\(L_2\)</span>. Wówczas <span class="math inline">\(X_2\)</span> jest łańcuchem Markowa z
+<span class="math inline">\(q\)</span>-macierzą <span class="math inline">\(q=(q(x,y))_{x,y\in S_2}\)</span>. Przypomnijmy, że wówczas
+<span class="math display">\[T_2(t)f(s_2)=\mathbf{E}_{s_2}[f(X_2(t)] = \sum_{y \in S_2} \mathbf{P}_{s_2}[X_2(t) =y] f(y).\]</span>
+Generator <span class="math inline">\(L_2\)</span> zadany jest wówczas przez
+<span class="math display">\[L_2 f(s_2) = \left.\frac{\mathrm{d}}{\mathrm{d}t} \right|_{t=0} T_2(t)f(s_2)
+            = \sum_{y \in S_2}\left.\frac{\mathrm{d}}{\mathrm{d}t} \right|_{t=0}
+                \mathbf{P}_{s_2}[X_2(t) =y] f(y)
+            =\sum_{y \in S_2} q(s_2, y)f(y).\]</span> Rozważmy
+<span class="math display">\[\label{eq:3-31}
+            u(t, x_1, x_2) = \mathbf{E}_{x_1}H(X_1(t), x_2) = T_1(t) H(\cdot, x_2)(x_1)\]</span>
+Na mocy Twierdzenia <a href="#thm:3-16"><strong>??</strong></a>,
+<span class="math display">\[\begin{multline*}
+            \frac{\mathrm{d}}{\mathrm{d}t} u(t, x_1, x_2)
+            = T_1(t)L_1 H(\cdot, x_2)(x_1) = T_1(t)L_2 H(x_1, \cdot)(x_2) \\
+            = \sum_{y\in S_2} q(x_2, y) T_1(t) H(\cdot, y)(x_1)
+            = \sum_y q(x_2, y) u(t, x_1, y)
+            = L_2 u(t, x_1, \cdot)(x_2).
+\end{multline*}\]</span>
+Dodatkowo <span class="math inline">\(u(0, x_1, x_2) = H(x_1, x_2)\)</span>. Z drugiej
+strony funkcja <span class="math display">\[v(t,x_1, x_2) = T_2(t)H(x_1, \cdot)(x_2)\]</span> również
+spełnia <span class="math inline">\(v(0,x_1, x_2) = H(x_1, x_2)\)</span>. Wystarczy zatem uzasadnić
+jedyność tego zagadnienia. Rozważmy w tym celu <span class="math inline">\(h = v-u\)</span>. Wówczas
+<span class="math display">\[h(t,x_1, x_2) = \int_0^t L_2 h(s, x_1, \cdot ) \mathrm{d}s\]</span> Niech
+<span class="math display">\[h^*(t,x_1) = \sup_{ s \leq t, x_2 \in S_2} h(s,x_1, x_2).\]</span> Wówczas
+<span class="math display">\[h^*(t,x_1) \leq \int_0^t \|L_2\| h^*(s, x_1) \mathrm{d}s.\]</span> Powyższa
+nierówność zwija się do <span class="math display">\[\frac{\mathrm{d}}{\mathrm{d}t}
+            \left(e^{- \|L_2\|t} \int_0^t h^*(s, x_1) \mathrm{d}s \right)\leq 0.\]</span>
+Co po całkowaniu daje
+<span class="math display">\[e^{- \|L_2\|t} \int_0^t h^*(s, x_1) \mathrm{d}s\leq 0.\]</span> Skoro lewa
+strona jest niewątpliwie nieujemna, to <span class="math inline">\(h \equiv 0\)</span> za co za tym idzie
+<span class="math inline">\(u\equiv v\)</span>. Ostatnie równość jest równoważna z dowodzoną tezą.</p>
+</div>
+<div class="pd">
+<p><strong>Przyklad 4</strong>. Niech <span class="math inline">\(X_1\)</span> i <span class="math inline">\(X_2\)</span> będą spacerami losowymi na
+<span class="math inline">\(\mathbb{Z}\)</span> z <span class="math inline">\(q\)</span>-macierzami odpowiednio
+<span class="math display">\[q_1(x, x+1) = \beta, \quad q_1(x, x-1) = \delta\]</span> oraz
+<span class="math display">\[q_2(x, x+1) = \delta, \quad q_1(x, x-1) = \beta\]</span></p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="the-voter-model.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
