@@ -57,6 +57,7 @@ eq:3-19
 thm:3-24
 exr:3-23
 eq:3-20
+eq:3-22
 eq:3-21
 eq:3-cel
 thm:3-26
@@ -78,3 +79,5 @@ def:unlabeled-div-31
 def:unlabeled-div-32
 prp:3-30
 eq:3-25
+eq:3-26
+eq:3-30
