@@ -4,8 +4,8 @@
     let states = [0, 1]; // możliwe stany (np. 0 - preferencja A, 1 - preferencja B)
 
     function setup() {
-      let canvas = createCanvas(600, 600); // Tworzenie canvas
-      canvas.parent('p5-container'); // Przypisanie canvas do div'a o ID "p5-container"
+      let canvas = createCanvas(600, 300); // Tworzenie canvas
+      canvas.parent('p5-container-voter'); // Przypisanie canvas do div'a o ID "p5-container"
       cols = width / resolution;
       rows = height / resolution;
       
