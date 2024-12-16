@@ -1,0 +1,37 @@
+\documentclass{article}
+
+\usepackage{MyPackage}
+
+\begin{document}
+SMUO 2024
+
+lista 8: systemy niezależnych cząstek
+
+\begin{enumerate}
+
+
+
+\item Niech $X=(X_t)_{t \geq 0}$ będzie nieprzywiedlnym, powracającym łańcuchem Markowa na (przeliczalnym) zbiorze $S$ z rozkładem stacjonarnym $\pi$ i $q$-macierzą $q$. Rozważmy łańcuch $Y=(Y_t)_{t \geq 0}$, w którym skończenie wiele nierozróżnialnych cząsteczek porusza się niezależnie po $S$ zgodnie z łańcuchem $X$. 
+Przestrzenią stanów dla $Y$ jest zbiór $S^*$ wszystkich skończonych konfiguracji $\eta$ cząsteczek na $S$. 
+Opisz $q$-macierz $Q$ dla $Y$.
+
+\item Niech $\Pi = \{\Pi(x), x \in S\}$ będzie zbiorem niezależnych zmiennych losowych, gdzie $\Pi(x)$ ma rozkład Poissona z parametrem $\lambda \pi(x)$. Udowodnij, że
+\begin{equation}\label{eq}
+\Pi^*(\eta \in S^* : \eta(x) = k_x \text{ dla } x \in T) = \prod_{x \in T} P(\Pi(x) = k_x)
+\end{equation}
+dla skończonego zbioru $T \subset S$ oraz liczb naturalnych $k_x$, $x \in T$, wyznacza miarę probabilistyczną na $S^*$.
+
+\item Wykaż, że $\Pi^*$ jest rozkładem stacjonarnym dla procesu $Y(t)$.
+
+\item Załóżmy, że na $S$ porusza się dokładnie $k_0$ cząstek. 
+Jaki jest rozkład stacjonarny dla $Y(t)$?
+
+\item W procesie $Y$ każda cząstka przebywająca w $x \in S$ zmienia położenie z intensywnością $c(x) = -q(x,x)$. Rozważmy teraz inny proces $Z = (Z_t)$ na $S^*$, w którym z intensywnością $c(x)$ pewna cząstka w $x$ przemieszcza się. 
+Opisz $q$-macierz $Q_1$ dla $Z$.
+
+\item Niech $\{\Pi(x), x \in S\}$ będą niezależnymi zmiennymi losowymi o rozkładzie geometrycznym, gdzie $\Pi(x)$ ma parametr $p(x)$ dla pewnej funkcji $p \colon S \to \mathbb{R}_+$. 
+Znajdź warunki, dla których odpowiadający $\Pi^*$, zadany przez~\eqref{eq}, jest rozkładem stacjonarnym dla tego łańcucha.
+
+
+\end{enumerate}
+\end{document}
