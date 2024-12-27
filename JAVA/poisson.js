@@ -1,97 +1,162 @@
-let lambda = 0.1; // Domyślna intensywność procesu Poissona
-let currentTime = 0;
-let events = [];
-let counts = [];
-let nextEventTime = 0; // Czas następnego zdarzenia
+// Skrypt w p5.js generujący animację ruchu cząsteczki zgodnie z procesem Poissona
+
+let lambda = 0.5; // Intensywność zdarzeń (średnia liczba zdarzeń na jednostkę czasu)
+let duration = 100; // Całkowity czas symulacji
+let events = []; // Lista zdarzeń (czasy zdarzeń)
+let stepHeight = 20; // Wysokość "skoku" dla każdego zdarzenia
+
+let currentEventIndex = 0; // Indeks aktualnie rysowanego zdarzenia
+let currentHeight = 0; // Wysokość aktualnego "skoku"
+let prevX = 0; // Poprzednie współrzędne X
+let prevY = 0; // Poprzednie współrzędne Y
+
+let animationSpeed = 30; // Opóźnienie animacji (klatki między zdarzeniami)
+let frameCounter = 0; // Licznik klatek
+let particleX = 0; // Pozycja cząsteczki w poziomie
+let particleY = 0; // Pozycja cząsteczki w pionie
+let path = []; // Tablica do przechowywania ścieżki
+
+let lambdaSlider; // Suwak dla wartości lambda
+let lastLambda; // Przechowuje ostatnią wartość lambda
 
 function setup() {
-  // Tworzenie canvas w kontenerze "p5-container-poisson"
-  const canvas = createCanvas(800, 400);
-  canvas.parent("p5-container-poisson"); // Umieszczenie canvas wewnątrz kontenera
+  const container = select('#p5-container-poisson');
+  const sliderContainer = select('#p5-container-poisson-slider');
 
-  background(255);
+  if (!container) {
+    console.error("Kontener #p5-container-poisson nie został znaleziony.");
+    return;
+  }
 
-  // Podpięcie pola tekstowego i przycisku do zmiany intensywności
-  let lambdaInput = select("#lambda-input");
-  let applyButton = select("#apply-button");
-  
-  applyButton.mousePressed(() => {
-    updateLambda(lambdaInput.value());
-  });
+  if (!sliderContainer) {
+    console.error("Kontener #p5-container-poisson-slider nie został znaleziony.");
+    return;
+  }
 
-  resetProcess(); // Inicjalizacja pierwszego zdarzenia
+  const containerWidth = container.width * 0.9;
+  const containerHeight = containerWidth / 2;
+
+  // Tworzenie płótna w kontenerze
+  let canvas = createCanvas(containerWidth, containerHeight);
+  canvas.parent(container);
+
+  // Tworzenie suwaka w osobnym kontenerze
+  lambdaSlider = createSlider(0.01, 1, lambda, 0.01);
+  lambdaSlider.style('width', '200px');
+  lambdaSlider.parent(sliderContainer);
+
+  lastLambda = lambda;
+  resetSimulation();
 }
 
 function draw() {
-  // Generowanie zdarzeń zależnych od lambda
-  if (currentTime >= nextEventTime) {
-    // Dodanie nowego zdarzenia
-    events.push(currentTime);
-    counts.push(counts.length + 1);
-    
-    // Wyznaczenie czasu następnego zdarzenia
-    nextEventTime += randomExponential(lambda);
+  background(220);
+
+  // Aktualizacja wartości lambda z suwaka
+  lambda = lambdaSlider.value();
+
+  // Sprawdzenie, czy wartość lambda się zmieniła
+  if (lambda !== lastLambda) {
+    lastLambda = lambda;
+    resetSimulation();
   }
 
-  // Aktualizacja bieżącego czasu
-  currentTime += deltaTime / 1000; // Przekształcenie deltaTime (ms) na sekundy
+  // Wyświetlanie wartości lambda na ekranie
+  fill(0);
+  textSize(14);
+  text(`Lambda: ${lambda.toFixed(2)}`, 10, height - 20);
 
-  // Rysowanie wykresu
-  background(255);
-  text("Wykres N(t) - Liczba zdarzeń w zależności od czasu", 10, 20);
-  
-  // Rysowanie osi wykresu
+  drawAxis();
+  drawPath();
+  animateParticle();
+}
+
+function resetSimulation() {
+  currentEventIndex = 0;
+  currentHeight = 0;
+  prevX = 0;
+  prevY = height;
+  particleX = 0;
+  particleY = height;
+  path = [{ x: particleX, y: particleY }];
+  generatePoissonProcess();
+}
+
+function generatePoissonProcess() {
+  events = [];
+  let time = 0;
+
+  while (time < duration) {
+    let interArrivalTime = -log(random()) / lambda;
+    time += interArrivalTime;
+    if (time < duration) {
+      events.push(time);
+    }
+  }
+}
+
+function drawAxis() {
   stroke(0);
-  line(50, height - 50, width - 50, height - 50); // Oś X (czas)
-  line(50, height - 50, 50, 50); // Oś Y (liczba zdarzeń N(t))
+  fill(0);
+  textSize(12);
 
-  // Etykiety osi
-  textAlign(CENTER);
-  text("Czas (t)", width / 2, height - 20);
-  textAlign(RIGHT);
-  text("N(t)", 30, height / 2);
+  line(0, height, width, height); // Oś czasu
+  line(0, 0, 0, height);          // Oś zdarzeń
 
-  // Rysowanie wykresu N(t) jako funkcji skokowej
-  stroke(255, 0, 0);
+  text("Czas", width - 40, height - 10);
+  text("0", 5, height - 5);
+
+  text("Zdarzenia", 10, 20);
+}
+
+function drawPath() {
+  stroke(0, 0, 255);
   noFill();
   beginShape();
-  for (let i = 0; i < events.length; i++) {
-    let x1 = map(events[i], 0, max(events) * 1.5, 50, width - 50);
-    let y1 = map(counts[i], 0, max(counts) * 1.2, height - 50, 50);
-    vertex(x1, y1);
+  for (let i = 0; i < path.length - 1; i++) {
+    let point1 = path[i];
+    let point2 = path[i + 1];
 
-    let y2 = map(counts[i] + 1, 0, max(counts) * 1.2, height - 50, 50);
-    vertex(x1, y2);
+    line(point1.x, point1.y, point2.x, point1.y);
+    line(point2.x, point1.y, point2.x, point2.y);
   }
   endShape();
+}
 
-  // Ograniczenie liczby wyświetlanych zdarzeń dla przejrzystości
-  if (events.length > 200) {
-    events.shift();
-    counts.shift();
+function animateParticle() {
+  fill(255, 0, 0);
+  ellipse(particleX, particleY, 10, 10); // Rysowanie cząsteczki
+
+  if (currentEventIndex < events.length) {
+    if (frameCounter >= animationSpeed) {
+      let nextX = map(events[currentEventIndex], 0, duration, 0, width);
+      let nextY = height - (currentHeight + stepHeight);
+
+      path.push({ x: nextX, y: nextY });
+
+      particleX = nextX;
+      particleY = nextY;
+      currentHeight += stepHeight;
+
+      currentEventIndex++;
+      frameCounter = 0;
+    } else {
+      frameCounter++;
+    }
   }
 }
 
-// Funkcja aktualizująca intensywność lambda na podstawie wartości z pola tekstowego
-function updateLambda(inputValue) {
-  let inputVal = parseFloat(inputValue);
-  if (!isNaN(inputVal) && inputVal > 0) {
-    lambda = inputVal;
-    resetProcess(); // Restart procesu po zmianie lambda
-  } else {
-    alert("Podaj poprawną, dodatnią wartość dla intensywności lambda.");
-  }
+function windowResized() {
+  const container = select('#p5-container-poisson');
+  if (!container) return;
+
+  const containerWidth = container.width * 0.9;
+  const containerHeight = containerWidth / 2;
+  resizeCanvas(containerWidth, containerHeight);
+  resetSimulation();
+  redraw();
 }
 
-// Funkcja resetująca proces Poissona
-function resetProcess() {
-  currentTime = 0;
-  events = [];
-  counts = [];
-  nextEventTime = randomExponential(lambda); // Wyznacz czas pierwszego zdarzenia
-}
-
-// Funkcja generująca losowy czas odstępu między zdarzeniami
-function randomExponential(lambda) {
-  return -Math.log(1 - random()) / lambda;
+function mouseReleased() {
+  redraw();
 }

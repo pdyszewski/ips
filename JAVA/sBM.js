@@ -15,8 +15,9 @@ let kappaInput; // Pole tekstowe do wpisania lepkości
 let submitButton; // Przycisk potwierdzający zmianę lepkości
 
 function setup() {
-    // Umieszczanie canvasu wewnątrz kontenera o id "p5-container-sBM"
     const container = select('#p5-container-sBM');
+    const inputcontainer = select('#p5-container-sBM-input');
+
     const canvas = createCanvas(620, 400);
     canvas.parent(container);
 
@@ -25,16 +26,15 @@ function setup() {
 
     // Tworzenie pola tekstowego do wpisania parametru lepkości
     kappaInput = createInput(kappa.toString());
-    kappaInput.parent(container);
-    kappaInput.position(10, 420);
+    kappaInput.parent(inputcontainer);
     kappaInput.size(100);
 
     // Przycisk do zatwierdzenia zmiany parametru lepkości
     submitButton = createButton("Współczynnik lepkości");
-    submitButton.parent(container);
-    submitButton.position(120, 420);
+    submitButton.parent(inputcontainer);
     submitButton.mousePressed(updateKappa);
 }
+
 
 // Funkcja resetująca symulację
 function resetSimulation() {
