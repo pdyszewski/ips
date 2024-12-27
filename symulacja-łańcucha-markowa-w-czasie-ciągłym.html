@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>1 Symulacja łańcucha Markowa w czasie ciągłym | Stochastyczne modele układów oddziałujących 2024</title>
+
+    <meta name="author" content="Piotr Dyszewski" />
+  
+   <meta name="description" content="Krótki opis książki." />
+   <meta name="generator" content="placeholder" />
+  <meta property="og:title" content="1 Symulacja łańcucha Markowa w czasie ciągłym | Stochastyczne modele układów oddziałujących 2024" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:image" content="/cover.png" />
+  <meta property="og:description" content="Krótki opis książki." />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="1 Symulacja łańcucha Markowa w czasie ciągłym | Stochastyczne modele układów oddziałujących 2024" />
+  
+  <meta name="twitter:description" content="Krótki opis książki." />
+  <meta name="twitter:image" content="/cover.png" />
+  <!-- JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script>
+    <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet" />
+    <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script>
+    <script src="libs/bs3compat-0.8.0/transition.js"></script>
+    <script src="libs/bs3compat-0.8.0/tabs.js"></script>
+    <script src="libs/bs3compat-0.8.0/bs3compat.js"></script>
+    <link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet" />
+    <script src="libs/bs4_book-1.0.0/bs4_book.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script>
+
+  <!-- CSS -->
+  <style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+      <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="test.css" />
+  
+</head>
+
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book">
+    <a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="Notatni do wykładu">Stochastyczne modele układów oddziałujących 2024</a>:
+        <small class="text-muted">Notatni do wykładu</small>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+      </form>
+
+      <nav aria-label="Table of contents">
+        <h2>Table of contents</h2>
+        <div id="book-toc"></div>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="#">View book source <i class="fab fa-github"></i></a></li></p>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="col-sm-12 col-md-9 col-lg-7" id="content">
+<div id="symulacja-łańcucha-markowa-w-czasie-ciągłym" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Symulacja łańcucha Markowa w czasie ciągłym</h1>
+<p>W tej sekcji przedstawimy, jak zaimplementować i zwizualizować łańcuch Markowa w czasie ciągłym z 5 stanami.</p>
+<div class="lemma">
+<p><span id="lem:2-6-18" class="lemma"><strong>Lemma 1.1  </strong></span>Niech <span class="math inline">\(x \in S\)</span>.
+Istnieje rzeczywista liczba <span class="math inline">\(c(x) \geq 0\)</span>,
+taka że zmienna losowa <span class="math inline">\(T_1\)</span> ma rozkład wykładniczy z parametrem <span class="math inline">\(c(x)\)</span>
+pod <span class="math inline">\(\mathbf{P}_x\)</span>. Co więcej, jeśli <span class="math inline">\(c(x) &gt; 0\)</span>,
+to <span class="math inline">\(T_1\)</span> i <span class="math inline">\(X_{T_1}\)</span> są niezależne pod <span class="math inline">\(\mathbf{P}_x\)</span>.</p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-3" class="proof"><em>Proof</em>. </span>Niech <span class="math inline">\(s, t \geq 0\)</span>. Mamy
+<span class="math display">\[
+\mathbf{P}_x[T_1 &gt; s + t] = \mathbf{E}_x[\mathbf{1}_{\{T_1 &gt; s\}} \Phi \circ \theta_s],
+\]</span>
+gdzie <span class="math inline">\(\Phi(\omega) = \mathbf{1}_{\{\omega(r)=\omega(0), \, \forall r \in [0,t]\}}\)</span>.
+Używając własności Markowa, dostajemy
+<span class="math display">\[\begin{equation*}
+\mathbf{P}_x[T_1 &gt; s + t] = \mathbf{E}_x[\mathbf{1}_{\{T_1 &gt; s\}} \mathbf{E}_x[\Phi]]
+= \mathbf{E}_x[\mathbf{1}_{\{T_1 &gt; s\}} \mathbf{P}_x[T_1 &gt; t]] = \mathbf{P}_x[T_1 &gt; s] \mathbf{P}_x[T_1 &gt; t],
+\end{equation*}\]</span>
+co implikuje, że <span class="math inline">\(T_1\)</span> ma rozkład wykładniczy pod <span class="math inline">\(\mathbf{P}_x\)</span>.</p>
+<p>Załóżmy teraz, że <span class="math inline">\(c(x) &gt; 0\)</span>. Wówczas <span class="math inline">\(T_1 &lt; \infty\)</span>, <span class="math inline">\(\mathbf{P}_x\)</span> prawie na pewno.
+Dla każdego <span class="math inline">\(t \geq 0\)</span> i <span class="math inline">\(y \in S\)</span>,
+<span class="math display">\[\begin{equation*}
+\mathbf{P}_x[T_1 &gt; t, X_{T_1} = y] = \mathbf{E}_x[\mathbf{1}_{\{T_1 &gt; t\}} \Psi \circ \theta_t ],
+\end{equation*}\]</span>
+gdzie dla <span class="math inline">\(\omega \in \Omega\)</span>, <span class="math inline">\(\Psi(\omega) = 0\)</span> jeśli <span class="math inline">\(\omega\)</span> jest stałe,
+a w przeciwnym razie <span class="math inline">\(\Psi(\omega) = \mathbf{1}_{\{ \gamma_1(\omega) = y\}}\)</span>,
+gdzie <span class="math inline">\(\gamma_1(\omega)\)</span> jest wartością <span class="math inline">\(\omega\)</span>
+po jego pierwszym skoku. Zatem mamy
+<span class="math display">\[\begin{multline*}
+\mathbf{P}_x[T_1 &gt; t, X_{T_1} = y] =
+\mathbf{E}_x [\mathbf{1}_{\{T_1 &gt; t\}} \mathbf{E}_x[\Psi ]] = \\ \mathbf{E}_x[\mathbf{1}_{\{T_1 &gt; t\}} \mathbf{P}_x[X_{T_1} = y]]
+= \mathbf{P}_x[T_1 &gt; t] \mathbf{P}_x[X_{T_1} = y],
+\end{multline*}\]</span>
+co daje pożądaną niezależność.</p>
+</div>
+<p>Punkty, dla których <span class="math inline">\(c(x) = 0\)</span>,
+są stanami pochłaniającymi dla procesu Markowa,
+w tym sensie, że
+<span class="math inline">\(\mathbf{P}_x[X_t = x, \, \forall t \geq 0] = 1\)</span>.
+Dla każdych <span class="math inline">\(x, y \in S\)</span> definiujemy
+<span class="math display">\[\begin{equation*}
+\Pi(x, y) = \left\{ \begin{array}{cc} \mathbf{P}_x[X_{T_1} = y] &amp; c(x)&gt;0 \\ \delta_x(y) &amp; c(x)=0 \end{array}\right.
+\end{equation*}\]</span>
+Zauważmy, że <span class="math inline">\(\Pi(x, \cdot)\)</span> jest miarą prawdopodobieństwa na <span class="math inline">\(S\)</span>.</p>
+<div class="theorem">
+<p><span id="thm:2-6-19" class="theorem"><strong>Twierdzenie 1.1  </strong></span>Niech <span class="math inline">\((\mathbf{P}, \mathbb{F})\)</span> będzie łańcuchem Markowa
+w czasie ciągłym takim, że <span class="math inline">\(\sup_{x \in S} c(x) &lt; \infty\)</span>.
+Wówczas
+<span class="math display">\[\begin{equation*}
+\frac{\mathrm{d}}{\mathrm{d} t} \left. \mathbb{P}_x[X_t=y]\right|_{t=0} = c(x) \Pi(x,y).
+\end{equation*}\]</span></p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-4" class="proof"><em>Proof</em>. </span>Jeśli <span class="math inline">\(c(x) = 0\)</span>, to <span class="math inline">\(\mathbf{P}_x[X_t=x] = \mathbf{P}_x[X_0 =x]=1\)</span>, i stąd
+<span class="math display">\[\begin{equation*}
+\lim_{t \to 0} \frac{\mathbf{P}_x[X_t=x] - 1}{t} = 0.
+\end{equation*}\]</span>
+Załóżmy teraz, że <span class="math inline">\(c(x) &gt; 0\)</span>. Najpierw zauważmy, że
+<span class="math display" id="eq:2-6-1">\[\begin{equation}
+\mathbf{P}_x[T_2 \leq t] = O\left(t^2\right)
+\tag{1.1}
+\end{equation}\]</span>
+gdy <span class="math inline">\(t \to 0\)</span>. Rzeczywiście, używając silnej własności Markowa w <span class="math inline">\(T_1\)</span>,
+<span class="math display">\[\begin{equation*}
+\mathbf{P}_x[T_2 \leq t] \leq \mathbf{P}x[T_1 \leq t, T_2 \leq T_1 + t]
+= \mathbf{E}_x[\mathbf{1}_{\{T_1 \leq t\}} \mathbf{E}_{X_{T_1}}[T_1 \leq t]],
+\end{equation*}\]</span>
+i możemy oszacować
+<span class="math display">\[\begin{equation*}
+\mathbf{P}_{X_{T_1}}[T_1 \leq t] \leq \sup_{y \in S} \mathbf{P}_y[T_1 \leq t] \leq \sup_{y \in S} c(y),
+\end{equation*}\]</span>
+co daje oczekiwany wynik, ponieważ mamy również <span class="math inline">\(\mathbf{P}_x[T_1 \leq t] \leq c(x)t\)</span>.
+Z <a href="symulacja-łańcucha-markowa-w-czasie-ciągłym.html#eq:2-6-1">(1.1)</a> wynika, że
+<span class="math display">\[\begin{multline*}
+\mathbf{P}_x[X_t=y] = \mathbf{P}_x[X_t=y, \: T_1 &gt; t] + \mathbf{P}_x[X_{T_1}=y, \: T_1 \leq t] + O(t^2)
+\\ = \delta_{x}(y) e^{-c(x)t} + \left(1 - e^{-c(x)t}\right)\Pi(x,y) + O(t^2),
+\end{multline*}\]</span>
+używając niezależności <span class="math inline">\(T_1\)</span> i <span class="math inline">\(X_{T_1}\)</span> oraz definicji
+<span class="math inline">\(\Pi(x, y)\)</span>. Dochodzimy do wniosku, że
+skoro <span class="math inline">\(\mathbf{P}_x[X_0=y] = \delta_x(y)\)</span>, to
+<span class="math display">\[\begin{equation*}
+\frac{\mathbf{P}_x[X_t=y]  -  \mathbf{P}_x[X_0=y]}{t} \to -c(x)\delta_{x}(y) + c(x)\Pi(x,y).
+\end{equation*}\]</span>
+co kończy dowód.</p>
+</div>
+<p>Kolejne twierdzenie dostarcza pełnego opisu ścieżek procesu <span class="math inline">\(X\)</span> pod <span class="math inline">\(\mathbf{P}_x\)</span>.
+Dla uproszczenia zakładamy, że nie ma stanów pochłaniających,
+ale czytelnik łatwo rozszerzy stwierdzenie na przypadek ogólny.</p>
+<div class="theorem">
+<p><span id="thm:2-6-20" class="theorem"><strong>Twierdzenie 1.2  </strong></span>Zakładamy, że <span class="math inline">\(c(y) &gt; 0\)</span> dla każdego <span class="math inline">\(y \in S\)</span> i że <span class="math inline">\(\sup_{y \in S} c(y) &lt; \infty\)</span>.
+Niech <span class="math inline">\(x \in S\)</span>.
+Wówczas, <span class="math inline">\(\mathbf{P}_x\)</span> p.n.,
+czasy skoku <span class="math inline">\(T_1 &lt; T_2 &lt; T_3 &lt; \dots\)</span> są skończone, a
+ciąg <span class="math inline">\(X_0, X_{T_1}, X_{T_2}, \dots\)</span> pod <span class="math inline">\(\mathbf{P}_x\)</span> jest dyskretnym łańcuchem Markowa
+z macierzą przejścia <span class="math inline">\(\Pi\)</span> rozpoczętym w <span class="math inline">\(x\)</span>.
+Ponadto, pod warunkiem <span class="math inline">\((X_0, X_{T_1}, X_{T_2}, \dots)\)</span>,
+zmienne losowe <span class="math inline">\(T_1 - T_0, T_2 - T_1, \dots\)</span> są niezależne,
+a dla każdej liczby całkowitej <span class="math inline">\(i \geq 0\)</span>,
+rozkład warunkowy <span class="math inline">\(T_{i+1} - T_i\)</span> jest wykładniczy z parametrem <span class="math inline">\(c(X_{T_i})\)</span>.</p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-5" class="proof"><em>Proof</em>. </span>Zastosowanie silnej własności Markowa pokazuje,
+że wszystkie czasy stopu <span class="math inline">\(T_1, T_2, \dots\)</span> są skończone <span class="math inline">\(\mathbf{P}_x\)</span>-p.n.
+Następnie, niech <span class="math inline">\(y, z \in S\)</span>, a <span class="math inline">\(f_1, f_2 \colon S \to \mathbb{R}\)</span>.
+Używając silnej własności Markowa w <span class="math inline">\(T_1\)</span>:
+<span class="math display">\[\begin{multline*}
+\mathbf{E}_x[\mathbf{1}_{\{X_{T_1} = y\}} f_1(T_1) 1_{\{X_{T_2} = z\}} f_2(T_2 - T_1)]
+= \mathbf{E}_x[\mathbf{1}_{\{X_{T_1} = y\}} f_1(T_1) \mathbf{E}_x[\mathbf{1}_{\{X_{T_2} = z\}} f_2(T_2 - T_1)]] \\
+= \Pi(x, y) \Pi(y, z) \int_0^\infty e^{-c(x)s_1} f_1(s_1)\mathrm{d} s_1 \int_0^\infty  e^{-c(y)s_2} f_2(s_2) \mathrm{d} s_2.
+\end{multline*}\]</span>
+Postępując indukcyjnie, otrzymujemy dla każdych <span class="math inline">\(y_1, \dots, y_p \in S\)</span> oraz <span class="math inline">\(f_1, \dots, f_p \colon S \to \mathbb{R}\)</span>:
+<span class="math display">\[\begin{multline*}
+\mathbf{E}_x[\mathbf{1}_{\{X_{T_1} = y_1\}} \mathbf{1}_{\{X_{T_2} = y_2\}} \dots \mathbf{1}_{\{X_{T_p} = y_p\}} f_1(T_1) f_2(T_2 - T_1) \dots f_p(T_p - T_{p-1})] \\
+= \Pi(x, y_1) \Pi(y_1, y_2) \dots \Pi(y_{p-1}, y_p) \prod_{i=1}^p \left( \int_0^\infty e^{-c(y_{i-1})s} f_i(s) \mathrm{d} s\right),
+\end{multline*}\]</span>
+gdzie <span class="math inline">\(y_0 = x\)</span>.</p>
+</div>
+<p>Z powyższego twierdzenia wynika charakteryzacja łańcucha Markowa w terminach <span class="math inline">\(Q\)</span>-macierzy.
+Przez <span class="math inline">\(\mathbb{F}^X = (\mathcal{F}_t^X)_t\)</span> oznaczać będziemy najmniejszą możliwą filtrację, tj.
+<span class="math display">\[\begin{equation*}
+\mathcal{F}_t = \sigma(X_s \: : \: s \leq t).
+\end{equation*}\]</span></p>
+<div class="corollary">
+<p><span id="cor:6-21" class="corollary"><strong>Wniosek 1.1  </strong></span>Niech <span class="math inline">\(q = (q(x,y))_{x,y\in S}\)</span> będzie <span class="math inline">\(Q\)</span>-macierzą taką, że <span class="math inline">\(\sup_{x \in S}|q(x,x)| &lt; \infty\)</span>.
+Wówczas istnieje jedyna rodzina miar
+<span class="math inline">\(\mathbf{P}\)</span> taka, że <span class="math inline">\((\mathbf{P}, \mathbb{F}^X)\)</span> jest łańcuchem Markowa stowarzyszonym z <span class="math inline">\(Q\)</span>-macierzą <span class="math inline">\(q\)</span>.</p>
+</div>
+
+</div>
+  </main>
+
+  <div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page">
+      <h2>On this page</h2>
+      <div id="book-on-this-page"></div>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          <li><a id="book-source" href="#">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="#">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5">
+  <div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Stochastyczne modele układów oddziałujących 2024</strong>: Notatni do wykładu" was written by Piotr Dyszewski. It was last built on 2024-12-25.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+<script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+
+</html>
