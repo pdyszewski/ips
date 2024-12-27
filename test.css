@@ -1,0 +1,154 @@
+#p5-container-voter {
+  width: 100%; /* Kontener zajmuje pełną szerokość rodzica */
+  /*max-width: 800px; */ /* Maksymalna szerokość, aby nie zajmował zbyt dużo miejsca */
+  margin: 0 auto; /* Centrowanie kontenera na stronie */
+  padding: 20px; /* Odstępy wewnętrzne dla estetyki */
+  background-color: #f9f9f9; /* Jasne tło dla lepszej czytelności */
+  border: 1px solid #ddd; /* Subtelna ramka */
+  border-radius: 8px; /* Zaokrąglone narożniki */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Delikatny cień dla efektu głębi */
+}
+
+
+
+#canvas-container {
+      justify-content: center;
+      text-align: center;
+      display: inline-block;
+      align-items: center;
+    }
+    
+#p5-container-brown {
+      width: 660px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 2px solid #333;
+    }
+    #p5-container-poisson {
+      width: 100%;
+      max-width: 800px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .input-container {
+      display: flex;
+      margin-top: 10px;
+    }
+        #p5-container-sBM {
+  width: 100%; /* Kontener zajmuje pełną szerokość rodzica */
+  /*max-width: 800px; */ /* Maksymalna szerokość, aby nie zajmował zbyt dużo miejsca */
+  margin: 0 auto; /* Centrowanie kontenera na stronie */
+  padding: 20px; /* Odstępy wewnętrzne dla estetyki */
+  background-color: #f9f9f9; /* Jasne tło dla lepszej czytelności */
+  border: 1px solid #ddd; /* Subtelna ramka */
+  border-radius: 8px; /* Zaokrąglone narożniki */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Delikatny cień dla efektu głębi */
+        }
+        
+
+#p5-container-sBM-input {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+
+            #p5-container-cp1 {
+      text-align: center;
+      background: white;
+      padding: 10px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+        #p5-container-cRW {
+              text-align: center;
+      width: 600px;
+      height: 400px;
+      padding: 10px;
+      margin: 20px auto;
+    }
+
+#p5-container-GWsine {
+  width: 100%; /* Kontener zajmuje pełną szerokość rodzica */
+  /*max-width: 800px; */ /* Maksymalna szerokość, aby nie zajmował zbyt dużo miejsca */
+  margin: 0 auto; /* Centrowanie kontenera na stronie */
+  padding: 20px; /* Odstępy wewnętrzne dla estetyki */
+  background-color: #f9f9f9; /* Jasne tło dla lepszej czytelności */
+  border: 1px solid #ddd; /* Subtelna ramka */
+  border-radius: 8px; /* Zaokrąglone narożniki */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Delikatny cień dla efektu głębi */
+}
+
+#p5-container-GWsine canvas {
+  width: 100%; /* Płótno zajmuje pełną szerokość kontenera */
+  height: auto; /* Automatyczna wysokość, zachowująca proporcje */
+}
+
+#p5-container-GWsine input[type="range"] {
+  display: block; /* Suwak wyświetlany jako blok */
+  margin: 10px auto; /* Wyśrodkowanie suwaka wewnątrz kontenera */
+}
+
+ #p5-container-poisson {
+  width: 100%; /* Kontener zajmuje pełną szerokość rodzica */
+  /*max-width: 800px; */ /* Maksymalna szerokość, aby nie zajmował zbyt dużo miejsca */
+  margin: 0 auto; /* Centrowanie kontenera na stronie */
+  padding: 20px; /* Odstępy wewnętrzne dla estetyki */
+  background-color: #f9f9f9; /* Jasne tło dla lepszej czytelności */
+  border: 1px solid #ddd; /* Subtelna ramka */
+  border-radius: 8px; /* Zaokrąglone narożniki */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Delikatny cień dla efektu głębi */
+    }
+#p5-container-poisson canvas {
+  width: 100%; /* Płótno zajmuje pełną szerokość kontenera */
+  height: auto; /* Automatyczna wysokość, zachowująca proporcje */
+}
+#p5-container-poisson input[type="range"] {
+  display: block; /* Suwak wyświetlany jako blok */
+  margin: 10px auto; /* Wyśrodkowanie suwaka wewnątrz kontenera */
+}
+
+ #p5-container-poisson-slider {
+  width: 100%; /* Kontener zajmuje pełną szerokość rodzica */
+  /*max-width: 800px; */ /* Maksymalna szerokość, aby nie zajmował zbyt dużo miejsca */
+  margin: 0 auto; /* Centrowanie kontenera na stronie */
+  padding: 20px; /* Odstępy wewnętrzne dla estetyki */
+    }
+
+#p5-container-GWsineGen {
+  width: 100%; /* Kontener zajmuje pełną szerokość rodzica */
+  /*max-width: 800px; */ /* Maksymalna szerokość, aby nie zajmował zbyt dużo miejsca */
+  margin: 0 auto; /* Centrowanie kontenera na stronie */
+  padding: 20px; /* Odstępy wewnętrzne dla estetyki */
+  background-color: #f9f9f9; /* Jasne tło dla lepszej czytelności */
+  border: 1px solid #ddd; /* Subtelna ramka */
+  border-radius: 8px; /* Zaokrąglone narożniki */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Delikatny cień dla efektu głębi */
+}
+
+#p5-container-GWsineGen canvas {
+  width: 100%; /* Płótno zajmuje pełną szerokość kontenera */
+  height: auto; /* Automatyczna wysokość, zachowująca proporcje */
+}
+
+#p5-container-GWsineGen input[type="range"] {
+  display: block; /* Suwak wyświetlany jako blok */
+  margin: 10px auto; /* Wyśrodkowanie suwaka wewnątrz kontenera */
+}
+
+#p5-container-vmoned {
+  width: 100%; /* Kontener zajmuje pełną szerokość rodzica */
+  /*max-width: 800px; */ /* Maksymalna szerokość, aby nie zajmował zbyt dużo miejsca */
+  margin: 0 auto; /* Centrowanie kontenera na stronie */
+  padding: 20px; /* Odstępy wewnętrzne dla estetyki */
+  background-color: #f9f9f9; /* Jasne tło dla lepszej czytelności */
+  border: 1px solid #ddd; /* Subtelna ramka */
+  border-radius: 8px; /* Zaokrąglone narożniki */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Delikatny cień dla efektu głębi */
+  align-items: center;
+  text-align: center;
+}
