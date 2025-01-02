@@ -1,0 +1,23 @@
+# Stochastyczne modele systemów oddziałujących 2024
+## Zadanie domowe 4
+### Termin: 16.01.2025
+
+Niech \( G=(V,E) \) będzie dowolnym skończonym grafem. Rozważmy model głosowania (*the Voter model*) 
+\((\eta_t)_{t \in \mathbb{R}_+}\) na \( G \). Niech
+
+\[
+X_t = \sum_{x \in V} \eta_t(x).
+\]
+
+Dla ustalonej \( \eta \in \{0,1\}^V \), znajdź 
+
+\[
+\lim_{t \to \infty} \mathbf{E}_\eta[X_t]
+\]
+
+jeżeli:
+
+a. \( q(x,y) = \mathbf{1}_{x \sim y} \) dla różnych \( x, y \in V \).
+
+b. \( q(x,y) = \text{deg}(x)^{-1}\mathbf{1}_{x \sim y} \) dla różnych \( x, y \in V \).
+
