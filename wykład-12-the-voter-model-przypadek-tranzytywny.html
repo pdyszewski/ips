@@ -46,7 +46,22 @@
 </form>
 
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
-        <ul class="book-toc list-unstyled"><li><a class="" href="index.html">Wykład 12: The voter model: przypadek tranzytywny</a></li></ul>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Stochastyczne modele układów oddziałujących</a></li>
+<li><a class="" href="sylabus.html">Sylabus</a></li>
+<li><a class="" href="wyk%C5%82ad-1-%C5%82a%C5%84cuchy-markowa-w-czasie-ci%C4%85g%C5%82ym.html">Wykład 1: Łańcuchy Markowa w czasie ciągłym</a></li>
+<li><a class="" href="wyk%C5%82ad-2-mocna-w%C5%82asno%C5%9B%C4%87-markowa.html">Wykład 2: Mocna własność Markowa</a></li>
+<li><a class="" href="wyk%C5%82ad-3-procesy-i-p%C3%B3%C5%82grupy-fellera.html">Wykład 3: procesy i półgrupy Fellera</a></li>
+<li><a class="" href="wyk%C5%82ad-4-generatory.html">Wykład 4: Generatory</a></li>
+<li><a class="" href="wyk%C5%82ad-5-od-generatora-do-p%C3%B3%C5%82grupy.html">Wykład 5: od generatora do półgrupy</a></li>
+<li><a class="" href="wyk%C5%82ad-6-od-generatora-przez-p%C3%B3%C5%82grup%C4%99-do-procesu.html">Wykład 6: od generatora przez półgrupę do procesu</a></li>
+<li><a class="" href="wyk%C5%82ad-7-rozk%C5%82ady-stacjonarne-zaburzenia-ruchu-browna.html">Wykład 7: Rozkłady stacjonarne, zaburzenia ruchu Browna</a></li>
+<li><a class="" href="wyk%C5%82ad-8-uk%C5%82ady-spinowe.html">Wykład 8: Układy spinowe</a></li>
+<li><a class="" href="wyk%C5%82ad-9-konstrukcja-system%C3%B3w-spinowych.html">wykład 9: Konstrukcja systemów spinowych</a></li>
+<li><a class="" href="wyk%C5%82ad-10-procesy-dualne.html">Wykład 10: Procesy dualne</a></li>
+<li><a class="" href="wyk%C5%82ad-11-the-voter-model-przypadek-rekurencyjny.html">Wykład 11: The voter model: przypadek rekurencyjny</a></li>
+<li><a class="active" href="wyk%C5%82ad-12-the-voter-model-przypadek-tranzytywny.html">Wykład 12: The voter model: przypadek tranzytywny</a></li>
+</ul>
 
         <div class="book-extra">
           
@@ -80,32 +95,32 @@ mamy
     = \int \mathbf{P}_A(\eta \equiv 1 \text{ na } A_t)  \nu_\rho(\mathrm{d}\eta)\\
     = \sum_B \mathbf{P}_A(A_t = B) \int 1_{\{\eta \equiv 1 \text{ na } B\}} \nu_\rho(\mathrm{d}\eta)
     = \mathbf{E}_A \rho^{|A_t|}
-\tag{1}
+\tag{41}
 \end{multline}\]</span>
 Ponieważ <span class="math inline">\(|A_t|\)</span> jest nierosnące w czasie <span class="math inline">\(t\)</span>, to
 <span class="math display">\[a_\infty = \lim_{t \to \infty}|A_t|\]</span> jest dobrze określone.
-Przechodząc do granicy w <a href="wyk%C5%82ad-12-the-voter-model-przypadek-tranzytywny.html#eq:4-22">(1)</a> widzimy, że
+Przechodząc do granicy w <a href="wyk%C5%82ad-12-the-voter-model-przypadek-tranzytywny.html#eq:4-22">(41)</a> widzimy, że
 <span class="math display">\[\lim_{t \to \infty} \mathbf{P}_{\nu_\rho} \left[\eta_t \equiv 1 \mbox{ na } A \right]
     = \mathbf{E}_{A}\left[ \rho^{a_\infty} \right].\]</span> Skoro zbieżność
 rozkładów skończenie wymiarowych charakteryzuje słabą zbieżność na
 <span class="math inline">\(\{0,1\}^V\)</span> to
 <span class="math display" id="eq:4-23">\[\begin{equation}
     \lim_{t \to \infty} \mathbf{P}_{\nu_\rho} \left[ \eta_t \in \cdot \right] = \mu_\rho(\cdot)
-\tag{2}
+\tag{42}
 \end{equation}\]</span>
 słabo dla pewnej miary <span class="math inline">\(\mu_\rho\)</span> na <span class="math inline">\(\{0,1\}^V\)</span> takiej, że
 <span class="math display" id="eq:4-24">\[\begin{equation}
     \mu_\rho \{\eta : \eta \equiv 1 \text{ na } A\} = \mathbf{E}_A \left[ \rho^{a_\infty} \right]
-\tag{3}
+\tag{43}
 \end{equation}\]</span>
 Ponieważ <span class="math inline">\(\mu_\rho\)</span> jest słabą granicą procesu Fellera (z rozkładem
 początkowym <span class="math inline">\(\nu_\rho\)</span>), to jest ona dla niego stacjonarna (zadanie).
-Równość <a href="wyk%C5%82ad-12-the-voter-model-przypadek-tranzytywny.html#eq:4-24">(3)</a> całkowicie charakteryzuje <span class="math inline">\(\mu_\rho\)</span> ale nie mówi
+Równość <a href="wyk%C5%82ad-12-the-voter-model-przypadek-tranzytywny.html#eq:4-24">(43)</a> całkowicie charakteryzuje <span class="math inline">\(\mu_\rho\)</span> ale nie mówi
 wiele o jej własnościach. Przyjrzyjmy się im teraz nieco dokładniej.
-Rozważając <a href="wyk%C5%82ad-12-the-voter-model-przypadek-tranzytywny.html#eq:4-24">(3)</a> dla <span class="math inline">\(A\)</span> będącego singletonem otrzymujemy
+Rozważając <a href="wyk%C5%82ad-12-the-voter-model-przypadek-tranzytywny.html#eq:4-24">(43)</a> dla <span class="math inline">\(A\)</span> będącego singletonem otrzymujemy
 <span class="math display" id="eq:4-24">\[\begin{equation}
     \mu_\rho \{\eta : \eta(x)=1\} = \mathbf{E}_{\{x\}} \left[ \rho^{a_\infty} \right]= \rho
-\tag{3}
+\tag{43}
 \end{equation}\]</span>
 dla każdego <span class="math inline">\(x \in V\)</span>. W szczególności wartość oczekiwana zmiennej
 losowej <span class="math inline">\(\eta \mapsto \eta(x)\)</span> względem prawdopodobieństwa <span class="math inline">\(\mu_\rho\)</span>
@@ -133,7 +148,7 @@ Jest to średni czas jaki spacer zapoczątkowany w <span class="math inline">\(x
 <span class="math inline">\(y\)</span> otrzymujemy
 <span class="math display" id="eq:4-tr">\[\begin{equation}
     G(x,y) = \mathbb{P}_{x}[\tau_y&lt;\infty] G(y,y) = \mathbb{P}_x[\tau_y&lt;\infty] G(0,0),
-\tag{4}
+\tag{44}
 \end{equation}\]</span>
 gdzie ostatnia równość wynika z niezmienniczości na przesunięcia. Skoro
 <span class="math display">\[\mathbb{P}_x [\tau_y&lt; \infty] =
@@ -142,13 +157,13 @@ stwierdzić, że badana przez nas kowariancja wynosi
 <span class="math display">\[\text{Cov}_{\mu_\rho}(\eta(x), \eta(y))  =
      \rho(1 - \rho) \frac{G(x, y)}{G(0, 0)}.\]</span></p>
 <div class="proposition">
-<p><span id="prp:unlabeled-div-1" class="proposition"><strong>Fakt 1  </strong></span>Załóżmy, że <span class="math inline">\(Z = (Z_t)_{t \in \mathbb{R}_+}\)</span> jest
+<p><span id="prp:unlabeled-div-40" class="proposition"><strong>Fakt 3  </strong></span>Załóżmy, że <span class="math inline">\(Z = (Z_t)_{t \in \mathbb{R}_+}\)</span> jest
 tranzytywny. Wówczas dla każdego <span class="math inline">\(x \in V\)</span>,
 <span class="math display">\[\lim_{|y|\to \infty}G(x,y) = \lim_{|y|\to \infty} \mathbb{P}_x[\tau_y &lt;\infty] =0.\]</span></p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-2" class="proof"><em>Proof</em>. </span>Jeżeli uzasadnimy drugą postulowaną równość, to pierwsza
-wyniknie z <a href="wyk%C5%82ad-12-the-voter-model-przypadek-tranzytywny.html#eq:4-tr">(4)</a>. Z niezmienniczości na przesunięcia
+<p><span id="unlabeled-div-41" class="proof"><em>Proof</em>. </span>Jeżeli uzasadnimy drugą postulowaną równość, to pierwsza
+wyniknie z <a href="wyk%C5%82ad-12-the-voter-model-przypadek-tranzytywny.html#eq:4-tr">(44)</a>. Z niezmienniczości na przesunięcia
 <span class="math display">\[\mathbb{P}_x[\tau_y &lt;\infty] = \mathbb{P}_0[\tau_{y-x}&lt;\infty].\]</span>
 Możemy zatem bez zmniejszania ogólności założyć, że <span class="math inline">\(x=0\)</span>. Dla
 <span class="math inline">\(t \in \mathbb{R}_+\)</span> mamy <span class="math display">\[\mathbb{P}_0[\tau_y&lt;\infty] =
@@ -156,13 +171,13 @@ Możemy zatem bez zmniejszania ogólności założyć, że <span class="math inl
         \mathbb{P}_0[t&lt;\tau_y&lt;\infty].\]</span> Pokażemy, że
 <span class="math display">\[\lim_{t \to \infty} \sup_{y \in V}\mathbb{P}[t &lt; \tau_y&lt;\infty]=0.\]</span>
 Rozważmy <span class="math inline">\(\tau_y^t = \inf\{ s &gt;t \: : \: Z(s)=y\}\)</span>. Argumentując tak
-samo jak w przypadku <a href="wyk%C5%82ad-12-the-voter-model-przypadek-tranzytywny.html#eq:4-tr">(4)</a>,
+samo jak w przypadku <a href="wyk%C5%82ad-12-the-voter-model-przypadek-tranzytywny.html#eq:4-tr">(44)</a>,
 <span class="math display" id="eq:4-kaka">\[\begin{multline}
         \int_t^{\infty} \mathbb{P}_0[Z_s=y] \mathrm{d}s=
         \mathbb{E}_0 \left[ \int_t^\infty \mathbf{1}_{\{Z(s) = y\}} \mathrm{d}s \right] \\
         = \mathbb{P}_0\left( \tau_y^t&lt;\infty\right) G(y, y)
         = \mathbb{P}_0\left( \tau_y^t&lt;\infty\right) G(0, 0).
-\tag{5}
+\tag{45}
 \end{multline}\]</span>
 Lewa strona jest maksymalizowana, gdy <span class="math inline">\(y=0\)</span> ponieważ
 jest tak dla funkcji przejścia. Istotnie, wykorzystując równania
@@ -176,7 +191,7 @@ spaceru otrzymujemy
         = \mathbb{P}_0(Z(2t) = 0]^{\frac{1}{2}} \mathbb{P}_y(Z(2t) = y]^{\frac{1}{2}}
         = \mathbb{P}_0[Z(2t) = 0].
 \end{multline}\]</span>
-Skoro <a href="wyk%C5%82ad-12-the-voter-model-przypadek-tranzytywny.html#eq:4-kaka">(5)</a> rzeczywiście jest maksymalizowana dla <span class="math inline">\(y=0\)</span>, to
+Skoro <a href="wyk%C5%82ad-12-the-voter-model-przypadek-tranzytywny.html#eq:4-kaka">(45)</a> rzeczywiście jest maksymalizowana dla <span class="math inline">\(y=0\)</span>, to
 <span class="math display">\[\sup_{y \in V} \mathbb{P}_0[\tau_y^t&lt;\infty] = \mathbb{P}_0[\tau_0^t &lt;\infty].\]</span>
 Stąd <span class="math display">\[\sup_{y \in V}\mathbb{P}_0[t &lt; \tau_y&lt;\infty] \leq
         \sup_{y \in V}\mathbb{P}_0[\tau_y^{t}&lt;\infty]=
@@ -197,7 +212,7 @@ oczekiwane i całkując po <span class="math inline">\(s \in [0,1]\)</span> otrz
 Lewa strona to co najwyżej
 <span class="math display">\[\mathbb{E}_0 \left[ \int_0^{t+1} 1_{\{Z(s) = y\}} \mathrm{d}s \right].\]</span>
 Sumując po wszystkich <span class="math inline">\(y \in V\)</span> dostajemy
-<span class="math display">\[\sum_y \mathbb{P}_0(\tau_y \leq t) \leq \frac{2M(t + 1)}{1 - e^{-2M}} &lt;\infty.\]</span> ◻</p>
+<span class="math display">\[\sum_y \mathbb{P}_0(\tau_y \leq t) \leq \frac{2M(t + 1)}{1 - e^{-2M}} &lt;\infty.\]</span> </p>
 </div>
 <div class="zad*">
 <p><strong>Zadanie 1</strong>. Pokaż, że
@@ -212,8 +227,8 @@ Czyli dla dużych wartości <span class="math inline">\(|y|\)</span>,
 <span class="math display">\[\mu_\rho(\eta(x)=\eta(y)=1) \approx \mu_{\rho}(\eta(x)=1) \mu_{\rho}(\eta(y)=1)\]</span>
 Innymi słowy <span class="math inline">\(\eta(x)\)</span> i <span class="math inline">\(\eta(y\)</span> są asymptotycznie niezależne przy
 <span class="math inline">\(|x-y| \to \infty\)</span>.</p>
-<div class="defn">
-<p><strong>Definicja 2</strong>. Niech <span class="math inline">\(\mu\)</span> będzie niezmienniczą względem translacji
+<div class="definition">
+<p><span id="def:unlabeled-div-42" class="definition"><strong>Definicja 13  </strong></span>Niech <span class="math inline">\(\mu\)</span> będzie niezmienniczą względem translacji
 miarą prawdopodobieństwa na <span class="math inline">\(\{0, 1\}^V\)</span>. Mówimy, że <span class="math inline">\(\mu\)</span> jest
 mieszająca, jeśli spełnia
 <span class="math display">\[\lim_{x \to \infty} \mu \{\eta : \eta \equiv 1 \text{ na } A \cup (B + x)\} =
@@ -221,13 +236,17 @@ mieszająca, jeśli spełnia
         \mu \{\eta : \eta \equiv 1 \text{ na } B\}\]</span> dla dowolnych
 skończonych <span class="math inline">\(A, B \subset S\)</span>.</p>
 </div>
-<div id="thm:4-mix" class="thm">
-<p><strong>Twierdzenie 3</strong>. Dla każdego <span class="math inline">\(\rho \in [0,1]\)</span> miara <span class="math inline">\(\mu_\rho\)</span> jest
+<div class="theorem">
+<p><span id="thm:4-mix" class="theorem"><strong>Twierdzenie 18  </strong></span>Dla każdego <span class="math inline">\(\rho \in [0,1]\)</span> miara <span class="math inline">\(\mu_\rho\)</span> jest
 mieszająca.</p>
 </div>
 <p>Aby udowodnić powyższe twierdzenie będziemy potrzebować własności
-prawdopodobieństwa kolapsu <span class="math display">\[\label{eq:5:defg}
-g(A) = \mathbf{P}_A(|A_t| &lt; |A| \text{ dla pewnego } t &gt; 0).\]</span> Wówczas
+prawdopodobieństwa kolapsu
+<span class="math display" id="eq:5-defg">\[\begin{equation}
+g(A) = \mathbf{P}_A(|A_t| &lt; |A| \text{ dla pewnego } t &gt; 0).
+\tag{46}
+\end{equation}\]</span>
+Wówczas
 jeśli <span class="math inline">\(A \subset B\)</span>, to <span class="math inline">\(g(A) \leq g(B)\)</span>. Dodatkowo jeżeli <span class="math inline">\(|A| \geq 2\)</span>,
 to <span class="math display">\[g(A) \leq \sum_{B \subset A, |B| = 2} g(B).\]</span> Zauważmy, że
 <span class="math display">\[g(\{0,x\}) = \mathbb{P}_0[\tau_x&lt;\infty].\]</span> Stąd
@@ -235,10 +254,11 @@ to <span class="math display">\[g(A) \leq \sum_{B \subset A, |B| = 2} g(B).\]</s
 skończonym zbiorem, który jest rozstrzelony (każde dwa jego elementy są
 od siebie odległe), to <span class="math inline">\(g(A)\)</span> jest bliskie zero.</p>
 <div class="proof">
-<p><span id="unlabeled-div-3" class="proof"><em>Proof</em>. </span><em>Dowód Twierdzenia <a href="wyk%C5%82ad-12-the-voter-model-przypadek-tranzytywny.html#thm:4-mix" reference-type="ref" reference="thm:4-mix">3</a>.</em> Zauważmy, że <span class="math inline">\(\nu_\rho\)</span> jest niezmiennicza na
+<p><span id="unlabeled-div-43" class="proof"><em>Proof</em>. </span>(Twierdzenia <a href="wyk%C5%82ad-12-the-voter-model-przypadek-tranzytywny.html#thm:4-mix">18</a>)
+Zauważmy, że <span class="math inline">\(\nu_\rho\)</span> jest niezmiennicza na
 przesunięcia dla każdego <span class="math inline">\(\rho \in [0,1]\)</span>. Stąd niezmiennicza są również
 <span class="math inline">\(\mathbf{P}_{\nu_\rho}[\eta_t \in \cdot]\)</span>. Wykorzystując
-zbieżność <a href="#eq:4.23" reference-type="eqref" reference="eq:4.23"><span class="math display">\[eq:4.23\]</span></a> wnioskujemy niezmienniczość <span class="math inline">\(\mu_\rho\)</span>.</p>
+zbieżność <a href="wyk%C5%82ad-12-the-voter-model-przypadek-tranzytywny.html#eq:4-23">(42)</a> wnioskujemy niezmienniczość <span class="math inline">\(\mu_\rho\)</span>.</p>
 <p>Aby sprawdzić warunek mieszania rozważmy dwie niezależne kopie
 zlewających się spacerów losowych <span class="math inline">\((A_t)_{t \in \mathbb{R}_+}\)</span> i
 <span class="math inline">\((B_t)_{t \in \mathbb{R}_+}\)</span> zapoczątkowanych odpowiednio w <span class="math inline">\(A\)</span> i <span class="math inline">\(B\)</span>.
@@ -247,22 +267,24 @@ Rozważmy <span class="math inline">\((C_t)\)</span> dane przez <span class="mat
 Po czasie <span class="math inline">\(\tau\)</span> niech <span class="math inline">\(C_t\)</span> rozwija się jak zlewający się spacer losowy
 zapoczątkowany w <span class="math inline">\(C_\tau\)</span> niezależnie od <span class="math inline">\(A_t\)</span> i <span class="math inline">\(B_t\)</span>. Wówczas <span class="math inline">\(C_t\)</span>
 jest zlewającym się spacerem losowym zapoczątkowanym w <span class="math inline">\(A \cup B\)</span>. Na
-mocy <a href="#eq:4.24" reference-type="eqref" reference="eq:4.24"><span class="math display">\[eq:4.24\]</span></a>, <span class="math display">\[\begin{gathered}
+mocy <a href="wyk%C5%82ad-12-the-voter-model-przypadek-tranzytywny.html#eq:4-24">(43)</a>,
+<span class="math display">\[\begin{multline}
     |\mu_\rho \{\eta : \eta \equiv 1 \text{ na } A \cup B\} -
     \mu_\rho \{\eta : \eta \equiv 1 \text{ na } A\}
     \mu_\rho \{\eta : \eta \equiv 1 \text{ na } B\}| \\
     = |\mathbb{E}\rho^{c_\infty} - \mathbb{E}\rho^{a_\infty + b_\infty}|
     \leq \mathbb{P}(\tau &lt; \infty) \leq \sum_{u \in A, v \in B} g(\{u, v\}).
-\end{gathered}\]</span> gdzie <span class="math inline">\(a_\infty\)</span>, <span class="math inline">\(b_\infty\)</span> i <span class="math inline">\(c_\infty\)</span> to granice
+\end{multline}\]</span>
+gdzie <span class="math inline">\(a_\infty\)</span>, <span class="math inline">\(b_\infty\)</span> i <span class="math inline">\(c_\infty\)</span> to granice
 odpowiednio <span class="math inline">\(|A_t|\)</span>, <span class="math inline">\(|B_t|\)</span> oraz <span class="math inline">\(|C_t|\)</span> przy <span class="math inline">\(t \to \infty\)</span>.
 Zastępując teraz <span class="math inline">\(B\)</span> przez <span class="math inline">\(B + x\)</span> i przechodząc z <span class="math inline">\(|x| \to \infty\)</span>
-dostajemy tezę. ◻</p>
+dostajemy tezę. </p>
 </div>
 <p>Przypomnijmy, że przez <span class="math inline">\(\{X_j(t)\}_j\)</span> oznaczamy niezależne spacery
 losowe na <span class="math inline">\(V = \mathbb{Z}^d\)</span> o intensywnościach <span class="math inline">\(q(x,y)\)</span>.</p>
-<div id="fak:5:4.39" class="fak">
-<p><strong>Fakt 4</strong>. , Niech <span class="math inline">\(g\)</span> będzie funkcją zbioru daną
-przez <a href="#eq:5:defg" reference-type="eqref" reference="eq:5:defg"><span class="math display">\[eq:5:defg\]</span></a>. Wówczas</p>
+<div class="proposition">
+<p><span id="prp:5-4-39" class="proposition"><strong>Fakt 4  </strong></span>Niech <span class="math inline">\(g\)</span> będzie funkcją zbioru daną
+przez <a href="wyk%C5%82ad-12-the-voter-model-przypadek-tranzytywny.html#eq:5-defg">(46)</a>. Wówczas</p>
 <ul>
 <li><p>Dla każdego <span class="math inline">\(k\)</span>, <span class="math display">\[\lim_{t \to \infty}
                 g(\{X_1(t), \dots, X_k(t)\}) = 0 \quad p.w.\]</span></p></li>
@@ -271,12 +293,14 @@ przez <a href="#eq:5:defg" reference-type="eqref" reference="eq:5:defg"><span c
 </ul>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-4" class="proof"><em>Proof</em>. </span><em>Proof.</em> Skoro symetryzowany spacer losowy jest tranzytywny, to
+<p><span id="unlabeled-div-44" class="proof"><em>Proof</em>. </span>Skoro symetryzowany spacer losowy jest tranzytywny, to
 <span class="math display">\[\lim_{t \to \infty} Z(t) = \infty \quad p.w.\]</span> dla dowolnego punktu
 startowego. Korzystając zatem z własności prawdopodobieństwa kolapsu
-<span class="math display">\[g(\{X_1(t), \dots, X_k(t)\}) \leq
-        \sum_{1 \leq i &lt; j \leq k} g(\{X_i(t), X_j(t)\})
-        = \sum_{1 \leq i &lt; j \leq k} g(\{0, X_j(t) - X_i(t)\}).\]</span> Prawa
+<span class="math display">\[\begin{multline}
+    g(\{X_1(t), \dots, X_k(t)\}) \leq
+        \sum_{1 \leq i &lt; j \leq k} g(\{X_i(t), X_j(t)\})\\
+        = \sum_{1 \leq i &lt; j \leq k} g(\{0, X_j(t) - X_i(t)\}).
+\end{multline}\]</span> Prawa
 strona zbiega do zera p.w.</p>
 <p>Aby uzasadnić drugi postulat zauważmy, że jeśli <span class="math inline">\(|A_0| = k\)</span>, To możemy
 określić <span class="math inline">\(A_t\)</span> i <span class="math inline">\(\{X_1(t), \dots, X_k(t)\}\)</span> na tej samej przestrzeni
@@ -285,61 +309,68 @@ wszystkich <span class="math inline">\(t\)</span>. Można to zrobić, używając
 obu procesów, ale przy każdym zlaniu zachowując tylko jedną z
 koalizujących cząstek w <span class="math inline">\(A_t\)</span>. Wobec monotoniczności <span class="math inline">\(g\)</span>,
 <span class="math display">\[g(A_t) \leq g(\{X_1(t), \dots, X_k(t)\}).\]</span> Zastosowanie pierwszej
-części faktu kończy dowód. ◻</p>
+części faktu kończy dowód. </p>
 </div>
-<div class="lem">
-<p><strong>Lemat 5</strong>. Ciąg <span class="math inline">\(\{c_k\}_{k \in \mathbb{N}}\)</span> jest ciągiem momentów
+<div class="lemma">
+<p><span id="lem:A-32" class="lemma"><strong>Lemma 2  </strong></span>Ciąg <span class="math inline">\(\{c_k\}_{k \in \mathbb{N}}\)</span> jest ciągiem momentów
 pewnej miary probabilistycznej na <span class="math inline">\([0,1]\)</span> wtedy i tylko wtedy, gdy
 <span class="math inline">\(c_0=1\)</span> oraz <span class="math display">\[\sum_{k=0}^n {n \choose k}(-1)^k c_{m+k} \geq 0\]</span> dla
 wszystkich naturalnych <span class="math inline">\(n, m\)</span>.</p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-5" class="proof"><em>Proof</em>. </span><em>Proof.</em> Załóżmy najpierw, że <span class="math inline">\(c_k\)</span> są momentami rozkładu pewnej
+<p><span id="unlabeled-div-45" class="proof"><em>Proof</em>. </span>Załóżmy najpierw, że <span class="math inline">\(c_k\)</span> są momentami rozkładu pewnej
 zmiennej losowej <span class="math inline">\(\xi\)</span>, dokładniej
 <span class="math display">\[c_k = \mathbb{E}\left[\xi^k\right]\]</span> dla każdego <span class="math inline">\(k \in \mathbb{N}\)</span>.
 Wówczas <span class="math display">\[\sum_{k=0}^n {n \choose k}(-1)^k c_{m+k} =
         \mathbb{E} \left[\xi^n(1-\xi)^m \right] \geq 0.\]</span> Dowód
 przeciwnej implikacji jest bardziej złożony. Można go znaleźć w Thomas
 M. Liggett, <em>Continuous time Markov Processes. An Introduction</em>, Theorem
-A.32. ◻</p>
+A.32.</p>
 </div>
-<div id="thm:4.43" class="thm">
-<p><strong>Twierdzenie 6</strong>. Zbiór wszystkich rozkładów stacjonarnych jest
+<div class="theorem">
+<p><span id="thm:4-43" class="theorem"><strong>Twierdzenie 19  </strong></span>Zbiór wszystkich rozkładów stacjonarnych jest
 domkniętą otoczką wypukłą <span class="math inline">\(\{\mu_\rho : 0 \leq \rho \leq 1\}\)</span>.
 Dokładniej, dla każdej miary stacjonarnej <span class="math inline">\(\pi\)</span> istnieje miara
 probabilistyczna <span class="math inline">\(\gamma\)</span> na <span class="math inline">\([0,1]\)</span> taka, że
 <span class="math display">\[\pi(\cdot) = \int_0^1 \mu_\rho(\cdot) \mathrm{d}\rho.\]</span></p>
 </div>
 <div class="proof">
-<p><span id="unlabeled-div-6" class="proof"><em>Proof</em>. </span></p>
-<em>Proof.</em> Niech <span class="math inline">\(\pi\)</span> będzie rozkładem stacjonarnym. Przypomnijmy, że
-<span class="math display">\[\label{eq:4.28}
+<p><span id="unlabeled-div-46" class="proof"><em>Proof</em>. </span>Niech <span class="math inline">\(\pi\)</span> będzie rozkładem stacjonarnym. Przypomnijmy, że
+<span class="math display" id="eq:4-28">\[\label{eq:4.28}
         \pi \{\eta : \eta \equiv 1 \text{ na } A\} =
         \mathbf{P}_\pi[\eta_t \equiv 1 \text{ na } A]
-        = \sum_B \mathbf{P}_A(A_t = B) \pi \{\eta : \eta \equiv 1 \text{ na } B\}.\]</span>
+        = \sum_B \mathbf{P}_A(A_t = B) \pi \{\eta : \eta \equiv 1 \text{ na } B\}.
+\tag{47}
+\]</span>
 Niech <span class="math inline">\(h(A) = \pi \{\eta : \eta \equiv 1 \text{ na } A\}\)</span> i niech
 <span class="math inline">\((V_t)\)</span>, będzie półgrupą Fellera związaną z <span class="math inline">\(A_t\)</span>:
 <span class="math inline">\(V_tf(A) = \mathbf{E}_A f(A_t)\)</span> dla <span class="math inline">\(f\)</span> określonej na skończonych
-podzbiorach <span class="math inline">\(V\)</span>. Wówczas <a href="#eq:4.28" reference-type="eqref" reference="eq:4.28"><span class="math display">\[eq:4.28\]</span></a> zapisuje się jako <span class="math inline">\(h=V_th\)</span>. Niech <span class="math inline">\(U_t\)</span> będzie
+podzbiorach <span class="math inline">\(V\)</span>. Wówczas <a href="wyk%C5%82ad-12-the-voter-model-przypadek-tranzytywny.html#eq:4-28">(47)</a> zapisuje się jako <span class="math inline">\(h=V_th\)</span>.
+Niech <span class="math inline">\(U_t\)</span> będzie
 półgrupą Fellera związaną z <span class="math inline">\(n\)</span>-niezaleznymi spacerami losowymi na <span class="math inline">\(V\)</span>:
 <span class="math display">\[U_td(x_1, \dots, x_n) = \mathbb{E}_{x_1, \dots, x_n} d(X_1(t), \dots, X_n(t)).\]</span>
 Operator <span class="math inline">\(U_t\)</span> możemy rozszerzyć do funkcji na zbiorach poprzez
 <span class="math display">\[U_tf \{ x_1, \ldots , x_n\} = \mathbb{E}_{x_1, \dots, x_n} f(\{X_1(t), \dots, X_n(t)\}).\]</span>
 Mamy <span class="math display">\[\label{eq:4.29}
         |V_tf(A) - U_tf(A)| \leq g(A).\]</span> Stosując to do <span class="math inline">\(h\)</span>, otrzymujemy
-<span class="math display">\[\label{eq:4.30}
-        |h(A) - U_th(A)| \leq g(A).\]</span> Nakładając <span class="math inline">\(U_s\)</span> i korzystając z
+<span class="math display" id="eq:4-30">\[\label{eq:4.30}
+        |h(A) - U_th(A)| \leq g(A).
+\tag{48}
+\]</span> Nakładając <span class="math inline">\(U_s\)</span> i korzystając z
 jego monotoniczności i liniowości
 <span class="math display">\[|U_sh(A) - U_{t+s}h(A)| \leq U_sg(A).\]</span> Prawa strona zbiega do zera,
 gdy <span class="math inline">\(s \to \infty\)</span> zgodnie z
-Faktem <a href="#fak:4.39" reference-type="ref" reference="fak:4.39"><span class="math display">\[fak:4.39\]</span></a>. Stąd <span class="math inline">\(\lim_{s \to \infty} U_sh(A)\)</span> istnieje i
+Faktem <a href="wyk%C5%82ad-12-the-voter-model-przypadek-tranzytywny.html#prp:5-4-39">4</a>. Stąd <span class="math inline">\(\lim_{s \to \infty} U_sh(A)\)</span> istnieje i
 jest harmoniczna dla nieredukowalnego spaceru losowego
 <span class="math inline">\((X_1(t), \dots, X_n(t))\)</span> na <span class="math inline">\(S^n = (Z^d)^n\)</span>. Takie funkcje harmoniczne
 są stałe, więc wnioskujemy, że istnieją stałe <span class="math inline">\(c(n)\)</span>, takie że
 <span class="math display">\[\lim_{s \to \infty} U_sh(A) = c(|A|)\]</span> dla dowolnego <span class="math inline">\(A\)</span>. Oczywiście
 <span class="math inline">\(c(n)\)</span> zależy od <span class="math inline">\(h\)</span>, a tym samym od miary stacjonarnej <span class="math inline">\(\pi\)</span>.
-Przechodząc do granicy w <a href="#eq:4.30" reference-type="eqref" reference="eq:4.30"><span class="math display">\[eq:4.30\]</span></a>, wnioskujemy, że <span class="math display">\[\label{eq:5:4.31}
-        |h(A) - c(|A|)| \leq g(A).\]</span> Jeżeli zbiór <span class="math inline">\(A\)</span> jest rozstrzelony,
+Przechodząc do granicy w <a href="wyk%C5%82ad-12-the-voter-model-przypadek-tranzytywny.html#eq:4-30">(48)</a>, wnioskujemy, że
+<span class="math display" id="eq:5-4-31">\[\begin{equation}\label{eq:5:4.31}
+        |h(A) - c(|A|)| \leq g(A).
+\tag{49}
+\end{equation}\]</span> Jeżeli zbiór <span class="math inline">\(A\)</span> jest rozstrzelony,
 to <span class="math inline">\(h(A)\)</span> jest bliskie <span class="math inline">\(c(|A|)\)</span>. Jeżeli
 <span class="math display">\[\pi(\cdot) = \int_0^1 \mu_\rho(\cdot) \gamma(\mathrm{d}\rho)\]</span> dla
 pewnej <span class="math inline">\(\gamma\)</span>, to dla rozstrzelonych <span class="math inline">\(A\)</span>,
@@ -349,11 +380,15 @@ Jeżeli <span class="math inline">\(A\)</span> jest rozstrzelone, to skoro <span
 <span class="math display">\[\mu_\rho( \eta \equiv 1 \mbox{ na } A) \approx \rho^{|A|}.\]</span> Oznacza
 to, że szukana przez nas miara <span class="math inline">\(\gamma\)</span> powinna spełniać
 <span class="math display">\[c(n) = \int_0^1 \rho^n \gamma(d\rho).\]</span> Zgodnie z
-Lematem <a href="#lem:5:A.32" reference-type="ref" reference="lem:5:A.32"><span class="math display">\[lem:5:A.32\]</span></a>, koniecznym i wystarczającym warunkiem na to
-jest, aby <span class="math display">\[\label{eq:5:4.32}
-        \sum_{k=0}^{n} \binom{n}{k} (-1)^k c(k + m) \geq 0\]</span> dla
-wszystkich nieujemnych liczb całkowitych <span class="math inline">\(n, m\)</span>. Aby sprawdzić
-<a href="#eq:5:4.32" reference-type="eqref" reference="eq:5:4.32"><span class="math display">\[eq:5:4.32\]</span></a>, ustalmy <span class="math inline">\(m, n\)</span>, i rozważmy, ciąg zbiorów <span class="math inline">\(A_i\)</span> o
+Lematem <a href="wyk%C5%82ad-12-the-voter-model-przypadek-tranzytywny.html#lem:A-32">2</a>, koniecznym i wystarczającym warunkiem na to
+jest, aby
+<span class="math display" id="eq:5-4-32">\[\begin{equation}
+        \sum_{k=0}^{n} \binom{n}{k} (-1)^k c(k + m) \geq 0
+\tag{50}
+\end{equation}\]</span>
+dla
+wszystkich nieujemnych liczb całkowitych <span class="math inline">\(n, m\)</span>. Aby sprawdzić <a href="wyk%C5%82ad-12-the-voter-model-przypadek-tranzytywny.html#eq:5-4-32">(50)</a>,
+ustalmy <span class="math inline">\(m, n\)</span>, i rozważmy, ciąg zbiorów <span class="math inline">\(A_i\)</span> o
 liczebności <span class="math inline">\(m + n\)</span>, tak aby <span class="math inline">\(g(A_i) \to 0\)</span>. Niech <span class="math inline">\(A_i = B_i \cup C_i\)</span>,
 gdzie <span class="math inline">\(|B_i| = m\)</span> i <span class="math inline">\(|C_i| = n\)</span>. Wówczas <span class="math inline">\(g(B_i) \to 0\)</span> oraz
 <span class="math inline">\(g(C_i) \to 0\)</span>, gdyż <span class="math inline">\(B_i\)</span> i <span class="math inline">\(C_i\)</span> są podzbiorami <span class="math inline">\(A_i\)</span>. Stosując zasadę
@@ -362,8 +397,8 @@ włączeń i wyłączeń,
         \sum_{F \subseteq C_i} (-1)^{|F|} h(B_i \cup F).\]</span> Istotnie, aby
 zobaczyć, że powyższe jest prawdą rozważmy
 <span class="math inline">\(\nu (A) = \mu\{ \eta\equiv 1 \mbox{ na } B_i, A\}\)</span>. Dla <span class="math inline">\(x \in V\)</span> niech
-<span class="math inline">\(A_x = \{\eta \: : \: \eta(x)=1\}\)</span>. Wówczas $$
-<span class="math display">\[\begin{gathered}
+<span class="math inline">\(A_x = \{\eta \: : \: \eta(x)=1\}\)</span>. Wówczas
+<span class="math display">\[\begin{multline}
         \pi \{\eta : \eta \equiv 1 \text{ na } B_i, \eta \equiv 0 \text{ na } C_i\} =
         \nu \left( \bigcap_{x \in C_i} A_x^c \right) =\\
         \int \prod_{x \in C_i} (1-\mathbf{1}_{A_x}(\eta)) \nu(\mathrm{d}\eta) =
@@ -371,41 +406,37 @@ zobaczyć, że powyższe jest prawdą rozważmy
             \prod_{x \in F}\mathbf{1}_{A_x}(\eta) \nu(\mathrm{d}\eta) \\
             = \sum_{F \subseteq C_i} (-1)^{|F|} \nu \left( \bigcap_{x \in F}A_x \right)
         \sum_{F \subseteq C_i} (-1)^{|F|} h(B_i \cup F).
-    
-\end{gathered}\]</span>
-<p><span class="math display">\[ Przechodząc z $i \to \infty$ mamy
-$h(B_i\cup F) \to c(|B_i|+|F|)$ a stąd \]</span><em>{i }
-{: B_i, C_i} =
-</em>{k=0}^{n} (-1)^k c(k + m),<span class="math display">\[ co z kolei daje
-daje [\[eq:5:4.32\]](#eq:5:4.32){reference-type="eqref"
-reference="eq:5:4.32"}. Aby pokazać, że $\gamma$ jest szukaną przez nas
+\end{multline}\]</span>
+Przechodząc z <span class="math inline">\(i \to \infty\)</span> mamy
+<span class="math inline">\(h(B_i\cup F) \to c(|B_i|+|F|)\)</span> a stąd <span class="math display">\[\lim_{i \to \infty}
+        \pi \{\eta : \eta \equiv 1 \text{ na } B_i, \eta \equiv 0 \text{ na } C_i\} =
+        \sum_{k=0}^{n} \binom{n}{k} (-1)^k c(k + m),\]</span> co z kolei daje
+daje <a href="wyk%C5%82ad-12-the-voter-model-przypadek-tranzytywny.html#eq:5-4-32">(50)</a>. Aby pokazać, że <span class="math inline">\(\gamma\)</span> jest szukaną przez nas
 miarą połóżmy
-\]</span>^<em>() = <em>0^1 </em>() (d)
-h^</em>(A) = ^* {: A}.<span class="math display">\[
-Wówczas $\pi^*$ jest rozkładem stacjonarnym ponieważ jest kombinacją
+<span class="math display">\[\pi^*(\cdot) = \int_0^1 \mu_\rho(\cdot) \gamma(d\rho) \quad \text{oraz}
+        \quad h^*(A) = \pi^* \{\eta : \eta \equiv 1 \text{ na } A\}.\]</span>
+Wówczas <span class="math inline">\(\pi^*\)</span> jest rozkładem stacjonarnym ponieważ jest kombinacją
 wypukłą rozkładów stacjonarnych. Argumentując podobnie jak na początku
-dowodu pokazujemy, że $h*=V_th^*$. Mamy
-\]</span>0 _( A) -^{|A|}
-= _A[^{a_} - ^{|A|}] g(A).<span class="math display">\[
-Całkując względem $\gamma(\mathrm{d}\rho)$ otrzymujemy
-\]</span>|h^<em>(A) - c(|A|)| g(A),<span class="math display">\[ co w połączeniu z
-[\[eq:5:4.31\]](#eq:5:4.31){reference-type="eqref"
-reference="eq:5:4.31"} daje \]</span>|h^</em>(A) - h(A)| 2g(A).<span class="math display">\[ Stosując
-$V_t$ do tego i używając harmoniczności $V_t$ zarówno dla $h$, jak i
-$h^*$, otrzymujemy \]</span>|h^*(A) - h(A)| 2V_tg(A).<span class="math display">\[ Rozważając teraz
-$t \to \infty$ i używając Faktu [4](#fak:5:4.39){reference-type="ref"
-reference="fak:5:4.39"}, daje $h^* \equiv h$, a zatem $\pi^* = \pi$.
-Zatem \]</span>= <em>0^1 </em>(),$$ co kończy
-dowód. ◻</p>
+dowodu pokazujemy, że <span class="math inline">\(h*=V_th^*\)</span>. Mamy
+<span class="math display">\[0 \leq \mu_\rho(\eta \equiv 1 \mbox{ na } A) -\rho^{|A|}
+        = \mathbf{E}_A[\rho^{a_\infty} - \rho^{|A|}] \leq g(A).\]</span>
+Całkując względem <span class="math inline">\(\gamma(\mathrm{d}\rho)\)</span> otrzymujemy
+<span class="math display">\[|h^*(A) - c(|A|)| \leq g(A),\]</span> co w połączeniu z
+<a href="wyk%C5%82ad-12-the-voter-model-przypadek-tranzytywny.html#eq:5-4-31">(49)</a> daje <span class="math display">\[|h^*(A) - h(A)| \leq 2g(A).\]</span> Stosując
+<span class="math inline">\(V_t\)</span> do tego i używając harmoniczności <span class="math inline">\(V_t\)</span> zarówno dla <span class="math inline">\(h\)</span>, jak i
+<span class="math inline">\(h^*\)</span>, otrzymujemy <span class="math display">\[|h^*(A) - h(A)| \leq 2V_tg(A).\]</span> Rozważając teraz
+<span class="math inline">\(t \to \infty\)</span> i używając Faktu <a href="#fak:5:4.39" reference-type="ref" reference="fak:5:4.39">4</a>, daje <span class="math inline">\(h^* \equiv h\)</span>, a zatem <span class="math inline">\(\pi^* = \pi\)</span>.
+Zatem <span class="math display">\[\pi = \int_0^1 \mu_\rho \gamma(\mathrm{d}\rho),\]</span> co kończy
+dowód. </p>
 </div>
 
 </div>
   <div class="chapter-nav">
-<div class="empty"></div>
+<div class="prev"><a href="wyk%C5%82ad-11-the-voter-model-przypadek-rekurencyjny.html">Wykład 11: The voter model: przypadek rekurencyjny</a></div>
 <div class="empty"></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <div id="book-on-this-page"></div>
+      <ul class="nav navbar-nav"><li><a class="nav-link" href="#wyk%C5%82ad-12-the-voter-model-przypadek-tranzytywny">Wykład 12: The voter model: przypadek tranzytywny</a></li></ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
