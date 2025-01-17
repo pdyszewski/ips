@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>wykład 9: Konstrukcja systemów spinowych | Stochastyczne modele układów oddziałujących 2024</title>
+<meta name="author" content="Piotr Dyszewski">
+<meta name="description" content="Piotr Dyszewski 28-11-24 Dla \(x \in V\) oraz \(\eta \in \{0,1\}^V\) definiujemy \(\eta^{(x)} \in \{0,1\}^V\) wzorem \[\eta^{(x)}(y) = \left\{   \begin{array}{cc} \eta(y), &amp; y \neq x \\ 1-\eta(x),...">
+<meta name="generator" content="bookdown 0.41 with bs4_book()">
+<meta property="og:title" content="wykład 9: Konstrukcja systemów spinowych | Stochastyczne modele układów oddziałujących 2024">
+<meta property="og:type" content="book">
+<meta property="og:image" content="/cover.png">
+<meta property="og:description" content="Piotr Dyszewski 28-11-24 Dla \(x \in V\) oraz \(\eta \in \{0,1\}^V\) definiujemy \(\eta^{(x)} \in \{0,1\}^V\) wzorem \[\eta^{(x)}(y) = \left\{   \begin{array}{cc} \eta(y), &amp; y \neq x \\ 1-\eta(x),...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="wykład 9: Konstrukcja systemów spinowych | Stochastyczne modele układów oddziałujących 2024">
+<meta name="twitter:description" content="Piotr Dyszewski 28-11-24 Dla \(x \in V\) oraz \(\eta \in \{0,1\}^V\) definiujemy \(\eta^{(x)} \in \{0,1\}^V\) wzorem \[\eta^{(x)}(y) = \left\{   \begin{array}{cc} \eta(y), &amp; y \neq x \\ 1-\eta(x),...">
+<meta name="twitter:image" content="/cover.png">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.8.0/transition.js"></script><script src="libs/bs3compat-0.8.0/tabs.js"></script><script src="libs/bs3compat-0.8.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="test.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="Notatni do wykładu">Stochastyczne modele układów oddziałujących 2024</a>:
+        <small class="text-muted">Notatni do wykładu</small>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Stochastyczne modele układów oddziałujących</a></li>
+<li><a class="" href="section-sylabus.html">Sylabus</a></li>
+<li><a class="" href="section-wyk%C5%82ad-1-%C5%82a%C5%84cuchy-markowa-w-czasie-ci%C4%85g%C5%82ym.html">Wykład 1: Łańcuchy Markowa w czasie ciągłym</a></li>
+<li><a class="" href="section-wyk%C5%82ad-2-mocna-w%C5%82asno%C5%9B%C4%87-markowa.html">Wykład 2: Mocna własność Markowa</a></li>
+<li><a class="" href="section-wyk%C5%82ad-3-procesy-i-p%C3%B3%C5%82grupy-fellera.html">Wykład 3: procesy i półgrupy Fellera</a></li>
+<li><a class="" href="section-wyk%C5%82ad-4-generatory.html">Wykład 4: Generatory</a></li>
+<li><a class="" href="section-wyk%C5%82ad-5-od-generatora-do-p%C3%B3%C5%82grupy.html">Wykład 5: od generatora do półgrupy</a></li>
+<li><a class="" href="section-wyk%C5%82ad-6-od-generatora-przez-p%C3%B3%C5%82grup%C4%99-do-procesu.html">Wykład 6: od generatora przez półgrupę do procesu</a></li>
+<li><a class="" href="section-wyk%C5%82ad-7-rozk%C5%82ady-stacjonarne-zaburzenia-ruchu-browna.html">Wykład 7: Rozkłady stacjonarne, zaburzenia ruchu Browna</a></li>
+<li><a class="" href="section-wyk%C5%82ad-8-uk%C5%82ady-spinowe.html">Wykład 8: Układy spinowe</a></li>
+<li><a class="active" href="section-wyk%C5%82ad-9-konstrukcja-system%C3%B3w-spinowych.html">wykład 9: Konstrukcja systemów spinowych</a></li>
+<li><a class="" href="section-wyk%C5%82ad-10-procesy-dualne.html">Wykład 10: Procesy dualne</a></li>
+<li><a class="" href="section-wyk%C5%82ad-11-the-voter-model-przypadek-rekurencyjny.html">Wykład 11: The voter model: przypadek rekurencyjny</a></li>
+<li><a class="" href="section-wyk%C5%82ad-12-the-voter-model-przypadek-tranzytywny.html">Wykład 12: The voter model: przypadek tranzytywny</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="section-wykład-9-konstrukcja-systemów-spinowych" class="section level1 unnumbered">
+<h1>wykład 9: Konstrukcja systemów spinowych<a class="anchor" aria-label="anchor" href="#section-wyk%C5%82ad-9-konstrukcja-system%C3%B3w-spinowych"><i class="fas fa-link"></i></a>
+</h1>
+<p>Piotr Dyszewski</p>
+<p><em>28-11-24</em></p>
+<p>Dla <span class="math inline">\(x \in V\)</span> oraz <span class="math inline">\(\eta \in \{0,1\}^V\)</span> definiujemy
+<span class="math inline">\(\eta^{(x)} \in \{0,1\}^V\)</span> wzorem <span class="math display">\[\eta^{(x)}(y) = \left\{
+    \begin{array}{cc} \eta(y), &amp; y \neq x \\ 1-\eta(x), &amp; y=x \end{array}\right..\]</span>
+Dla <span class="math inline">\(f\)</span> pochodzącego z odpowiedniego podzbioru <span class="math inline">\(C_0(\{0,1\}^V)\)</span> chcemy
+położyć <span class="math display">\[\label{eq:4:defL}
+    Lf(\eta) = \sum_{x\in V} c(x, \eta)\left[f\left(\eta^{(x)}\right) - f(\eta)\right].\]</span>
+Okazuje się, że dokładne napisanie dziedziny jest problematyczne. Aby
+obejść tę trudność rozważmy <span class="math display">\[\label{eq:4:defD}
+    D = \left\{ f \in C(\{0,1\}^V) : \|f\|_o := \sup_{\eta} \sum_x \left|f\left(\eta^{(x)}\right) - f(\eta)\right| &lt; \infty \right\}.\]</span></p>
+<div id="section-konstrukcja-systemów-spinowych-cd." class="section level2 unnumbered">
+<h2>Konstrukcja systemów spinowych cd.<a class="anchor" aria-label="anchor" href="#section-konstrukcja-system%C3%B3w-spinowych-cd."><i class="fas fa-link"></i></a>
+</h2>
+<p>Aby sprawdzić (GI4) musimy wyprowadzić ograniczenie dla rozwiązań
+równania <span class="math inline">\(f - \lambda Lf = g\)</span>. Niech
+<span class="math display">\[\epsilon = \inf_{u, \eta} [c(u, \eta) + c(u, \eta_u)] \quad \text{oraz}
+        \quad \gamma(x, u) = \sup_\eta |c(x, \eta_u) - c(x, \eta)|.\]</span>
+Zauważmy, że <span class="math inline">\(\gamma(x,u)\)</span> mierzy stopień, w jakim intensywność zmiany w
+miejscu <span class="math inline">\(x\)</span> zależy od konfiguracji w miejscu <span class="math inline">\(u\)</span>. Niech <span class="math inline">\(\ell_1(V)\)</span>
+będzie przestrzenią Banacha funkcji <span class="math inline">\(\alpha : V \to \mathbb{R}\)</span>, które
+spełniają <span class="math display">\[||\alpha|| := \sum_x |\alpha(x)| &lt; \infty.\]</span> Macierz
+<span class="math inline">\(\gamma\)</span> definiuje operator <span class="math inline">\(\Gamma\)</span> na <span class="math inline">\(\ell_1(S)\)</span> przez
+<span class="math display">\[\Gamma \alpha(u) = \sum_{x: x \neq u} \alpha(x) \gamma(x, u).\]</span>
+Operator ten jest dobrze zdefiniowany i ograniczony, pod warunkiem że
+<span class="math display">\[M := \sup_x \sum_{u: u \neq x} \gamma(x, u) &lt; \infty,\]</span> a wtedy
+<span class="math inline">\(||\Gamma|| = M\)</span>.</p>
+<p>Dla <span class="math inline">\(f \in C(\{0,1\}^V)\)</span> i <span class="math inline">\(x \in S\)</span>, niech
+<span class="math display">\[\Delta f(x) = \sup_{\eta} \left|f\left(\eta^{(x)}\right) - f(\eta)\right|.\]</span>
+Wtedy <span class="math inline">\(\|f\|_o = ||\Delta f||_{l_1(V)}\)</span>. Oto oszacowanie, którego
+potrzebujemy.</p>
+<div class="proposition">
+<p><span id="section-prp:4-2" class="proposition"><strong>Fakt 2  </strong></span>Załóżmy, że spełniony jest jeden z warunków</p>
+<ul>
+<li><p><span class="math inline">\(f \in D\)</span>,</p></li>
+<li><p><span class="math inline">\(f\)</span> jest ciągła i
+<span class="math display" id="eq:4-3">\[\begin{equation}
+            c(x, \cdot) \equiv 0
+            \text{ dla wszystkich oprócz skończonej liczby } x \in V.
+\tag{30}
+\end{equation}\]</span></p></li>
+</ul>
+<p>Wówczas jeśli <span class="math inline">\(f - \lambda Lf = g \in D\)</span>, <span class="math inline">\(\lambda &gt; 0\)</span>, oraz
+<span class="math inline">\(\lambda M &lt; 1 + \lambda \epsilon\)</span>, to
+<span class="math display" id="eq:4-4">\[\begin{equation}
+        \Delta f \leq \left[ (1 + \lambda \epsilon)I - \lambda \Gamma \right]^{-1} \Delta g,
+\tag{31}
+\end{equation}\]</span>
+gdzie nierówność zachodzi współrzędna po współrzędnej, a odwrotność jest
+zdefiniowana przez nieskończony szereg
+<span class="math display" id="eq:4-5">\[\begin{equation}
+        \left[ (1 + \lambda \epsilon)I - \lambda \Gamma \right]^{-1} \alpha
+        = \frac{1}{1 + \lambda \epsilon} \sum_{k=0}^{\infty}
+        \left( \frac{\lambda}{1 + \lambda \epsilon} \right)^k \Gamma^k \alpha.
+\tag{32}
+\end{equation}\]</span></p>
+</div>
+<div class="proof">
+<p><span id="section-unlabeled-div-34" class="proof"><em>Proof</em>. </span>Zauważmy, że szereg w
+<a href="section-wyk%C5%82ad-9-konstrukcja-system%C3%B3w-spinowych.html#eq:4-5">(32)</a> jest
+zbieżny dla <span class="math inline">\(\alpha \in \ell_1(V)\)</span> na mocy założenia
+<span class="math inline">\(\lambda M &lt; 1 + \lambda \epsilon\)</span>. Pisząc <span class="math inline">\(f - \lambda Lf = g\)</span> w
+punktach <span class="math inline">\(\eta\)</span> oraz <span class="math inline">\(\eta^{(u)}\)</span>, odejmując i zauważając że
+<span class="math inline">\((\eta^{(u)})^{(u)} = \eta\)</span>, otrzymujemy
+<span class="math display" id="eq:4-6">\[\begin{multline}
+        [f(\eta^{(u)}) - f(\eta)][1 + \lambda c(u, \eta) + \lambda c(u, \eta^{(u)})]
+        = [g(\eta^{(u)}) - g(\eta)]\\
+        + \lambda \sum_{x:x \neq u} \left\{ c(x, \eta^{(u)}) [f((\eta^{(u)})^{(x)})
+        - f(\eta^{(u)})] - c(x, \eta)[f(\eta^{(x)}) - f(\eta)] \right\}.
+\tag{33}
+\end{multline}\]</span>
+Ponieważ wartości <span class="math inline">\(f(\eta^{(u)}) - f(\eta)\)</span>, gdy <span class="math inline">\(\eta\)</span>
+zmienia się a <span class="math inline">\(u\)</span> jest ustalone, tworzą zbiór symetryczny, a ta różnica
+jest funkcją ciągłą <span class="math inline">\(\eta\)</span>, dla każdego <span class="math inline">\(u\)</span> istnieje takie <span class="math inline">\(\eta\)</span>, że
+<span class="math display">\[f(\eta^{(u)}) - f(\eta) = \sup_{\zeta} |f(\zeta^{(u)}) - f(\zeta)| = \Delta f(u).\]</span>
+Stąd, <span class="math display">\[f(\zeta^{(u)}) - f(\zeta) \leq f(\eta^{(u)}) - f(\eta)\]</span> dla
+każdej <span class="math inline">\(\zeta\)</span>. Stosując to dla <span class="math inline">\(\zeta = \eta^{(x)}\)</span> i przekształcając,
+otrzymujemy <span class="math display">\[f((\eta^{(u)})^{(x)}) - f(\eta^{(u)})
+        = f((\eta^{(x)})^{(u)}) - f(\eta^{(u)}) \leq f(\eta^{(x)}) - f(\eta),\]</span>
+Używając tej nierówności w <a href="section-wyk%C5%82ad-9-konstrukcja-system%C3%B3w-spinowych.html#eq:4-6">(33)</a>,
+<span class="math display" id="eq:4-7">\[\begin{multline}
+        \Delta f(u)(1 + \lambda \epsilon) \leq
+        \Delta f(u)[1 + \lambda c(u, \eta) + \lambda c(u, \eta^{(u)})] \\
+        \leq \Delta g(u) + \lambda \sum_{x:x \neq u}
+        \left[ c(x, \eta^{(u)}) - c(x, \eta) \right] [f(\eta^{(x)}) - f(\eta)]
+        \\ \leq \Delta g(u) + \lambda \sum_{x:x \neq u} \gamma(x,u) \Delta f(x).
+\tag{34}    
+\end{multline}\]</span>
+Jeśli <a href="section-wyk%C5%82ad-9-konstrukcja-system%C3%B3w-spinowych.html#eq:4-3">(30)</a> zachodzi, to tylko skończona liczba wyrazów po
+prawej stronie jest niezerowa, więc przy któregokolwiek z założeń faktu
+<span class="math inline">\(\Gamma \Delta_f\)</span> jest dobrze określona. Dlatego <a href="section-wyk%C5%82ad-9-konstrukcja-system%C3%B3w-spinowych.html#eq:4-7">(34)</a> można
+zapisać jako
+<span class="math display">\[(1 + \lambda \epsilon) \Delta f \leq \Delta g + \lambda \Gamma \Delta f.\]</span>
+Iteracja tej nierówności prowadzi to do
+<span class="math display">\[\Delta f \leq \frac{1}{1 + \lambda \epsilon}
+        \sum_{k=0}^{n} \left( \frac{\lambda}{1 + \lambda \epsilon} \right)^k
+        \Gamma^k \Delta g + \left( \frac{\lambda}{1 + \lambda \epsilon} \right)^{n+1}
+        \Gamma^{n+1} \Delta f.\]</span> Jeżeli rozważymy teraz <span class="math inline">\(n \to \infty\)</span>,
+dostaniemy <a href="section-wyk%C5%82ad-9-konstrukcja-system%C3%B3w-spinowych.html#eq:4-4">(31)</a>.</p>
+</div>
+<div class="theorem">
+<p><span id="section-thm:4-3" class="theorem"><strong>Twierdzenie 16  </strong></span>Załóżmy, że <span class="math inline">\(M &lt; \infty\)</span>. Wtedy <span class="math inline">\(\overline{L}\)</span> jest
+generatorem infinitezymalnym półgrupy Fellera
+<span class="math inline">\(T=(T(t))_{t \in \mathbb{R}_+}\)</span>. Ponadto,
+<span class="math display" id="eq:4-8">\[\begin{equation}
+        \Delta T(t)f \leq e^{-t \epsilon} e^{t \Gamma} \Delta f.
+\tag{35}
+\end{equation}\]</span>
+W
+szczególności, jeśli <span class="math inline">\(f \in D\)</span>, to <span class="math inline">\(T_tf \in D\)</span> oraz
+<span class="math display" id="eq:4-9">\[\begin{equation}
+        \|T(t)f\|_o \leq e^{(M - \epsilon)t} \|f\|_o.
+\tag{36}
+\end{equation}\]</span></p>
+</div>
+<div class="proof">
+<p><span id="section-unlabeled-div-35" class="proof"><em>Proof</em>. </span>Własności (GI1), (GI2), (GI3) i (GI5) z
+Definicji <a href="#def:3-4"><strong>??</strong></a> zachodzą dla <span class="math inline">\((L, D)\)</span> są i są dziedziczone przez
+<span class="math inline">\(\overline{L}\)</span> z Faktu <a href="#prp:3-30">1</a>. Aby sprawdzić warunek (GI4) weźmy wstępujący ciąg
+<span class="math inline">\(V_n\subseteq V\)</span> taki, że <span class="math inline">\(\bigcup_nV_n=V\)</span>. Niech <span class="math display">\[
+        L_n f(\eta) =
+        \sum_{x \in V_n} c(x, \eta) \left[f\left(\eta^{(x)}\right) - f(\eta)\right],
+        \quad f \in C\left(\{0,1\}^V\right).
+(\#eq:4.10)
+\]</span> To jest generator dla
+systemu spinowego, w którym współrzędne <span class="math display">\[(\eta(x) : x \notin V_n)\]</span> są
+stałe w czasie. Ponieważ <span class="math inline">\(L_n\)</span> jest ograniczonym generatorem, spełnia
+<span class="math display">\[\mathcal{R}(I - \lambda L_n) = C(\{0,1\}^V)\]</span> dla dostatecznie małych
+<span class="math inline">\(\lambda &gt; 0\)</span>. Dla <span class="math inline">\(g \in D\)</span>, możemy zdefiniować <span class="math inline">\(f_n \in C(\{0,1\}^V)\)</span>
+przez <span class="math inline">\(f_n - \lambda L_n f_n = g\)</span>. Ponieważ <span class="math inline">\(L_n\)</span> spełnia
+<a href="section-wyk%C5%82ad-9-konstrukcja-system%C3%B3w-spinowych.html#eq:4-3">(30)</a>, jeśli
+<span class="math inline">\(\lambda\)</span> jest wystarczająco małe, tak że
+<span class="math inline">\(\lambda M &lt; 1 + \lambda \epsilon\)</span>, wtedy <span class="math inline">\(f_n \in D\)</span> zgodnie z
+Faktem <a href="#prp:4-2">2</a>. W
+związku z tym możemy położyć
+<span class="math display">\[g_n = f_n - \lambda L f_n \in \mathcal{R}(I - \lambda L).\]</span> Niech
+<span class="math inline">\(K = \sup_{x, \eta} c(x, \eta) &lt;\infty\)</span>, wtedy z
+Faktu <a href="#prp:4-2">2</a>,
+<span class="math display" id="eq:4-11">\[\begin{multline}
+        \|g_n - g\|
+        = \lambda ||(L - L_n) f_n||
+        \leq \lambda K \sum_{x \notin V_n} \Delta f_n(x)\\
+        \leq \lambda K \sum_{x \notin V_n}
+        \left[ (1 + \lambda \epsilon)I - \lambda \Gamma \right]^{-1} \Delta g(x).
+    \tag{37}
+\end{multline}\]</span>
+Ponieważ <span class="math inline">\(\Delta g \in \ell_1(V)\)</span>, prawa strona
+<a href="section-wyk%C5%82ad-9-konstrukcja-system%C3%B3w-spinowych.html#eq:4-11">(37)</a> dąży
+do zera, gdy <span class="math inline">\(n \to \infty\)</span>, więc <span class="math inline">\(g_n \to g\)</span>. Stąd
+<span class="math inline">\(g \in \mathrm{cl}(\mathcal{R}(I - \lambda L))\)</span>, więc wnioskujemy, że
+<span class="math inline">\(D \subseteq \mathrm{cl}(\mathcal{R}(I - \lambda L))\)</span>. Ponieważ <span class="math inline">\(D\)</span> jest
+gęste w <span class="math inline">\(C(\{0,1\}^V)\)</span>, widzimy, że <span class="math inline">\(\mathcal{R}(I - \lambda L)\)</span> jest
+również gęste. Zgodnie z
+Faktem <a href="#prp:3-30">1</a>,
+<span class="math inline">\(\mathcal{R}(I - \lambda \overline{L})\)</span> musi być
+domkniętym podzbiorem <span class="math inline">\(C(\{0,1\}^V)\)</span>. Zatem
+<span class="math display">\[\mathcal{R}(I - \lambda \overline{L}) = C(\{0,1\}^V)\]</span> To kończy
+weryfikację, że <span class="math inline">\(\overline{L}\)</span> jest generatorem infinitezymalnym.</p>
+<p>Przechodząc do drugiego stwierdzenia, zapiszmy
+<a href="section-wyk%C5%82ad-9-konstrukcja-system%C3%B3w-spinowych.html#eq:4-4">(31)</a> jako
+<span class="math display">\[\Delta_{(I - \lambda L)^{-1}} g
+        \leq \left[ (1 + \lambda \epsilon)I - \lambda \Gamma \right]^{-1} \Delta g,\]</span>
+a następnie iterujmy, aby uzyskać
+<span class="math display">\[\Delta_{(I - \frac{t}{n} L)^{-1}} g \leq
+        \left[ \left( 1 + \frac{t}{n} \epsilon \right) I - \frac{t}{n} \Gamma \right]^{-n}
+        \Delta g.\]</span> Przechodząc do granicy otrzymujemy <a href="section-wyk%C5%82ad-9-konstrukcja-system%C3%B3w-spinowych.html#eq:4-8">(35)</a>.</p>
+</div>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="section-wyk%C5%82ad-8-uk%C5%82ady-spinowe.html">Wykład 8: Układy spinowe</a></div>
+<div class="next"><a href="section-wyk%C5%82ad-10-procesy-dualne.html">Wykład 10: Procesy dualne</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#section-wyk%C5%82ad-9-konstrukcja-system%C3%B3w-spinowych">wykład 9: Konstrukcja systemów spinowych</a></li>
+<li><a class="nav-link" href="#section-konstrukcja-system%C3%B3w-spinowych-cd.">Konstrukcja systemów spinowych cd.</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Stochastyczne modele układów oddziałujących 2024</strong>: Notatni do wykładu" was written by Piotr Dyszewski. It was last built on 2025-01-17.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

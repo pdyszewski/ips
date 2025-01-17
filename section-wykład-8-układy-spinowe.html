@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Wykład 8: Układy spinowe | Stochastyczne modele układów oddziałujących 2024</title>
+<meta name="author" content="Piotr Dyszewski">
+<meta name="description" content="2024-11-21 Piotr Dyszewski Motywacje Aby umotywować nasze przyszłe działania przedyskutujemy kilka przykładów. Od tej pory niech \(G =(V, E)\) będzie przeliczalnym grafem prostym o ograniczonym...">
+<meta name="generator" content="bookdown 0.41 with bs4_book()">
+<meta property="og:title" content="Wykład 8: Układy spinowe | Stochastyczne modele układów oddziałujących 2024">
+<meta property="og:type" content="book">
+<meta property="og:image" content="/cover.png">
+<meta property="og:description" content="2024-11-21 Piotr Dyszewski Motywacje Aby umotywować nasze przyszłe działania przedyskutujemy kilka przykładów. Od tej pory niech \(G =(V, E)\) będzie przeliczalnym grafem prostym o ograniczonym...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Wykład 8: Układy spinowe | Stochastyczne modele układów oddziałujących 2024">
+<meta name="twitter:description" content="2024-11-21 Piotr Dyszewski Motywacje Aby umotywować nasze przyszłe działania przedyskutujemy kilka przykładów. Od tej pory niech \(G =(V, E)\) będzie przeliczalnym grafem prostym o ograniczonym...">
+<meta name="twitter:image" content="/cover.png">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.8.0/transition.js"></script><script src="libs/bs3compat-0.8.0/tabs.js"></script><script src="libs/bs3compat-0.8.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="test.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="Notatni do wykładu">Stochastyczne modele układów oddziałujących 2024</a>:
+        <small class="text-muted">Notatni do wykładu</small>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Stochastyczne modele układów oddziałujących</a></li>
+<li><a class="" href="section-sylabus.html">Sylabus</a></li>
+<li><a class="" href="section-wyk%C5%82ad-1-%C5%82a%C5%84cuchy-markowa-w-czasie-ci%C4%85g%C5%82ym.html">Wykład 1: Łańcuchy Markowa w czasie ciągłym</a></li>
+<li><a class="" href="section-wyk%C5%82ad-2-mocna-w%C5%82asno%C5%9B%C4%87-markowa.html">Wykład 2: Mocna własność Markowa</a></li>
+<li><a class="" href="section-wyk%C5%82ad-3-procesy-i-p%C3%B3%C5%82grupy-fellera.html">Wykład 3: procesy i półgrupy Fellera</a></li>
+<li><a class="" href="section-wyk%C5%82ad-4-generatory.html">Wykład 4: Generatory</a></li>
+<li><a class="" href="section-wyk%C5%82ad-5-od-generatora-do-p%C3%B3%C5%82grupy.html">Wykład 5: od generatora do półgrupy</a></li>
+<li><a class="" href="section-wyk%C5%82ad-6-od-generatora-przez-p%C3%B3%C5%82grup%C4%99-do-procesu.html">Wykład 6: od generatora przez półgrupę do procesu</a></li>
+<li><a class="" href="section-wyk%C5%82ad-7-rozk%C5%82ady-stacjonarne-zaburzenia-ruchu-browna.html">Wykład 7: Rozkłady stacjonarne, zaburzenia ruchu Browna</a></li>
+<li><a class="active" href="section-wyk%C5%82ad-8-uk%C5%82ady-spinowe.html">Wykład 8: Układy spinowe</a></li>
+<li><a class="" href="section-wyk%C5%82ad-9-konstrukcja-system%C3%B3w-spinowych.html">wykład 9: Konstrukcja systemów spinowych</a></li>
+<li><a class="" href="section-wyk%C5%82ad-10-procesy-dualne.html">Wykład 10: Procesy dualne</a></li>
+<li><a class="" href="section-wyk%C5%82ad-11-the-voter-model-przypadek-rekurencyjny.html">Wykład 11: The voter model: przypadek rekurencyjny</a></li>
+<li><a class="" href="section-wyk%C5%82ad-12-the-voter-model-przypadek-tranzytywny.html">Wykład 12: The voter model: przypadek tranzytywny</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="section-wykład-8-układy-spinowe" class="section level1 unnumbered">
+<h1>Wykład 8: Układy spinowe<a class="anchor" aria-label="anchor" href="#section-wyk%C5%82ad-8-uk%C5%82ady-spinowe"><i class="fas fa-link"></i></a>
+</h1>
+<p>2024-11-21</p>
+<p><em>Piotr Dyszewski</em></p>
+<div id="section-motywacje" class="section level2 unnumbered">
+<h2>Motywacje<a class="anchor" aria-label="anchor" href="#section-motywacje"><i class="fas fa-link"></i></a>
+</h2>
+<p>Aby umotywować nasze przyszłe działania przedyskutujemy kilka
+przykładów. Od tej pory niech <span class="math inline">\(G =(V, E)\)</span> będzie przeliczalnym grafem
+prostym o ograniczonym stopniu. Dokładniej zakładać będziemy, że zbiór
+jego wierzchołków <span class="math inline">\(V\)</span> jest skończony bądź przeliczalny oraz, że
+<span class="math display">\[\sup_{x \in V} \mathrm{deg}(x) &lt;\infty.\]</span> Rozważmy następujące trzy
+procesy na <span class="math inline">\(G\)</span>.</p>
+<div class="example">
+<p><span id="section-exm:unlabeled-div-28" class="example"><strong>Przykład 8  </strong></span>(Voter model). Przypuśćmy, że na <span class="math inline">\(G\)</span> są dwie wzajemnie
+zwalczające się frakcje (można myśleć o republikanach i demokratach). Na
+każdy wierzchołek jednej frakcji oddziałują (poprzez indoktrynację)
+sąsiedzi z frakcji przeciwnej. Na skutek czego niektóre wierzchołki
+zmieniają frakcję na przeciwną. Dokładniej każdy <span class="math inline">\(x \in V\)</span> zmienia
+frakcję w intensywnością równą
+<span class="math display">\[c(x) = \# \{ y \in V \: \: x \sim y, \: \mbox{$y$ jest z innej frakcji niż $x$} \}.\]</span>
+Jest to równoważne z następującym opisem.</p>
+<ul>
+<li><p>Dla każdej pary sąsiednich wierzchołków <span class="math inline">\(x\sim y\)</span> pochodzących z
+różnych frakcji losujemy niezależnie dwie liczby <span class="math inline">\(E_{x\to y}\)</span> oraz
+<span class="math inline">\(E_{y\to x}\)</span> z rozkładu wykładniczego z parametrem jeden.
+<span class="math inline">\(E_{x\to y}\)</span> interpretujemy jako czas, jaki potrzebuje <span class="math inline">\(x\)</span> aby
+przekabacić <span class="math inline">\(y\)</span>.</p></li>
+<li><p>W momencie, w którym którykolwiek z wierzchołków przeciągnie sąsiada
+(powiedzmy <span class="math inline">\(y\)</span>) na swoją stronę, losujemy nowe wagi dla sąsiadów <span class="math inline">\(y\)</span>
+(według nowego układu obu frakcji).</p></li>
+</ul>
+<p>Oczywiście powyższa, naiwna konstrukcja ma sens tylko, gdy graf <span class="math inline">\(G\)</span> jest
+skończony. W przypadku grafów nieskończonych wymagana jest odpowiednia
+konstrukcja, którą opiszemy niebawem.</p>
+</div>
+<div class="example">
+<p><span id="section-exm:unlabeled-div-29" class="example"><strong>Przykład 9  </strong></span>(Contact process). Załóżmy, że na grafie <span class="math inline">\(G\)</span> panuje
+epidemia. Niech <span class="math inline">\(\lambda &gt;0\)</span> będzie ustalonym parametrem. Proces rozwija
+się według następujących zasad.</p>
+<ul>
+<li><p>Chore wierzchołki niezależnie zarażają swoich zdrowych sąsiadów z
+czasem wykładniczym z parametrem <span class="math inline">\(\lambda\)</span>.</p></li>
+<li><p>Chore wierzchołki zdrowieją niezależnie z czasem wykładniczym z
+parametrem jeden.</p></li>
+</ul>
+<p>Ponownie powyższy opis ma sens jedynie w przypadku, gdy <span class="math inline">\(G\)</span> jest
+skończony. Dla nieskończonych grafów <span class="math inline">\(G\)</span> będziemy posługiwać się
+równoważną charakteryzacją</p>
+<ul>
+<li><p>Każdy chory wierzchołek zdrowieje z intensywnością <span class="math inline">\(1\)</span></p></li>
+<li><p>Każdy zdrowy wierzchołek <span class="math inline">\(x\)</span> choruje z intensywnością
+<span class="math display">\[\lambda \# \{ y\sim x \: : \: y \mbox{ chory}\}.\]</span></p></li>
+</ul>
+<div id="section-p5-container-cp1">
+<script src="JAVA/cp1.js"></script>
+</div>
+</div>
+<div class="example">
+<p><span id="section-exm:unlabeled-div-30" class="example"><strong>Przykład 10  </strong></span>(Exclusion process). Rozważmy zjawisko migracji na grafie
+<span class="math inline">\(G\)</span>. Załóżmy, że pewne wierzchołki <span class="math inline">\(G\)</span> są zajmowane przez osobników
+ustalonego gatunku (przykładowo krowy). Każdy osobnik czeka niezależnie
+wykładniczy czas z parametrem jeden, po czym podejmuje próbę
+przemieszczenia się.</p>
+<ul>
+<li><p>Jeżeli osobnik zajmuje wierzchołek <span class="math inline">\(x \in V\)</span>, to losuje wierzchołek
+<span class="math inline">\(y\)</span> z prawdopodobieństwem <span class="math inline">\(p(x,y)\)</span>.</p></li>
+<li><p>Jeżeli wierzchołek <span class="math inline">\(y\)</span> nie jest zajęty, to osobnik przechodzi do
+<span class="math inline">\(y\)</span>.</p></li>
+</ul>
+</div>
+<p>W każdym z powyższych przykładów stan układu w chwili <span class="math inline">\(t\)</span> można
+zakodować przy pomocy <span class="math inline">\(\eta_t \in \{ 0,1\}^V\)</span>. Okazuje się, że wówczas
+<span class="math inline">\(\eta = (\eta_t)_{t \in \mathbb{R}_+}\)</span> staje się procesem Fellera. Aby
+się o tym dokładnie przekonać musimy przeanalizować generatory
+wynikające z przykładów.</p>
+</div>
+<div id="section-systemy-spinowe" class="section level2 unnumbered">
+<h2>Systemy spinowe<a class="anchor" aria-label="anchor" href="#section-systemy-spinowe"><i class="fas fa-link"></i></a>
+</h2>
+<p>Właściwością, która odróżnia systemy spinowe od innych procesów Fellera
+na <span class="math inline">\(\{0,1\}^S\)</span>, jest to, że poszczególne przejścia obejmują tylko jedną
+lokalizację. Niech <span class="math inline">\(c \colon V \times \{0,1\}^V \to \mathbb{R}_+\)</span> będzie
+ograniczoną funkcją taką, że dla każdego <span class="math inline">\(x \in V\)</span>,
+<span class="math inline">\(c(x, \cdot) \colon \{0,1\}^V \to \mathbb{R}_+\)</span> jest ciągła. <span class="math inline">\(c(x,\eta)\)</span>
+interpretować będziemy jako intensywność, z jaką stan <span class="math inline">\(\eta\)</span> zmienia się
+poprzez zmianę wartości w <span class="math inline">\(x\)</span>. Dla <span class="math inline">\(x \in V\)</span> oraz <span class="math inline">\(\eta \in \{0,1\}^V\)</span>
+definiujemy <span class="math inline">\(\eta^{(x)} \in \{0,1\}^V\)</span> wzorem <span class="math display">\[\eta^{(x)}(y) = \left\{
+    \begin{array}{cc} \eta(y), &amp; y \neq x \\ 1-\eta(x), &amp; y=x \end{array}\right..\]</span>
+Dla <span class="math inline">\(f\)</span> pochodzącego z odpowiedniego podzbioru <span class="math inline">\(C_0(\{0,1\}^V)\)</span> chcemy
+położyć
+<span class="math display" id="eq:4-defL">\[\begin{equation}
+    Lf(\eta) = \sum_{x\in V} c(x, \eta)\left[f\left(\eta^{(x)}\right) - f(\eta)\right].
+\tag{26}
+\end{equation}\]</span>
+Okazuje się, że dokładne napisanie dziedziny jest problematyczne. Aby
+obejść tę trudność rozważmy
+<span class="math display" id="eq:4-defD">\[\begin{equation}
+    D = \left\{ f \in C(\{0,1\}^V) : \|f\|_o := \sup_{\eta} \sum_x \left|f\left(\eta^{(x)}\right) - f(\eta)\right| &lt; \infty \right\}.
+\tag{27}
+\end{equation}\]</span></p>
+<p>Naszym celem jest pokazanie, że zdefiniowanie <span class="math inline">\(L\)</span> na <span class="math inline">\(D\)</span> wystarcza do
+zdefiniowania procesu.</p>
+</div>
+<div id="section-dygresja-analityczna" class="section level2 unnumbered">
+<h2>Dygresja analityczna<a class="anchor" aria-label="anchor" href="#section-dygresja-analityczna"><i class="fas fa-link"></i></a>
+</h2>
+<p>Generator infinitezymalny nie należy do najprostszych obiektów w teorii
+procesów Fellera. Jednym z powodów jest konieczność uwzględnienia
+dzieciny która, jak się już przekonaliśmy, ma istotny wpływ na kształt
+generowanego procesu. Rzadko się jednak zdarza, że dziedzinę można
+opisać jawnie. Dlatego często definiuje się proponowany generator na
+wygodnej podprzestrzeni dziedziny, a następnie bierze się domknięcie.</p>
+<div class="definition">
+<p><span id="section-def:unlabeled-div-31" class="definition"><strong>Definicja 11  </strong></span>Operator liniowy <span class="math inline">\((L, \mathcal{D}(L))\)</span> na <span class="math inline">\(C_0(S)\)</span>
+nazywany jest domkniętym, jeśli jego wykres
+<span class="math display">\[\Gamma(L)=\{(f, Lf) : f \in D(L)\}\]</span> jest domkniętym podzbiorem
+<span class="math inline">\(C_0(S) \times C_0(S)\)</span>.</p>
+</div>
+<p>Operator <span class="math inline">\(L\)</span> jest domknięty wtedy i tylko wtedy, gdy
+<span class="math inline">\(f_n \in \mathcal{D}(L)\)</span> są takie, że <span class="math inline">\(f_n \to f\)</span> oraz <span class="math inline">\(Lf_n \to h\)</span>, to
+<span class="math inline">\(f \in \mathcal{D}(L)\)</span> oraz <span class="math inline">\(h=Lf\)</span>.</p>
+<div class="definition">
+<p><span id="section-def:unlabeled-div-32" class="definition"><strong>Definicja 12  </strong></span>Operator liniowy <span class="math inline">\((L, \mathcal{D}(L))\)</span> nazywany jest
+domykalnym, jeżeli domknięcie jego wykresu <span class="math inline">\(\Gamma(L)\)</span> jest wykresem
+operatora liniowego. W takiej sytuacji definiujemy domknięcie
+<span class="math inline">\(\overline{L}\)</span> operatora <span class="math inline">\(L\)</span> poprzez
+<span class="math display">\[\Gamma \left( \overline{L} \right) = \overline{\Gamma(L)}.\]</span></p>
+</div>
+<p>Operator <span class="math inline">\(L\)</span> jest domykalny wtedy i tylko wtedy, gdy <span class="math inline">\(f_n \to 0\)</span> oraz
+<span class="math inline">\(Lf_n \to h\)</span> implikują <span class="math inline">\(h=0\)</span>. Nie każdy operator liniowy ma domknięcie.
+Na przykład, przypuśćmy, że <span class="math inline">\(S = [0, 1]\)</span> i
+<span class="math display">\[\mathcal{D}(L) = \{ f \in C(S) : f'(0) \text{ istnieje} \}
+        \quad \text{i} \quad Lf(x) = f'(0)x \text{ dla } f \in \mathcal{D}(L).\]</span>
+Wtedy domknięcie wykresu <span class="math inline">\(L\)</span> nie jest wykresem operatora liniowego.
+Jednakże w kontekście
+Definicji <a href="#def:3-12">8</a> taka sytuacja nie występuje.</p>
+<div class="proposition">
+<p><span id="section-prp:3-30" class="proposition"><strong>Fakt 1  </strong></span>Niech <span class="math inline">\((L, \mathcal{D}(L))\)</span> będzie operatorem liniowym na
+<span class="math inline">\(C_0(S)\)</span>.</p>
+<ul>
+<li><p>Przypuśćmy, że <span class="math inline">\(L\)</span> spełnia (GI1)-(GI3) z
+Definicji <a href="#def:3-12">8</a>. Wtedy <span class="math inline">\(L\)</span> jest domykalny, a jego domknięcie
+spełnia (GI1)-(GI3).</p></li>
+<li><p>Jeśli <span class="math inline">\(L\)</span> spełnia (GI1)- (GI4) z
+Definicji <a href="#def:3-12">8</a>, wtedy <span class="math inline">\(L\)</span> jest domknięty.</p></li>
+<li><p>Jeśli <span class="math inline">\(L\)</span> spełnia (GI3) i (GI4), to <span class="math display">\[\mathcal{R}(I - \lambda L)
+                    = C_0(S) \quad \text{dla każdego } \lambda &gt; 0.\]</span></p></li>
+<li><p>Jeśli <span class="math inline">\(L\)</span> jest domknięty i spełnia (GI3), to
+<span class="math inline">\(\mathcal{R}(I - \lambda L)\)</span> jest domkniętym podzbiorem <span class="math inline">\(C_0(S)\)</span>.</p></li>
+</ul>
+</div>
+<div class="proof">
+<p><span id="section-unlabeled-div-33" class="proof"><em>Proof</em>. </span>Dla pierwszego stwierdzenia, musimy udowodnić, że
+<span class="math inline">\(f_n \in \mathcal{D}(L), f_n \to 0\)</span>, oraz <span class="math inline">\(Lf_n \to h\)</span> implikuje
+<span class="math inline">\(h = 0\)</span>. Aby to zrobić, wybierzmy <span class="math inline">\(g \in \mathcal{D}(L)\)</span>. Korzystając z
+<a href="section-wyk%C5%82ad-4-generatory.html#eq:3-12">(13)</a>,
+<span class="math display">\[\|(I - \lambda L)(f_n + \lambda g)\|
+            \geq \|f_n + \lambda g\|,
+            \quad \lambda &gt; 0.\]</span> Biorąc <span class="math inline">\(n \to \infty\)</span> i następnie
+dzieląc przez <span class="math inline">\(\lambda\)</span>, dostajemy
+<span class="math display">\[\|g - h - \lambda Lg\| \geq \|g\|.\]</span> Jeżeli teraz wybierzemy
+<span class="math inline">\(\lambda \to 0\)</span>, to otrzymamy <span class="math display">\[\| g-h \| \geq \|g\|.\]</span> Skoro
+<span class="math inline">\(g\in \mathcal{D}(L)\)</span> jest wzięte z gęstego zbioru otrzymujemy <span class="math inline">\(h = 0\)</span>.
+Domknięcie <span class="math inline">\(\overline{L}\)</span> spełnia własności (GI1) i (GI2), ponieważ jest
+rozszerzeniem <span class="math inline">\(L\)</span>. Aby sprawdzić, czy spełnia własność (GI3),
+przypuśćmy, że <span class="math inline">\(f \in \mathcal{D}(\overline{L}), \lambda \geq 0\)</span> i
+<span class="math inline">\(f - \lambda \overline{L}f = g\)</span>. Przez definicję domknięcia, istnieją
+<span class="math inline">\(f_n \in \mathcal{D}(L)\)</span>, takie że <span class="math inline">\(f_n \to f\)</span> i
+<span class="math inline">\(Lf_n \to \overline{L}f\)</span>. Przez własność (GI3) dla <span class="math inline">\(L\)</span>,
+<span class="math display">\[\inf_{x \in S} f_n(x) \geq \inf_{x \in S} g_n(x),\]</span> gdzie
+<span class="math inline">\(g_n = f_n - \lambda Lf_n\)</span>. Teraz niech <span class="math inline">\(n \to \infty\)</span>. Dostajemy
+<span class="math display">\[\inf_{x \in S} f(x) \geq \inf_{x \in S} g(x),\]</span> czyli własność <span class="math inline">\((GI3)\)</span>
+dla <span class="math inline">\(\overline{L}\)</span>.</p>
+<p>Dla dowodu drugiej części faktu, niech <span class="math inline">\(\overline{L}\)</span> będzie domknięciem
+<span class="math inline">\(L\)</span>. Jeśli <span class="math inline">\(f \in \mathcal{D}(\overline{L})\)</span> i <span class="math inline">\(\lambda &gt; 0\)</span> jest małe,
+przez własność (GI4) istnieje <span class="math inline">\(h \in \mathcal{D}(L)\)</span> takie że
+<span class="math display" id="eq:3-25">\[\begin{equation}
+            h - \lambda Lh = f - \lambda \overline{L}f,\tag{28}\end{equation}\]</span> czyli
+<span class="math inline">\((h - f) - \lambda \overline{L}(h - f) = 0\)</span>. Z <a href="section-wyk%C5%82ad-4-generatory.html#eq:3-12">(13)</a>,
+<span class="math inline">\(h = f\)</span>, a wtedy <span class="math inline">\(\overline{L}f = Lh\)</span> z <a href="section-wyk%C5%82ad-8-uk%C5%82ady-spinowe.html#eq:3-25">(28)</a>.
+Więc, <span class="math inline">\(\overline{L} = L\)</span> zgodnie z tezą.</p>
+<p>Przechodząc do trzeciego stwierdzenia, wystarczy sprawdzić, że dla
+<span class="math inline">\(0 &lt; \lambda &lt; \gamma\)</span> warunek <span class="math inline">\(\mathcal{R}(I - \lambda L) = C_0(S)\)</span>
+implikuje <span class="math inline">\(\mathcal{R}(I - \gamma L) = C_0(S)\)</span>. Załóżmy, że
+<span class="math inline">\(g \in C_0(S)\)</span>, i zdefiniujmy <span class="math inline">\(\Gamma : C(S) \to \mathcal{D}(L)\)</span> przez
+<span class="math display">\[\gamma \Gamma h
+        = \lambda (I - \lambda L)^{-1} g + (\gamma - \lambda)(I - \lambda L)^{-1} h.\]</span>
+Definicja ta jest poprawna, ponieważ założyliśmy
+<span class="math inline">\(\mathcal{R}(I - \lambda L) = C_0(S)\)</span>. Mamy
+<span class="math display">\[\gamma \| \Gamma h_1 - \Gamma h_2 \|
+        = (\gamma - \lambda) \| (I - \mathcal{L})^{-1} (h_1 - h_2) \|
+        \leq (\gamma - \lambda) \| h_1 - h_2 \|.\]</span> Stąd <span class="math inline">\(\Gamma\)</span> jest
+odwzorowaniem zwężającym, a więc z Twierdzenia Banacha o punkcie stałym
+posiada jedyny punkt stały <span class="math inline">\(f\)</span>. Wówczas <span class="math inline">\(f \in \mathcal{D}(L)\)</span> oraz
+<span class="math display">\[\gamma (I - \lambda \mathcal{L}) f
+        = \lambda g + (\gamma - \lambda) f.\]</span> Co można przekształcić do
+postaci <span class="math inline">\(f - \gamma L f = g\)</span>. Czyli <span class="math inline">\(g \in \mathcal{R}(I - \gamma L)\)</span>,
+co należało uzasadnić.</p>
+<p>Aby udowodnić ostatnie stwierdzenie, załóżmy, że
+<span class="math inline">\(g_n \in \mathcal{R}(I - \lambda L)\)</span> i <span class="math inline">\(g_n \to g\)</span>. Wtedy możemy
+zdefiniować <span class="math inline">\(f_n \in \mathcal{D}(L)\)</span> przez
+<span class="math display" id="eq:3-26">\[\begin{equation}
+f_n - \lambda L f_n = g_n.
+\tag{29}
+\end{equation}\]</span>
+Wówczas
+<span class="math display">\[(f_n - f_m) - \lambda L (f_n - f_m) = g_n - g_m,\]</span> a zatem
+<span class="math inline">\(\| f_n - f_m \| \leq \| g_n - g_m \|\)</span>. Ponieważ
+<span class="math inline">\(\{g_n\}_{n \in \mathbb{N}}\)</span> jest ciągiem Cauchy’ego, to
+<span class="math inline">\(\{f_n\}_{n \in \mathbb{N}}\)</span> również. Niech
+<span class="math inline">\(f = \lim_{n \to \infty} f_n\)</span>. Ponieważ <span class="math inline">\(f_n \to f\)</span> i <span class="math inline">\(g_n \to g\)</span>, to z <a href="section-wyk%C5%82ad-8-uk%C5%82ady-spinowe.html#eq:3-26">(29)</a>
+wynika, że <span class="math inline">\(\lim_{n \to \infty} L f_n\)</span> również istnieje. Ponieważ <span class="math inline">\(L\)</span>
+jest domknięte, granicą jest <span class="math inline">\(L f\)</span>, a więc <span class="math inline">\(f - \lambda L f = g\)</span>, co
+oznacza, że <span class="math inline">\(g \in \mathcal{R}(I - \lambda L)\)</span>, czego należało
+dowieść.</p>
+</div>
+</div>
+<div id="section-konstrukcja-systemów-spinowych" class="section level2 unnumbered">
+<h2>Konstrukcja systemów spinowych<a class="anchor" aria-label="anchor" href="#section-konstrukcja-system%C3%B3w-spinowych"><i class="fas fa-link"></i></a>
+</h2>
+<p>Naszym pierwszym celem jest znalezienie naturalnych warunków na
+<span class="math inline">\(c(x, \eta)\)</span>, które gwarantują, że domknięcie <span class="math inline">\((L,D)\)</span>, gdzie <span class="math inline">\(L\)</span> i <span class="math inline">\(D\)</span>
+są dane odpowiednio
+przez <a href="section-wyk%C5%82ad-8-uk%C5%82ady-spinowe.html#eq:4-defL">(26)</a>
+oraz <a href="section-wyk%C5%82ad-8-uk%C5%82ady-spinowe.html#eq:4-defD">(27)</a> jest operatorem infinitezymalnym. Warunki (GI1),
+(GI2), (GI3) i (GI5) są łatwe do sprawdzenia i nie wymagają dodatkowych
+założeń. Prawdziwym wyzwaniem jest (GI4).</p>
+<p>Dla warunku (GI2), używamy twierdzenia Stone’a-Weierstrassa: <span class="math inline">\(D\)</span> jest
+algebrą funkcji ciągłych na zbiorze zwartym, która rozdziela punkty.
+Istotnie, dla <span class="math inline">\(\eta \neq \zeta\)</span> istnieje <span class="math inline">\(x \in S\)</span> takie, że
+<span class="math inline">\(\eta(x) \neq \zeta(x)\)</span>. Funkcja <span class="math inline">\(f(\xi) = \xi(x)\)</span> rozdziela <span class="math inline">\(\eta\)</span> i
+<span class="math inline">\(\zeta\)</span>. Algebra <span class="math inline">\(D\)</span> zawiera funkcje stałe, więc
+<span class="math inline">\(\overline{D} = C(\{0,1\}^V)\)</span>.</p>
+<p>Dla (GI3), załóżmy <span class="math inline">\(f \in D\)</span>, <span class="math inline">\(\lambda \geq 0\)</span>, oraz
+<span class="math inline">\(f - \lambda Lf = g\)</span>. Ponieważ <span class="math inline">\(\{0,1\}^V\)</span> jest zbiorem zwartym i <span class="math inline">\(f\)</span>
+jest ciągła, istnieje takie <span class="math inline">\(\eta\)</span>, dla którego <span class="math inline">\(f\)</span> osiąga swoje
+minimum. Wtedy <span class="math inline">\(Lf(\eta) \geq 0\)</span>, więc <span class="math display">\[\min_\zeta f(\zeta)
+        = f(\eta) \geq g(\eta)
+        \geq \min_\zeta g(\zeta).\]</span></p>
+<p>Warunek (GI5) wynika z faktu, że <span class="math inline">\(1 \in D\)</span> oraz <span class="math inline">\(L1 = 0\)</span>.</p>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="section-wyk%C5%82ad-7-rozk%C5%82ady-stacjonarne-zaburzenia-ruchu-browna.html">Wykład 7: Rozkłady stacjonarne, zaburzenia ruchu Browna</a></div>
+<div class="next"><a href="section-wyk%C5%82ad-9-konstrukcja-system%C3%B3w-spinowych.html">wykład 9: Konstrukcja systemów spinowych</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#section-wyk%C5%82ad-8-uk%C5%82ady-spinowe">Wykład 8: Układy spinowe</a></li>
+<li><a class="nav-link" href="#section-motywacje">Motywacje</a></li>
+<li><a class="nav-link" href="#section-systemy-spinowe">Systemy spinowe</a></li>
+<li><a class="nav-link" href="#section-dygresja-analityczna">Dygresja analityczna</a></li>
+<li><a class="nav-link" href="#section-konstrukcja-system%C3%B3w-spinowych">Konstrukcja systemów spinowych</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Stochastyczne modele układów oddziałujących 2024</strong>: Notatni do wykładu" was written by Piotr Dyszewski. It was last built on 2025-01-17.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

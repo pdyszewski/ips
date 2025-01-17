@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Wykład 7: Rozkłady stacjonarne, zaburzenia ruchu Browna | Stochastyczne modele układów oddziałujących 2024</title>
+<meta name="author" content="Piotr Dyszewski">
+<meta name="description" content="2024-11-14 Piotr Dyszewski Rozkłady stacjonarne Interesować nas będzie asymptotyczne zachowanie procesów Fellera. Podobnie jak w przypadku łańcuchów Markowa w czasie dyskretnym rozkłady graniczne...">
+<meta name="generator" content="bookdown 0.41 with bs4_book()">
+<meta property="og:title" content="Wykład 7: Rozkłady stacjonarne, zaburzenia ruchu Browna | Stochastyczne modele układów oddziałujących 2024">
+<meta property="og:type" content="book">
+<meta property="og:image" content="/cover.png">
+<meta property="og:description" content="2024-11-14 Piotr Dyszewski Rozkłady stacjonarne Interesować nas będzie asymptotyczne zachowanie procesów Fellera. Podobnie jak w przypadku łańcuchów Markowa w czasie dyskretnym rozkłady graniczne...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Wykład 7: Rozkłady stacjonarne, zaburzenia ruchu Browna | Stochastyczne modele układów oddziałujących 2024">
+<meta name="twitter:description" content="2024-11-14 Piotr Dyszewski Rozkłady stacjonarne Interesować nas będzie asymptotyczne zachowanie procesów Fellera. Podobnie jak w przypadku łańcuchów Markowa w czasie dyskretnym rozkłady graniczne...">
+<meta name="twitter:image" content="/cover.png">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.8.0/transition.js"></script><script src="libs/bs3compat-0.8.0/tabs.js"></script><script src="libs/bs3compat-0.8.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="test.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="Notatni do wykładu">Stochastyczne modele układów oddziałujących 2024</a>:
+        <small class="text-muted">Notatni do wykładu</small>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Stochastyczne modele układów oddziałujących</a></li>
+<li><a class="" href="section-sylabus.html">Sylabus</a></li>
+<li><a class="" href="section-wyk%C5%82ad-1-%C5%82a%C5%84cuchy-markowa-w-czasie-ci%C4%85g%C5%82ym.html">Wykład 1: Łańcuchy Markowa w czasie ciągłym</a></li>
+<li><a class="" href="section-wyk%C5%82ad-2-mocna-w%C5%82asno%C5%9B%C4%87-markowa.html">Wykład 2: Mocna własność Markowa</a></li>
+<li><a class="" href="section-wyk%C5%82ad-3-procesy-i-p%C3%B3%C5%82grupy-fellera.html">Wykład 3: procesy i półgrupy Fellera</a></li>
+<li><a class="" href="section-wyk%C5%82ad-4-generatory.html">Wykład 4: Generatory</a></li>
+<li><a class="" href="section-wyk%C5%82ad-5-od-generatora-do-p%C3%B3%C5%82grupy.html">Wykład 5: od generatora do półgrupy</a></li>
+<li><a class="" href="section-wyk%C5%82ad-6-od-generatora-przez-p%C3%B3%C5%82grup%C4%99-do-procesu.html">Wykład 6: od generatora przez półgrupę do procesu</a></li>
+<li><a class="active" href="section-wyk%C5%82ad-7-rozk%C5%82ady-stacjonarne-zaburzenia-ruchu-browna.html">Wykład 7: Rozkłady stacjonarne, zaburzenia ruchu Browna</a></li>
+<li><a class="" href="section-wyk%C5%82ad-8-uk%C5%82ady-spinowe.html">Wykład 8: Układy spinowe</a></li>
+<li><a class="" href="section-wyk%C5%82ad-9-konstrukcja-system%C3%B3w-spinowych.html">wykład 9: Konstrukcja systemów spinowych</a></li>
+<li><a class="" href="section-wyk%C5%82ad-10-procesy-dualne.html">Wykład 10: Procesy dualne</a></li>
+<li><a class="" href="section-wyk%C5%82ad-11-the-voter-model-przypadek-rekurencyjny.html">Wykład 11: The voter model: przypadek rekurencyjny</a></li>
+<li><a class="" href="section-wyk%C5%82ad-12-the-voter-model-przypadek-tranzytywny.html">Wykład 12: The voter model: przypadek tranzytywny</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="section-wykład-7-rozkłady-stacjonarne-zaburzenia-ruchu-browna" class="section level1 unnumbered">
+<h1>Wykład 7: Rozkłady stacjonarne, zaburzenia ruchu Browna<a class="anchor" aria-label="anchor" href="#section-wyk%C5%82ad-7-rozk%C5%82ady-stacjonarne-zaburzenia-ruchu-browna"><i class="fas fa-link"></i></a>
+</h1>
+<p>2024-11-14</p>
+<p><em>Piotr Dyszewski</em></p>
+<div id="section-rozkłady-stacjonarne" class="section level2 unnumbered">
+<h2>Rozkłady stacjonarne<a class="anchor" aria-label="anchor" href="#section-rozk%C5%82ady-stacjonarne"><i class="fas fa-link"></i></a>
+</h2>
+<p>Interesować nas będzie asymptotyczne zachowanie procesów Fellera.
+Podobnie jak w przypadku łańcuchów Markowa w czasie dyskretnym rozkłady
+graniczne są niezmiennicze ze względu na funkcje przejścia. Przez
+<span class="math inline">\(\Sigma\)</span> oznaczać będziemy <span class="math inline">\(\sigma\)</span>-ciało zbiorów borelowskich <span class="math inline">\(S\)</span>,
+czyli najmniejsze <span class="math inline">\(\sigma\)</span>-ciało zawierające wszystkie otwarte podzbiory
+<span class="math inline">\(S\)</span>. Skoro <span class="math inline">\(S\)</span> jest ośrodkowa, to <span class="math inline">\(\Sigma\)</span> jest generowane przez
+wszystkie kule otwarte.</p>
+<p>Dla Procesu Fellera <span class="math inline">\((\mathbf{P}, \mathbb{F})\)</span> oraz rozkładu
+prawdopodobieństwa <span class="math inline">\(\mu\)</span> na <span class="math inline">\(S\)</span> definiujemy miarę probabilistyczną
+<span class="math inline">\(\mathbf{P}_\mu\)</span> na <span class="math inline">\((S, \Sigma)\)</span> wzorem <span class="math display">\[\mathbf{P}_\mu[A]
+        = \int_S \mathbf{P}_x[A] \: \mu(\mathrm{d}x),
+        \qquad A \in \mathcal{F}.\]</span> W tym miejscu zachęcamy czytelnika
+do wprawdzenia, że odwzorowanie <span class="math inline">\(x \mapsto \mathbf{P}_x[A]\)</span> jest
+mierzalne dla <span class="math inline">\(A \in \mathcal{F}\)</span>. Miara <span class="math inline">\(\mathbf{P}_\mu\)</span> to rozkład
+procesu Markowa przy rozkładzie początkowym <span class="math inline">\(\mu\)</span>.</p>
+<div class="definition">
+<p><span id="section-def:unlabeled-div-18" class="definition"><strong>Definicja 9  </strong></span>Niech <span class="math inline">\((\mathbf{P}, \mathbb{F})\)</span> będzie procesem
+Fellera Rozkład prawdopodobieństwa <span class="math inline">\(\pi\)</span> na <span class="math inline">\((S, \Sigma)\)</span> nazywamy
+rozkładem stacjonarnym jeżeli
+<span class="math display">\[\mathbf{P}_\pi \left[ X(t) \in A \right] = \pi(A)\]</span> dla każdego
+<span class="math inline">\(A \in \Sigma\)</span>.</p>
+</div>
+<p>Chcielibyśmy wiedzieć, jak określić na podstawie generatora, czy miara
+prawdopodobieństwa na <span class="math inline">\(S\)</span> jest stacjonarna dla procesu Fellera. Z tego
+powodu przepiszemy powyższą definicję w terminach półgrupy. Jeśli <span class="math inline">\(\mu\)</span>
+jest miarą prawdopodobieństwa na <span class="math inline">\(S\)</span>, rozkład procesu w czasie <span class="math inline">\(t\)</span>, gdy
+rozkład początkowy jest <span class="math inline">\(\mu\)</span>, oznaczamy przez <span class="math inline">\(\mu T(t)\)</span>. Spełnia on
+zależność
+<span class="math display">\[\int f \, \mathrm{d}(\mu T(t)) = \int T(t)f \, \mathrm{d} \mu = \mathbf{E}_\mu \left[ f(X(t)) \right]\]</span>
+dla <span class="math inline">\(f \in C_0(S)\)</span>. Tutaj <span class="math inline">\(\mathbf{E}_\mu\)</span> to wartość oczekiwana
+odpowiadająca <span class="math inline">\(\mathbf{P}_\mu\)</span>. Równoważnie
+<span class="math display">\[\mathbf{E}_\mu[Y] = \int_X \mathbf{E}_x[Y] \: \mu(\mathrm{d}x)\]</span> dla
+każdej ograniczonej zmiennej losowej <span class="math inline">\(Y \colon \Omega \to \mathbb{R}\)</span>.</p>
+<div class="definition">
+<p><span id="section-def:unlabeled-div-19" class="definition"><strong>Definicja 10  </strong></span>Miara prawdopodobieństwa <span class="math inline">\(\mu\)</span> na <span class="math inline">\(S\)</span> jest stacjonarna
+dla procesu Fellera z półgrupą <span class="math inline">\(T(t)\)</span>, jeśli <span class="math inline">\(\mu T(t) = \mu\)</span> dla
+wszystkich <span class="math inline">\(t \geq 0\)</span>, tzn. jeśli <span class="math display">\[\label{eq:3:28}
+            \int T(t)f \, \mathrm{d}\mu
+            = \int f \, \mathrm{d}\mu
+            \quad \text{dla wszystkich}
+            \ f \in C_0(S) \ \text{i} \ t \geq 0.\]</span></p>
+</div>
+<div class="exercise">
+<p><span id="section-exr:unlabeled-div-20" class="exercise"><strong>Zadanie 14  </strong></span>Pokaż, że jeśli <span class="math inline">\(\mu\)</span> jest miarą prawdopodobieństwa na
+<span class="math inline">\(S\)</span> i <span class="math inline">\(\mu T(t) \Rightarrow \nu\)</span>, to <span class="math inline">\(\nu\)</span> jest stacjonarna.</p>
+</div>
+<div class="theorem">
+<p><span id="section-thm:unlabeled-div-21" class="theorem"><strong>Twierdzenie 14  </strong></span>Miara prawdopodobieństwa <span class="math inline">\(\mu\)</span> na <span class="math inline">\(S\)</span> jest
+stacjonarna dla odpowiadającego procesu wtedy i tylko wtedy, gdy
+<span class="math display">\[\int Lf \, \mathrm{d}\mu = 0 \quad \text{dla wszystkich} \ f \in D.\]</span></p>
+</div>
+<div class="proof">
+<p><span id="section-unlabeled-div-22" class="proof"><em>Proof</em>. </span>Przypuśćmy, że <span class="math inline">\(\mu\)</span> jest stacjonarna, i weźmy
+<span class="math inline">\(f \in \mathcal{D}(L)\)</span>. Wtedy <span class="math display">\[\int Lf \, \mathrm{d}\mu
+            = \int \lim_{t \to 0} \frac{T(t)f - f}{t} \, \mathrm{d}\mu
+            = \lim_{t \to 0}  \frac{\int T(t)f \mathrm{d}\mu - \int f \, \mathrm{d}\mu}{t} = 0.\]</span>
+Przeciwnie, przypuśćmy, że <span class="math inline">\(\int Lf \, \mathrm{d}\mu = 0\)</span> dla wszystkich
+<span class="math inline">\(f \in \mathcal{D}(L)\)</span> i jeśli <span class="math inline">\(f \in \mathcal{D}(L)\)</span> oraz
+<span class="math inline">\(f - \lambda Lf = g\)</span>, to <span class="math inline">\(\int f \, d\mu = \int g \, d\mu\)</span>. Iterując to,
+otrzymujemy
+<span class="math display">\[\int (I - \lambda L)^{-n}g \, \mathrm{d}\mu = \int g \, \mathrm{d}\mu.\]</span>
+Biorąc <span class="math inline">\(\lambda = t/n\)</span> i przechodząc z <span class="math inline">\(n \to \infty\)</span> wnioskujemy, że
+<span class="math display">\[\int T(t)g \, \mathrm{d}\mu = \int g \, \mathrm{d}\mu.\]</span></p>
+</div>
+<p>Oto wystarczający warunek na istnienie rozkładu stacjonarnego.</p>
+<div class="theorem">
+<p><span id="section-thm:unlabeled-div-23" class="theorem"><strong>Twierdzenie 15  </strong></span>Jeśli <span class="math inline">\(S\)</span> jest przestrzenią zwartą, to istnieje miara stacjonarna.</p>
+</div>
+<div class="proof">
+<p><span id="section-unlabeled-div-24" class="proof"><em>Proof</em>. </span>Rozważmy proces Fellera z dowolnym rozkładem początkowym <span class="math inline">\(\mu\)</span>.
+Niech <span class="math inline">\(\nu_n\)</span> będzie rozkładem zmiennej Zdefiniujmy miarę <span class="math inline">\(\nu_n\)</span> na <span class="math inline">\(S\)</span>
+poprzez warunek <span class="math display">\[\int_S f(y) \nu_n( \mathrm{d}y) =
+            \mathbb{E} \left[ \mathbf{E}_\mu \left[ f(X_{nU}) \right] \right]=
+            \mathbb{E} \left[ \int_S T_{nU}f(y) \: \mu(\mathrm{d}y) \right].\]</span>
+Dla <span class="math inline">\(f \in C_0(S)\)</span>, własność półgrupy daje
+<span class="math display">\[\int T(t)f(y) \, \nu_n (\mathrm{d}y)=
+            \mathbb{E} \left[ \int_S T_{nU+t}f(y) \: \mu(\mathrm{d}y) \right].\]</span>
+także
+<span class="math display" id="eq:3-29">\[\begin{multline}
+\int f \, \mathrm{d}\nu_n - \int T(t)f \, \mathrm{d}\nu_n
+= \int f \, \mathrm{d}\nu_n - \int f \, \mathrm{d}(\nu_n T(t))\\
+= \frac{1}{n} \left[ \int_0^t \int_S T(r)f \, \mathrm{d}\mu \, \mathrm{d}r -
+\int_n^{n+t} \int_S T(r)f \, \mathrm{d}\mu \, \mathrm{d}r \right].
+\tag{25}
+\end{multline}\]</span>
+Prawa strona <a href="section-wyk%C5%82ad-7-rozk%C5%82ady-stacjonarne-zaburzenia-ruchu-browna.html#eq:3-29">(25)</a> dąży
+do zera gdy <span class="math inline">\(n \to \infty\)</span>.</p>
+<p>Teraz, ponieważ <span class="math inline">\(S\)</span> jest zwarty, twierdzenie Prochorowa, implikuje, że
+istnieje podciąg <span class="math inline">\(\nu_{n_k}\)</span> taki, że <span class="math display">\[\nu_{n_k} \Rightarrow \nu\]</span> dla
+pewnej miary prawdopodobieństwa <span class="math inline">\(\nu\)</span> na <span class="math inline">\(S\)</span>. Zatem, ponieważ
+<span class="math inline">\(T(t)f \in C(S)\)</span>, możemy przejść do granicy w <a href="section-wyk%C5%82ad-7-rozk%C5%82ady-stacjonarne-zaburzenia-ruchu-browna.html#eq:3-29">(25)</a>
+wzdłuż ciągu <span class="math inline">\(\nu_{n_k}\)</span>, aby otrzymać
+<span class="math display">\[\int f \, \mathrm{d}\nu = \int T(t)f \, \mathrm{d}\nu.\]</span> Ponieważ to
+zachodzi dla wszystkich <span class="math inline">\(f \in C_0(S)\)</span>, wynika stąd, że
+<span class="math inline">\(\nu T(t) = \nu\)</span>.</p>
+</div>
+</div>
+<div id="section-zaburzenia-ruchu-browna" class="section level2 unnumbered">
+<h2>Zaburzenia ruchu Browna<a class="anchor" aria-label="anchor" href="#section-zaburzenia-ruchu-browna"><i class="fas fa-link"></i></a>
+</h2>
+<div class="example">
+<p><span id="section-exm:unlabeled-div-25" class="example"><strong>Przykład 5  </strong></span>Rozważmy ruch Browna na <span class="math inline">\([0, \infty)\)</span> z absorpcją w 0.</p>
+<div class="inline-figure"><img src="StochastyczneModeleUkladowOddzialujacych2024_files/figure-html/brownian-motion-ab-1.png" width="672"></div>
+<p>Niech <span class="math inline">\(\tau\)</span> będzie czasem pierwszego uderzenia w 0. Zdefiniujmy
+<span class="math display">\[X_a(t) =
+\begin{cases}
+X(t) &amp; \text{jeśli } t &lt; \tau, \\
+0 &amp; \text{jeśli } t \ge \tau,
+\end{cases}\]</span> oraz oznaczmy przez <span class="math inline">\(L_a\)</span> i <span class="math inline">\(T_a(t)\)</span> odpowiednio generator
+i półgrupę. Dla <span class="math inline">\(f \in C_0[0, \infty)\)</span>, niech <span class="math inline">\(f_o\)</span> będzie
+„nieparzystym” przedłużeniem <span class="math inline">\(f\)</span> na <span class="math inline">\(\mathbb{R}\)</span>: <span class="math display">\[f_o(x) =
+\begin{cases}
+f(x) &amp; \text{jeśli } x \ge 0, \\
+2f(0) - f(-x) &amp; \text{jeśli } x &lt; 0.
+\end{cases}\]</span> Z zasady odbicia dla każdej <span class="math inline">\(g \in C_0[0,\infty)\)</span>,
+<span class="math display">\[\mathbf{E}_x \left[g(X(t)) \mathbf{1}_{\{ t \ge \tau \}} \right] =
+    \mathbf{E}_x \left[g(-X(t)) \mathbf{1}_{\{ t \ge \tau \}} \right].\]</span>
+Biorąc <span class="math inline">\(g=f_o\)</span>,
+<span class="math display">\[\mathbf{E}_x \left[f_o(X(t)) \mathbf{1}_{\{ t \ge \tau \}} \right]
+    = \mathbf{E}_x \left[f_o(-X(t)) \mathbf{1}_{\{ t \ge \tau \}} \right].\]</span>
+Obie te wielkości są równe
+<span class="math display">\[\frac{1}{2} \mathbf{E}_x \left[(f_o(X(t)) + f_o(-X(t)) ) \mathbf{1}_{\{ t \ge \tau \}} \right].\]</span>
+Ostatnie wyrażenie, z definicji <span class="math inline">\(f_o\)</span> jest równe
+<span class="math display">\[f(0)\mathbf{P}_x(t \ge \tau).\]</span> Podsumowując dla <span class="math inline">\(x \ge 0\)</span>,
+<span class="math display">\[T_a(t)f(x) = \mathbf{E}_x \left[f(X(t)) \mathbf{1}_{\{ t &lt; \tau \}} \right] +
+    f(0)\mathbf{P}_x(t \ge \tau) = \mathbf{E}_x f_o(X(t)).\]</span> Oczywiście
+<span class="math inline">\(f_o \notin C(\mathbb{R})\)</span> o ile <span class="math inline">\(f(0) = 0\)</span>. Niemniej jednak, skoro
+<span class="math display">\[f_o''(x) =
+\begin{cases}
+f''(x) &amp; \text{jeśli } x &gt; 0, \\
+-f''(-x) &amp; \text{jeśli } x &lt; 0,
+\end{cases}\]</span> wtedy <span class="math inline">\(f''(0) = 0\)</span> jest potrzebne, aby <span class="math inline">\(f_o''\)</span> było
+ciągłe. Wynika z tego, że
+<span class="math display">\[\mathcal{D}(L_a) = \{f \in C_0[0, \infty) :  f'' \in C[0, \infty), f''(0) = 0\},\]</span>
+a dla <span class="math inline">\(f \in \mathcal{D}(L_a)\)</span>, <span class="math inline">\(L_a f = \frac{1}{2} f''\)</span>.</p>
+</div>
+<div class="example">
+<p><span id="section-exm:unlabeled-div-26" class="example"><strong>Przykład 6  </strong></span>Rozważmy ruch Browna na <span class="math inline">\([0, \infty)\)</span> z odbiciem w <span class="math inline">\(0\)</span>.</p>
+<p><img src="StochastyczneModeleUkladowOddzialujacych2024_files/figure-html/brownian-motion-ref-1.png" width="672">
+Proces ten jest zdefiniowany jako <span class="math display">\[X_r(t) = |X(t)|,\]</span> a jego generator
+i półgrupa będą oznaczane odpowiednio przez <span class="math inline">\(L_r\)</span> i <span class="math inline">\(T_r(t)\)</span>. Jeśli
+<span class="math inline">\(f \in C_0[0, \infty)\)</span>, niech <span class="math inline">\(f_e\)</span> będzie parzystym przedłużeniem <span class="math inline">\(f\)</span>
+na <span class="math inline">\(\mathbb{R}\)</span>: <span class="math display">\[f_e(x) =
+\begin{cases}
+f(x) &amp; \text{jeśli } x \ge 0, \\
+f(-x) &amp; \text{jeśli } x &lt; 0.
+\end{cases}\]</span> Wtedy
+<span class="math display">\[T_r(t)f(x) = \mathbf{E}_x \left[f(|X(t)|)\right] = \mathbf{E}_x f_e(X(t)) \quad \text{dla } x \ge 0.\]</span>
+Zatem, <span class="math display">\[f \in \mathcal{D}( L_r) \iff f_e \in \mathcal{D}(L).\]</span> Wynika z
+tego, że
+<span class="math display">\[\mathcal{D}(L_r) = \{f \in C[0, \infty) : f', f'' \in C[0, \infty), f'(0) = 0\},\]</span>
+a dla <span class="math inline">\(f \in \mathcal{D}(L_r)\)</span>, <span class="math inline">\(L_r f = \frac{1}{2} f''\)</span>.</p>
+</div>
+<div class="example">
+<p><span id="section-exm:unlabeled-div-27" class="example"><strong>Przykład 7  </strong></span>Zaprezentujemy teraz ruch Browna na <span class="math inline">\([0, \infty)\)</span> z
+lepkim <span class="math inline">\(0\)</span>. Dla <span class="math inline">\(c &gt; 0\)</span>, rozważmy operator <span class="math inline">\(L_c\)</span> zdefiniowany jako
+<span class="math inline">\(L_c f = \frac{1}{2} f''\)</span> na
+<span class="math display">\[\mathcal{D}(L_c) = \{f \in C_0[0, \infty) : f'' \in C[0, \infty), f'(0) = c f''(0)\}.\]</span>
+Zauważmy, że graniczne przypadki <span class="math inline">\(c \downarrow 0\)</span> i <span class="math inline">\(c \uparrow \infty\)</span>
+odpowiadają odpowiednio odbiciu i absorpcji w <span class="math inline">\(0\)</span>. Jest to generator
+prawdopodobieństwa — dowód jest pozostawiony jako ćwiczenie. Oto
+weryfikacja własności (d) w Definicji <a href="#section-" reference-type="ref" reference="">2</a>: Dla <span class="math inline">\(g \in C_0[0, \infty)\)</span> i <span class="math inline">\(\lambda &gt; 0\)</span>, musimy
+rozwiązać <span class="math inline">\(f - \lambda L_c f = g\)</span> dla <span class="math inline">\(f \in \mathcal{D}(L_c)\)</span>. Niech
+<span class="math inline">\(f_a \in \mathcal{D}(L_a)\)</span> oraz <span class="math inline">\(f_r \in \mathcal{D}(L_r)\)</span> będą
+rozwiązaniami
+<span class="math display">\[f_a - \lambda L_a f_a = g \quad \text{oraz} \quad f_r - \lambda L_r f_r = g.\]</span>
+Ponieważ wszystkie trzy generatory są równe <span class="math inline">\(\frac{1}{2} f''\)</span> na swoich
+dziedzinach, <span class="math display">\[f = \gamma f_a + (1 - \gamma) f_r\]</span> jest wymaganym
+rozwiązaniem, pod warunkiem że <span class="math inline">\(f'(0) = c f''(0)\)</span>. Ma to miejsce, gdy
+<span class="math inline">\(\gamma\)</span> spełnia <span class="math display">\[\gamma f_a'(0) = c (1 - \gamma) f_r''(0).\]</span> Aby
+znaleźć wartość <span class="math inline">\(\gamma\)</span>, <span class="math inline">\(f_a'(0)\)</span> i <span class="math inline">\(f_r''(0)\)</span> muszą mieć ten sam
+znak. Aby to sprawdzić, rozważmy <span class="math inline">\(h = f_a - f_r\)</span>. Wtedy
+<span class="math inline">\(h - \frac{\lambda}{2} h'' \equiv 0\)</span>, więc, ponieważ <span class="math inline">\(h\)</span> jest
+ograniczone, <span class="math display">\[h(x) = h(0) e^{-x \sqrt{2/\lambda}}.\]</span> Wynika z tego, że
+<span class="math display">\[f_a'(0) = -\sqrt{2/\lambda} h(0)\]</span> oraz
+<span class="math display">\[f_r''(0) = -\left(\frac{2}{\lambda}\right) h(0),\]</span> więc mają ten sam
+znak, i <span class="math display">\[\gamma = \frac{2c}{2c + \sqrt{2\lambda}}.\]</span> Aby powiedzieć coś
+o zachowaniu tego procesu, gdy odwiedza 0, napiszmy</p>
+<span class="math display">\[f = \alpha U_c(\alpha) g,\]</span> gdzie <span class="math inline">\(\alpha = \lambda^{-1}\)</span>, a <span class="math inline">\(U_c\)</span>
+jest rozwiązaniem dla procesu <span class="math inline">\(X_c(t)\)</span> z generatorem <span class="math inline">\(L_c\)</span>. Można to
+zapisać jako
+<span class="math display">\[f(x) = \frac{2c f_a(x) + \sqrt{2\lambda} f_r(x)}{2c + \sqrt{2\lambda}} = \alpha \int_{0}^{\infty} e^{-\alpha t} \mathbf{E}_x
+g(X_c(t)) \,\mathrm{d}t.\]</span> Zastosujmy tę tożsamość do ciągu funkcji <span class="math inline">\(g\)</span>,
+które są nieujemne i rosną do <span class="math inline">\(1_{(0, \infty)}\)</span>. Odpowiadające im <span class="math inline">\(f\)</span>,
+<span class="math inline">\(f_a\)</span>, oraz <span class="math inline">\(f_r\)</span> rosną odpowiednio do
+<span class="math display">\[\alpha \int_{0}^{\infty} e^{-\alpha t} \mathbf{P}_x(X_c(t) &gt; 0) \,\mathrm{d}t, \quad
+    \alpha \int_{0}^{\infty} e^{-\alpha t} \mathbf{P}_x(X_a(t) &gt; 0) \,\mathrm{d}t,\]</span>
+oraz <span class="math inline">\(1\)</span>. Biorąc <span class="math inline">\(x = 0\)</span>, otrzymujemy
+<span class="math display">\[\mathbf{E}_0 \int_{0}^{\infty} \alpha e^{-\alpha t} 1_{\{X_c(t) &gt; 0\}} \,\mathrm{d}t =
+    \frac{1}{1 + c\sqrt{2\alpha}}.\]</span> Zatem miara Lebesgue’a zbioru
+<span class="math inline">\(\{t \ge 0 : X_c(t) = 0\}\)</span> jest dodatnia, w przeciwieństwie do przypadku
+procesu odbijanego, który odpowiada <span class="math inline">\(c = 0\)</span>.
+<script src="JAVA/sBM.js"></script><!-- Ładowanie pliku JavaScript --><div id="section-p5-container-sBM">
+<div id="section-p5-container-sBM-input">
+
+</div>
+</div>
+</div>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="section-wyk%C5%82ad-6-od-generatora-przez-p%C3%B3%C5%82grup%C4%99-do-procesu.html">Wykład 6: od generatora przez półgrupę do procesu</a></div>
+<div class="next"><a href="section-wyk%C5%82ad-8-uk%C5%82ady-spinowe.html">Wykład 8: Układy spinowe</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#section-wyk%C5%82ad-7-rozk%C5%82ady-stacjonarne-zaburzenia-ruchu-browna">Wykład 7: Rozkłady stacjonarne, zaburzenia ruchu Browna</a></li>
+<li><a class="nav-link" href="#section-rozk%C5%82ady-stacjonarne">Rozkłady stacjonarne</a></li>
+<li><a class="nav-link" href="#section-zaburzenia-ruchu-browna">Zaburzenia ruchu Browna</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Stochastyczne modele układów oddziałujących 2024</strong>: Notatni do wykładu" was written by Piotr Dyszewski. It was last built on 2025-01-17.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

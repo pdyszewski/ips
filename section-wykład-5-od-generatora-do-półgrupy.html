@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Wykład 5: od generatora do półgrupy | Stochastyczne modele układów oddziałujących 2024</title>
+<meta name="author" content="Piotr Dyszewski">
+<meta name="description" content="2024-10-31 Piotr Dyszewski O notacji słów kilka  Twierdzenie 11 Przy oznaczeniach Twierdzenia 10, dla \(f \in C_0(S)\) oraz \(t &gt; 0\), \[ \lim_{n \to \infty} \left(I - \frac{t}{n} L\right)^{-n} f...">
+<meta name="generator" content="bookdown 0.41 with bs4_book()">
+<meta property="og:title" content="Wykład 5: od generatora do półgrupy | Stochastyczne modele układów oddziałujących 2024">
+<meta property="og:type" content="book">
+<meta property="og:image" content="/cover.png">
+<meta property="og:description" content="2024-10-31 Piotr Dyszewski O notacji słów kilka  Twierdzenie 11 Przy oznaczeniach Twierdzenia 10, dla \(f \in C_0(S)\) oraz \(t &gt; 0\), \[ \lim_{n \to \infty} \left(I - \frac{t}{n} L\right)^{-n} f...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Wykład 5: od generatora do półgrupy | Stochastyczne modele układów oddziałujących 2024">
+<meta name="twitter:description" content="2024-10-31 Piotr Dyszewski O notacji słów kilka  Twierdzenie 11 Przy oznaczeniach Twierdzenia 10, dla \(f \in C_0(S)\) oraz \(t &gt; 0\), \[ \lim_{n \to \infty} \left(I - \frac{t}{n} L\right)^{-n} f...">
+<meta name="twitter:image" content="/cover.png">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.8.0/transition.js"></script><script src="libs/bs3compat-0.8.0/tabs.js"></script><script src="libs/bs3compat-0.8.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="test.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="Notatni do wykładu">Stochastyczne modele układów oddziałujących 2024</a>:
+        <small class="text-muted">Notatni do wykładu</small>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Stochastyczne modele układów oddziałujących</a></li>
+<li><a class="" href="section-sylabus.html">Sylabus</a></li>
+<li><a class="" href="section-wyk%C5%82ad-1-%C5%82a%C5%84cuchy-markowa-w-czasie-ci%C4%85g%C5%82ym.html">Wykład 1: Łańcuchy Markowa w czasie ciągłym</a></li>
+<li><a class="" href="section-wyk%C5%82ad-2-mocna-w%C5%82asno%C5%9B%C4%87-markowa.html">Wykład 2: Mocna własność Markowa</a></li>
+<li><a class="" href="section-wyk%C5%82ad-3-procesy-i-p%C3%B3%C5%82grupy-fellera.html">Wykład 3: procesy i półgrupy Fellera</a></li>
+<li><a class="" href="section-wyk%C5%82ad-4-generatory.html">Wykład 4: Generatory</a></li>
+<li><a class="active" href="section-wyk%C5%82ad-5-od-generatora-do-p%C3%B3%C5%82grupy.html">Wykład 5: od generatora do półgrupy</a></li>
+<li><a class="" href="section-wyk%C5%82ad-6-od-generatora-przez-p%C3%B3%C5%82grup%C4%99-do-procesu.html">Wykład 6: od generatora przez półgrupę do procesu</a></li>
+<li><a class="" href="section-wyk%C5%82ad-7-rozk%C5%82ady-stacjonarne-zaburzenia-ruchu-browna.html">Wykład 7: Rozkłady stacjonarne, zaburzenia ruchu Browna</a></li>
+<li><a class="" href="section-wyk%C5%82ad-8-uk%C5%82ady-spinowe.html">Wykład 8: Układy spinowe</a></li>
+<li><a class="" href="section-wyk%C5%82ad-9-konstrukcja-system%C3%B3w-spinowych.html">wykład 9: Konstrukcja systemów spinowych</a></li>
+<li><a class="" href="section-wyk%C5%82ad-10-procesy-dualne.html">Wykład 10: Procesy dualne</a></li>
+<li><a class="" href="section-wyk%C5%82ad-11-the-voter-model-przypadek-rekurencyjny.html">Wykład 11: The voter model: przypadek rekurencyjny</a></li>
+<li><a class="" href="section-wyk%C5%82ad-12-the-voter-model-przypadek-tranzytywny.html">Wykład 12: The voter model: przypadek tranzytywny</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="section-wykład-5-od-generatora-do-półgrupy" class="section level1 unnumbered">
+<h1>Wykład 5: od generatora do półgrupy<a class="anchor" aria-label="anchor" href="#section-wyk%C5%82ad-5-od-generatora-do-p%C3%B3%C5%82grupy"><i class="fas fa-link"></i></a>
+</h1>
+<p>2024-10-31</p>
+<p><em>Piotr Dyszewski</em></p>
+<div id="section-o-notacji-słów-kilka" class="section level2 unnumbered">
+<h2>O notacji słów kilka<a class="anchor" aria-label="anchor" href="#section-o-notacji-s%C5%82%C3%B3w-kilka"><i class="fas fa-link"></i></a>
+</h2>
+<div class="theorem">
+<p><span id="section-thm:unlabeled-div-14" class="theorem"><strong>Twierdzenie 11  </strong></span>Przy oznaczeniach Twierdzenia <a href="#thm:3-16">10</a>, dla <span class="math inline">\(f \in C_0(S)\)</span> oraz <span class="math inline">\(t &gt; 0\)</span>,
+<span class="math display">\[
+\lim_{n \to \infty} \left(I - \frac{t}{n} L\right)^{-n} f = T_tf.
+\]</span></p>
+</div>
+<div class="proof">
+<p><span id="section-unlabeled-div-15" class="proof"><em>Proof</em>. </span>Sprawdzamy indukcyjnie, że
+<span class="math display">\[
+\left(I - \alpha^{-1} L\right)^{-n} f
+= \alpha^n U^n(\alpha)f
+= \int_0^{\infty} \alpha^n s^{n-1} e^{-\alpha s} T(s)f \, \mathrm{d}s.
+\]</span>
+Stąd
+<span class="math display" id="eq:3-18">\[\begin{equation}
+\left( I - \frac{t}{n} L \right)^{-n} f
+= \mathbb{E} T \left( (\xi_1 + \cdots + \xi_n) t/n \right) f,
+\tag{18}
+\end{equation}\]</span>
+gdzie <span class="math inline">\(\xi_1, \xi_2, \ldots\)</span> są niezależnymi zmiennymi
+o standardowym rozkładzie wykładniczym.
+Zauważmy, że funkcja <span class="math inline">\((s, x) \to T(s)f(x)\)</span> jest ciągła,
+więc wartość oczekiwana w <a href="section-wyk%C5%82ad-5-od-generatora-do-p%C3%B3%C5%82grupy.html#eq:3-18">(18)</a> jest dobrze określona.</p>
+<p>Jeśli <span class="math inline">\(f \in \mathcal{D}(L)\)</span>, to
+<span class="math display">\[\begin{equation*}
+    \frac{\mathrm{d}}{\mathrm{d}t} T_t f = T_t Lf
+\end{equation*}\]</span>
+co w notacji całkowej zapisuje się jako
+<span class="math display">\[\begin{equation*}
+    T_tf-T_sf = \int_s^t T_r Lf \mathrm{d}r.
+\end{equation*}\]</span>
+Skoro <span class="math inline">\(\|T_r \| \leq 1\)</span>, to ostatnia nierówność implikuje, że
+<span class="math display">\[
+\| T(t)f - T(s)f \| \leq \| Lf \| |t - s|.
+\]</span>
+Wracając teraz do <a href="section-wyk%C5%82ad-5-od-generatora-do-p%C3%B3%C5%82grupy.html#eq:3-18">(18)</a> otrzymujemy
+<span class="math display">\[
+\left\| \left( I - \frac{t}{n} L \right)^{-n} f - T(t)f \right\|
+\leq t \| Lf \| \mathbb{E} \left| \frac{\xi_1 + \cdots + \xi_n}{n} - 1 \right|.
+\]</span>
+Rezultat dla <span class="math inline">\(f \in \mathcal{D}(L)\)</span> wynika teraz z prawa wielkich liczb.
+Jest on prawdziwy dla wszystkich <span class="math inline">\(f \in C_0(S)\)</span>,
+ponieważ wszystkie rozważane operatory są kontrakcjami.</p>
+</div>
+<div class="remark">
+<p><span id="section-uw-3-17" class="remark"><em>Remark</em>. </span>Formalnie, <span class="math inline">\(T_t = \exp(tL)\)</span>.
+Kiedy <span class="math inline">\(L\)</span> jest ograniczone, istnieją przynajmniej trzy sposoby definiowania tego wykładnika:
+<span class="math display">\[
+\sum_{k=0}^\infty \frac{(tL)^k}{k!}, \quad
+\lim_{n \to \infty} \left(I + \frac{t}{n} L\right)^n,
+\quad \text{ i } \quad \lim_{n \to \infty} \left(I - \frac{t}{n} L\right)^{-n}.
+\]</span>
+Ostatni z nich jest jedynym, który ma sens w przypadku nieograniczonym.</p>
+</div>
+<p>Teraz rozważmy kilka przykładów.</p>
+<div class="exercise">
+<p><span id="section-exr:ex-3-18" class="exercise"><strong>Zadanie 10  </strong></span>Rozważmy proces Fellera polegający na jednostajnym ruchu w prawo.
+Niech <span class="math inline">\(S=\mathbb{R}\)</span> i niech <span class="math inline">\(\mathbf{P}_x\)</span> jest punktową
+masą na ścieżce <span class="math inline">\(\omega_x\)</span> danej przez <span class="math inline">\(\omega_x(t) = x + t\)</span>,
+lub równoważnie, proces z półgrupą
+<span class="math inline">\(T(t)f(x) = f(x + t)\)</span>.
+Pokaż, że generatorem <span class="math inline">\(L\)</span> tego procesu jest
+ten opisany w Zadaniu~<span class="math inline">\(\ref{zad:3:13}\)</span>.
+Upewnij się, że dziedzina dana jest dokładnie przez dziedzinę <span class="math inline">\(L\)</span>.</p>
+</div>
+<div class="example">
+<p><span id="section-exm:3-brown" class="example"><strong>Przykład 4  </strong></span>W przypadku ruchu Browna, można zweryfikować, że
+<span class="math display">\[
+U(\lambda) f(x) = \int u_\lambda(y - x) f(y) \, dy
+\]</span>
+gdzie
+<span class="math display">\[
+u_\lambda(y - x) =
+\int_0^\infty (2 \pi t)^{-1/2} \exp\left(-\frac{|y - x|^2}{2t} - \lambda t\right) \, \mathrm{d}t
+= \frac{1}{\sqrt{2 \lambda}} \exp(-|y - x| \sqrt{2 \lambda}).
+\]</span>
+Elegancki sposób na uzyskanie tej ostatniej równości polega na użyciu wzoru
+<span class="math inline">\(\mathbb{E}[e^{-\lambda T_a}] = e^{-a \sqrt{2 \lambda}}\)</span> dla transformaty Laplace’a
+czasu trafienia <span class="math inline">\(a &gt; 0\)</span> przez rzeczywisty ruch Browna rozpoczęty z <span class="math inline">\(0\)</span>.
+Różniczkując względem <span class="math inline">\(\lambda\)</span>,
+otrzymujemy
+<span class="math display">\[
+\mathbb{E}\left[T_a e^{-\lambda T_a}\right] = \frac{a}{\sqrt{2 \lambda}} e^{-a \sqrt{2 \lambda}},
+\]</span>
+i używając gęstości <span class="math inline">\(T_a\)</span>, aby przekształcić <span class="math inline">\(\mathbb{E}[T_a e^{-\lambda T_a}]\)</span>,
+dokładnie znajdujemy całkę, która pojawia się w obliczeniach <span class="math inline">\(u_\lambda(y - x)\)</span>.</p>
+<p>Wiemy, że półgrupa operatorów związana z ruchem Browna jest półgrupą Fellera.
+Znajdziemy jej generator <span class="math inline">\(L\)</span>.
+Widzieliśmy, że dla każdego <span class="math inline">\(\lambda &gt; 0\)</span> i <span class="math inline">\(f \in C_0(\mathbb{R})\)</span>,
+<span class="math display">\[
+U(\lambda) f(x) =
+\int \frac{1}{\sqrt{2 \lambda}} \exp(-\sqrt{2 \lambda} |y - x|) f(y) \, \mathrm{d}y.
+\]</span>
+Jeśli <span class="math inline">\(h \in \mathcal{D}(L)\)</span>,
+wiemy, że istnieje <span class="math inline">\(f \in C_0(\mathbb{R})\)</span> takie,
+że <span class="math inline">\(h = U(\lambda) f\)</span>.
+Przyjmując <span class="math inline">\(\lambda = 1/2\)</span>, mamy
+<span class="math display">\[
+h(x) = \int \exp(-|y - x|) f(y) \, \mathrm{d}y.
+\]</span>
+Różniczkując pod znakiem całki (pozostawiamy uzasadnienie jako zadanie),
+otrzymujemy, że <span class="math inline">\(h\)</span> jest różniczkowalna na <span class="math inline">\(\mathbb{R}\)</span>, i
+<span class="math display">\[
+h'(x) = \int \operatorname{sgn}(y - x) \exp(-|y - x|) f(y) \, \mathrm{d}y
+\]</span>
+gdzie <span class="math inline">\(\operatorname{sgn}(z) = 1_{\{z &gt; 0\}} - 1_{\{z &lt; 0\}}\)</span>
+(wartość <span class="math inline">\(\operatorname{sgn}(0)\)</span> jest nieistotna).
+Pokażmy również, że <span class="math inline">\(h'\)</span> jest różniczkowalna na <span class="math inline">\(\mathbb{R}\)</span>.
+Niech <span class="math inline">\(x_0 \in \mathbb{R}\)</span>.
+Następnie, dla <span class="math inline">\(x &gt; x_0\)</span>,
+<span class="math display">\[\begin{align*}
+h'(x) - h'(x_0)  = &amp;
+\int_{\mathbb{R}} \left( \operatorname{sgn}(y - x) \exp(-|y - x|) -
+\operatorname{sgn}(y - x_0) \exp(-|y - x_0|) \right) f(y) \, \mathrm{d}y \\
+=&amp;  \int_{x_0}^x \left( -\exp(-|y - x|) - \exp(-|y - x_0|) \right) f(y) \, \mathrm{d}y \\
+&amp;+ \int_{\mathbb{R} \setminus [x_0, x]} \operatorname{sgn}(y - x_0)
+\left( \exp(-|y - x|) - \exp(-|y - x_0|) \right) f(y) \, \mathrm{d}y.
+\end{align*}\]</span>
+Wynika stąd, że
+<span class="math display">\[
+\frac{h'(x) - h'(x_0)}{x - x_0}
+\xrightarrow{x \downarrow x_0} -2f(x_0) + h(x_0).
+\]</span>
+Otrzymujemy tę samą granicę, gdy <span class="math inline">\(x \uparrow x_0\)</span>,
+i stąd uzyskujemy, że <span class="math inline">\(h\)</span> jest dwukrotnie różniczkowalna oraz <span class="math inline">\(h'' = -2f + h\)</span>.</p>
+<p>Z drugiej strony, ponieważ <span class="math inline">\(h = U(1/2)f\)</span>,
+<span class="math display">\[
+\left(\frac{1}{2} - L\right) h = f
+\]</span>
+stąd <span class="math inline">\(Lh = -f + h/2 = h''/2\)</span>.
+Podsumowując, uzyskaliśmy, że
+<span class="math display">\[
+\mathcal{D}(L) \subset \{ h \in C^2(\mathbb{R}) : h \text{ i } h'' \in C_0(\mathbb{R}) \}
+\]</span>
+i że, jeśli <span class="math inline">\(h \in \mathcal{D}(L)\)</span>, mamy <span class="math inline">\(Lh = h''/2\)</span>.</p>
+<p>Ostatnie zawieranie jest w rzeczywistości równością.
+Aby to zobaczyć, możemy postąpić następująco.
+Jeśli <span class="math inline">\(g\)</span> jest funkcją dwukrotnie różniczkowalną taką, że <span class="math inline">\(g\)</span> oraz <span class="math inline">\(g''\)</span> należą do <span class="math inline">\(C_0(\mathbb{R})\)</span>,
+wtedy przyjmujemy <span class="math inline">\(f = \frac{1}{2}(g - g'') \in C_0(\mathbb{R})\)</span>,
+a więc <span class="math inline">\(h = U(1/2)f \in \mathcal{D}(L)\)</span>.
+Z poprzedniego argumentu wynika,
+że <span class="math inline">\(h\)</span> jest dwukrotnie różniczkowalna oraz <span class="math inline">\(h'' = -2f + h\)</span>.
+Stąd <span class="math inline">\((h - g)'' = h - g\)</span>.
+Ponieważ funkcja <span class="math inline">\(h - g\)</span> należy do <span class="math inline">\(C_0(\mathbb{R})\)</span>,
+musi zanikać tożsamościowo, co daje <span class="math inline">\(g = h \in \mathcal{D}(L)\)</span>.</p>
+</div>
+<p>Patrząc na Zadanie <a href="#exr:3-13">9</a> i Przykład <a href="#exm:3-brown">4</a>,
+można by się zastanawiać, czy pochodne wyższego rzędu mogą
+być generatorami infinitezymalnymi. Odpowiedź brzmi, że nie mogą.
+Główny problem polega na tym,
+że gdy gładka funkcja osiąga minimum w punkcie wewnętrznym swojej dziedziny,
+pierwsza pochodna jest zerowa,
+a druga pochodna jest tam nieujemna.
+Nic nie można powiedzieć o znakach innych pochodnych w tym miejscu.</p>
+<div class="exercise">
+<p><span id="section-exr:3-21" class="exercise"><strong>Zadanie 11  </strong></span>Pokaż, że nie istnieje generator prawdopodobieństwa,
+którego ograniczenie do gładkich funkcji jest dane przez <span class="math inline">\(Lf = f'''\)</span>.</p>
+</div>
+</div>
+<div id="section-od-generatora-do-procesu" class="section level2 unnumbered">
+<h2>Od generatora do procesu<a class="anchor" aria-label="anchor" href="#section-od-generatora-do-procesu"><i class="fas fa-link"></i></a>
+</h2>
+<p>W całym tym rozdziale <span class="math inline">\(L\)</span> będzie generatorem infinitezymalnym.
+Naszym pierwszym zadaniem jest skonstruowanie odpowiadającej półgrupy prawdopodobieństwa.
+Aby to zrobić, wprowadzamy aproksymację <span class="math inline">\(L_\epsilon\)</span> do <span class="math inline">\(L\)</span> dla małego dodatniego <span class="math inline">\(\epsilon\)</span> przez
+<span class="math display">\[
+L_\epsilon = L(I - \epsilon L)^{-1}.
+\]</span>
+Zauważmy, że jest to dobrze zdefiniowane z definicji generatora infinitezymalnego,
+ponieważ <span class="math inline">\(\mathcal{R}(I - \epsilon L) = \mathcal{D}(L)\)</span>. To łatwo zobaczyć z
+<span class="math display">\[
+f - \epsilon L f = g \quad
+\text{jest równoważne} \quad
+f = (I - \epsilon L)^{-1} g.
+\]</span>
+Ponadto
+<span class="math display">\[
+\|L_\epsilon g\|
+= \|L f\| \leq \frac{\|f\| + \|g\|}{\epsilon}
+\leq \frac{2}{\epsilon} \|g\|,
+\]</span>
+więc <span class="math inline">\(L_\epsilon\)</span> jest ograniczonym operatorem.
+To pozwala zdefiniować <span class="math inline">\(T_\epsilon(t)\)</span> przez
+<span class="math display">\[
+T_\epsilon(t)
+= e^{tL_\epsilon}
+= \sum_{n=0}^{\infty} \frac{t^n L_\epsilon^n}{n!}.
+\]</span></p>
+<div class="exercise">
+<p><span id="section-exr:zad-3-23" class="exercise"><strong>Zadanie 12  </strong></span></p>
+<ul>
+<li>
+<strong>(a)</strong> Pokaż, że dla każdego <span class="math inline">\(f \in C_0(S)\)</span>,
+<span class="math display" id="eq:3-19">\[\begin{equation}
+(I - \epsilon L)^{-1} f - \epsilon L f = f.
+\tag{19}
+\end{equation}\]</span>
+</li>
+<li>
+<strong>(b)</strong> Użyj części (a), aby pokazać, że <span class="math inline">\(L_\epsilon\)</span> jest generatorem infinitezymalnym
+oraz że <span class="math inline">\(T_\epsilon(t)\)</span> jest półgrupą prawdopodobieństwa,
+której generatorem jest <span class="math inline">\(L_\epsilon\)</span> w sensie Twierdzenia <a href="#thm:3-16">10</a>.</li>
+</ul>
+</div>
+<div class="theorem">
+<p><span id="section-thm:3-24" class="theorem"><strong>Twierdzenie 12  </strong></span>Dla <span class="math inline">\(f \in C_0(S)\)</span>,
+<span class="math display">\[
+T(t)f = \lim_{\epsilon \to 0} T_\epsilon(t) f
+\]</span>
+jednostajnie na ograniczonych przedziałach <span class="math inline">\(t\)</span>.
+Definiuje to półgrupę Fellera, której generatorem jest <span class="math inline">\(L\)</span> w sensie Twierdzenia <a href="#thm:3-16">10</a>.</p>
+</div>
+<p>Najpierw sprawdzamy, że <span class="math inline">\(L_\epsilon\)</span> i <span class="math inline">\(L_\delta\)</span> komutują dla <span class="math inline">\(\epsilon, \delta &gt; 0\)</span>.
+Wynika to z @ref{eq:3-19} oraz
+<span class="math display">\[
+(I - \epsilon L)^{-1} (I - \delta L)^{-1}
+= (I - \delta L)^{-1} (I - \epsilon L)^{-1},
+\]</span>
+co jest prawdziwe, ponieważ
+<span class="math display">\[
+(I - \epsilon L)^{-1} (I - \delta L)^{-1} f
+= g
+\quad \text{jest równoważne}
+\quad f
+= g - (\epsilon + \delta)Lg + \epsilon \delta L^2 g,
+\]</span>
+co jest symetryczne w <span class="math inline">\(\epsilon\)</span> i <span class="math inline">\(\delta\)</span>.</p>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="section-wyk%C5%82ad-4-generatory.html">Wykład 4: Generatory</a></div>
+<div class="next"><a href="section-wyk%C5%82ad-6-od-generatora-przez-p%C3%B3%C5%82grup%C4%99-do-procesu.html">Wykład 6: od generatora przez półgrupę do procesu</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#section-wyk%C5%82ad-5-od-generatora-do-p%C3%B3%C5%82grupy">Wykład 5: od generatora do półgrupy</a></li>
+<li><a class="nav-link" href="#section-o-notacji-s%C5%82%C3%B3w-kilka">O notacji słów kilka</a></li>
+<li><a class="nav-link" href="#section-od-generatora-do-procesu">Od generatora do procesu</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Stochastyczne modele układów oddziałujących 2024</strong>: Notatni do wykładu" was written by Piotr Dyszewski. It was last built on 2025-01-17.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

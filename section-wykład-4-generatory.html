@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Wykład 4: Generatory | Stochastyczne modele układów oddziałujących 2024</title>
+<meta name="author" content="Piotr Dyszewski">
+<meta name="description" content="2024-10-24 Piotr Dyszewski Do tej pory te definicje powinny być dość intuicyjne. Kolejna definicja może wydawać się mniej oczywista, jednak okazuje się być odpowiednim odpowiednikiem definicji...">
+<meta name="generator" content="bookdown 0.41 with bs4_book()">
+<meta property="og:title" content="Wykład 4: Generatory | Stochastyczne modele układów oddziałujących 2024">
+<meta property="og:type" content="book">
+<meta property="og:image" content="/cover.png">
+<meta property="og:description" content="2024-10-24 Piotr Dyszewski Do tej pory te definicje powinny być dość intuicyjne. Kolejna definicja może wydawać się mniej oczywista, jednak okazuje się być odpowiednim odpowiednikiem definicji...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Wykład 4: Generatory | Stochastyczne modele układów oddziałujących 2024">
+<meta name="twitter:description" content="2024-10-24 Piotr Dyszewski Do tej pory te definicje powinny być dość intuicyjne. Kolejna definicja może wydawać się mniej oczywista, jednak okazuje się być odpowiednim odpowiednikiem definicji...">
+<meta name="twitter:image" content="/cover.png">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.8.0/transition.js"></script><script src="libs/bs3compat-0.8.0/tabs.js"></script><script src="libs/bs3compat-0.8.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="test.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="Notatni do wykładu">Stochastyczne modele układów oddziałujących 2024</a>:
+        <small class="text-muted">Notatni do wykładu</small>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Stochastyczne modele układów oddziałujących</a></li>
+<li><a class="" href="section-sylabus.html">Sylabus</a></li>
+<li><a class="" href="section-wyk%C5%82ad-1-%C5%82a%C5%84cuchy-markowa-w-czasie-ci%C4%85g%C5%82ym.html">Wykład 1: Łańcuchy Markowa w czasie ciągłym</a></li>
+<li><a class="" href="section-wyk%C5%82ad-2-mocna-w%C5%82asno%C5%9B%C4%87-markowa.html">Wykład 2: Mocna własność Markowa</a></li>
+<li><a class="" href="section-wyk%C5%82ad-3-procesy-i-p%C3%B3%C5%82grupy-fellera.html">Wykład 3: procesy i półgrupy Fellera</a></li>
+<li><a class="active" href="section-wyk%C5%82ad-4-generatory.html">Wykład 4: Generatory</a></li>
+<li><a class="" href="section-wyk%C5%82ad-5-od-generatora-do-p%C3%B3%C5%82grupy.html">Wykład 5: od generatora do półgrupy</a></li>
+<li><a class="" href="section-wyk%C5%82ad-6-od-generatora-przez-p%C3%B3%C5%82grup%C4%99-do-procesu.html">Wykład 6: od generatora przez półgrupę do procesu</a></li>
+<li><a class="" href="section-wyk%C5%82ad-7-rozk%C5%82ady-stacjonarne-zaburzenia-ruchu-browna.html">Wykład 7: Rozkłady stacjonarne, zaburzenia ruchu Browna</a></li>
+<li><a class="" href="section-wyk%C5%82ad-8-uk%C5%82ady-spinowe.html">Wykład 8: Układy spinowe</a></li>
+<li><a class="" href="section-wyk%C5%82ad-9-konstrukcja-system%C3%B3w-spinowych.html">wykład 9: Konstrukcja systemów spinowych</a></li>
+<li><a class="" href="section-wyk%C5%82ad-10-procesy-dualne.html">Wykład 10: Procesy dualne</a></li>
+<li><a class="" href="section-wyk%C5%82ad-11-the-voter-model-przypadek-rekurencyjny.html">Wykład 11: The voter model: przypadek rekurencyjny</a></li>
+<li><a class="" href="section-wyk%C5%82ad-12-the-voter-model-przypadek-tranzytywny.html">Wykład 12: The voter model: przypadek tranzytywny</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="section-wykład-4-generatory" class="section level1 unnumbered">
+<h1>Wykład 4: Generatory<a class="anchor" aria-label="anchor" href="#section-wyk%C5%82ad-4-generatory"><i class="fas fa-link"></i></a>
+</h1>
+<p>2024-10-24</p>
+<p><em>Piotr Dyszewski</em></p>
+<p>Do tej pory te definicje powinny być dość intuicyjne.
+Kolejna definicja może wydawać się mniej oczywista,
+jednak okazuje się być odpowiednim odpowiednikiem definicji macierzy <span class="math inline">\(Q\)</span>.</p>
+<p>Aby nakreślić analogię, biorąc macierz <span class="math inline">\(Q\)</span> na przeliczalnym zbiorze <span class="math inline">\(S_0\)</span>, niech
+<span class="math inline">\(p\)</span> będzie funkcją przejścia zadaną jako
+<span class="math display">\[\begin{equation*}
+    p_t = e^{tq} = \sum_{k=0}^\infty \frac{t^k}{k!} q^k.
+\end{equation*}\]</span>
+Z tą funkcją wiążemy półgrupę
+<span class="math display">\[\begin{equation*}
+    T_t f(x) = \sum_{y \in S_0} p_t(x,y) f(y),
+\end{equation*}\]</span>
+a także rezolwentę
+<span class="math display">\[\begin{equation*}
+    U(\alpha) f(x) = \int_0^\infty e^{-\alpha t} T_t f(x) \, \mathrm{d}t
+    = \int_0^\infty e^{-\alpha t} e^{tq} f(x) \, \mathrm{d}t
+    = \int_0^\infty e^{-\alpha t} e^{tq} \, \mathrm{d}t \, f(x).
+\end{equation*}\]</span>
+Ostatnie przejście wynika z faktu, że mamy tutaj do czynienia z mnożeniem
+wektora przez macierz. Zauważmy, że
+<span class="math display">\[\begin{equation*}
+    (q - \alpha I) \int_0^\infty e^{-\alpha t} e^{tq} \, \mathrm{d}t
+    = \int_0^\infty (q - \alpha I) e^{-\alpha t} e^{tq} \, \mathrm{d}t
+    = \int_0^\infty \frac{\mathrm{d}}{\mathrm{d}t} e^{-\alpha t} e^{tq} \, \mathrm{d}t = -I.
+\end{equation*}\]</span>
+Oznacza to, że
+<span class="math display">\[\begin{equation*}
+    U(\alpha) f(x) = (\alpha I - q)^{-1} f(x).
+\end{equation*}\]</span>
+Z własności rezolwenty wiemy, że
+<span class="math display">\[\begin{equation*}
+    \left\| (I - \frac{1}{\alpha} q)^{-1} \right\| = \|\alpha U(\alpha)\| \leq 1.
+\end{equation*}\]</span>
+Ostatnia własność rezolwenty, z której tutaj skorzystaliśmy, wynika z kontraktywności
+operatorów w półgrupie <span class="math inline">\(T\)</span> (<span class="math inline">\(\|T_t\| \leq 1\)</span>).</p>
+<div class="definition">
+<p><span id="section-def:3-12" class="definition"><strong>Definicja 8  </strong></span>Generator infinitezymalny na <span class="math inline">\(C_0(S)\)</span> to para
+uporządkowana <span class="math inline">\((L, \mathcal{D}(L))\)</span> taka, że:</p>
+<ul>
+<li>
+<strong>(GI1)</strong> <span class="math inline">\(\mathcal{D}(L)\)</span> jest gęstą podprzestrzenią liniową <span class="math inline">\(C_0(S)\)</span>.</li>
+<li>
+<strong>(GI2)</strong> <span class="math inline">\(L \colon \mathcal{D}(L) \to C_0(S)\)</span> jest operatorem liniowym.</li>
+<li>
+<strong>(GI3)</strong> Jeśli <span class="math inline">\(f \in \mathcal{D}(L)\)</span>, <span class="math inline">\(\lambda \geq 0\)</span>, i <span class="math inline">\(f - \lambda L f = g\)</span>, to
+<span class="math display">\[
+\inf_{x \in S} f(x) \geq \inf_{x \in S} g(x).
+\]</span>
+</li>
+<li>
+<strong>(GI4)</strong> <span class="math inline">\(\mathcal{R}(I - \lambda L) = C_0(S)\)</span> dla wszystkich dostatecznie małych <span class="math inline">\(\lambda &gt; 0\)</span>.</li>
+<li>
+<strong>(GI5)</strong> Dla dostatecznie małych dodatnich <span class="math inline">\(\lambda\)</span> istnieje
+ciąg <span class="math inline">\(f_n \in \mathcal{D}(L)\)</span> (który może zależeć od <span class="math inline">\(\lambda\)</span>) taki, że <span class="math inline">\(g_n = f_n - \lambda L f_n\)</span> spełnia warunek
+<span class="math inline">\(\sup_n \|g_n\| &lt; \infty\)</span>, i zarówno <span class="math inline">\(f_n\)</span>, jak i <span class="math inline">\(g_n\)</span> zbiega punktowo do <span class="math inline">\(1\)</span>.</li>
+</ul>
+</div>
+<p>Zauważmy, że własność <strong>(GI3)</strong> ma następującą konsekwencję:
+<span class="math display" id="eq:3-12">\[\begin{equation}
+    f \in \mathcal{D}(L), \lambda \geq 0, f - \lambda L f = g \implies \|f\| \leq \|g\|.
+    \tag{13}
+\end{equation}\]</span>
+Aby to zobaczyć, napiszmy:
+<span class="math display">\[
+    \inf_{x \in S} g(x) \leq \inf_{x \in S} f(x) \leq
+    \sup_{x \in S} f(x) \leq \sup_{x \in S} g(x),
+\]</span>
+gdzie ostatnia nierówność wynika z <strong>(GI3)</strong>, gdy zastąpimy <span class="math inline">\(f\)</span> i <span class="math inline">\(g\)</span> odpowiednio
+przez <span class="math inline">\(-f\)</span> i <span class="math inline">\(-g\)</span>. Oznacza to, że operator <span class="math inline">\(I - \lambda L\)</span> jest różnowartościowy.
+Rzeczywiście, dla <span class="math inline">\(f - \lambda L f = g = h - \lambda L h\)</span>, mamy <span class="math inline">\(\|f - h\| \leq \|g - g\| = 0\)</span>.
+Tak więc, dla dostatecznie małych dodatnich <span class="math inline">\(\lambda\)</span>, <span class="math inline">\((I - \lambda L)^{-1}\)</span>
+jest dobrze określoną kontrakcją, która odwzorowuje funkcje nieujemne na funkcje nieujemne.</p>
+<p>Ponieważ Definicja <a href="#def:3-12">8</a> jest dość abstrakcyjna, pomocne może być rozważenie
+następującego przykładu, który okazuje się być generatorem procesu na prostej,
+poruszającego się w prawo z jednostkową prędkością.
+Zauważmy, że najtrudniejszą własnością do sprawdzenia jest <strong>(GI4)</strong>. Zazwyczaj tak bywa.</p>
+<div class="exercise">
+<p><span id="section-exr:3-13" class="exercise"><strong>Zadanie 9  </strong></span>Przypuśćmy, że <span class="math inline">\(S = \mathbb{R}\)</span>,
+<span class="math display">\[
+    \mathcal{D}(L) = \{f \in C_0(\mathbb{R}) : f' \in C_0(\mathbb{R})\},
+\]</span>
+oraz <span class="math inline">\(L f = f'\)</span>.
+Pokaż, że para <span class="math inline">\((L, \mathcal{D}(L))\)</span> jest generatorem infinitezymalnym.</p>
+</div>
+<div id="section-od-procesu-do-półgrupy-i-generatora" class="section level2 unnumbered">
+<h2>Od procesu do półgrupy i generatora<a class="anchor" aria-label="anchor" href="#section-od-procesu-do-p%C3%B3%C5%82grupy-i-generatora"><i class="fas fa-link"></i></a>
+</h2>
+<p>Oto pierwszy krok w przejściu od procesu Fellera do jego generatora.</p>
+<div class="theorem">
+<p><span id="section-thm:3-15" class="theorem"><strong>Twierdzenie 9  </strong></span>Niech dany będzie proces Fellera <span class="math inline">\((\mathbf{P}, \mathbb{F})\)</span>.
+Dla <span class="math inline">\(t \geq 0\)</span> zdefiniujmy
+<span class="math display" id="eq:3-14">\[\begin{equation}
+T_t f(x) = \mathbf{E}_x [f(X(t))]
+\tag{14}
+\end{equation}\]</span>
+dla <span class="math inline">\(f \in C_0(S)\)</span>.
+Wtedy <span class="math inline">\(T = (T_t)_{t \geq 0}\)</span> jest półgrupą Fellera.</p>
+</div>
+<div class="proof">
+<p><span id="section-unlabeled-div-12" class="proof"><em>Proof</em>. </span>Własności a., d. i e. z Definicji <a href="#def:3-1">7</a> są natychmiastowe.
+Własność półgrupy c. wynika z własności Markowa:
+<span class="math display">\[
+    T_{s + t} f(x) =
+    \mathbf{E}_x f(X(s + t)) =
+    \mathbf{E}_x [ \mathbf{E}_{X(s)} f(X(t)) | \mathcal{F}_s]
+    = \mathbf{E}_x [T_t f(X(s))]
+    = T_s T_t f(x).
+\]</span>
+Zbieżność punktowa w b. wynika z ciągłości ścieżek i ciągłości <span class="math inline">\(f\)</span>.
+Aby sprawdzić wymaganą jednostajność w tej zbieżności, użyjemy rezolwenty
+<span class="math display">\[\begin{equation*}
+    U(\alpha) f(x) = \int_0^\infty e^{-\alpha t} T_t f(x) \, \mathrm{d}t
+    = \mathbf{E}_x \left[ \int_0^\infty e^{-\alpha t} f(X_t) \, \mathrm{d}t \right].
+\end{equation*}\]</span>
+W dowodzie równania rezolwenty <a href="section-wyk%C5%82ad-3-procesy-i-p%C3%B3%C5%82grupy-fellera.html#eq:3-7">(11)</a>, użyliśmy wspomnianej jednostajności,
+ponieważ całki były interpretowane jako całki funkcji o wartościach w <span class="math inline">\(C_0(S)\)</span>.
+Jednak te same obliczenia stosują się do równania rezolwenty bez tej jednostajności,
+jeśli całki są interpretowane jako zwykłe całki dla ustalonego <span class="math inline">\(x\)</span>.
+Aby uzasadnić zamianę kolejności całkowania, zauważmy,
+że <span class="math inline">\(T_t f(x)\)</span> jest jednostajnie ograniczone, prawostronnie ciągłe w <span class="math inline">\(t\)</span> dla każdego <span class="math inline">\(x\)</span>,
+a także ciągłe w <span class="math inline">\(x\)</span> dla każdego <span class="math inline">\(t\)</span>, zatem jest wspólnie mierzalne względem <span class="math inline">\(x\)</span> i <span class="math inline">\(t\)</span>.</p>
+<p>Zbiór
+<span class="math inline">\(\mathcal{L} = \mathcal{R}(U(\alpha))\)</span> jest niezależny od <span class="math inline">\(\alpha\)</span>. Z równania
+rezolwenty mamy bowiem
+<span class="math display">\[\begin{equation*}
+    U(\alpha)f = U(\beta) \left(f + (\beta - \alpha) U(\beta) f \right).
+\end{equation*}\]</span>
+Jeśli <span class="math inline">\(f = U(\alpha)g \in \mathcal{L}\)</span>, to
+<span class="math display">\[
+    T_t f = \int_0^\infty e^{-\alpha s} T_{s + t} g \, \mathrm{d}s
+    = \int_t^\infty e^{-\alpha(r - t)} T_r g \, \mathrm{d}r,
+\]</span>
+co zbiega jednostajnie do <span class="math inline">\(f\)</span> gdy <span class="math inline">\(t \downarrow 0\)</span>.
+Ponieważ każde <span class="math inline">\(T_t\)</span> jest kontrakcją, mamy <span class="math inline">\(\|T_t f - f\| \to 0\)</span>
+dla wszystkich <span class="math inline">\(f\)</span> w mocnym domknięciu <span class="math inline">\({\rm cl}(\mathcal{L})\)</span>.
+Pokażemy teraz, że wspomniane mocne domknięcie jest równe słabemu domknięciu:
+<span class="math display">\[\begin{equation*}
+    {\rm wcl}(\mathcal{L}) = \left\{ f \in C_0(S) \: : \:
+    \exists \{f_n\}_n \subseteq \mathcal{L}, \:
+    x(f_n) \to x(f), \: \forall x \in C_0(S)^* \right\}.
+\end{equation*}\]</span>
+Skoro zbieżność w normie implikuje zbieżność słabą, to
+<span class="math inline">\({\rm cl}(\mathcal{L}) \subseteq {\rm wcl}(\mathcal{L})\)</span>. Weźmy
+<span class="math inline">\(f \notin {\rm cl}(\mathcal{L})\)</span>. Ponieważ <span class="math inline">\(\mathcal{L}\)</span> jest wypukły, z twierdzenia
+Hahna-Banacha istnieje funkcjonał liniowy <span class="math inline">\(\mu\)</span>
+oddzielający <span class="math inline">\(f\)</span> od <span class="math inline">\({\rm cl}(\mathcal{L})\)</span>, taki że
+<span class="math display">\[\begin{equation*}
+    \mu(f) &lt; \inf_{g \in {\rm cl}(\mathcal{L})} \mu(g).
+\end{equation*}\]</span>
+Funkcjonał ten dowodzi, że <span class="math inline">\(f \notin {\rm wcl}(\mathcal{L})\)</span>.</p>
+<p>Pozostaje pokazać, że słabe domknięcie <span class="math inline">\(\mathcal{L}\)</span> jest równe całemu <span class="math inline">\(C_0(S)\)</span>.
+Jest tak, ponieważ <span class="math inline">\(\alpha U(\alpha) f\)</span> zbiega punktowo do <span class="math inline">\(f\)</span> gdy <span class="math inline">\(\alpha \to \infty\)</span>
+dla każdego <span class="math inline">\(f \in C_0(S)\)</span>.</p>
+</div>
+<p>Następnie zobaczymy, jak przejść od półgrupy do generatora.</p>
+<div class="theorem">
+<p><span id="section-thm:3-16" class="theorem"><strong>Twierdzenie 10  </strong></span>Przypuśćmy, że <span class="math inline">\((T_t)_{t \geq 0}\)</span> jest półgrupą Fellera. Zdefiniujmy
+<span class="math display" id="eq:3-15">\[\begin{equation}
+    Lf = \lim_{t \downarrow 0} \frac{T(t)f - f}{t}
+    \tag{15}
+\end{equation}\]</span>
+dla <span class="math inline">\(f\)</span> z
+<span class="math display">\[
+\mathcal{D}(L) = \{f \in C(S) : \text{przy $t \to 0$ granica }  (T_tf-f)/t \text{ istnieje}\}.
+\]</span>
+Wtedy para <span class="math inline">\((L, \mathcal(L))\)</span> jest generatorem infinitezymalnym.
+Ponadto:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Dla dowolnego <span class="math inline">\(g \in C_0(S)\)</span> oraz <span class="math inline">\(\alpha &gt; 0\)</span>,
+<span class="math display" id="eq:3-16">\[\begin{equation}
+f = \alpha U(\alpha)g \text{ wtedy i tylko wtedy, gdy } f \in \mathcal{D}(L) \text{ i spełnia } f - \alpha^{-1} Lf = g.
+\tag{16}
+\end{equation}\]</span></p></li>
+<li><p>Jeśli <span class="math inline">\(f \in \mathcal{D}(L)\)</span>, to <span class="math inline">\(T_t f \in \mathcal{D}(L)\)</span>
+dla wszystkich <span class="math inline">\(t \geq 0\)</span>, jest funkcją ciągłą, różniczkowalną względem <span class="math inline">\(t\)</span>, i spełnia
+<span class="math display" id="eq:3-17">\[\begin{equation}
+\frac{\mathrm{d}}{\mathrm{d}t} T_t f = T_t Lf = L T_t f.
+\tag{17}
+\end{equation}\]</span></p></li>
+</ol>
+</div>
+<script src="JAVA/GWsineGen.js"></script><div id="section-p5-container-GWsineGen">
+<p>Pochodna półgrupy Gaussa-Weierstrassa na funkcji <span class="math inline">\(f(x)\)</span>, zdefiniowanej jako
+<span class="math inline">\(\sin(x)\)</span> na przedziale <span class="math inline">\([-\pi, \pi]\)</span> i
+<span class="math inline">\(0\)</span> poza nim. Funkcja wynikowa to
+<span class="math inline">\((T_tf(x)- f(x))/t\)</span> dla zadanego parametru <span class="math inline">\(t\)</span>.</p>
+</div>
+<div class="proof">
+<p><span id="section-unlabeled-div-13" class="proof"><em>Proof</em>. </span>Przypuśćmy, że <span class="math inline">\(f = \alpha U(\alpha)g\)</span> dla pewnego <span class="math inline">\(\alpha &gt; 0\)</span> oraz <span class="math inline">\(g \in C_0(S)\)</span>.
+Korzystając z własności półgrupy i zmieniając zmienne
+jak w dowodzie Twierdzenia <a href="#thm:3-15">9</a>, mamy:
+<span class="math display">\[\begin{align*}
+    \frac{T_t f - f}{t} &amp;= \alpha \frac{e^{\alpha t} - 1}{t}
+    \int_t^{\infty} e^{-\alpha s} T_s g \, \mathrm{d}s
+    - \alpha \frac{1}{t} \int_0^t e^{-\alpha s} T_s g \, \mathrm{d}s \\
+    &amp;\to \alpha^2 U(\alpha) g - \alpha g
+    = \alpha f - \alpha g,
+\end{align*}\]</span>
+gdy <span class="math inline">\(t \downarrow 0\)</span>.
+Przy przejściu do granicy skorzystaliśmy z własności b. z Definicji <a href="#def:3-1">7</a>.
+To dowodzi jednej implikacji w <a href="section-wyk%C5%82ad-4-generatory.html#eq:3-16">(16)</a>,
+jak również <strong>(GI4)</strong> w Definicji <a href="#def:3-12">8</a>.</p>
+<p>Ponieważ <span class="math inline">\(\alpha U(\alpha)g \in \mathcal{D}(L)\)</span> i <span class="math inline">\(\alpha U(\alpha)g \to g\)</span>
+gdy <span class="math inline">\(\alpha \to \infty\)</span>, zbiór <span class="math inline">\(\mathcal{D}(L)\)</span> jest gęsty w <span class="math inline">\(C_0(S)\)</span>.
+To uzasadnia <strong>(GI1)</strong>.</p>
+<p>Dla <span class="math inline">\(t &gt; 0\)</span> oraz <span class="math inline">\(f \in \mathcal{D}(L)\)</span> zdefiniujmy
+<span class="math display">\[\begin{equation*}
+    g_t = \left(1 + \frac{\lambda}{t}\right) f - \frac{\lambda}{t} T(t)f = f - \frac{\lambda}{t}(T(t)f - f).
+\end{equation*}\]</span>
+Wtedy <span class="math inline">\(\lim_{t \downarrow 0} g_t = f - \lambda \mathcal{L}f\)</span> i
+<span class="math display">\[
+    (1 + \lambda/t)\inf_{x \in S} f(x) \geq \frac{\lambda}{t} \inf_{x \in S} T(t) f(x) + \inf_{x \in S} g_t(x)
+    \geq \frac{\lambda}{t} \inf_{x \in S} f(x) + \inf_{x \in S} g_t(x),
+\]</span>
+więc własność <strong>(GI3)</strong> z Definicji <a href="#def:3-12">8</a> jest spełniona.
+Drugą nierówność pozostawiamy jako zadanie.</p>
+<p>Teraz przypuśćmy, że <span class="math inline">\(f - \alpha^{-1} L f = g\)</span> dla pewnego <span class="math inline">\(f \in \mathcal{D}(L)\)</span> oraz <span class="math inline">\(\alpha &gt; 0\)</span>.
+Przez dowiedzioną już implikację w <a href="section-wyk%C5%82ad-4-generatory.html#eq:3-16">(16)</a>, <span class="math inline">\(h = \alpha U(\alpha) g\)</span> spełnia
+<span class="math inline">\(h - \alpha^{-1} L h = g\)</span>, więc <span class="math inline">\(f = h\)</span> z <a href="section-wyk%C5%82ad-4-generatory.html#eq:3-12">(13)</a>.
+Aby sprawdzić własność <strong>(GI5)</strong> z Definicji <a href="#def:3-12">8</a>,
+przypuśćmy, że <span class="math inline">\(g_n \in C(S)\)</span> spełniają
+<span class="math inline">\(\sup_n \|g_n\| &lt; \infty\)</span>, oraz że <span class="math inline">\(g_n\)</span> i <span class="math inline">\(T(t) g_n\)</span> są zbieżne punktowo do <span class="math inline">\(1\)</span> dla każdego <span class="math inline">\(t\)</span>.
+Zdefiniujmy <span class="math inline">\(f_n \in \mathcal{D}(L)\)</span> przez
+<span class="math inline">\(g_n = f_n - \lambda L f_n\)</span>.
+Wtedy <span class="math inline">\(f_n = \alpha U(\alpha) g_n\)</span> z <a href="section-wyk%C5%82ad-4-generatory.html#eq:3-16">(16)</a>.
+Ponieważ <span class="math inline">\(T(t) g_n \to 1\)</span> punktowo, to
+<span class="math inline">\(f_n \to 1\)</span> punktowo przez definicję <span class="math inline">\(U(\alpha)\)</span>
+oraz twierdzenie o zbieżności ograniczonej.</p>
+<p>Aby udowodnić punkt (b) twierdzenia, zauważmy, że
+<span class="math display">\[
+    \frac{\mathrm{d}}{\mathrm{d}t} T(t) f = \lim_{s \to 0} \frac{T(t+s)f - T(t)f}{s}
+    = \lim_{s \to 0} T(t) \left( \frac{T(s)f - f}{s} \right)
+    = T(t) \mathcal{L} f = \mathcal{L} T(t) f,
+\]</span>
+pod warunkiem, że którakolwiek z granic istnieje,
+ponieważ wyrażenia w środku granic są identyczne.
+Środkowa granica rzeczywiście istnieje, ponieważ <span class="math inline">\(f \in \mathcal{D}(L)\)</span>
+oraz <span class="math inline">\(T(t)\)</span> jest kontrakcją.
+W związku z tym pozostałe granice również istnieją.</p>
+<p>Skoro istnieje trzecia granica, to <span class="math inline">\(T(t)f \in \mathcal{D}(L)\)</span>
+oraz <a href="section-wyk%C5%82ad-4-generatory.html#eq:3-17">(17)</a> zachodzi.
+Środkowe wyrażenie w <a href="section-wyk%C5%82ad-4-generatory.html#eq:3-17">(17)</a> jest ciągłe względem <span class="math inline">\(t\)</span>,
+więc <span class="math inline">\(T(t)f\)</span> jest ciągłe i różniczkowalne.</p>
+</div>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="section-wyk%C5%82ad-3-procesy-i-p%C3%B3%C5%82grupy-fellera.html">Wykład 3: procesy i półgrupy Fellera</a></div>
+<div class="next"><a href="section-wyk%C5%82ad-5-od-generatora-do-p%C3%B3%C5%82grupy.html">Wykład 5: od generatora do półgrupy</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#section-wyk%C5%82ad-4-generatory">Wykład 4: Generatory</a></li>
+<li><a class="nav-link" href="#section-od-procesu-do-p%C3%B3%C5%82grupy-i-generatora">Od procesu do półgrupy i generatora</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Stochastyczne modele układów oddziałujących 2024</strong>: Notatni do wykładu" was written by Piotr Dyszewski. It was last built on 2025-01-17.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

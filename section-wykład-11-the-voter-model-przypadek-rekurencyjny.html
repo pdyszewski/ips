@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Wykład 11: The voter model: przypadek rekurencyjny | Stochastyczne modele układów oddziałujących 2024</title>
+<meta name="author" content="Piotr Dyszewski">
+<meta name="description" content="2024-12-19 Piotr Dyszewski Zobaczymy teraz korzyści płynące z udowodnionej właśnie dualności. Jeżeli \((\eta_t)_{t \in \mathbb{R}_+}\) jest układem spinowym, to dla \(A \subseteq V\) oraz miary...">
+<meta name="generator" content="bookdown 0.41 with bs4_book()">
+<meta property="og:title" content="Wykład 11: The voter model: przypadek rekurencyjny | Stochastyczne modele układów oddziałujących 2024">
+<meta property="og:type" content="book">
+<meta property="og:image" content="/cover.png">
+<meta property="og:description" content="2024-12-19 Piotr Dyszewski Zobaczymy teraz korzyści płynące z udowodnionej właśnie dualności. Jeżeli \((\eta_t)_{t \in \mathbb{R}_+}\) jest układem spinowym, to dla \(A \subseteq V\) oraz miary...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Wykład 11: The voter model: przypadek rekurencyjny | Stochastyczne modele układów oddziałujących 2024">
+<meta name="twitter:description" content="2024-12-19 Piotr Dyszewski Zobaczymy teraz korzyści płynące z udowodnionej właśnie dualności. Jeżeli \((\eta_t)_{t \in \mathbb{R}_+}\) jest układem spinowym, to dla \(A \subseteq V\) oraz miary...">
+<meta name="twitter:image" content="/cover.png">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.8.0/transition.js"></script><script src="libs/bs3compat-0.8.0/tabs.js"></script><script src="libs/bs3compat-0.8.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="test.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="Notatni do wykładu">Stochastyczne modele układów oddziałujących 2024</a>:
+        <small class="text-muted">Notatni do wykładu</small>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Stochastyczne modele układów oddziałujących</a></li>
+<li><a class="" href="section-sylabus.html">Sylabus</a></li>
+<li><a class="" href="section-wyk%C5%82ad-1-%C5%82a%C5%84cuchy-markowa-w-czasie-ci%C4%85g%C5%82ym.html">Wykład 1: Łańcuchy Markowa w czasie ciągłym</a></li>
+<li><a class="" href="section-wyk%C5%82ad-2-mocna-w%C5%82asno%C5%9B%C4%87-markowa.html">Wykład 2: Mocna własność Markowa</a></li>
+<li><a class="" href="section-wyk%C5%82ad-3-procesy-i-p%C3%B3%C5%82grupy-fellera.html">Wykład 3: procesy i półgrupy Fellera</a></li>
+<li><a class="" href="section-wyk%C5%82ad-4-generatory.html">Wykład 4: Generatory</a></li>
+<li><a class="" href="section-wyk%C5%82ad-5-od-generatora-do-p%C3%B3%C5%82grupy.html">Wykład 5: od generatora do półgrupy</a></li>
+<li><a class="" href="section-wyk%C5%82ad-6-od-generatora-przez-p%C3%B3%C5%82grup%C4%99-do-procesu.html">Wykład 6: od generatora przez półgrupę do procesu</a></li>
+<li><a class="" href="section-wyk%C5%82ad-7-rozk%C5%82ady-stacjonarne-zaburzenia-ruchu-browna.html">Wykład 7: Rozkłady stacjonarne, zaburzenia ruchu Browna</a></li>
+<li><a class="" href="section-wyk%C5%82ad-8-uk%C5%82ady-spinowe.html">Wykład 8: Układy spinowe</a></li>
+<li><a class="" href="section-wyk%C5%82ad-9-konstrukcja-system%C3%B3w-spinowych.html">wykład 9: Konstrukcja systemów spinowych</a></li>
+<li><a class="" href="section-wyk%C5%82ad-10-procesy-dualne.html">Wykład 10: Procesy dualne</a></li>
+<li><a class="active" href="section-wyk%C5%82ad-11-the-voter-model-przypadek-rekurencyjny.html">Wykład 11: The voter model: przypadek rekurencyjny</a></li>
+<li><a class="" href="section-wyk%C5%82ad-12-the-voter-model-przypadek-tranzytywny.html">Wykład 12: The voter model: przypadek tranzytywny</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="section-wykład-11-the-voter-model-przypadek-rekurencyjny" class="section level1 unnumbered">
+<h1>Wykład 11: The voter model: przypadek rekurencyjny<a class="anchor" aria-label="anchor" href="#section-wyk%C5%82ad-11-the-voter-model-przypadek-rekurencyjny"><i class="fas fa-link"></i></a>
+</h1>
+<p>2024-12-19</p>
+<p><em>Piotr Dyszewski</em></p>
+<p>Zobaczymy teraz korzyści płynące z udowodnionej właśnie dualności.
+Jeżeli <span class="math inline">\((\eta_t)_{t \in \mathbb{R}_+}\)</span> jest układem spinowym, to dla
+<span class="math inline">\(A \subseteq V\)</span> oraz miary probabilistycznej <span class="math inline">\(\mu\)</span> na <span class="math inline">\(\{0,1\}\)</span>
+prawdopodobieństwo
+<span class="math display">\[\mathbf{P}_\mu \left[\eta_t \equiv 1 \text{ na } A\right]\]</span> zależy od
+<span class="math inline">\(\mu\)</span> w skomplikowany sposób. W przypadku modelu głosowania, możemy
+wykorzystać proces dualny do wyznaczenia wygodnej reprezentacji
+<span class="math display">\[\begin{multline*}
+        \mathbf{P}_\mu\left[ \eta_t \equiv 1 \text{ na } A\right]
+        = \int \mathbf{E}_\eta H(\eta_t, A) \, \mu (\mathrm{d}\eta)
+        = \int \mathbf{E}_A H(\eta, A_t) \, \mu(\mathrm{d} A)  \\
+        = \int \left[\sum_{B} \mathbf{P}_A[A_t = B] H(\eta, B)\right] \mu(\mathrm{d}\eta)
+        = \sum_{B} \mathbf{P}_A[A_t = B] \mu \{\eta : \eta \equiv 1 \text{ na } B\}.
+\end{multline*}\]</span>
+Dlatego rozkład łączny <span class="math inline">\((\eta_t(x))_{x \in A}\)</span> zależy
+tylko od rozkładów <span class="math inline">\(|A|\)</span> współrzędnych względem rozkładu początkowego
+<span class="math inline">\(\mu\)</span>. Załóżmy teraz, że początkowy rozkład dla modelu głosowania to
+miara produktowa <span class="math inline">\(\nu_\rho\)</span> dla <span class="math inline">\(\rho \in [0,1]\)</span> względem której
+wszystkie współrzędne są niezależne i mają rozkład
+<span class="math inline">\((1-\rho)\delta_0 +\rho\delta_1\)</span>. Wówczas
+<span class="math display">\[\nu_\rho \{\eta : \eta \equiv 1 \text{ na } A\} = \rho^{|A|}.\]</span> Mamy
+<span class="math display">\[\mathbf{P}_{\nu_\rho}[\eta_t(x) = 1] = \mathbf{P}_{\nu_\rho}[\eta_t \equiv 1 \text{ na } \{x\} ]
+        = \sum_{y \in V} \mathbf{P}_{\{x\}} [A_t = \{y\}] \rho = \rho\]</span>
+oraz
+<span class="math display">\[\begin{multline*}
+        \mathbf{P}_{\nu_\rho}[\eta_t(x) = \eta_t(y) = 1] =
+        \mathbf{P}_{\nu_\rho}(\eta_t \equiv 1 \text{ na } \{x,y\})\\
+        = \rho \mathbf{P}_{\{x,y\}}[|A_t|=1] + \rho^2 \mathbf{P}_{\{x,y\}}[|A_t|=2].
+\end{multline*}\]</span>
+Opinie <span class="math inline">\(\eta_t(x)\)</span> i <span class="math inline">\(\eta_t(y)\)</span> stają się zgodne w
+granicy <span class="math inline">\(t \to \infty\)</span> wtedy i tylko wtedy, gdy dwie niezależne kopie
+łańcucha spotykają się z prawdopodobieństwem 1. Tę ogólną zasadę
+zilustrujemy na przykładzie <span class="math inline">\(V = \mathbb{Z}^d\)</span>.</p>
+<div id="section-the-voter-model-na-mathbbzd" class="section level2 unnumbered">
+<h2>The Voter model na <span class="math inline">\(\mathbb{Z}^d\)</span><a class="anchor" aria-label="anchor" href="#section-the-voter-model-na-mathbbzd"><i class="fas fa-link"></i></a>
+</h2>
+<p>Naszym głównym zastosowaniem dualności będzie znalezienie wszystkich
+rozkładów stacjonarnych dla modelu głosowania. Podobna analiza może być
+użyta do określenia jego asymptotycznego zachowania, gdy <span class="math inline">\(t \to \infty\)</span>.
+Dla uproszczenia, zakładamy od tej pory, że <span class="math inline">\(S = \mathbb{Z}^d\)</span>. Zakładać
+też będziemy, że kroki stowarzyszonego łańcucha są niezmiennicze na
+przesunięcia, czyli przejścia z <span class="math inline">\(x_1 \in \mathbb{Z}^d\)</span> oraz przejścia z
+<span class="math inline">\(x_2\in\mathbb{Z}^d\)</span> dzieją się z takimi samymi intensywnościami.
+Wówczas <span class="math inline">\(q(x, y) = q(0, y - x)\)</span>. Niech
+<span class="math inline">\(X_i = (X_i(t)_{t \in \mathbb{R}_+}\)</span> dla <span class="math inline">\(i\in \mathbb{N}\)</span> będą
+niezależnymi błądzeniami losowymi z intensywnościami przejść <span class="math inline">\(q(x, y)\)</span> i
+punktami początkowymi <span class="math inline">\(x_1, x_2, \dots\)</span>. Analiza dzieli się na dwa
+przypadki, w zależności od tego, czy symetryzowane błądzenie losowe
+<span class="math inline">\(Z(t) = X_1(t) - X_2(t)\)</span> jest rekurencyjne czy przejściowe, ponieważ
+odpowiada to sytuacji, czy <span class="math inline">\(X_1(t)\)</span> i <span class="math inline">\(X_2(t)\)</span> spotykają się z
+prawdopodobieństwem jeden.</p>
+</div>
+<div id="section-przypadek-rekurencyjny" class="section level2 unnumbered">
+<h2>Przypadek rekurencyjny<a class="anchor" aria-label="anchor" href="#section-przypadek-rekurencyjny"><i class="fas fa-link"></i></a>
+</h2>
+<p>Zaczniemy od przypadku rekurencyjnego, w którym model głosowania jest
+prostszy w analizie. Niech <span class="math inline">\(\delta_\mathbf{0}\)</span> i <span class="math inline">\(\delta_\mathbf{1}\)</span>
+będą miarami probabilistycznymi na układach na <span class="math inline">\(\mathbb{Z}^d\)</span> skupionymi
+na odpowiednio <span class="math inline">\(\eta \equiv 0\)</span> oraz <span class="math inline">\(\eta \equiv 1\)</span>.</p>
+<div class="theorem">
+<p><span id="section-thm:4-33" class="theorem"><strong>Twierdzenie 17  </strong></span>Załóżmy, że symetryzowane błądzenie losowe <span class="math inline">\(Z\)</span> jest
+rekurencyjne.</p>
+<ul>
+<li><p>Dla każdego <span class="math inline">\(\eta\)</span> oraz <span class="math inline">\(x_1, x_2 \in \mathbb{Z}^d\)</span>,
+<span class="math display">\[\lim_{t \to \infty} \mathbf{P}_\eta[\eta_t(x_1) \neq \eta_t(x_2)] = 0.\]</span></p></li>
+<li><p>Każda miara stacjonarna dla <span class="math inline">\((\eta_t)_{t \in \mathbb{R}_+}\)</span> jest
+postaci <span class="math inline">\(\lambda \delta_\mathbf{1} + (1-\lambda) \delta_\mathbf{0}\)</span>
+dla pewnej <span class="math inline">\(\lambda \in [0,1]\)</span>.</p></li>
+<li><p>Dla miary probabilistycznej <span class="math inline">\(\mu\)</span> oraz <span class="math inline">\(\lambda \in [0,1]\)</span>,
+<span class="math display" id="eq:5-WC">\[\begin{equation}
+                    \lim_{t \to \infty} \mathbf{P}_\mu[(\eta_t(x_j))_{j \leq n}
+                    = (\epsilon_j)_{j \leq n}]
+                    = \lambda \mathbf{1}_{\{ \epsilon_1=\ldots =\epsilon_n=1\}}
+                    + (1 - \lambda)\mathbf{1}_{\{\epsilon_1=\ldots = \epsilon_n=0\}}
+\tag{39}
+\end{equation}\]</span>
+dla każdych <span class="math inline">\(x_j\)</span> i <span class="math inline">\(\epsilon_j\)</span>, wtedy i tylko wtedy, gdy
+<span class="math display" id="eq:5-Con">\[\begin{equation}
+                        \lim_{t \to \infty} \sum_y p_t(x, y) \mu \{\eta : \eta(y) = 1\}
+                    = \lambda \text{ dla każdego } x \in \mathbb{Z}^d,
+\tag{40}
+\end{equation}\]</span>
+gdzie <span class="math inline">\(p_t(x, y)\)</span> są prawdopodobieństwami przejścia dla <span class="math inline">\(X_i(t)\)</span>.</p></li>
+</ul>
+</div>
+<p>Punkt (a) mówi, że dla dowolnego skończonego <span class="math inline">\(A \subseteq \mathbb{Z}^d\)</span>
+opinie <span class="math inline">\((\eta_t(x))_{x \in A}\)</span> stają się zgodne z bardzo dużym
+prawdopodobieństwem. Oznacza to, że jedyne możliwe układy graniczne są
+stałe (punkt (b)). Prawdopodobieństwa wystąpienia w granicy
+poszczególnych układów stałych są scharakteryzowane w punkcie (c). W
+szczególności pierwsza granica w punkcie (c) istnieje wtedy i tylko
+wtedy, gdy istnieje druga.
+Warunek <a href="section-wyk%C5%82ad-11-the-voter-model-przypadek-rekurencyjny.html#eq:5-WC">(39)</a> jest równoważny
+<span class="math display">\[\lim_{t \to \infty} \mathbf{P}_\mu[\eta_t \in \cdot ]
+        = \lambda \delta_\mathbf{1}(\cdot)
+        + (1 - \lambda)\delta_\mathbf{0}(\cdot)\]</span> w sensie słabej
+zbieżności miar. Dokładniej dla każdej
+<span class="math inline">\(f \in C(\{ 0,1\}^{\mathbb{Z}^d}\)</span>,
+<span class="math display">\[\lim_{t \to \infty} \mathbf{E}_{\mu}[f(\eta_t)] = \lambda f(\mathbf{1}) +
+        (1-\lambda)f(\mathbf{0}).\]</span> Dzieje się tak, ponieważ topologia
+słabej zbieżności na przeliczalnym produkcie jest scharakteryzowana
+przez zbieżność rozkładów skończenie wymiarowych.</p>
+<div class="proof">
+<p><span id="section-unlabeled-div-38" class="proof"><em>Proof</em>. </span>Aby uzasadnić punkt (a) rozważmy
+<span class="math display">\[\tau = \inf\{t &gt; 0 : X_1(t) = X_2(t)\} = \inf\{t &gt; 0 : Z(t) = 0\}.\]</span>
+Wówczas dla dowolnej konfiguracji początkowej <span class="math inline">\(\eta\)</span>,
+<span class="math display">\[\mathbf{P}_\eta[\eta_t(x_1) \neq \eta_t(x_2)]
+        = \mathbb{P}[\eta(X_1(t)) \neq \eta(X_2(t))), \tau &gt; t]
+        \leq \mathbb{P}[\tau &gt; t],\]</span> co zbiega do zera, gdy
+<span class="math inline">\(t \to \infty\)</span>, z założenia rekurencyjności <span class="math inline">\(Z\)</span>.</p>
+<p>Dla części (b), weźmy <span class="math inline">\(\pi\)</span> stacjonarną dla
+<span class="math inline">\((\eta_t)_{t\in \mathbb{R}}\)</span>. Wtedy
+<span class="math display">\[\pi [\eta : \eta(x_1) \neq \eta(x_2)] = \mathbf{P}_\pi[ \eta(x_1) \neq \eta(x_2)]
+        = \int \mathbf{P}_\eta[\eta_t(x_1) \neq \eta_t(x_2)] \mu (\mathrm{d} \eta),\]</span>
+co zbiega do zera, gdy <span class="math inline">\(t \to \infty\)</span>, z części (a). Dlatego <span class="math inline">\(\eta\)</span> jest
+stała <span class="math inline">\(\pi\)</span>-prawie wszędzie. Dla dowodu części (c) weźmy dowolny rozkład
+początkowy <span class="math inline">\(\mu\)</span>. Chcąc pokazać, że rozkład graniczny jest stały
+wystarczy porównać go z dowolnym ustalonym punktem. Dla
+<span class="math inline">\(x_1 \in \mathbb{Z}^d\)</span>,
+<span class="math display">\[\begin{multline}
+        \mathbf{P}_\mu[\eta_t(x_1) = 1] =
+        \int \mathbf{P}_\eta[\eta_t(x_1) = 1] \, \mu(\mathrm{d}\eta) = \\
+        \int \mathbb{P}[\eta(X_1(t)) = 1] \, \mu (\mathrm{d}\eta)
+        = \sum_y p_t(x_1, y) \mu (\eta : \eta(y) = 1).
+\end{multline}\]</span>
+Dla dowolnego skończonego <span class="math inline">\(A \subseteq \mathbb{Z}^d\)</span>
+takiego, że <span class="math inline">\(x_1 \in A\)</span>,
+<span class="math display">\[\mathbf{P}_\mu [\eta_t(x_1) = 1] - \mathbf{P}_{\mu}[\eta_t \equiv  1 \text{ na } A] =
+        \int \mathbf{P}_\eta [\eta_t(x_1) = 1] -
+        \mathbf{P}_{\eta}[\eta_t \equiv  1 \text{ na } A] \mu(\mathrm{d}\eta).\]</span>
+Co z części (a) zbiega do zera. Mamy zatem
+<span class="math display">\[\sum_y p_t(x_1, y) \mu (\eta : \eta(y) = 1) = o(1) +
+        \mathbf{P}_{\mu}[\eta_t \equiv  1 \text{ na } A].\]</span>
+Stąd <a href="section-wyk%C5%82ad-11-the-voter-model-przypadek-rekurencyjny.html#eq:5-WC">(39)</a> oraz <a href="section-wyk%C5%82ad-11-the-voter-model-przypadek-rekurencyjny.html#eq:5-Con">(40)</a> istotnie są równoważne.</p>
+</div>
+<div class="remark">
+<p><span id="section-unlabeled-div-39" class="remark"><em>Remark</em>. </span>Biorąc pod uwagę stwierdzenie z części (a), można
+przypuszczać, że <span class="math inline">\(\eta_t(x)\)</span> zmienia wartości tylko skończoną liczbę
+razy dla każdego <span class="math inline">\(x\)</span>. Nie zawsze jest to prawdą. Załóżmy na przykład, że
+<span class="math inline">\(d=1\)</span>, <span class="math inline">\(q(x, y) = 1\)</span> jeśli <span class="math inline">\(|x - y| = 1\)</span>, a <span class="math inline">\(q(x, y) = 0\)</span> jeśli
+<span class="math inline">\(|x - y| &gt; 1\)</span>. Jeśli początkowa konfiguracja ma formę
+<span class="math inline">\(\dots 1 1 1 0 0 0 \dots\)</span>, to konfiguracja w czasie <span class="math inline">\(t\)</span> ma ten sam tym,
+z dokładnością do lokalizacji najbardziej wysuniętej na prawo jedynki,
+która porusz się zgodnie z prostym symetrycznym spacerem losowym na
+<span class="math inline">\(\mathbb{Z}\)</span>. Ponieważ to błądzenie losowe jest rekurencyjne,
+<span class="math inline">\(\eta_t(x)\)</span> zmienia wartości nieskończoną liczbę razy.</p>
+</div>
+<div id="section-p5-container-vmoned">
+<p>Symulacja modelu głosowania w jednym wymiarze. Warunek początkowy jest postaci 11110000. W momencie, w którym cały zakres staje się monochromatyczny
+jest on automatycznie rozszerzany na prawo o 0000 i lewo o 111111.</p>
+<script src="JAVA/vmoned.js"></script>
+</div>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="section-wyk%C5%82ad-10-procesy-dualne.html">Wykład 10: Procesy dualne</a></div>
+<div class="next"><a href="section-wyk%C5%82ad-12-the-voter-model-przypadek-tranzytywny.html">Wykład 12: The voter model: przypadek tranzytywny</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#section-wyk%C5%82ad-11-the-voter-model-przypadek-rekurencyjny">Wykład 11: The voter model: przypadek rekurencyjny</a></li>
+<li><a class="nav-link" href="#section-the-voter-model-na-mathbbzd">The Voter model na \(\mathbb{Z}^d\)</a></li>
+<li><a class="nav-link" href="#section-przypadek-rekurencyjny">Przypadek rekurencyjny</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Stochastyczne modele układów oddziałujących 2024</strong>: Notatni do wykładu" was written by Piotr Dyszewski. It was last built on 2025-01-17.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>
