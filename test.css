@@ -152,3 +152,9 @@
   align-items: center;
   text-align: center;
 }
+
+#p5-container-contact {
+      width: 100%;
+      height: 700px; /* Możesz dostosować wysokość */
+      position: relative;
+    }
