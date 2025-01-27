@@ -111,3 +111,5 @@ eq:4-28
 eq:4-30
 eq:5-4-31
 eq:5-4-32
+prp:6-invert
+eq:6-dual
