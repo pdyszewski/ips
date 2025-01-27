@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Wykład 13: Epidemia | Stochastyczne modele układów oddziałujących 2024</title>
+<meta name="author" content="Piotr Dyszewski">
+<meta name="description" content="23-01-2025 Piotr Dyszewski W tym rozdziale badać będziemy contact process rozważany zazwyczaj jako model rozprzestrzeniania się infekcji. Niech \(G=(V, E)\) będzie grafem prostym o ograniczonym...">
+<meta name="generator" content="bookdown 0.41 with bs4_book()">
+<meta property="og:title" content="Wykład 13: Epidemia | Stochastyczne modele układów oddziałujących 2024">
+<meta property="og:type" content="book">
+<meta property="og:image" content="/cover.png">
+<meta property="og:description" content="23-01-2025 Piotr Dyszewski W tym rozdziale badać będziemy contact process rozważany zazwyczaj jako model rozprzestrzeniania się infekcji. Niech \(G=(V, E)\) będzie grafem prostym o ograniczonym...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Wykład 13: Epidemia | Stochastyczne modele układów oddziałujących 2024">
+<meta name="twitter:description" content="23-01-2025 Piotr Dyszewski W tym rozdziale badać będziemy contact process rozważany zazwyczaj jako model rozprzestrzeniania się infekcji. Niech \(G=(V, E)\) będzie grafem prostym o ograniczonym...">
+<meta name="twitter:image" content="/cover.png">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.8.0/transition.js"></script><script src="libs/bs3compat-0.8.0/tabs.js"></script><script src="libs/bs3compat-0.8.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="test.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="Notatni do wykładu">Stochastyczne modele układów oddziałujących 2024</a>:
+        <small class="text-muted">Notatni do wykładu</small>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Stochastyczne modele układów oddziałujących</a></li>
+<li><a class="" href="sylabus.html">Sylabus</a></li>
+<li><a class="" href="wyk%C5%82ad-1-%C5%82a%C5%84cuchy-markowa-w-czasie-ci%C4%85g%C5%82ym.html">Wykład 1: Łańcuchy Markowa w czasie ciągłym</a></li>
+<li><a class="" href="wyk%C5%82ad-2-mocna-w%C5%82asno%C5%9B%C4%87-markowa.html">Wykład 2: Mocna własność Markowa</a></li>
+<li><a class="" href="wyk%C5%82ad-3-procesy-i-p%C3%B3%C5%82grupy-fellera.html">Wykład 3: procesy i półgrupy Fellera</a></li>
+<li><a class="" href="wyk%C5%82ad-4-generatory.html">Wykład 4: Generatory</a></li>
+<li><a class="" href="wyk%C5%82ad-5-od-generatora-do-p%C3%B3%C5%82grupy.html">Wykład 5: od generatora do półgrupy</a></li>
+<li><a class="" href="wyk%C5%82ad-6-od-generatora-przez-p%C3%B3%C5%82grup%C4%99-do-procesu.html">Wykład 6: od generatora przez półgrupę do procesu</a></li>
+<li><a class="" href="wyk%C5%82ad-7-rozk%C5%82ady-stacjonarne-zaburzenia-ruchu-browna.html">Wykład 7: Rozkłady stacjonarne, zaburzenia ruchu Browna</a></li>
+<li><a class="" href="wyk%C5%82ad-8-uk%C5%82ady-spinowe.html">Wykład 8: Układy spinowe</a></li>
+<li><a class="" href="wyk%C5%82ad-9-konstrukcja-system%C3%B3w-spinowych.html">wykład 9: Konstrukcja systemów spinowych</a></li>
+<li><a class="" href="wyk%C5%82ad-10-procesy-dualne.html">Wykład 10: Procesy dualne</a></li>
+<li><a class="" href="wyk%C5%82ad-11-the-voter-model-przypadek-rekurencyjny.html">Wykład 11: The voter model: przypadek rekurencyjny</a></li>
+<li><a class="" href="wyk%C5%82ad-12-the-voter-model-przypadek-tranzytywny.html">Wykład 12: The voter model: przypadek tranzytywny</a></li>
+<li><a class="active" href="wyk%C5%82ad-13-epidemia.html">Wykład 13: Epidemia</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="wykład-13-epidemia" class="section level1 unnumbered">
+<h1>Wykład 13: Epidemia<a class="anchor" aria-label="anchor" href="#wyk%C5%82ad-13-epidemia"><i class="fas fa-link"></i></a>
+</h1>
+<p>23-01-2025</p>
+<p><em>Piotr Dyszewski</em></p>
+<p>W tym rozdziale badać będziemy <em>contact process</em> rozważany zazwyczaj
+jako model rozprzestrzeniania się infekcji. Niech <span class="math inline">\(G=(V, E)\)</span> będzie
+grafem prostym o ograniczonym stopniu, tj.
+<span class="math display">\[\sup_{x \in V}\mathrm{deg}(x)&lt;\infty.\]</span> Modelujemy sytuację, w której
+każdy zdrowy wierzchołek choruje z intensywnością proporcjonalną do
+liczby swoich zarażonych sąsiadów. Każdy chory wierzchołek zdrowieje z
+intensywnością <span class="math inline">\(1\)</span>. Rozwój epidemii możemy modelować precesem
+<span class="math inline">\((\eta_t)_{t\in \mathbb{R}_+}\)</span> o wartościach w <span class="math inline">\(\{0,1\}^V\)</span>. Wierzchołek
+<span class="math inline">\(x \in V\)</span> jest chory w chwili <span class="math inline">\(t \in \mathbb{R}_+\)</span> jeżeli <span class="math inline">\(\eta_t(x)=1\)</span>
+i jest zdrowy gdy <span class="math inline">\(\eta_t(x)=0\)</span>. Powyższy opis mówi, że
+<span class="math inline">\((\eta_t)_{t \in \mathbb{R}_+}\)</span> jest procesem Fellera z generatorem
+infinitezymalnym
+<span class="math display">\[Lf(\eta) = \sum_{x \in V} c(x, \eta) \left[ f\left( \eta^{(x)} \right)  -f(\eta)\right],\]</span>
+gdzie <span class="math display">\[c(x,\eta) = \mathbf{1}_{\{\eta(x)=1\}} +
+    \lambda\mathbf{1}_{\{\eta(x)=0\}} \# \{ y \in V \: : \: y\sim x, \: \eta(y)=1\}.\]</span>
+Tutaj <span class="math inline">\(\lambda \in \mathbb{R}_+\)</span> jest parametrem modelu będącym
+współczynnikiem proporcjonalności intensywności zarażania do liczby
+chorych sąsiadów. Proces ten jest dobrze określony ponieważ
+<span class="math display">\[\gamma(x,u) =\sup_{\eta}\left|c\left(x,\eta^{(u)}\right) - c(x,\eta)\right|=\lambda \mathbf{1}_{\{x\sim u\}}\]</span>
+oraz
+<span class="math display">\[\sup_{x\in V}\sum_{u\neq x}\gamma(x,u) = \sup_{x \in V} \lambda \mathrm{deg}(x)&lt;\infty.\]</span>
+Z opisu procesu widać, że zawsze posiada on co najmniej jedną miarę
+stacjonarną (skupioną w punkcie <span class="math inline">\(\eta \equiv 0\)</span>). Chcemy zrozumieć kiedy
+jest to jedyny rozkład stacjonarny.</p>
+<div id="reprezentacja-graficzna-addytywność-i-dualność" class="section level2 unnumbered">
+<h2>Reprezentacja graficzna, addytywność i dualność<a class="anchor" aria-label="anchor" href="#reprezentacja-graficzna-addytywno%C5%9B%C4%87-i-dualno%C5%9B%C4%87"><i class="fas fa-link"></i></a>
+</h2>
+<p>Reprezentacja graficzna umożliwia konstrukcję modelu epidemii dla
+wszystkich początkowych konfiguracji jednocześnie jako funkcji
+niezależnych procesów Poissona. Pokazuje również, że proces ten ma
+właściwość addytywności i jest dualny sam do siebie.</p>
+<p>Przypomnimy, że <span class="math inline">\(N=(N(t))_{t \in \mathbb{R}_+}\)</span> jest procesem Poissona z
+intensywnością <span class="math inline">\(\mu \in \mathbb{R}_+\)</span> jeżeli</p>
+<ul>
+<li><p><span class="math inline">\(N(0)=0\)</span> p.w.</p></li>
+<li><p><span class="math inline">\(N\)</span> ma niezależne przyrosty: dla każdych <span class="math inline">\(t&gt;s\)</span> zmienna <span class="math inline">\(N(t)-N(s)\)</span>
+jest niezależna od <span class="math inline">\(\sigma(N_r \: : \: r \leq s)\)</span></p></li>
+<li><p><span class="math inline">\(N\)</span> ma stacjonarne przerosty: dla każdych <span class="math inline">\(t&gt;s\)</span> zmienna <span class="math inline">\(N(t)-N(s)\)</span>
+ma rozkład Poissona z parametrem <span class="math inline">\(\mu(t-s)\)</span>.</p></li>
+<li><p>funkcja <span class="math inline">\(t \mapsto N(t)\)</span> jest prawostronnie ciągła.</p></li>
+</ul>
+<p>Zauważmy, że skoro <span class="math inline">\(N\)</span> przyjmuje tylko wartości całkowitoliczbowe, to
+musi być kawałkami stała. Własności rozkładu Poissona implikują, że
+odstępy między kolejnymi skokami maja rozkład wykładniczy z parametrem
+<span class="math inline">\(\mu\)</span>.</p>
+<p>Aby skonstruować reprezentacją graficzną procesu epidemii będziemy
+używali dwóch typów procesów Poissona. Pierwszy typ stowarzyszony jest z
+wierzchołkami. Dla każdego wierzchołka <span class="math inline">\(x\in V\)</span> rozważamy jednorodny
+proces Poissona <span class="math inline">\(N_x = N_x(t)_{t \in \mathbb{R}_+}\)</span> z intensywnością
+jeden. Momenty skoku tego procesu kodować będą momenty, w których
+wierzchołek <span class="math inline">\(x\)</span> zdrowieje. Drugi typ stowarzyszony jest z krawędziami
+skierowanymi. Dla każdej krawędzi zatem rozważamy dwa procesy, po jednym
+dla każdej orientacji. Innymi słowy dla każdej uporządkowanej pary
+sąsiadujących wierzchołków <span class="math inline">\(x, y\)</span> w <span class="math inline">\(V\)</span> rozważamy proces Poissona
+<span class="math inline">\(N_{x,y}\)</span> z intensywnością <span class="math inline">\(\lambda\)</span>. Momenty skoków procesu <span class="math inline">\(N_{x,y}\)</span>
+utożsamiać będziemy z momentami czasu, w których <span class="math inline">\(x\)</span> zaraża <span class="math inline">\(y\)</span>.</p>
+<p>Reprezentacja graficzna procesu ma miejsce w czasoprzestrzeni
+<span class="math inline">\(G \times \mathbb{R}_+\)</span>. Zbiór <span class="math inline">\(\mathbb{R}_+\)</span> w ostatnim produkcie
+interpretować będziemy oczywiście jako czas. Nad każdym wierzchołkiem
+stoi kopia <span class="math inline">\(\mathbb{R}_+\)</span> na której zaznaczamy momenty skoku procesu
+<span class="math inline">\(N_x\)</span>. Dla każdej uporządkowanej pary sąsiadujących wierzchołków <span class="math inline">\(x,y\)</span> w
+momentach skoku <span class="math inline">\(N_{x,y}\)</span> rysujemy krawędź skierowaną od <span class="math inline">\(x\)</span> do <span class="math inline">\(y\)</span>.</p>
+<figure><div id="p5-container-contact">
+<script src="JAVA/contact.js"></script>
+</div>
+<figcaption>
+Graficzna reprezentacja modelu epidemii
+</figcaption></figure><p>::: { .definition
+Niech <span class="math inline">\(s&lt;t\)</span>. Ścieżką z <span class="math inline">\((x, s)\)</span> do <span class="math inline">\((y, t)\)</span> w
+<span class="math inline">\(G \times \mathbb{R}\)</span> nazywać będziemy ciąg
+<span class="math inline">\((x,s)=(x_0, t_0), (x_1, t_1), \dots, (x_n, t_n) = (y, t)\)</span> taki, że:</p>
+<ul>
+<li><p>Chwile <span class="math inline">\(t_k\)</span> tworzą rosnący ciąg zdarzeń: <span class="math inline">\(t_0 &lt; t_1 &lt; \dots &lt; t_n\)</span>,</p></li>
+<li><p>Zdarzenia mają miejsca między sąsiadami: <span class="math inline">\(x_k\)</span> i <span class="math inline">\(x_{k+1}\)</span> są
+sąsiadami dla każdego <span class="math inline">\(k\)</span>.</p></li>
+<li><p>Każde zdarzenie polega na zarażeniu <span class="math inline">\(x_{k+1}\)</span> przez <span class="math inline">\(x_k\)</span>: <span class="math inline">\(t_k\)</span>
+jest momentem skoku <span class="math inline">\(N_{x_k, x_{k+1}}\)</span> dla każdego <span class="math inline">\(k\)</span> (na wysokości
+<span class="math inline">\(t_k\)</span> jest strzałka od <span class="math inline">\(x_{k}\)</span> do <span class="math inline">\(x_{k+1}\)</span>).</p></li>
+<li><p>Żaden z wierzchołków nie wyzdrowiał przed zarażeniem kolejnego: <span class="math inline">\(s\)</span>
+nie jest punktem skoku <span class="math inline">\(N_{x_k}\)</span> dla <span class="math inline">\(t_{k-1} &lt; s &lt; t_k\)</span>.
+:::</p></li>
+</ul>
+<p>Reprezentacja graficzna koduje nam całą dynamikę modelu epidemii.
+Dokładniej: istnieje ścieżka z <span class="math inline">\((x,s)\)</span> do <span class="math inline">\((y,t)\)</span> wtedy i tylko wtedy,
+gdy jeżeli w chwili <span class="math inline">\(s\)</span> wierzchołek <span class="math inline">\(x\)</span> jest chory, to w chwili <span class="math inline">\(t\)</span>
+wierzchołek <span class="math inline">\(y\)</span> jest chory. Pozostaje jedynie zadać warunek początkowy.
+Każdy punkt startowy <span class="math inline">\(\eta \in \{0,1\}^V\)</span> możemy jednoznacznie utożsamić
+ze zbiorem zainfekowanych wierzchołków
+<span class="math inline">\(A = \{ x \in V \: : \: \eta(x)=1\}\)</span>. Stąd wartość <span class="math inline">\(\eta_t\)</span> z warunkiem
+początkowym <span class="math inline">\(A\)</span> możemy jednoznacznie utożsamić ze zbiorem
+<span class="math display">\[A_t^{A} = \{ x \in V \: : \: \mbox{Istnieje ścieżka z } (y,0) \mbox{ do } (x,t) \mbox{ dla pewnego } y \in A\}.\]</span>
+Konstrukcja ta pozwala rozważać procesy epidemii dla wszystkich warunków
+początkowych na jednej przestrzeni probabilistycznej. Stąd też wynika
+własność addytywności procesu <span class="math display">\[A_t^{A\cup B} = A_t^A \cup A_t^B\]</span> dla
+dowolnych <span class="math inline">\(A, B \subseteq V\)</span>. W szczególności, jeżeli <span class="math inline">\(A \subseteq B\)</span>,
+to <span class="math display">\[A_t^{A} \subseteq A_t^B.\]</span> Innymi słowy, jeżeli zaczniemy proces z
+większą liczbą zarażonych wierzchołków, to w każdym momencie otrzymamy
+większą liczbę chorych. Zauważmy wreszcie, że ograniczając reprezentację
+graficzną do zbioru <span class="math inline">\(G \times[0,t]\)</span> długości wszystkich wszystkich
+pionowych obcinków między zdarzaniami poszczególnych procesów Poissona
+mają ucięty rozkład wykładniczy, tj. zmiennej losowej postaci
+<span class="math inline">\(\xi\wedge t\)</span>, gdzie <span class="math inline">\(\xi\)</span> ma rozkład wykładniczy z parametrem <span class="math inline">\(1\)</span> bądź
+<span class="math inline">\(\lambda\)</span>. Obserwacja ta będzie istotna w momencie odwrócenia czasu w
+procesie. Okazuje się, że dla każdego <span class="math inline">\(t&gt;0\)</span> czas między ostatnim
+odnotowanym zdarzeniem a <span class="math inline">\(t\)</span> również ma rozkład wykładniczy. Pomocny
+będzie też następujący fakt.</p>
+<div class="proposition">
+<p><span id="prp:6-invert" class="proposition"><strong>Fakt 5  </strong></span>Niech <span class="math inline">\(\{\xi_k\}_{k \in \mathbb{N}}\)</span> będzie ciągiem
+niezależnych zmiennych losowych o rozkładzie wykładniczym z parametrem
+<span class="math inline">\(\mu \in \mathbb{R}_+\)</span>. Niech <span class="math inline">\(S_0=0\)</span> i dla <span class="math inline">\(n \in \mathbb{N}\)</span>
+<span class="math display">\[S_n = \sum_{k=1}^n \xi_k.\]</span> Dla <span class="math inline">\(t \in \mathbb{R}_+\)</span> połóżmy
+<span class="math display">\[N(t) = \# \{ n \in \mathbb{N} \: : \: S_n \leq t\}.\]</span> Wówczas
+<span class="math inline">\(N = (N(t))_{t \in \mathbb{R}_+}\)</span> jest jednorodnym procesem Poissona z
+intensywnością <span class="math inline">\(\mu\)</span>. Dodatkowo zmienna losowa <span class="math inline">\(t-S_{N(t)}\)</span> ma ten sam
+rozkład co <span class="math inline">\(\xi_1 \wedge t\)</span>.</p>
+</div>
+<div class="proof">
+<p><span id="unlabeled-div-47" class="proof"><em>Proof</em>. </span>Dowód pierwszego postulatu jest częścią wykładu z RP2R. Dowód
+drugiej części faktu pozostawiamy jako ćwiczenie. ◻</p>
+</div>
+<p>Dla <span class="math inline">\(x\in V\)</span>, <span class="math inline">\(t,s\in \mathbb{R}_+\)</span> takich, że <span class="math inline">\(s&lt;t\)</span> rozważmy
+<span class="math display">\[\widehat{A}_s^{A,t} =
+    \{ y \in V \: : \: \mbox{Istnieje ścieżka z } (y,t-s) \mbox{ do } (x,t) \mbox{ dla pewnego } x \in A \}.\]</span>
+Wówczas zbiór <span class="math inline">\(\widehat{A}_s^{\{x\},t}\)</span> stanowi kolekcję wierzchołków
+<span class="math inline">\(y \in V\)</span> os następującej własności: Jeżeli w chwili <span class="math inline">\(t-s\)</span> wierzchołek
+<span class="math inline">\(y\)</span> jest zarażony, to w chwili <span class="math inline">\(t\)</span> wierzchołek <span class="math inline">\(x\)</span> będzie zarażony. Daje
+to charakteryzacje wierzchołków zarażonych w chwili <span class="math inline">\(t\)</span>,
+<span class="math display">\[A_t^A = \left\{ x \in V \: : \: A_{t-s}^A \cap \widehat{A}_s^{\{x\},t}\neq \emptyset \right\}.\]</span>
+dla <span class="math inline">\(s=t\)</span> dostajemy
+<span class="math display">\[A_t^A = \left\{ x \in V \: : \: A \cap \widehat{A}_s^{\{x\},t}\neq \emptyset \right\}.\]</span>
+W szczególności, dla dowolnego <span class="math inline">\(B \subseteq V\)</span>,
+<span class="math display">\[A_t^A\cap B = \left\{ x \in B \: : \: A \cap \widehat{A}_t^{\{x\},t}\neq \emptyset \right\}.\]</span>
+Podobnie jest w przypadku zbioru <span class="math inline">\(\widehat{A}_s^{A,t}\)</span>: to zbiór tych
+<span class="math inline">\(y \in V\)</span> takich, że jeżeli <span class="math inline">\(y\)</span> jest zarażony w chwili <span class="math inline">\(t-s\)</span>, to
+zarażony jest pewien wierzchołek z <span class="math inline">\(A\)</span>. W szczególności mamy równość
+zdarzeń
+<span class="math display" id="eq:6-dual">\[\begin{equation}
+    \left\{A_t^A\cap B \neq \emptyset \right\}
+= \left\{ A \cap \widehat{A}_t^{B,t} \neq \emptyset\right\}
+\tag{51}
+\end{equation}\]</span>
+Ze stworzonej przez nas konstrukcji graficznej dla <span class="math inline">\(A_t\)</span> łatwo można
+otrzymać konstrukcję graficzną <span class="math inline">\(\widehat{A}_s\)</span>. Wystarczy cały obrazek
+odbić w poziomie i odwrócić orientację strzałek. Z
+Faktu <a href="wyk%C5%82ad-13-epidemia.html#prp:6-invert">5</a>
+długości wszystkich pionowych segmentów w interpretacji <span class="math inline">\(A_t\)</span> obciętej
+do <span class="math inline">\(G \times [0,t]\)</span> mają obcięty rozkład wykładniczy. Zatem odbicie
+obrazka w poziomie nie zmieni ich rozkładów. Odwrócenie kierunku
+strzałek również nie zmienia rozkładu. Oznacza to, że <span class="math inline">\(A_t^{B,t}\)</span> ma ten
+sam rozkład co <span class="math inline">\(A_t^B\)</span>.
+Relacja <a href="wyk%C5%82ad-13-epidemia.html#eq:6-dual">(51)</a>
+w terminach prawdopodobieństwa zapisuje się jako
+<span class="math display">\[\mathbf{P}_A[A_t \cap B \neq \emptyset] = \mathbf{P}_B[A_t\cap A \neq \emptyset].\]</span>
+Rozważmy sytuację, w której zaczynamy nasz proces od stanu, w którym
+wszystkie wierzchołki są zarażone, tj. <span class="math inline">\(A=V\)</span>. Wówczas
+<span class="math display">\[\mathbf{P}_V[A_t \cap B \neq \emptyset] = \mathbf{P}_B[A_t \neq \emptyset].\]</span>
+Zauważmy, że zdarzenia występujące pod prawdopodobieństwem po prawej
+stronie są zstępujące, dla <span class="math inline">\(s&lt;t\)</span> mamy
+<span class="math display">\[\{A_s \neq \emptyset\} \supseteq \{ A_t\neq \emptyset\}.\]</span> Oznacza to,
+że dla każdego <span class="math inline">\(B\)</span> istnieje granica
+<span class="math display">\[\lim_{t \to \infty} \mathbf{P}_V[A_t \cap B \neq \emptyset] = \lim_{t \to \infty}\mathbf{P}_B[A_t \neq \emptyset].\]</span>
+Rozważając skończone podzbiory <span class="math inline">\(B \subseteq V\)</span> poprzez skończone
+operacje mnogościowe jesteśmy w stanie wyrazić zdarzenia typu
+<span class="math inline">\(\{ A_t \cap B \in \cdot \}\)</span> poprzez zdarzenia typu
+<span class="math inline">\(\{A_t \cap B \neq \emptyset\}\)</span>. Oznacza to, że zbieżne są rozkłady
+<span class="math inline">\(A^V_t \cap B\)</span> są zbieżne przy <span class="math inline">\(t\to \infty\)</span>. Poprzez charakteryzację
+słabej zbieżności na przeliczalnym produkcie <span class="math inline">\(\{0,1\}^V\)</span> w terminach
+zbieżności rozkładów skończenie wymiarowych otrzymujemy zbieżność
+rozkładu <span class="math inline">\(A_t^V\)</span> do pewnej miary probabilistycznej <span class="math inline">\(\overline{\nu}\)</span> na
+<span class="math inline">\(\{0,1\}^V\)</span>. Miara <span class="math inline">\(\overline{\nu}\)</span> nazywana jest górnym rozkładem
+stacjonarnym. Bowiem dla dowolnego innego rozkładu stacjonarnego <span class="math inline">\(\pi\)</span>
+zachodzi
+<span class="math display">\[\pi(\eta\equiv 1 \mbox{ na } A) \leq \overline{\nu}(\eta \equiv 1 \mbox{ na } A)\]</span>
+dla dowolnego <span class="math inline">\(A\subseteq V\)</span>. W szczególności dla modelu epidemii będzie
+istniała nietrywialny rozkład stacjonarny (inny niż
+<span class="math inline">\(\delta_{\mathbf{0}}\)</span>) wtedy i tylko wtedy, gdy
+<span class="math inline">\(\overline{\nu} \neq \delta_\mathbf{0}\)</span>.</p>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="wyk%C5%82ad-12-the-voter-model-przypadek-tranzytywny.html">Wykład 12: The voter model: przypadek tranzytywny</a></div>
+<div class="empty"></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#wyk%C5%82ad-13-epidemia">Wykład 13: Epidemia</a></li>
+<li><a class="nav-link" href="#reprezentacja-graficzna-addytywno%C5%9B%C4%87-i-dualno%C5%9B%C4%87">Reprezentacja graficzna, addytywność i dualność</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Stochastyczne modele układów oddziałujących 2024</strong>: Notatni do wykładu" was written by Piotr Dyszewski. It was last built on 2025-01-27.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>
