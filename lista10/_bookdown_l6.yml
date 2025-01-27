@@ -1,0 +1,25 @@
+book_filename: "SMUO_lista5" # Nazwa wyjściowego pliku PDF
+#author: "Piotr Dyszewski"
+#date: "`r Sys.Date()`"
+rmd_files: ["smso_2024_wyklad6.Rmd"] # Kolejność plików Rmd
+delete_merged_file: false
+language:
+  label:
+    fig: 'Rysunek '      # Zmienia prefiks dla rysunków
+    tab: 'Tabela '       # Zmienia prefiks dla tabel
+    eq: 'Równanie '      # Zmienia prefiks dla równań matematycznych
+    thm: 'Twierdzenie '  # Zmienia prefiks dla twierdzeń (jeśli używane)
+    exr: 'Zadanie '
+    def: 'Definicja '
+    exm: 'Przykład '
+    cor: 'Wniosek '
+documentclass: scrbook
+output:
+  bookdown::pdf_document:
+    includes:
+      in_header: preamble.tex
+    header-includes:
+      - \titlepagefalse
+  bookdown::gitbook:
+    config:
+      chapter_name: "Wykład "  # Dostosowanie dla rozdziałów
